@@ -23,6 +23,8 @@ export async function updateSettingsAction(
     resume_url: String(formData.get("resume_url") ?? "").trim(),
     resume_filename: String(formData.get("resume_filename") ?? "").trim() || "Resume.pdf",
     send_emails: formData.get("send_emails") === "on",
+    email_template: String(formData.get("email_template") ?? ""),
+    followup_template: String(formData.get("followup_template") ?? ""),
   };
 
   if (payload.candidate_email && !EMAIL_RE.test(payload.candidate_email)) {

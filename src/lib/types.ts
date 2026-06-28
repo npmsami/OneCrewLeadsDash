@@ -67,5 +67,7 @@ export interface Settings {
   resume_url: string;
   resume_filename: string;
   send_emails: boolean;
+  email_template: string;
+  followup_template: string;
   updated_at: string;
 }

@@ -31,6 +31,25 @@ function Field({
   );
 }
 
+function TextAreaField({
+  name, label, hint, defaultValue, rows = 8,
+}: {
+  name: string; label: string; hint?: string; defaultValue?: string; rows?: number;
+}) {
+  return (
+    <label className="block">
+      <span className="mb-1.5 block text-sm font-medium text-fg">{label}</span>
+      <textarea
+        name={name}
+        rows={rows}
+        defaultValue={defaultValue}
+        className={`${inputClass} resize-y font-mono text-[13px] leading-relaxed`}
+      />
+      {hint && <span className="mt-1 block text-xs text-faint">{hint}</span>}
+    </label>
+  );
+}
+
 export function SettingsForm({ settings }: { settings: Settings | null }) {
   const [state, action, pending] = useActionState(updateSettingsAction, initial);
 
@@ -50,6 +69,22 @@ export function SettingsForm({ settings }: { settings: Settings | null }) {
         <Field name="resume_filename" label="Resume filename" mono
           defaultValue={settings?.resume_filename || "Resume.pdf"} placeholder="Resume.pdf"
           hint="The attachment name recruiters see." />
+      </div>
+
+      <div className="card space-y-5 p-6">
+        <div>
+          <h2 className="text-sm font-semibold text-fg">Email templates</h2>
+          <p className="mt-1 text-xs text-faint">
+            GPT follows this structure but tailors each send to the specific job. Use placeholders{" "}
+            <code className="text-muted">{"{recruiter_name}"}</code>, <code className="text-muted">{"{company}"}</code>,{" "}
+            <code className="text-muted">{"{role}"}</code>, <code className="text-muted">{"{signature}"}</code>; put creative
+            guidance in <code className="text-muted">[square brackets]</code> for GPT to fill per job.
+          </p>
+        </div>
+        <TextAreaField name="email_template" label="Application email" defaultValue={settings?.email_template}
+          rows={11} hint="The first outreach email attached with your resume." />
+        <TextAreaField name="followup_template" label="Follow-up email" defaultValue={settings?.followup_template}
+          rows={5} hint="Sent ~5 business days later if there's no reply. Keep it short." />
       </div>
 
       {/* Go-live toggle */}
