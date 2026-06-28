@@ -19,11 +19,18 @@ The agent writes leads to Supabase; this dashboard reads them + holds the Candid
 - Pages: `/` Overview (stat cards + recent activity), `/leads` (full table), `/settings` (Candidate Signature — **read-only for now**)
 - Run: `npm run dev` → http://localhost:3000
 
+## Git / deploy
+- Pushed to **https://github.com/npmsami/OneCrewLeadsDash** (`main`). Auth: gh account `iamsyedmurtaza-creator` (collaborator). Next app is at repo ROOT.
+- **Vercel auto-deploys on push.** Env vars set (3): `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY` (publishable), `SUPABASE_SERVICE_ROLE_KEY` (secret). Deploys are READY.
+- **Vercel team:** "Sami's projects" (`team_4V6fxyHdKFKmlcqCJYjKnnN3`); project `prj_PIdSvFagk21UrSwki8KcGz26PDAt`.
+- **Canonical URL:** https://one-crew-leads-dash-samis-projects-e3fc9c86.vercel.app/ (bare `one-crew-leads-dash.vercel.app` 404s — quirk; use team-scoped).
+- **Deployment Protection (Vercel Authentication) is ON** by user's choice — must be logged into Vercel as team owner (npmsami / iam.samisiddiqui@gmail.com) to view. Future: add in-app auth for daily use before considering public.
+
 ## ▶ NEXT
-1. Make `/settings` **editable** — form (client) + server action writing via `supabaseAdmin()` to the `settings` row (name/email/linkedin/resume_url/resume_filename + send_emails toggle).
-2. `/leads` filters + search (by status, source, score, text) — currently shows all 500.
-3. Deploy to Vercel (set the 3 env vars), push to GitHub.
-4. Later: agent go-live layer (Gmail send + resume attach via Google OAuth), follow-up engine, GitHub Actions cron.
+1. (DONE) editable `/settings`, `/leads` filters+search, push to GitHub.
+2. Confirm Vercel env vars set + live deploy renders real data.
+3. Agent go-live layer: Gmail send + resume attach (Google OAuth headless refresh token), follow-up engine, GitHub Actions cron.
+4. Volume: user targets 30-40 applies/day → bump MAX_JOBS_PER_RUN (~20×2 runs) and solve Hunter 25/mo cap (Apollo or paid tier).
 
 ## Working style
 Incremental — ONE step per turn, check in between. Dry-run footing (send_emails=false) until the user flips go-live.

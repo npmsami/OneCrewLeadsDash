@@ -1,7 +1,7 @@
 "use client";
 
 import { useActionState } from "react";
-import { updateSettingsAction, type SettingsFormState } from "@/app/settings/actions";
+import { updateSettingsAction, type SettingsFormState } from "@/app/(dashboard)/settings/actions";
 import type { Settings } from "@/lib/types";
 
 const initial: SettingsFormState = { ok: false, message: "" };
