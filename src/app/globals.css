@@ -1,0 +1,67 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------ */
+/* One Crew — premium dark theme                                       */
+/* ------------------------------------------------------------------ */
+@theme {
+  --color-bg: #07080b;
+  --color-bg-soft: #0c0e13;
+  --color-panel: #101319;
+  --color-panel-2: #161a22;
+  --color-border: #20252f;
+  --color-border-soft: #1a1e26;
+
+  --color-fg: #eef1f6;
+  --color-muted: #9aa3b2;
+  --color-faint: #6b7280;
+
+  --color-accent: #6366f1;       /* indigo */
+  --color-accent-2: #22d3ee;     /* cyan   */
+  --color-accent-soft: #1e2030;
+
+  --color-ok: #34d399;           /* emerald — applied/replied */
+  --color-warn: #fbbf24;         /* amber   — dry_run/pending */
+  --color-info: #38bdf8;         /* sky     — enriched/new    */
+  --color-danger: #f87171;       /* red     — errors          */
+  --color-violet: #a78bfa;       /* manual_apply              */
+
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+
+  --radius-xl2: 1.1rem;
+}
+
+html {
+  color-scheme: dark;
+}
+
+body {
+  background:
+    radial-gradient(1100px 600px at 85% -10%, rgba(99, 102, 241, 0.12), transparent 60%),
+    radial-gradient(900px 500px at 5% 0%, rgba(34, 211, 238, 0.07), transparent 55%),
+    var(--color-bg);
+  color: var(--color-fg);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Reusable surfaces ------------------------------------------------- */
+@utility glass {
+  background: color-mix(in oklab, var(--color-panel) 78%, transparent);
+  border: 1px solid var(--color-border);
+  backdrop-filter: blur(14px);
+}
+
+@utility card {
+  background: linear-gradient(180deg, color-mix(in oklab, var(--color-panel) 92%, transparent), var(--color-bg-soft));
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl2);
+}
+
+/* Subtle scrollbars */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-border) transparent;
+}
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-thumb { background: var(--color-border); border-radius: 10px; }
