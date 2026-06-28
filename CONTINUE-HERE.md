@@ -31,11 +31,18 @@ The agent writes leads to Supabase; this dashboard reads them + holds the Candid
 - **Access = app-level password gate** (Next 16 `src/proxy.ts` + `/login`, cookie `oc_auth` = sha256 of password). Env `DASHBOARD_PASSWORD` gates the whole app; if unset, gate is fail-open (dormant). Protected pages live in `src/app/(dashboard)/`; `/login` has its own minimal layout.
 - Go-live access steps (user does in Vercel): 1) add env `DASHBOARD_PASSWORD`, 2) Redeploy, 3) Settings → Deployment Protection → Vercel Authentication = Disabled. Then open the canonical URL → app login → password. Local dev password in `.env.local` = `onecrew-dev` (local only).
 
-## ▶ NEXT
-1. (DONE) editable `/settings`, `/leads` filters+search, push to GitHub.
-2. Confirm Vercel env vars set + live deploy renders real data.
-3. Agent go-live layer: Gmail send + resume attach (Google OAuth headless refresh token), follow-up engine, GitHub Actions cron.
-4. Volume: user targets 30-40 applies/day → bump MAX_JOBS_PER_RUN (~20×2 runs) and solve Hunter 25/mo cap (Apollo or paid tier).
+## Go-live plan + decisions (2026-06-28)
+- Sending account: **Google Workspace custom domain** (user setting up domain+Workspace) — for deliverability (DKIM/DMARC, 2k/day). NOT plain gmail.
+- Templates: **seeded defaults, user edits** — `settings.email_template` + `followup_template` (DONE; dashboard textareas + agent `email_writer` follows them, GPT fills `[brackets]`, placeholders `{recruiter_name}/{company}/{role}/{signature}`).
+- Dedup: **per-role** (no per-company rule). Existing job_id + (title+company) dedup is the no-double-apply guarantee.
+- Deliverability: send via Gmail API from the Workspace address; plain-text, personalized, spaced sends, volume ramp.
+
+## ▶ NEXT (build order)
+1. (DONE) dashboard pages, password gate, deploy fixed, templates.
+2. **Follow-up engine** (`agent/followup.py`): applied→5 biz days no reply→follow-up→3 days→closed; reply-detection needs Gmail inbox read.
+3. **Connect Gmail in Settings** (OAuth: gmail.send + gmail.readonly; store refresh token in settings; agent sends via Gmail API). Needs user's Workspace domain + a Google Cloud OAuth client. Give DKIM/DMARC checklist.
+4. **Expand discovery** (JSearch multi-query/multi-page across 4 tracks) + raise MAX_JOBS_PER_RUN + **GitHub Actions cron** (12h pipeline + daily follow-up). Solve Hunter 25/mo cap (Apollo or paid).
+5. Flip go-live (settings.send_emails) when dry-run output looks right.
 
 ## Working style
 Incremental — ONE step per turn, check in between. Dry-run footing (send_emails=false) until the user flips go-live.
