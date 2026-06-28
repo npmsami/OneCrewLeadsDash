@@ -37,12 +37,18 @@ The agent writes leads to Supabase; this dashboard reads them + holds the Candid
 - Dedup: **per-role** (no per-company rule). Existing job_id + (title+company) dedup is the no-double-apply guarantee.
 - Deliverability: send via Gmail API from the Workspace address; plain-text, personalized, spaced sends, volume ramp.
 
+## Gmail connect (DONE on dashboard side)
+- OAuth flow: `/api/google/auth` + `/api/google/callback`. Refresh token in **locked `gmail_auth` table** (RLS deny-all; service-role only). Settings page shows Connect/Reconnect + status.
+- Env needed (dashboard + Vercel): `GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET` (web client; redirect URIs registered: team-scoped vercel `/api/google/callback` + localhost). Scopes gmail.send + gmail.readonly + email.
+- User connects on the live site with the Workspace sending address.
+
 ## ▶ NEXT (build order)
-1. (DONE) dashboard pages, password gate, deploy fixed, templates.
-2. **Follow-up engine** (`agent/followup.py`): applied→5 biz days no reply→follow-up→3 days→closed; reply-detection needs Gmail inbox read.
-3. **Connect Gmail in Settings** (OAuth: gmail.send + gmail.readonly; store refresh token in settings; agent sends via Gmail API). Needs user's Workspace domain + a Google Cloud OAuth client. Give DKIM/DMARC checklist.
-4. **Expand discovery** (JSearch multi-query/multi-page across 4 tracks) + raise MAX_JOBS_PER_RUN + **GitHub Actions cron** (12h pipeline + daily follow-up). Solve Hunter 25/mo cap (Apollo or paid).
-5. Flip go-live (settings.send_emails) when dry-run output looks right.
+1. (DONE) dashboard, password gate, deploy fix, templates, **email quality locked**, follow-up engine, **Gmail connect flow**.
+2. **Agent send layer** `agent/google.py`: read refresh token from `gmail_auth` (service role) + `GOOGLE_CLIENT_ID/SECRET` → mint access token → Gmail API send (attach resume from Drive link) + read inbox for follow-up reply detection. Wire into pipeline (gated by settings.send_emails) + followup.py.
+3. **Batch send throttle**: ~40 emails over ~20 min (≈30s spacing).
+4. **DKIM/DMARC checklist** for the Workspace domain (deliverability).
+5. **Expand discovery** (JSearch multi-query) + raise MAX_JOBS_PER_RUN + **GitHub Actions cron**. Solve Hunter 25/mo cap.
+6. Flip go-live (settings.send_emails) when ready.
 
 ## Working style
 Incremental — ONE step per turn, check in between. Dry-run footing (send_emails=false) until the user flips go-live.

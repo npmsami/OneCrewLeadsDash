@@ -63,12 +63,9 @@ export function SettingsForm({ settings }: { settings: Settings | null }) {
           hint="Appears in the email signature and as the sender identity." />
         <Field name="candidate_linkedin" label="LinkedIn" mono
           defaultValue={settings?.candidate_linkedin} placeholder="https://www.linkedin.com/in/your-handle" />
-        <Field name="resume_url" label="Resume link (Google Drive)" mono
-          defaultValue={settings?.resume_url} placeholder="https://drive.google.com/file/d/…/view"
-          hint="One resume, attached to every application email. Share it as 'anyone with the link'." />
-        <Field name="resume_filename" label="Resume filename" mono
-          defaultValue={settings?.resume_filename || "Resume.pdf"} placeholder="Resume.pdf"
-          hint="The attachment name recruiters see." />
+        <Field name="resume_filename" label="Resume attachment name" mono
+          defaultValue={settings?.resume_filename || "Resume.pdf"} placeholder="Mahad_Saleem_Resume.pdf"
+          hint="The filename recruiters see on the attachment (upload the file below)." />
       </div>
 
       <div className="card space-y-5 p-6">

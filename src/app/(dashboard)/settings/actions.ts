@@ -20,7 +20,7 @@ export async function updateSettingsAction(
     candidate_name: String(formData.get("candidate_name") ?? "").trim(),
     candidate_email: String(formData.get("candidate_email") ?? "").trim(),
     candidate_linkedin: String(formData.get("candidate_linkedin") ?? "").trim(),
-    resume_url: String(formData.get("resume_url") ?? "").trim(),
+    // resume_url is managed by the resume upload action, not this form.
     resume_filename: String(formData.get("resume_filename") ?? "").trim() || "Resume.pdf",
     send_emails: formData.get("send_emails") === "on",
     email_template: String(formData.get("email_template") ?? ""),
@@ -32,9 +32,6 @@ export async function updateSettingsAction(
   }
   if (payload.candidate_linkedin && !URL_RE.test(payload.candidate_linkedin)) {
     return { ok: false, message: "LinkedIn must be a full URL (https://…)." };
-  }
-  if (payload.resume_url && !URL_RE.test(payload.resume_url)) {
-    return { ok: false, message: "Resume link must be a full URL (https://…)." };
   }
 
   try {
