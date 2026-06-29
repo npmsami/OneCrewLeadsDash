@@ -1,0 +1,3 @@
+# The Python job-application agent lives in /agent and runs on GitHub Actions,
+# not on Vercel. Keep it out of the Next.js build/upload entirely.
+agent/

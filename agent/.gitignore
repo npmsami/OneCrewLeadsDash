@@ -1,0 +1,14 @@
+# secrets — NEVER commit
+.env
+.env.*
+!.env.example
+
+# python
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# local artifacts
+output/
+*.pdf

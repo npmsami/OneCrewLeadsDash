@@ -1,0 +1,2029 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:media="http://search.yahoo.com/mrss">
+  <channel>
+    <title>We Work Remotely: DevOps and Sysadmin Jobs</title>
+    <link>https://weworkremotely.com/categories/remote-devops-sysadmin-jobs.rss</link>
+    <description>We Work Remotely: DevOps and Sysadmin Jobs</description>
+    <language>en-US</language>
+    <ttl>60</ttl>
+    <item>
+      <media:content url="https://wwr-pro.s3.amazonaws.com/logos/0171/5512/logo.gif" type="image/png"/>
+      <title>Revvity: Principal DevOps Engineer – Build, Release and Cloud Automation</title>
+      <region>Anywhere in the World</region>
+      <country></country>
+      <state></state>
+      <skills>Adobe Photoshop, Cross-Browser Development, Estimating and Cost Forecasting, Computer Vision, InfoSec, DevOps, iOS, Cross-Selling, Deal Closure, and Composition</skills>
+      <category>DevOps and Sysadmin</category>
+      <type>Full-Time</type>
+      <description>&lt;img src="https://we-work-remotely.imgix.net/logos/0171/5512/logo.gif?ixlib=rails-4.0.0&amp;w=50&amp;h=50&amp;dpr=2&amp;fit=fill&amp;auto=compress" /&gt;
+
+&lt;p&gt;
+  &lt;strong&gt;Headquarters:&lt;/strong&gt; India - Remote
+    &lt;br /&gt;&lt;strong&gt;URL:&lt;/strong&gt; &lt;a href="http://revvity.com"&gt;http://revvity.com&lt;/a&gt;
+&lt;/p&gt;
+
+&lt;div&gt;&lt;span&gt;&lt;span&gt;&lt;span&gt;&lt;span&gt;&lt;span&gt;&lt;span&gt;&lt;span&gt;&lt;span&gt;&lt;span&gt;&lt;span&gt;&lt;span&gt;&lt;span&gt;&lt;span&gt;&lt;span&gt;&lt;span&gt;&lt;span&gt;&lt;span&gt;&lt;span&gt;&lt;span&gt;&lt;span&gt;&lt;span&gt;&lt;span&gt;&lt;span&gt;&lt;span&gt;&lt;span&gt;&lt;span&gt;&lt;span&gt;&lt;span&gt;&lt;span&gt;&lt;span&gt;&lt;span&gt;&lt;span&gt;&lt;span&gt;&lt;h2&gt;&lt;span&gt;&lt;span&gt;&lt;span&gt;&lt;b&gt;Job Title&lt;/b&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/h2&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;Principal DevOps Engineer – Build, Release and Cloud Automation&lt;span&gt;&lt;span&gt;&lt;span&gt;&lt;span&gt;&lt;span&gt;&lt;span&gt;&lt;span&gt;&lt;span&gt;&lt;span&gt;&lt;span&gt;&lt;span&gt;&lt;span&gt;&lt;span&gt;&lt;span&gt;&lt;span&gt;&lt;span&gt;&lt;span&gt;&lt;span&gt;&lt;span&gt;&lt;span&gt;&lt;span&gt;&lt;span&gt;&lt;span&gt;&lt;span&gt;&lt;span&gt;&lt;span&gt;&lt;span&gt;&lt;span&gt;&lt;span&gt;&lt;span&gt;&lt;span&gt;&lt;span&gt;&lt;span&gt;&lt;h2&gt;&lt;br&gt;&lt;span&gt;&lt;span&gt;&lt;span&gt;&lt;b&gt;Location(s)&lt;/b&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/h2&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;India - Remote&lt;p&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;&lt;span&gt;About Us&lt;/span&gt;&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;&lt;span&gt;Revvity is a developer and provider of end-to-end solutions designed to help scientists, researchers, and clinicians solve the world’s greatest health challenges. We pair the enthusiasm of an industry disruptor with the experience of a longtime leader. Our team of 11,000+ colleagues from around the globe are vital to our success and the reason we’re able to push boundaries in pursuit of better human health.&lt;/span&gt;&lt;span&gt; &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Find your future at Revvity&amp;nbsp;&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;Role summary&lt;/b&gt;&lt;/p&gt;&lt;p&gt;We are looking for a hands-on Principal DevOps Engineer to lead the design and implementation of our next-generation CI/CD architecture for platform-based product development. This role is focused on software build and release automation, scalable delivery pipelines, infrastructure as code, packaging, deployment, observability and integration of development workflows with IT, CloudOps and security toolchains. Security automation is an important part of the role, but the primary focus is efficient, scalable and reliable software delivery across Windows, Linux, cloud and instrument-hosted environments.&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;You will&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Lead the design and implementation of modern CI/CD architecture for platform-based software development across R&amp;amp;D.&lt;/li&gt;&lt;li&gt;Define, implement and continuously improve scalable build, release, packaging and deployment automation for Windows, Linux and AWS-based software systems.&lt;/li&gt;&lt;li&gt;Work closely with software engineers to create efficient and maintainable build systems for C/C++, C# and Python projects.&lt;/li&gt;&lt;li&gt;Design and implement infrastructure as code and environment automation using Terraform and AWS services.&lt;/li&gt;&lt;li&gt;Drive standardization and automation of configuration management, package management, artifact management and software delivery processes.&lt;/li&gt;&lt;li&gt;Collaborate effectively with IT, CloudOps, and security teams to integrate development workflows into the corporate infrastructure and security toolchain.&lt;/li&gt;&lt;li&gt;Modernize and optimize legacy Jenkins-based CI/CD while helping establish the target AWS-based delivery architecture.&lt;/li&gt;&lt;li&gt;Implement and improve monitoring, metrics, alerting, and automated engineering reporting for build, test, release and deployment processes.&lt;/li&gt;&lt;li&gt;Design and maintain software packaging and installation solutions, including Windows installers, Linux packages, and deployable system images.&lt;/li&gt;&lt;li&gt;Support third-party software lifecycle management, including software license tracking, dependency upgrades, version planning and integration into controlled build environments.&lt;/li&gt;&lt;li&gt;Enable secure and efficient automation of SAST, SCA, DAST, artifact scanning and related controls as part of CI/CD.&lt;/li&gt;&lt;li&gt;Contribute to long-term DevOps operating model, release engineering practices and delivery governance across platform and product teams.&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;Qualification requirements&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;MS in STEM or equivalent practical experience.&lt;/li&gt;&lt;li&gt;10+ years of experience in DevOps, build and release engineering, CI/CD, infrastructure automation or software delivery engineering roles.&lt;/li&gt;&lt;li&gt;Proven experience designing and implementing CI/CD architectures for complex multi-language software environments.&lt;/li&gt;&lt;li&gt;Strong hands-on expertise with Jenkins.&lt;/li&gt;&lt;li&gt;Strong hands-on expertise with AWS services relevant to CI/CD and software delivery, especially S3, CodeArtifact and related automation and deployment services.&lt;/li&gt;&lt;li&gt;Deep understanding of CI and CD concepts, build orchestration, release engineering, artifact lifecycle, traceability and deployment strategies.&lt;/li&gt;&lt;li&gt;Expert-level experience with Infrastructure as Code, especially Terraform.&lt;/li&gt;&lt;li&gt;Strong experience with Git and GitHub-based workflows.&lt;/li&gt;&lt;li&gt;Strong experience with build systems and packaging for C/C++, C# and Python projects, including tools such as MSBuild, CMake, make, pip/poetry and related packaging mechanisms.&lt;/li&gt;&lt;li&gt;Proven experience with Windows installers, Linux packaging and software deployment automation.&lt;/li&gt;&lt;li&gt;Strong scripting and automation skills in Python, PowerShell and/or Bash.&lt;/li&gt;&lt;li&gt;Solid understanding of configuration management, package management, dependency management and software supply chain concepts.&lt;/li&gt;&lt;li&gt;Experience integrating engineering workflows into enterprise security toolchains, including SAST, SCA, DAST, secrets scanning and artifact or dependency scanning.&lt;/li&gt;&lt;li&gt;Experience with monitoring, observability and engineering reporting tools such as Prometheus, Grafana, SonarQube, or similar platforms.&lt;/li&gt;&lt;li&gt;Strong collaboration skills and ability to work effectively across R&amp;amp;D, IT, CloudOps, QA and security teams.&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;Strong plus&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Experience with hybrid environments spanning developer workstations, instruments, on-premise systems and AWS cloud.&lt;/li&gt;&lt;li&gt;Experience with software license management and third-party component governance.&lt;/li&gt;&lt;li&gt;Experience with artifact repositories, binary/package lifecycle management and controlled upgrade processes.&lt;/li&gt;&lt;li&gt;Experience with deployment image creation, including ISO-based or image-based delivery concepts.&lt;/li&gt;&lt;li&gt;Experience contributing to MLOps or DataOps workflows.&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;To apply:&lt;/strong&gt; &lt;a href="https://weworkremotely.com/remote-jobs/revvity-principal-devops-engineer-build-release-and-cloud-automation"&gt;https://weworkremotely.com/remote-jobs/revvity-principal-devops-engineer-build-release-and-cloud-automation&lt;/a&gt;&lt;/p&gt;
+</description>
+      <pubDate>Wed, 10 Jun 2026 22:30:21 +0000</pubDate>
+      <expires_at>Fri, 10 Jul 2026 22:30:21 +0000</expires_at>
+      <guid>https://weworkremotely.com/remote-jobs/revvity-principal-devops-engineer-build-release-and-cloud-automation</guid>
+      <link>https://weworkremotely.com/remote-jobs/revvity-principal-devops-engineer-build-release-and-cloud-automation</link>
+    </item>
+    <item>
+      <media:content url="https://wwr-pro.s3.amazonaws.com/logos/0171/5509/logo.gif" type="image/png"/>
+      <title>Runware: Staff DevOps Engineer</title>
+      <region>Anywhere in the World</region>
+      <country></country>
+      <state></state>
+      <skills>Adobe Photoshop, Cross-Browser Development, Estimating and Cost Forecasting, InfoSec, iOS, Cross-Selling, Deal Closure, Composition, Microservices, and Jetpack Compose</skills>
+      <category>DevOps and Sysadmin</category>
+      <type>Full-Time</type>
+      <description>&lt;img src="https://we-work-remotely.imgix.net/logos/0171/5509/logo.gif?ixlib=rails-4.0.0&amp;w=50&amp;h=50&amp;dpr=2&amp;fit=fill&amp;auto=compress" /&gt;
+
+&lt;p&gt;
+  &lt;strong&gt;Headquarters:&lt;/strong&gt; United Kingdom
+    &lt;br /&gt;&lt;strong&gt;URL:&lt;/strong&gt; &lt;a href="http://runware.ai"&gt;http://runware.ai&lt;/a&gt;
+&lt;/p&gt;
+
+&lt;strong&gt;Description&lt;/strong&gt;&lt;br&gt;&lt;p&gt;Runware is building the API layer for the next generation of AI products. Our platform gives teams fast, reliable access to real-time inference across thousands of models through a single flexible API. We help customers build and scale media generation products with better performance, lower cost, and less operational complexity.&lt;/p&gt;&lt;p&gt;Behind this is an infrastructure platform built for speed, reliability, and GPU scale. New models launch constantly. Customer traffic can grow quickly. Performance matters at every layer.&lt;/p&gt;&lt;p&gt;We are looking for a Staff/Senior DevOps Engineer to help build, operate, and scale the infrastructure behind Runware’s global AI inference platform. You’ll play a critical role in making our systems faster, more resilient, easier to operate, and ready for the next stage of growth.&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;h3&gt;About the role&lt;/h3&gt;&lt;p&gt;Runware’s infrastructure is the engine behind some of the fastest-growing AI products in the world. As a Staff/Senior DevOps Engineer, you’ll help design, build, and operate the systems that power real-time AI inference across large-scale GPU fleets and a global production platform.&lt;/p&gt;&lt;p&gt;This is not a traditional DevOps role. You’ll be working at the intersection of bare-metal infrastructure, GPUs, networking, automation, observability, and high-performance distributed systems. Your work will directly shape how quickly we can launch new models, scale customer traffic, recover from failures, and deliver low-latency AI experiences to millions of users.&lt;/p&gt;&lt;p&gt;You’ll turn complex, hardware-driven infrastructure into reliable, automated, developer-friendly platforms. From provisioning and orchestration to deployment pipelines, monitoring, incident response, and capacity scaling, you’ll help remove friction so engineering teams can move faster without compromising reliability.&lt;/p&gt;&lt;p&gt;You’ll build the foundations that let Runware scale with confidence: infrastructure that is fast, resilient, observable, secure, and built for the demands of real-time AI.&lt;/p&gt;&lt;h3&gt;What you’ll do&lt;/h3&gt;&lt;ul&gt;&lt;li&gt;Build and scale the infrastructure that powers real-time AI inference across GPU fleets, bare-metal servers, serverless and containerised production systems&lt;/li&gt;&lt;li&gt;Help evolve Runware’s platform toward more elastic, on-demand infrastructure that can scale quickly with customer traffic and model demand&lt;/li&gt;&lt;li&gt;Make Runware faster, more reliable and more resilient by improving the critical paths behind our request entrypoints, inference services, queues, storage, load balancers and networking layer&lt;/li&gt;&lt;li&gt;Automate the hard parts of infrastructure operations, from provisioning and configuration through to CI/CD, deployment safety, progressive rollouts and rapid rollback&lt;/li&gt;&lt;li&gt;Build the observability backbone for a high-performance AI platform, with the signals needed to spot issues early, understand capacity and fix problems before customers feel them&lt;/li&gt;&lt;li&gt;Play a leading role in production operations, incident response, debugging and post-incident improvements, helping us turn operational challenges into a stronger platform&lt;/li&gt;&lt;li&gt;Strengthen the security and compliance foundations of our infrastructure through patching, secrets management, access controls, hardening, auditability, documentation and repeatable operational processes&lt;/li&gt;&lt;/ul&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;Requirements&lt;/strong&gt;&lt;br&gt;&lt;ul&gt;&lt;li&gt;Strong experience as a DevOps Engineer, SRE, Infrastructure Engineer, Platform Engineer or similar, with a track record of running production systems at scale&lt;/li&gt;&lt;li&gt;Deep Linux knowledge and confidence debugging real production issues across networking, storage, performance, services and system behaviour&lt;/li&gt;&lt;li&gt;Hands-on experience building automation, Infrastructure-as-Code, CI/CD pipelines and deployment workflows that make infrastructure safer and easier to operate&lt;/li&gt;&lt;li&gt;Experience operating high-availability, low-latency or high-throughput platforms where reliability and performance directly affect customers&lt;/li&gt;&lt;li&gt;Strong networking fundamentals across TCP/IP, DNS, load balancing, routing, firewalls, proxies, TLS and HTTP&lt;/li&gt;&lt;li&gt;A calm and pragmatic approach under pressure, with strong communication, good judgement and a bias toward automation over manual toil&lt;/li&gt;&lt;/ul&gt;&lt;h3&gt;Bonus&lt;/h3&gt;&lt;ul&gt;&lt;li&gt;Experience operating GPU infrastructure for AI/ML inference, including NVIDIA drivers, CUDA, container runtimes, GPU monitoring, capacity planning and workload isolation&lt;/li&gt;&lt;li&gt;Familiarity with inference serving and optimisation frameworks such as vLLM, TensorRT, Triton or similar&lt;/li&gt;&lt;/ul&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;Benefits&lt;/strong&gt;&lt;br&gt;&lt;p&gt;We’re a remote-first collective, meeting in person twice a year to plan, brainstorm, celebrate wins, and enjoy some face-to-face time. We have core hours for cooperative working and calls, but outside of that your calendar is yours. Work the hours that let you perform at your peak while also building a healthy life.&lt;/p&gt;&lt;p&gt;Our release cycles are fast and intense, but they’re followed by real downtime. After big pushes we expect the team to unplug, recharge, and come back ready &amp;amp; stronger than ever for the next leap.&lt;/p&gt;&lt;ul&gt;&lt;li&gt; &lt;strong&gt;Generous paid time off&lt;/strong&gt;&amp;nbsp;– vacation, sick days, public holidays&lt;/li&gt;&lt;li&gt; &lt;strong&gt;Meaningful stock options&lt;/strong&gt;&amp;nbsp;– share in the upside you create&lt;/li&gt;&lt;li&gt; &lt;strong&gt;Remote-first setup&lt;/strong&gt;&amp;nbsp;– work from home anywhere we can employ you&lt;/li&gt;&lt;li&gt; &lt;strong&gt;Flexible hours&lt;/strong&gt;&amp;nbsp;– own your schedule outside core collaboration blocks&lt;/li&gt;&lt;li&gt; &lt;strong&gt;Family leave&lt;/strong&gt;&amp;nbsp;– paid maternity, paternity, and caregiver time&lt;/li&gt;&lt;li&gt; &lt;strong&gt;Company retreats&lt;/strong&gt;&amp;nbsp;– twice-yearly gatherings in inspiring locations&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;To apply:&lt;/strong&gt; &lt;a href="https://weworkremotely.com/remote-jobs/runware-staff-devops-engineer"&gt;https://weworkremotely.com/remote-jobs/runware-staff-devops-engineer&lt;/a&gt;&lt;/p&gt;
+</description>
+      <pubDate>Wed, 10 Jun 2026 22:30:21 +0000</pubDate>
+      <expires_at>Fri, 10 Jul 2026 22:30:21 +0000</expires_at>
+      <guid>https://weworkremotely.com/remote-jobs/runware-staff-devops-engineer</guid>
+      <link>https://weworkremotely.com/remote-jobs/runware-staff-devops-engineer</link>
+    </item>
+    <item>
+      <media:content url="https://wwr-pro.s3.amazonaws.com/logos/0171/5510/logo.gif" type="image/png"/>
+      <title>Career Team Enterprises: DevOps Engineer</title>
+      <region>Anywhere in the World</region>
+      <country></country>
+      <state></state>
+      <skills>Analytics, Cross-Browser Development, Database, Decision Frameworks, Google Analytics, Computer Vision, DevOps, Cross-Selling, Analytics Tools, and Construction &amp; Engineering Project Management</skills>
+      <category>DevOps and Sysadmin</category>
+      <type>Full-Time</type>
+      <description>&lt;img src="https://we-work-remotely.imgix.net/logos/0171/5510/logo.gif?ixlib=rails-4.0.0&amp;w=50&amp;h=50&amp;dpr=2&amp;fit=fill&amp;auto=compress" /&gt;
+
+&lt;p&gt;
+  &lt;strong&gt;Headquarters:&lt;/strong&gt; Remote in the Philippines
+    &lt;br /&gt;&lt;strong&gt;URL:&lt;/strong&gt; &lt;a href="http://careerteam.com"&gt;http://careerteam.com&lt;/a&gt;
+&lt;/p&gt;
+
+&lt;div class="job__description body"&gt;&lt;div&gt;&lt;p&gt;&lt;strong&gt;It’s not just about the tech; it’s about the people!&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;At Career TEAM, we work to “accelerate the human condition.” Working on our state-of-the-edge portal, &lt;em&gt;Career EDGE&lt;/em&gt;, you will change lives—and that’s just the beginning! You'll be working with new technologies on enterprise products that serve a diverse population across the U.S. As a founding member of our newly forming team, you'll have the opportunity to grow and shape it as we adeptly traverse the complex digital landscape of generative AI, cloud computing, and cutting-edge technologies.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Specifically, what you will do&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;You will build amazing things using MongoDB, Next.js, Nest.js, and Node.js, alongside DevOps tools and practices. On any given day, you'll be coding, reviewing, deploying, testing, and iterating—this is our bread and butter. You'll participate in regular Scrum ceremonies while continuously innovating and optimizing for speed, scalability, and security. You'll also help architect systems to ensure high availability and resilience, leveraging AWS services to build scalable cloud solutions.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Key Responsibilities:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Full-Stack Development:&lt;/strong&gt; Use technologies like Node.js, MongoDB, Next.js, and Nest.js to develop robust applications.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;DevOps and CI/CD Pipelines:&lt;/strong&gt; Develop and manage CI/CD pipelines using GitHub Actions and YAML for seamless deployment.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Containerization and Orchestration:&lt;/strong&gt; Leverage Docker and Kubernetes for containerization and orchestration of applications.&amp;nbsp; &amp;nbsp;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Cloud Infrastructure on AWS:&lt;/strong&gt; Implement scalable DevOps solutions using AWS services like EC2, S3, Lambda, and RDS.&amp;nbsp; &amp;nbsp;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Security Best Practices:&lt;/strong&gt; Build secure, robust web applications with a strong focus on security standards and protocols.&amp;nbsp; &amp;nbsp;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Architectural Collaboration:&lt;/strong&gt; Work with cross-functional teams to make architectural decisions for system scalability and performance.&amp;nbsp; &amp;nbsp;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;RESTful Services Development:&lt;/strong&gt; Design, develop, test, and deploy RESTful APIs and microservices.&amp;nbsp; &amp;nbsp;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Infrastructure Automation:&lt;/strong&gt; Develop processes for infrastructure automation using Terraform, Jenkins, and Docker.&amp;nbsp; &amp;nbsp;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Real-Time Problem Solving:&lt;/strong&gt; Solve complex problems in real-time, ensuring high performance and reliability.&amp;nbsp; &amp;nbsp;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Monitoring and Logging:&lt;/strong&gt; Implement monitoring and logging solutions to ensure system health and performance.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Ideal Candidate Qualifications:&lt;/strong&gt;&amp;nbsp; &amp;nbsp;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Education:&lt;/strong&gt; Bachelor’s degree (or equivalent) in computer science, information technology, or engineering.&amp;nbsp; &amp;nbsp;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Experience:&lt;/strong&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp;&lt;br&gt;
+&lt;ul&gt;
+&lt;li&gt;2+ years of experience developing with Node.js/MERN stack or equivalent.&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&lt;/li&gt;
+&lt;li&gt;2+ years of core web app development experience (front-end and back-end).&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&lt;/li&gt;
+&lt;li&gt;2+ years of CI/CD and/or DevOps related work experience.&amp;nbsp;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Technical Skills:&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;AWS Familiarity:&lt;/strong&gt; Experience with AWS services such as EC2, S3, RDS, Lambda, IAM, and CloudFormation.&amp;nbsp;&amp;nbsp;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Containerization:&lt;/strong&gt; Proficient with Docker and Kubernetes for application deployment and management.&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;DevOps Tools:&lt;/strong&gt; Knowledge of DevOps principles and experience with CI/CD tools like GitHub Actions.&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Configuration Management:&lt;/strong&gt; Working experience with YAML for configuration management.&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Infrastructure as Code:&lt;/strong&gt; Familiarity with Terraform for managing cloud infrastructure.&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Version Control:&lt;/strong&gt; Proficient with Git and GitHub for code management and collaboration.&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&lt;/li&gt;
+&lt;/ul&gt;
+&amp;nbsp; &amp;nbsp;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Programming Languages:&lt;/strong&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;
+&lt;ul&gt;
+&lt;li&gt;Strong proficiency in JavaScript and TypeScript.&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&lt;/li&gt;
+&lt;li&gt;Working experience with PHP is a strong plus.&amp;nbsp;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&lt;/li&gt;
+&lt;/ul&gt;
+&amp;nbsp; &amp;nbsp;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp; &amp;nbsp;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Security and Compliance:&lt;/strong&gt;&amp;nbsp;
+&lt;ul&gt;
+&lt;li&gt;Experience in secure software development and architecture.&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&lt;/li&gt;
+&lt;li&gt;Familiarity with security best practices and protocols.&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&lt;/li&gt;
+&lt;/ul&gt;
+&amp;nbsp; &amp;nbsp;&amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Additional Tools:&lt;/strong&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;
+&lt;ul&gt;
+&lt;li&gt;Exposure to VSCode, Postman, Jira, Jenkins, and Docker.&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&lt;/li&gt;
+&lt;li&gt;Experience with monitoring tools like AWS CloudWatch or ELK Stack.&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&lt;/li&gt;
+&lt;/ul&gt;
+&amp;nbsp; &amp;nbsp;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp; &amp;nbsp;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Soft Skills:&lt;/strong&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;
+&lt;ul&gt;
+&lt;li&gt;Strong analytical and problem-solving skills.&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&lt;/li&gt;
+&lt;li&gt;Effective collaboration and communication abilities.&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&lt;/li&gt;
+&lt;li&gt;Ability to work in a fast-paced, agile environment.&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&lt;/li&gt;
+&lt;/ul&gt;
+&amp;nbsp; &amp;nbsp;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp; &amp;nbsp;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Platforms:&lt;/strong&gt; Experience working on multiple operating systems (Linux, Windows).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Preferred Qualifications:&lt;/strong&gt;&amp;nbsp; &amp;nbsp;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;AWS Certifications:&lt;/strong&gt; AWS Certified Developer, AWS Certified Solutions Architect, or equivalent.&amp;nbsp; &amp;nbsp;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Serverless Architecture:&lt;/strong&gt; Experience with AWS Lambda and serverless application development.&amp;nbsp; &amp;nbsp;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Microservices:&lt;/strong&gt; Familiarity with microservices architecture and event-driven systems.&amp;nbsp; &amp;nbsp;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Networking and Security:&lt;/strong&gt; Understanding of networking concepts, VPNs, and security protocols.&amp;nbsp; &amp;nbsp;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Performance Optimization:&lt;/strong&gt; Experience in optimizing applications for maximum speed and scalability.&amp;nbsp; &amp;nbsp;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Community Contribution:&lt;/strong&gt; Active participation in open-source projects or tech communities.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Why Join Us?&lt;/strong&gt;&amp;nbsp; &amp;nbsp;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Impactful Work:&lt;/strong&gt; Build something that truly matters, helping individuals across the U.S. succeed with cutting-edge technology.&amp;nbsp; &amp;nbsp;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Professional Growth:&lt;/strong&gt; Opportunities for learning and development in a fast-paced environment.&amp;nbsp; &amp;nbsp;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Innovative Environment:&lt;/strong&gt; Be part of a team that's pushing the boundaries in AI, cloud computing, and software development.&amp;nbsp; &amp;nbsp;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Collaborative Culture:&lt;/strong&gt; Work with a diverse and talented team that values collaboration and innovation.&lt;/li&gt;
+&lt;/ul&gt;&lt;/div&gt;&lt;div&gt;&lt;p&gt;&lt;strong&gt;About Career Team:&lt;/strong&gt;&lt;br&gt;Founded in 1996, Career Team is socially conscious organization that seeks to close the nation’s opportunity divide through government-funded workforce development programs designed to help individuals get the skills, knowledge, and resources needed to obtain quality employment.&amp;nbsp; In addition to administering these programs, Career Team develops and leverages cutting-edge software tools to ignite transformative change within the workforce development industry.&amp;nbsp; Career Team is revolutionizing the operational landscape for workforce development professionals through its Career Edge platform, which includes state-of-the-art job training tools and advanced case management systems.&amp;nbsp; For more information see &lt;a href="https://www.careeredge.com"&gt;www.careeredge.com&lt;/a&gt; and &lt;a href="https://www.careerteam.com"&gt;www.careerteam.com&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Career Team’s outstanding record has resulted in numerous honors, including:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Named by Inc. Magazine as one of America's 500 fastest growing privately held companies&lt;/li&gt;
+&lt;li&gt;Recipient of the US Chamber of Commerce Blue Chip Enterprise Award for innovation&lt;/li&gt;
+&lt;li&gt;Featured by 60 Minutes, CNN, Money Magazine, Inc. Magazine and the British Broadcasting Network as an innovative, government funded solutions program&lt;/li&gt;
+&lt;li&gt;Invited to the White House after being cited by the National Welfare-to-Work Partnership and National Alliance of Business as a top 10 US training provider&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Career Team is an Equal Opportunity Employer.&amp;nbsp;&lt;/strong&gt; All qualified applicants will receive consideration for employment without regard to race, color, religion, sex, sexual orientation, gender identity, or national origin.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Background Check Requirements. &lt;/strong&gt;Employment is contingent upon successful completion of a background check (including criminal, prior employment and education verification). Failure to satisfactorily complete the background check may affect the application status of applicants or continued employment of current employees who apply for the position.&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;To apply:&lt;/strong&gt; &lt;a href="https://weworkremotely.com/remote-jobs/career-team-enterprises-devops-engineer"&gt;https://weworkremotely.com/remote-jobs/career-team-enterprises-devops-engineer&lt;/a&gt;&lt;/p&gt;
+</description>
+      <pubDate>Wed, 10 Jun 2026 22:30:21 +0000</pubDate>
+      <expires_at>Fri, 10 Jul 2026 22:30:21 +0000</expires_at>
+      <guid>https://weworkremotely.com/remote-jobs/career-team-enterprises-devops-engineer</guid>
+      <link>https://weworkremotely.com/remote-jobs/career-team-enterprises-devops-engineer</link>
+    </item>
+    <item>
+      <media:content url="https://wwr-pro.s3.amazonaws.com/logos/0171/5508/logo.gif" type="image/png"/>
+      <title>Intelmatix: Mid/Senior DevOps Engineer (Egypt)</title>
+      <region>Anywhere in the World</region>
+      <country></country>
+      <state></state>
+      <skills>Adobe Photoshop, CMS Development, Cross-Browser Development, Database, Decision Frameworks, Computer Vision, DevOps, Cross-Selling, Deal Closure, and Composition</skills>
+      <category>DevOps and Sysadmin</category>
+      <type>Full-Time</type>
+      <description>&lt;img src="https://we-work-remotely.imgix.net/logos/0171/5508/logo.gif?ixlib=rails-4.0.0&amp;w=50&amp;h=50&amp;dpr=2&amp;fit=fill&amp;auto=compress" /&gt;
+
+&lt;p&gt;
+  &lt;strong&gt;Headquarters:&lt;/strong&gt; 
+    &lt;br /&gt;&lt;strong&gt;URL:&lt;/strong&gt; &lt;a href="http://intelmatix.ai"&gt;http://intelmatix.ai&lt;/a&gt;
+&lt;/p&gt;
+
+&lt;p&gt;&lt;span&gt;Mid/Senior DevOps Cloud Engineer&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span&gt;Position Type: &lt;/span&gt;&lt;span&gt;Remote (Egypt)&amp;nbsp;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span&gt;About Intelmatix&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span&gt;Intelmatix is a pioneering deep-tech AI company founded by MIT technologists, with a global presence in Riyadh, London, and Boston. We are on a mission to transform businesses into cognitive enterprises through Decision Intelligence. Our technology blends cutting-edge AI with real-world applications, delivering scalable, secure, and data-driven solutions to global clients.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span&gt;Role Overview&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span&gt;We are looking for a highly motivated Mid/Senior DevOps Cloud Engineer with a specialized focus on Google Cloud Platform (GCP) to join our Platform Engineering team. You will play a critical part in architecting, shaping, and supporting the infrastructure that powers our AI-driven platforms.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span&gt;This role is ideal for a GCP expert who thrives on infrastructure automation, cloud-native solutions, and enabling the seamless deployment of complex applications, including AI/ML models. While GCP is our primary focus for this role, exposure to AWS and Azure is a significant plus as we navigate multi-cloud environments.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span&gt;Key Responsibilities&lt;/span&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;span&gt;GCP Infrastructure Managemen&lt;/span&gt;&lt;span&gt;t: Architect, maintain, and optimize cloud infrastructure on GCP with a focus on reliability, scalability, and cost-efficiency.&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span&gt;Infrastructure as Code (IaC)&lt;/span&gt;&lt;span&gt;: Automate global infrastructure provisioning using Terraform to ensure consistent environments across the lifecycle.&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span&gt;CI/CD Orchestration&lt;/span&gt;&lt;span&gt;: Build and maintain robust CI/CD pipelines for application, data, and model deployment workflows (GitHub Actions).&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span&gt;AI/ML Collaboration&lt;/span&gt;&lt;span&gt;: Work closely with Data Science teams to deploy and monitor machine learning models and analytical services.&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span&gt;Security &amp;amp; Networking&lt;/span&gt;&lt;span&gt;: Implement and enforce security best practices, including IAM, VPC service controls, and Zero Trust architectures.&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span&gt;Observability&lt;/span&gt;&lt;span&gt;: Set up and maintain modern observability stacks (Prometheus, Grafana, Loki) for proactive monitoring and alerting.&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span&gt;Hybrid/Multi-Cloud Strategy&lt;/span&gt;&lt;span&gt;: Assist in managing cross-cloud integrations, leveraging your knowledge of AWS and Azure where applicable.&lt;/span&gt;&lt;br&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span&gt;Required Qualifications&lt;/span&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;span&gt;Education: &lt;/span&gt;&lt;span&gt;Bachelor’s degree in Computer Science, Engineering, or a related field.&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span&gt;Experience: &lt;/span&gt;&lt;span&gt;3–5 years of dedicated experience in DevOps, Site Reliability Engineering (SRE), or Cloud Engineering roles.&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span&gt;GCP Expertise (Must-Have): &lt;/span&gt;&lt;span&gt;Deep hands-on experience with Google Cloud services (e.g., GCE, GKE, GCS, Cloud SQL, IAM, and VPC).&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span&gt;Containerization: &lt;/span&gt;&lt;span&gt;Strong proficiency with Docker and orchestration via Google Kubernetes Engine (GKE) or similar services in other cloud prroviders.&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span&gt;IaC Mastery: &lt;/span&gt;&lt;span&gt;Proven experience managing infrastructure through Terraform.&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span&gt;CI/CD: &lt;/span&gt;&lt;span&gt;Experience building automation pipelines using GitHub Actions or similar tools.&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span&gt;Scripting: &lt;/span&gt;&lt;span&gt;Proficiency in Python and Bash for task automation and tooling.&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span&gt;Linux Systems: Solid understanding of Linux system administration and performance tuning.&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span&gt;Preferred Qualifications&lt;/span&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;span&gt;Certifications: &lt;/span&gt;&lt;span&gt;Google Professional Cloud DevOps Engineer or Professional Cloud Architect or any cloud certifications for other cloud providers.&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span&gt;Multi-Cloud:&lt;/span&gt;&lt;span&gt; Familiarity with AWS (EC2, S3, EKS) or Azure (AKS, App Service) is highly desirable.&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span&gt;Data/MLOps: &lt;/span&gt;&lt;span&gt;Familiarity with GCP-specific data tools (BigQuery, Vertex AI, Dataflow) or MLOps tools (MLflow, Airflow).&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span&gt;Edge Security: &lt;/span&gt;&lt;span&gt;Understanding of Zero Trust Network (ZTN) concepts and Cloudflare.&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span&gt;Database Admin: &lt;/span&gt;&lt;span&gt;Basic experience with PostgreSQL administration.&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span&gt;Startup Mindset: &lt;/span&gt;&lt;span&gt;Experience working in fast-paced, agile, deep-tech environments.&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span&gt;Tech Stack&lt;/span&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;span&gt;Primary Cloud: &lt;/span&gt;&lt;span&gt;GCP (GKE, GCE, BigQuery).&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span&gt;Secondary Clouds: &lt;/span&gt;&lt;span&gt;AWS, Azure, OCI.&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span&gt;IaC: &lt;/span&gt;&lt;span&gt;Terraform, Terragrunt.&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span&gt;CI/CD: &lt;/span&gt;&lt;span&gt;GitHub Actions.&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span&gt;Security: &lt;/span&gt;&lt;span&gt;Cloudflare (ZTN).&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span&gt;Monitoring: &lt;/span&gt;&lt;span&gt;Prometheus Stack (Prometheus, Grafana, Loki).&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span&gt;Application: &lt;/span&gt;&lt;span&gt;Kong (API Gateway), Java Spring Boot, Python, Go.&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span&gt;Data: &lt;/span&gt;&lt;span&gt;GCP Dataflow, BigQuery, PostgreSQL.&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span&gt;Why Join Us?&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span&gt;At Intelmatix, you’ll work on impactful technology alongside a global team of top-tier professionals. We offer the autonomy to innovate, the resources to grow, and the opportunity to shape the future of AI-enabled decision-making across industries.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;br&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;To apply:&lt;/strong&gt; &lt;a href="https://weworkremotely.com/remote-jobs/intelmatix-mid-senior-devops-engineer-egypt"&gt;https://weworkremotely.com/remote-jobs/intelmatix-mid-senior-devops-engineer-egypt&lt;/a&gt;&lt;/p&gt;
+</description>
+      <pubDate>Wed, 10 Jun 2026 22:30:21 +0000</pubDate>
+      <expires_at>Fri, 10 Jul 2026 22:30:21 +0000</expires_at>
+      <guid>https://weworkremotely.com/remote-jobs/intelmatix-mid-senior-devops-engineer-egypt</guid>
+      <link>https://weworkremotely.com/remote-jobs/intelmatix-mid-senior-devops-engineer-egypt</link>
+    </item>
+    <item>
+      <media:content url="https://wwr-pro.s3.amazonaws.com/logos/0171/5511/logo.gif" type="image/png"/>
+      <title>HYUNDAI MOTORS: DevOps Virtual Development Engineer</title>
+      <region>Anywhere in the World</region>
+      <country></country>
+      <state></state>
+      <skills>Adobe Photoshop, Analytics, Cross-Browser Development, Decision Frameworks, Computer Vision, Cross-Selling, Deal Closure, Analytics Tools, Composition, and Construction &amp; Engineering Project Management</skills>
+      <category>DevOps and Sysadmin</category>
+      <type>Full-Time</type>
+      <description>&lt;img src="https://we-work-remotely.imgix.net/logos/0171/5511/logo.gif?ixlib=rails-4.0.0&amp;w=50&amp;h=50&amp;dpr=2&amp;fit=fill&amp;auto=compress" /&gt;
+
+&lt;p&gt;
+  &lt;strong&gt;Headquarters:&lt;/strong&gt; 
+    &lt;br /&gt;&lt;strong&gt;URL:&lt;/strong&gt; &lt;a href="http://hyundai.com"&gt;http://hyundai.com&lt;/a&gt;
+&lt;/p&gt;
+
+&lt;div class="externalPosting"&gt;
+&lt;div&gt;&lt;div&gt;&lt;div&gt;&lt;h2&gt;&lt;b&gt;DevOps Virtual Development Engineer&lt;/b&gt;&lt;/h2&gt; &lt;/div&gt;&lt;div&gt;&lt;p&gt;Hyundai America Technical Center, Inc. (HATCI) is looking for an engineer to join the Production Application Team of the Infotainment Software Department, which undertakes various innovation projects related to infotainment and UI/UX systems software development efforts concerning the next generation of vehicle software architecture for Hyundai, Kia, and Genesis vehicles, as well as the production application of software features and service contents&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;div&gt;&lt;h2&gt;&lt;b&gt;What You Will Do:&lt;/b&gt;&lt;/h2&gt; &lt;/div&gt;&lt;div&gt;&lt;ul&gt;
+&lt;li&gt;Develop the core software engineer workflows using modern DevOps techniques&lt;/li&gt;
+&lt;li&gt;Define and configure the DevOps environment with a focus on automation, configuration, containerization, and virtualization&lt;/li&gt;
+&lt;li&gt;Create integration-focused CI/CD to enable efficient stakeholder management&lt;/li&gt;
+&lt;li&gt;Enable the software to run virtually in the cloud for development and testing purposes&lt;/li&gt;
+&lt;li&gt;Develop, automate, and maintain the build environment for the embedded automotive software&lt;/li&gt;
+&lt;li&gt;Automate the test deployment infrastructure&lt;/li&gt;
+&lt;li&gt;Enable remote access and maintenance of lab machines&lt;/li&gt;
+&lt;li&gt;Travel up to 20% of the time, both domestically and internationally&lt;/li&gt;
+&lt;/ul&gt;&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;div&gt;&lt;h2&gt;&lt;b&gt;What You Will Bring to the Role:&lt;/b&gt;&lt;/h2&gt; &lt;/div&gt;&lt;div&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Basic Qualifications:&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;Bachelor’s degree in computer engineering, computer science, electrical engineering, software engineering, or a related discipline&lt;/li&gt;
+&lt;li&gt;Proficiency with common DevOps software: OpenShift/Kubernetes, Docker, QEMU, Artifactory, &lt;span&gt;GitLab&lt;/span&gt; or GitHub, etc.&lt;/li&gt;
+&lt;li&gt;Experience with cloud development using AWS or Microsoft Azure&lt;/li&gt;
+&lt;li&gt;Experience with cloud development for CI/CD&lt;/li&gt;
+&lt;li&gt;Programming experience in C/C++, Python, Java/Kotlin, and/or Bash Scripting&lt;/li&gt;
+&lt;li&gt;Experience in software development life cycle: infrastructure as code, requirements tracking, and test automation frameworks&lt;/li&gt;
+&lt;li&gt;Knowledge in Agile and DevOps development processes and tools, such as Jira, Confluence, and Bitbucket&lt;/li&gt;
+&lt;li&gt;Ability to explain technical topics to both technical and non-technical stakeholders&lt;/li&gt;
+&lt;li&gt;Excellent&amp;nbsp;time management, self-management, and organization skills&lt;/li&gt;
+&lt;li&gt;An ability to adapt to shifting priorities, demands, and timelines&lt;/li&gt;
+&lt;li&gt;Strong written, oral, and interpersonal skills&lt;/li&gt;
+&lt;li&gt;Good communication skills and an ability to develop/maintain positive relationships with tech experts from the R&amp;amp;D Center and internal counterpart teams&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Preferred Qualifications:&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;Master's degree in computer engineering, computer science, electrical engineering, software engineering, or a related discipline&lt;/li&gt;
+&lt;li&gt;Professional experience in an automotive DevOps setting&lt;/li&gt;
+&lt;li&gt;Experience in automotive or IT-embedded product development&lt;/li&gt;
+&lt;li&gt;Programming experience in Rust, Go, and Qt&lt;/li&gt;
+&lt;li&gt;Experience in production software lifecycle: requirements, system design, development, maintenance, and release readiness for embedded software for vehicle systems&lt;/li&gt;
+&lt;li&gt;Familiarity with automotive operating systems: Android, Linux, open-source software, QNX, and Yocto&amp;nbsp;&lt;/li&gt;
+&lt;li&gt;Working knowledge of vehicle communication network systems (CAN, LIN, Ethernet, etc.) and instrumentation/operation of data acquisition systems, such as ETAS/INCA and Vector/CANoe&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;div&gt;&lt;h2&gt;&lt;b&gt;What Hyundai Can Offer You:&lt;/b&gt;&lt;/h2&gt; &lt;/div&gt;&lt;div&gt;&lt;ul&gt;
+&lt;li&gt;Zero-dollar Employee Premiums on Medical, Dental, and Vision for You and Your Family&lt;/li&gt;
+&lt;li&gt;100% Employer-paid Disability and Life Insurance&lt;/li&gt;
+&lt;li&gt;Generous Paid Time Off, Including Vacation, Sick, and Abundant Holidays&lt;/li&gt;
+&lt;li&gt;Competitive Salaries&lt;/li&gt;
+&lt;li&gt;A Global Environment that Fosters Diversity&lt;/li&gt;
+&lt;li&gt;Retirement Savings and Planning Benefits&lt;/li&gt;
+&lt;li&gt;Access to Health Savings Accounts and Flexible Spending Accounts&amp;nbsp;&lt;/li&gt;
+&lt;li&gt;Flexible Work Hours&lt;/li&gt;
+&lt;/ul&gt;&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;div&gt;&lt;h2&gt;&lt;b&gt;Other Details:&lt;/b&gt;&lt;/h2&gt; &lt;/div&gt;&lt;div&gt;&lt;ul&gt;
+&lt;li&gt;Candidates applying for positions with Hyundai KIA must be legally authorized to work in the United States. Verification of employment eligibility will be required at the time of hire.
+&lt;ul&gt;
+&lt;li&gt;HATCI is an Equal Opportunity Employer including Disabled and Veteran. VEVRAA Federal contractor.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;To apply:&lt;/strong&gt; &lt;a href="https://weworkremotely.com/remote-jobs/hyundai-motors-devops-virtual-development-engineer"&gt;https://weworkremotely.com/remote-jobs/hyundai-motors-devops-virtual-development-engineer&lt;/a&gt;&lt;/p&gt;
+</description>
+      <pubDate>Wed, 10 Jun 2026 22:30:21 +0000</pubDate>
+      <expires_at>Fri, 10 Jul 2026 22:30:21 +0000</expires_at>
+      <guid>https://weworkremotely.com/remote-jobs/hyundai-motors-devops-virtual-development-engineer</guid>
+      <link>https://weworkremotely.com/remote-jobs/hyundai-motors-devops-virtual-development-engineer</link>
+    </item>
+    <item>
+      <title>Vitru Educação: Professor(a)-autor(a) | Curadoria e Validação de Conteúdo - MICROSERVICES COM NODE.JS E MESSAGE BROKERS - EdTech | Vitru</title>
+      <region>Anywhere in the World</region>
+      <country></country>
+      <state></state>
+      <skills>Cross-Browser Development and Cross-Selling</skills>
+      <category>DevOps and Sysadmin</category>
+      <type>Full-Time</type>
+      <description>
+
+&lt;p&gt;
+  &lt;strong&gt;Headquarters:&lt;/strong&gt; BR
+    &lt;br /&gt;&lt;strong&gt;URL:&lt;/strong&gt; &lt;a href="http://vitru.com.br"&gt;http://vitru.com.br&lt;/a&gt;
+&lt;/p&gt;
+
+&lt;div&gt;&lt;p&gt;Somos a &lt;strong&gt;Vitru Educação&lt;/strong&gt;! 💜&lt;/p&gt;
+&lt;p&gt;A maior instituição privada de ensino EAD do Brasil e referência nacional do ensino presencial e Medicina. Juntos como &lt;strong&gt;Vitru, Unicesumar e Uniasselvi&lt;/strong&gt;, nos dedicamos ao desenvolvimento individual e coletivo. Nossa prioridade é o aprendizado, fazemos do conhecimento um estilo de vida! Nós queremos continuar crescendo, com responsabilidade, mantendo a excelência e os valores que nos trouxeram até aqui e nos levarão adiante!&lt;/p&gt;
+&lt;p&gt;Quer vir conosco no &lt;strong&gt;Universo do Conhecimento? &lt;/strong&gt;💜&lt;/p&gt;
+&lt;p&gt;Se quiser saber mais sobre a &lt;strong&gt;Vitru &lt;/strong&gt;e suas marcas Unicesumar e Uniasselvi, acesse nosso site: &lt;a href="https://www.vitru.com.br/"&gt;https://www.vitru.com.br/&lt;/a&gt;&lt;a href="https://www.vitru.com.br/." title="https://www.vitru.com.br/."&gt;.&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Título da vaga: Professor(a)-autor(a) | Curadoria e Validação de Conteúdo &lt;span&gt;- MLOPS: DEPLOY E MONITORAMENTO DE MODELOS&amp;nbsp;- EdTech | Vitru&lt;/span&gt;&lt;/strong&gt;&lt;br&gt;&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;A Vitru Educação está em busca de professor(a)-autor(a) para atuar na revisão técnica, validação acadêmica e curadoria conceitual da disciplina MICROSERVICES COM NODE.JS E MESSAGE BROKERS, do curso Desenvolvimento Backend com Node.js e NestJS, na modalidade pós-graduação EAD.&amp;nbsp;&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;SOBRE A ATIVIDADE:&lt;/strong&gt;&lt;br&gt;&lt;br&gt;Nesta oportunidade, o conteúdo base é desenvolvido pela equipe interna, e o papel do(a) professor(a)-autor(a) é assegurar rigor teórico, atualidade científica e alinhamento pedagógico, contemplando:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Curadoria e validação de conteúdo&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Revisão técnica de 3 temas (20 a 30 laudas cada)&lt;/li&gt;
+&lt;li&gt;Análise de atualidade conceitual, linguagem e adequação ao público&lt;/li&gt;
+&lt;li&gt;Conferência e eventual complementação de referências&lt;/li&gt;
+&lt;li&gt;Realização de ajustes diretamente no material (não apenas sugestões)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Atividades avaliativas e complementares&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Validação de 3 questões de autoestudo por tema&lt;/li&gt;
+&lt;li&gt;Revisão e validação de 15 questões objetivas por tema&lt;/li&gt;
+&lt;li&gt;Validação de materiais complementares (1 estudo de caso + 10 questões)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Conteúdo audiovisual&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Validação de roteiros e gravação de 3 videoaulas (10 a 15 minutos cada)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;EMENTA DA DISCIPLINA:&lt;br&gt;&lt;/strong&gt;Arquitetura de microsserviços com Node.js e NestJS. Uso do módulo NestJS Microservices. Comunicação síncrona e assíncrona entre serviços. Integração por meio de message brokers, com ênfase em RabbitMQ e Kafka. Aplicação de padrões de arquitetura distribuída. Resiliência, tolerância a falhas e escalabilidade. Introdução à observabilidade, monitoramento e estratégias de deploy de aplicações backend em ambientes de nuvem.&lt;br&gt;&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;REQUISITOS:&lt;br&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Pós-graduação lato ou stricto sensu – Especialização, Mestrado ou Doutorado na área da disciplina*.&lt;/li&gt;
+&lt;li&gt;Familiaridade com Google Docs e/ou Word.&lt;/li&gt;
+&lt;li&gt;Organização, gestão de prazos e clareza na escrita.&lt;/li&gt;
+&lt;li&gt;Experiência prévia na produção de livros ou materiais educacionais será considerada um diferencial.&lt;/li&gt;
+&lt;li&gt;Desenvolvimento Backend com Node.js e NestJS.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;VANTAGENS DE SER PROFESSOR(A)-AUTOR(A) VITRU:&amp;nbsp;&lt;br&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Atividade 100% home office;&lt;/li&gt;
+&lt;li&gt;Acompanhamento especializado durante todas as etapas;&lt;/li&gt;
+&lt;li&gt;Publicações com registro de ISBN;&lt;/li&gt;
+&lt;li&gt;Desenvolvimento de competências autorais digitais;&lt;/li&gt;
+&lt;li&gt;Visibilidade nacional e reconhecimento acadêmico.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;NOSSO PROCESSO DE SELEÇÃO:&amp;nbsp;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;O processo seletivo ocorre diretamente na plataforma InHire e segue as seguintes etapas:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Análise do Perfil: avaliação do currículo e das informações cadastradas na plataforma.&lt;/li&gt;
+&lt;li&gt;Perguntas: os candidatos pré-selecionados receberão algumas perguntas para conhecermos melhor o perfil acadêmico e a experiência profissional.&lt;/li&gt;
+&lt;li&gt;Envio da Proposta: os candidatos aprovados nesta etapa recebem os detalhes da proposta (escopo, prazos, valores). O aceite não configura contratação imediata.&lt;/li&gt;
+&lt;li&gt;Contratação: a equipe de Contratos e Pagamentos solicita documentos, formaliza o contrato e direciona o professor(a) para os times de Arquitetos de Aprendizagem e Audiovisual.&amp;nbsp;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;Importante: A Vitru valoriza e apoia a diversidade em todas as suas formas. Todas as candidaturas são bem-vindas.&lt;/strong&gt;&lt;/p&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;To apply:&lt;/strong&gt; &lt;a href="https://weworkremotely.com/remote-jobs/vitru-educacao-professor-a-autor-a-curadoria-e-validacao-de-conteudo-microservices-com-node-js-e-message"&gt;https://weworkremotely.com/remote-jobs/vitru-educacao-professor-a-autor-a-curadoria-e-validacao-de-conteudo-microservices-com-node-js-e-message&lt;/a&gt;&lt;/p&gt;
+</description>
+      <pubDate>Mon, 08 Jun 2026 16:47:25 +0000</pubDate>
+      <expires_at>Wed, 08 Jul 2026 16:47:25 +0000</expires_at>
+      <guid>https://weworkremotely.com/remote-jobs/vitru-educacao-professor-a-autor-a-curadoria-e-validacao-de-conteudo-microservices-com-node-js-e-message</guid>
+      <link>https://weworkremotely.com/remote-jobs/vitru-educacao-professor-a-autor-a-curadoria-e-validacao-de-conteudo-microservices-com-node-js-e-message</link>
+    </item>
+    <item>
+      <title>Premiersoft: DevOps e Platform Sênior| Remoto</title>
+      <region>Anywhere in the World</region>
+      <country></country>
+      <state></state>
+      <skills>Cross-Browser Development, Netpeak Spider, Project Management, Computer Vision, DevOps, Incident Management, Cross-Selling, Construction &amp; Engineering Project Management, Supply Chain &amp; Logistic Project Management, and Brand Identity Design</skills>
+      <category>DevOps and Sysadmin</category>
+      <type>Full-Time</type>
+      <description>
+
+&lt;p&gt;
+  &lt;strong&gt;Headquarters:&lt;/strong&gt; BR
+    &lt;br /&gt;&lt;strong&gt;URL:&lt;/strong&gt; &lt;a href="http://premiersoft.net"&gt;http://premiersoft.net&lt;/a&gt;
+&lt;/p&gt;
+
+&lt;div&gt;&lt;p&gt;&lt;strong&gt;Na Premiersoft, transformamos desafios em soluções reais!&lt;/strong&gt;&lt;br&gt;Com mais de uma década de atuação em desenvolvimento, somos movidos por um propósito claro: &lt;strong&gt;criar experiências tecnológicas que impulsionam negócios&lt;/strong&gt; e aceleram a transformação dos nossos clientes.&lt;/p&gt;
+&lt;p&gt;Nosso time, formado por mais de 200 &lt;strong&gt;#Heroes&lt;/strong&gt;, une excelência técnica ao nosso DNA: &lt;strong&gt;Team Player, Growth Driven e Problem Solver&lt;/strong&gt;.&amp;nbsp;Somos movidos por desafios, guiados pela inovação e comprometidos com a &lt;strong&gt;entrega de soluções de alto impacto&lt;/strong&gt;, todos os dias.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Sobre a oportunidade:&amp;nbsp;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;O profissional irá atuar em um projeto estratégico de migração de aproximadamente 320 repositórios para o GitHub Enterprise Cloud, em um ambiente estruturado para cerca de 100 desenvolvedores.&amp;nbsp;O projeto será conduzido de forma 100% remota e contempla etapas de planejamento, definição de governança, testes piloto, migração completa dos repositórios e suporte pós-migração, incluindo documentação e transferência de conhecimento.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Você será responsável por:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Conduzir tecnicamente a migração dos repositórios para o GitHub Enterprise Cloud, preservando histórico, branches, tags, issues e pull requests&lt;/li&gt;
+&lt;li&gt;Realizar o inventário técnico do ambiente atual, mapeando dependências, integrações e pipelines existentes&lt;/li&gt;
+&lt;li&gt;Definir e executar a estratégia de piloto de migração, validando processos e ferramentas&lt;/li&gt;
+&lt;li&gt;Planejar e executar a migração em ondas dos repositórios produtivos&lt;/li&gt;
+&lt;li&gt;Estruturar padrões de versionamento, modelos de branching e templates de workflows no GitHub Actions&lt;/li&gt;
+&lt;li&gt;Automatizar pipelines de CI/CD e estabelecer boas práticas e guardrails técnicos para o novo ambiente&lt;/li&gt;
+&lt;li&gt;Produzir documentação técnica e apoiar a transferência de conhecimento para os times envolvidos&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;O que você precisa ter:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Experiência comprovada em projetos de migração de plataformas Git corporativas (GitHub, GitLab, Bitbucket ou Azure DevOps)&lt;/li&gt;
+&lt;li&gt;Domínio de GitHub Enterprise (Cloud ou Server) e GitHub Actions&lt;/li&gt;
+&lt;li&gt;Experiência hands-on com ferramentas de migração Git, como GitHub Importer, gh-migrate ou scripts customizados&lt;/li&gt;
+&lt;li&gt;Conhecimento sólido em versionamento e estratégias de branching&lt;/li&gt;
+&lt;li&gt;Experiência com automação utilizando Bash, Python e/ou PowerShell&lt;/li&gt;
+&lt;li&gt;Inglês técnico para leitura de documentação e interação eventual&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Será um diferencial se você tiver:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Certificações GitHub (GitHub Actions, GitHub Administration, GitHub Advanced Security)&lt;/li&gt;
+&lt;li&gt;Experiência com Terraform e práticas de Infrastructure as Code aplicadas ao GitHub&lt;/li&gt;
+&lt;li&gt;Vivência em projetos com grande volume de repositórios (300+)&lt;/li&gt;
+&lt;li&gt;Conhecimento em ferramentas como Jira, SonarQube, Azure DevOps e artifact registries&lt;/li&gt;
+&lt;li&gt;Experiência prévia em projetos enterprise ou atuação junto à SoftwareOne&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;📍 Contratação Remota.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;span lang="PT-BR" xml:lang="PT-BR"&gt;🔵 O que oferecemos:&amp;nbsp;&lt;/span&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;div&gt;
+&lt;ul&gt;
+&lt;li&gt;Ambiente &lt;strong&gt;colaborativo&lt;/strong&gt;, com &lt;strong&gt;troca constante de conhecimento&lt;/strong&gt;;&lt;/li&gt;
+&lt;li&gt;Cultura aberta à &lt;strong&gt;inovação, ideias e protagonismo&lt;/strong&gt;;&lt;/li&gt;
+&lt;li&gt;Uso de &lt;strong&gt;tecnologias atuais&lt;/strong&gt; e boas práticas de mercado;&lt;/li&gt;
+&lt;li&gt;Foco em &lt;strong&gt;excelência técnica &lt;/strong&gt;e &lt;strong&gt;impacto real&lt;/strong&gt; nas entregas;&lt;/li&gt;
+&lt;li&gt;Incentivo contínuo ao &lt;strong&gt;aprendizado e desenvolvimento profissional&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;&amp;nbsp;&lt;span lang="PT-BR" xml:lang="PT-BR"&gt;🔵 Nossos benefícios&lt;/span&gt;:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;TotalPass:&lt;/strong&gt; acesso a academias, estúdios e práticas de bem-estar;&lt;/li&gt;
+&lt;li&gt;Convênio com clínica de &lt;strong&gt;saúde mental&lt;/strong&gt;;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Descanso remunerado:&lt;/strong&gt; 10 dias úteis para recarregar as energias e cuidar de você;&lt;/li&gt;
+&lt;li&gt;Gifts via Flash&lt;strong&gt; - birthday gift &lt;/strong&gt;e &lt;strong&gt;time in company gift&lt;/strong&gt;;&lt;/li&gt;
+&lt;li&gt;Bônus por &lt;strong&gt;indicação de talentos - &lt;/strong&gt;&lt;strong&gt;R$ 2.000,00 por contratação&lt;/strong&gt;;&lt;/li&gt;
+&lt;li&gt;Desenvolvimento contínuo com &lt;strong&gt;PDI, feedbacks e apoio a certificações&lt;/strong&gt;;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Aulas de inglês gratuitas: &lt;/strong&gt;preparando você para atuação em oportunidades internacionais;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;🎯 &amp;nbsp;&lt;a href="https://conhecanossabase.premiersoft.net/" title="Veja como é fazer parte do time Premiersoft"&gt;Veja como é fazer parte do time Premiersoft&lt;/a&gt; &amp;nbsp;&lt;/p&gt;
+&lt;p&gt;🎯 &lt;a href="https://premiersoft.net/quem-somos/"&gt;Saiba mais sobre nós&lt;/a&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt;🎯 &lt;a href="Conheça%20nossa%20base!%20|%20Premiersoft"&gt;Conheça nossa Sede&lt;/a&gt; &amp;nbsp;&lt;/p&gt;
+&lt;p&gt;A comunicação ao longo do processo seletivo acontece por e-mail ou WhatsApp. Para não perder nenhuma atualização, adicione o domínio&amp;nbsp;&lt;strong&gt;@premiersoft.net&lt;/strong&gt; à sua lista de remetentes confiáveis e fique de olho na sua caixa de entrada e spam.&lt;/p&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;To apply:&lt;/strong&gt; &lt;a href="https://weworkremotely.com/remote-jobs/premiersoft-devops-e-platform-senior-remoto"&gt;https://weworkremotely.com/remote-jobs/premiersoft-devops-e-platform-senior-remoto&lt;/a&gt;&lt;/p&gt;
+</description>
+      <pubDate>Mon, 08 Jun 2026 16:47:25 +0000</pubDate>
+      <expires_at>Wed, 08 Jul 2026 16:47:25 +0000</expires_at>
+      <guid>https://weworkremotely.com/remote-jobs/premiersoft-devops-e-platform-senior-remoto</guid>
+      <link>https://weworkremotely.com/remote-jobs/premiersoft-devops-e-platform-senior-remoto</link>
+    </item>
+    <item>
+      <title>Covent IT: DevOps Engineer (contract)</title>
+      <region>Anywhere in the World</region>
+      <country></country>
+      <state></state>
+      <skills>Adobe Photoshop, Cross-Browser Development, Decision Frameworks, Estimating and Cost Forecasting, Computer Vision, DevOps, Hardware/Software Support, Cross-Selling, Deal Closure, and Composition</skills>
+      <category>DevOps and Sysadmin</category>
+      <type>Full-Time</type>
+      <description>
+
+&lt;p&gt;
+  &lt;strong&gt;Headquarters:&lt;/strong&gt; Remote work
+    &lt;br /&gt;&lt;strong&gt;URL:&lt;/strong&gt; &lt;a href="http://coventit.com"&gt;http://coventit.com&lt;/a&gt;
+&lt;/p&gt;
+
+&lt;div class="col-lg-8 col-12"&gt;
+
+
+    Hey there! We're looking for an experienced&amp;nbsp;&lt;strong&gt;&amp;nbsp;DevOps Engineer&lt;/strong&gt; to join our growing outsourcing team. If you have a knack for automation and are ready to help our clients build robust and scalable infrastructure, then this opportunity is for you!&lt;br&gt;&lt;br&gt;&lt;h2&gt;About Us&lt;/h2&gt;We're a dynamic outsourcing company dedicated to providing high-quality IT solutions to a diverse range of clients. We value professionalism, continuous growth, and a supportive work environment where every team member can thrive and reach their full potential.&lt;br&gt;&lt;h2&gt;Your Key Skills &amp;amp; Experience:&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;strong&gt;Experience:&lt;/strong&gt; A minimum of&amp;nbsp;&lt;strong&gt;3 years of commercial experience&lt;/strong&gt; as a DevOps Engineer or Linux System Administrator.&lt;/li&gt;
+&lt;li&gt;
+&lt;strong&gt;Cloud Platforms:&lt;/strong&gt; Experience working with&amp;nbsp;&lt;strong&gt;AWS&lt;/strong&gt; and&amp;nbsp;&lt;strong&gt;DigitalOcean&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;*&lt;strong&gt;nix System Administration:&lt;/strong&gt; Confident administration of operating systems like&amp;nbsp;&lt;strong&gt;CentOS, Debian, FreeBSD&lt;/strong&gt;, and others.&lt;/li&gt;
+&lt;li&gt;
+&lt;strong&gt;Core Services:&lt;/strong&gt; Hands-on experience administering fundamental services such as&amp;nbsp;&lt;strong&gt;FTP, SSH, SMTP, and IMAP&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;
+&lt;strong&gt;Scripting &amp;amp; Programming Basics:&lt;/strong&gt; Knowledge of&amp;nbsp;&lt;strong&gt;PHP, SQL, and Shell scripting&lt;/strong&gt; for automation and day-to-day task resolution.&lt;/li&gt;
+&lt;li&gt;
+&lt;strong&gt;Web Servers:&lt;/strong&gt; Ability to configure and manage&amp;nbsp;&lt;strong&gt;LAMP&lt;/strong&gt; web server environments.&lt;/li&gt;
+&lt;li&gt;
+&lt;strong&gt;Monitoring:&lt;/strong&gt; Practical experience with monitoring tools like&amp;nbsp;&lt;strong&gt;Zabbix, Nagios, and Munin&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;
+&lt;strong&gt;DevOps Tools:&lt;/strong&gt; Strong knowledge and practical experience with&amp;nbsp;&lt;strong&gt;Kubernetes&lt;/strong&gt;, &lt;strong&gt;Ansible, Docker, GitLab, and Jenkins&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;
+&lt;strong&gt;English Language:&lt;/strong&gt; Proficient reading skills for technical documentation.&lt;/li&gt;
+&lt;/ul&gt;&lt;h2&gt;Your Core Responsibilities:&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;strong&gt;Project Support &amp;amp; Monitoring:&lt;/strong&gt; Ensuring the stable operation and active monitoring of company projects, collaborating closely with clients and Technical Leads (TLs).&lt;/li&gt;
+&lt;li&gt;
+&lt;strong&gt;Internal Service Development:&lt;/strong&gt; Developing and implementing internal services for monitoring, backups, and Continuous Integration (CI).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;To apply:&lt;/strong&gt; &lt;a href="https://weworkremotely.com/remote-jobs/covent-it-devops-engineer-contract"&gt;https://weworkremotely.com/remote-jobs/covent-it-devops-engineer-contract&lt;/a&gt;&lt;/p&gt;
+</description>
+      <pubDate>Mon, 08 Jun 2026 16:47:25 +0000</pubDate>
+      <expires_at>Wed, 08 Jul 2026 16:47:25 +0000</expires_at>
+      <guid>https://weworkremotely.com/remote-jobs/covent-it-devops-engineer-contract</guid>
+      <link>https://weworkremotely.com/remote-jobs/covent-it-devops-engineer-contract</link>
+    </item>
+    <item>
+      <title>Lemon.io: Senior Platform/Site Reliability Engineer</title>
+      <region>Anywhere in the World</region>
+      <country>🇦🇩 Andorra, 🇦🇱 Albania, 🇦🇷 Argentina, 🇦🇹 Austria, 🇦🇺 Australia, 🇧🇦 Bosnia and Herzegovina, 🇧🇪 Belgium, 🇧🇴 Bolivia (Plurinational State of), 🇧🇷 Brazil, 🇧🇿 Belize, 🇨🇦 Canada, 🇨🇭 Switzerland, 🇨🇱 Chile, 🇨🇴 Colombia, 🇨🇷 Costa Rica, 🇨🇾 Cyprus, 🇨🇿 Czechia, 🇩🇪 Germany, 🇩🇰 Denmark, 🇩🇴 Dominican Republic, 🇪🇨 Ecuador, 🇪🇪 Estonia, 🇪🇸 Spain, 🇫🇮 Finland, 🇫🇷 France, 🇬🇧 United Kingdom of Great Britain and Northern Ireland, 🇬🇷 Greece, 🇬🇹 Guatemala, 🇭🇳 Honduras, 🇭🇷 Croatia, 🇭🇹 Haiti, 🇮🇩 Indonesia, 🇮🇪 Ireland, 🇮🇱 Israel, 🇮🇹 Italy, 🇯🇲 Jamaica, 🇯🇵 Japan, 🇰🇷 Korea (Republic of), 🇱🇹 Lithuania, 🇱🇺 Luxembourg, 🇱🇻 Latvia, 🇲🇦 Morocco, 🇲🇩 Moldova (Republic of), 🇲🇪 Montenegro, 🇲🇰 North Macedonia, 🇲🇹 Malta, 🇲🇽 Mexico, 🇲🇾 Malaysia, 🇳🇱 Netherlands, 🇳🇴 Norway, 🇳🇿 New Zealand, 🇵🇦 Panama, 🇵🇪 Peru, 🇵🇬 Papua New Guinea, 🇵🇭 Philippines, 🇵🇱 Poland, 🇵🇷 Puerto Rico, 🇵🇹 Portugal, 🇵🇾 Paraguay, 🇷🇴 Romania, 🇸🇪 Sweden, 🇸🇬 Singapore, 🇸🇮 Slovenia, 🇸🇰 Slovakia, 🇸🇻 El Salvador, 🇹🇭 Thailand, 🇺🇦 Ukraine, 🇺🇸 United States of America, 🇺🇾 Uruguay, 🇻🇳 Viet Nam, and 🇿🇦 South Africa</country>
+      <state>Delaware</state>
+      <skills>AWS, Azure, Docker, GoLang, Linux, Python, Engineer, Senior, Full Time, DevOps, English, Kubernetes, Terraform, and CI/CD Pipelines</skills>
+      <category>DevOps and Sysadmin</category>
+      <type>Full-Time</type>
+      <description>
+
+&lt;p&gt;
+  &lt;strong&gt;Headquarters:&lt;/strong&gt; New York, NY
+    &lt;br /&gt;&lt;strong&gt;URL:&lt;/strong&gt; &lt;a href="https://lemon.io"&gt;https://lemon.io&lt;/a&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Are you a talented Platform/&lt;span class="notion-enable-hover"&gt;Site Reliability&amp;nbsp;&lt;/span&gt;Engineer looking for a remote job that lets you show your skills and get decent compensation? Look no further than &lt;a href="https://lemon.io/for-developers/?utm_source=weworkremotely&amp;amp;utm_medium=job_ad&amp;amp;utm_campaign=supply_en_sre/platform_engineer_jun_2026_job_ad"&gt;Lemon.io&lt;/a&gt; — the marketplace that connects you with hand-picked startups in the US and Europe.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;What we offer:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;The rate depends on your seniority level, skills and experience. We've already paid out over $11M to our engineers.&lt;/li&gt;
+&lt;li&gt;No more hunting for clients or negotiating rates — let us handle the business side of things so you can focus on what you do best.&lt;/li&gt;
+&lt;li&gt;We'll manually find the best project for you according to your skills and preferences.&lt;/li&gt;
+&lt;li&gt;Choose a schedule that works best for you. It’s possible to communicate async or minimally overlap within team working hours.&lt;/li&gt;
+&lt;li&gt;We respect your seniority so you can expect no micromanagement or screen trackers.&lt;/li&gt;
+&lt;li&gt;Communicate directly with the clients. Most of them have technical backgrounds. Sounds good, yeah?&lt;/li&gt;
+&lt;li&gt;We will support you from the time you submit the application throughout all cooperation stages.&lt;/li&gt;
+&lt;li&gt;Most of our projects involve working in a fast-paced startup environment. We hope you like it as much as we do.&lt;/li&gt;
+&lt;li&gt;Through our community, we will connect you with the best developers from more than 75 countries.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Requirements for Senior Platform Engineer:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;4+ years of experience in Platform Engineering, DevOps, or SRE roles&lt;/li&gt;
+&lt;li&gt;3+ years of experience with Python or Go&lt;/li&gt;
+&lt;li&gt;3+ years of experience with Kubernetes&lt;/li&gt;
+&lt;li&gt;Experience with AWS, Microsoft Azure, Linux, Docker, and CI/CD is required.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Requirements for &lt;span class="notion-enable-hover"&gt;Site Reliability Engineer&lt;/span&gt;:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;5+ years of experience in Platform Engineering, DevOps, or SRE roles&lt;/li&gt;
+&lt;li&gt;5+ years of Linux experience&lt;/li&gt;
+&lt;li&gt;3+ years of Kubernetes experience&lt;/li&gt;
+&lt;li&gt;2+ years of Ansible experience&lt;/li&gt;
+&lt;li&gt;Experience with Terraform, Puppet, and Chef is required&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Other:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Strong technical skills: as a Senior Engineer, you are expected to be able to create projects from scratch and have a deep understanding of application architecture.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Clear and effective communication in English — advanced ability to discuss business tasks, justify decisions, and communicate issues. Good self-presentation is also essential for upcoming client calls.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Strong self-organizational skills — ability to work full-time remotely with no supervision.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Reliability — we want to trust you and expect that you won’t let us and the client down.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Adaptability and Flexibility — the ability to onboard the project promptly after accepting it and start delivering results quickly.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Sounds good for you? Apply now and join the &lt;a href="https://lemon.io/for-developers/?utm_source=weworkremotely&amp;amp;utm_medium=job_ad&amp;amp;utm_campaign=supply_en_sre/platform_engineer_jun_2026_job_ad"&gt;Lemon.io&lt;/a&gt; community!&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;NOT YOUR TECH STACK?&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;We have a variety of projects, so if you have 4+ years of commercial software development experience and are proficient in AI Agent Architecture, AI Automation Architecture, AI Engineering, React &amp;amp; Python, React &amp;amp; Golang, React &amp;amp; Java, React &amp;amp; Ruby, PHP &amp;amp; Vue, Vue &amp;amp; Node.js, React &amp;amp; .NET, Android &amp;amp; iOS, Blockchain (Web3/Solana), Angular &amp;amp; Node.js, Vue &amp;amp; .NET, Python &amp;amp; Vue, DevOps with Azure DevOps, MLOps, Data Science, Angular &amp;amp; PHP, Angular &amp;amp; .NET, Symfony &amp;amp; React, Symfony &amp;amp; Vue, Symfony &amp;amp; Angular, Symfony &amp;amp; JavaScript &amp;amp; Next.js &amp;amp; TypeScript, Data Analysis, React &amp;amp; PHP, Data Engineering, Project Management, React Native &amp;amp; Node, Data Annotation, React &amp;amp; Node.js, Svelte &amp;amp; Python, Svelte &amp;amp; Node.js, Svelte &amp;amp; TypeScript, Rust, Shopify &amp;amp; JavaScript, Vue &amp;amp; Nuxt, PHP &amp;amp; Laravel, UI/UX Design, Animation, Graphic Design, React &amp;amp; Node &amp;amp; React Native, .NET &amp;amp; C#, Unreal Engine &amp;amp; C++, Python &amp;amp; LLM, Unity, or Machine Learning Engineering, we would be happy to connect with you and match you with a project that fits your experience.&lt;/p&gt;
+&lt;p&gt;We do not provide visa assistance, and our cooperation model does not include the benefits typically offered with direct hire.&lt;/p&gt;
+&lt;p&gt;We work with developers from 75+ countries across Europe, Latin America, North America (the U.S. and Canada), selected countries in Asia (Japan, Singapore, South Korea, the Philippines, Indonesia, Malaysia, Vietnam, Thailand, and Israel), Oceania (Australia, New Zealand, and Papua New Guinea), and Africa (including Morocco and South Africa).&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;To apply:&lt;/strong&gt; &lt;a href="https://weworkremotely.com/remote-jobs/lemon-io-senior-platform-site-reliability-engineer"&gt;https://weworkremotely.com/remote-jobs/lemon-io-senior-platform-site-reliability-engineer&lt;/a&gt;&lt;/p&gt;
+</description>
+      <pubDate>Mon, 08 Jun 2026 14:25:30 +0000</pubDate>
+      <expires_at>Wed, 08 Jul 2026 14:25:30 +0000</expires_at>
+      <guid>https://weworkremotely.com/remote-jobs/lemon-io-senior-platform-site-reliability-engineer</guid>
+      <link>https://weworkremotely.com/remote-jobs/lemon-io-senior-platform-site-reliability-engineer</link>
+    </item>
+    <item>
+      <media:content url="https://wwr-pro.s3.amazonaws.com/logos/0171/5414/logo.gif" type="image/png"/>
+      <title>Binance: Senior Solutions Engineer (API, Python, Node.JS)</title>
+      <region>Anywhere in the World</region>
+      <country></country>
+      <state></state>
+      <skills>Cross-Browser Development, Cryptocurrency, and Cross-Selling</skills>
+      <category>DevOps and Sysadmin</category>
+      <type>Full-Time</type>
+      <description>&lt;img src="https://we-work-remotely.imgix.net/logos/0171/5414/logo.gif?ixlib=rails-4.0.0&amp;w=50&amp;h=50&amp;dpr=2&amp;fit=fill&amp;auto=compress" /&gt;
+
+&lt;p&gt;
+  &lt;strong&gt;Headquarters:&lt;/strong&gt; Europe / Global / Ireland, Dublin / United Kingdom, London / Asia / Japan, Tokyo / Hong Kong / Australia, Brisbane / Australia, Melbourne / Australia, Sydney / Estonia, Tallinn / Greece, Athens / India, Bangalore / Philippines, Manila
+    &lt;br /&gt;&lt;strong&gt;URL:&lt;/strong&gt; &lt;a href="http://binance.com"&gt;http://binance.com&lt;/a&gt;
+&lt;/p&gt;
+
+&lt;div class="content"&gt;&lt;div class="section-wrapper page-full-width"&gt;&lt;div class="section page-centered"&gt;&lt;div&gt;&lt;span&gt;Binance is a leading global blockchain ecosystem behind the world’s largest cryptocurrency exchange by trading volume and registered users. We are trusted by 300+ million people in 100+ countries for our industry-leading security, user fund transparency, trading engine speed, deep liquidity, and an unmatched portfolio of digital-asset products. Binance offerings range from trading and finance to education, research, payments, institutional services, Web3 features, and more. We leverage the power of digital assets and blockchain to build an inclusive financial ecosystem to advance the freedom of money and improve financial access for people around the world.&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;strong&gt;About the Role&lt;/strong&gt;&lt;/div&gt;
+&lt;div&gt;&lt;span&gt;We are looking for a driven and technically strong individual to join the Trading Engine team as a Senior API Solutions Engineer. This role combines hands-on software development with a client- and community-facing focus centered around the Binance Trading API. You will be part of a small, fast-moving team that works closely with some of the exchange’s largest global clients, helping them integrate and optimize their trading strategies using our APIs.&lt;/span&gt;&lt;/div&gt;
+&lt;div&gt;&amp;nbsp;&lt;/div&gt;
+&lt;div&gt;&lt;span&gt;The ideal candidate has a solid technical background, strong programming expertise, and a deep understanding of exchange APIs. They should also enjoy engaging with developers and clients, providing guidance, and contributing to the broader API community.&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="section page-centered"&gt;&lt;div&gt;&lt;h3&gt;Responsibilities:&lt;/h3&gt;&lt;div class="posting-requirements plain-list"&gt;&lt;div&gt;&lt;ul&gt;
+&lt;li&gt;Develop and maintain open-source libraries used by the company’s clients for API integrations&lt;/li&gt;
+&lt;li&gt;Serve as a subject matter expert for REST APIs and WebSocket connectivity, supporting and advising the exchange’s largest clients&lt;/li&gt;
+&lt;li&gt;Work closely with clients to help them design and optimize trading algorithms, improving efficiency and performance on the exchange&lt;/li&gt;
+&lt;/ul&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="section page-centered"&gt;&lt;div&gt;&lt;h3&gt;Requirements:&lt;/h3&gt;&lt;div class="posting-requirements plain-list"&gt;&lt;div&gt;&lt;ul&gt;
+&lt;li&gt;Strong programming skills, preferably in Python and/or JavaScript (&lt;a class="postings-link" href="http://Node.js"&gt;Node.js&lt;/a&gt;); prior experience working with exchange APIs is highly valued&lt;/li&gt;
+&lt;li&gt;Experience contributing to open-source projects is a plus&lt;/li&gt;
+&lt;li&gt;Business-level English; proficiency in additional widely spoken languages is an advantage for supporting global clients&lt;/li&gt;
+&lt;li&gt;Excellent communication and interpersonal skills&lt;/li&gt;
+&lt;li&gt;Highly self-motivated, disciplined, and able to work independently in a fast-paced environment&lt;/li&gt;
+&lt;li&gt;Curious mindset with a strong willingness to learn, experiment, and explore new technologies&lt;/li&gt;
+&lt;/ul&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="section page-centered"&gt;&lt;div&gt;&lt;b&gt;Why Binance&lt;/b&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;• Shape the future with the world’s leading blockchain ecosystem&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;• Collaborate with world-class talent in a user-centric global organization with a flat structure&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;• Tackle unique, fast-paced projects with autonomy in an innovative environment&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;• Thrive in a results-driven workplace with opportunities for career growth and continuous learning&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;• Competitive salary and company benefits&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;• Work-from-home arrangement (the arrangement may vary depending on the work nature of the business team)&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;Binance is committed to being an equal opportunity employer. We believe that having a diverse workforce is fundamental to our success.&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;i&gt;By submitting a job application, you confirm that you have read and agree to our &lt;/i&gt;&lt;b&gt;&lt;a href="https://www.binance.com/en/candidate/privacy/notice"&gt;&lt;i&gt;Candidate Privacy Notice&lt;/i&gt;&lt;/a&gt;&lt;/b&gt;&lt;i&gt;.&lt;/i&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="section page-centered"&gt;&lt;div class="text-small italic text-gray-700"&gt;We may use artificial intelligence (AI) tools to support parts of the hiring process, such as reviewing applications, analyzing resumes, or assessing responses. These tools assist our recruitment team but do not replace human judgment. Final hiring decisions are ultimately made by humans. If you would like more information about how your data is processed, please contact us.&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;To apply:&lt;/strong&gt; &lt;a href="https://weworkremotely.com/remote-jobs/binance-senior-solutions-engineer-api-python-node-js"&gt;https://weworkremotely.com/remote-jobs/binance-senior-solutions-engineer-api-python-node-js&lt;/a&gt;&lt;/p&gt;
+</description>
+      <pubDate>Thu, 04 Jun 2026 16:08:56 +0000</pubDate>
+      <expires_at>Sat, 04 Jul 2026 16:08:56 +0000</expires_at>
+      <guid>https://weworkremotely.com/remote-jobs/binance-senior-solutions-engineer-api-python-node-js</guid>
+      <link>https://weworkremotely.com/remote-jobs/binance-senior-solutions-engineer-api-python-node-js</link>
+    </item>
+    <item>
+      <title>Cubos Tecnologia: [Banco de Talentos] Pessoa Desenvolvedora Backend Pleno</title>
+      <region>Anywhere in the World</region>
+      <country></country>
+      <state></state>
+      <skills>Cross-Browser Development, Decision Frameworks, MySQL, PostgreSQL, DevOps, NoSQL, PostgreeSQL, Hardware/Software Support, Cross-Selling, and HR Software</skills>
+      <category>DevOps and Sysadmin</category>
+      <type>Full-Time</type>
+      <description>
+
+&lt;p&gt;
+  &lt;strong&gt;Headquarters:&lt;/strong&gt; BR
+    &lt;br /&gt;&lt;strong&gt;URL:&lt;/strong&gt; &lt;a href="http://cubos.io"&gt;http://cubos.io&lt;/a&gt;
+&lt;/p&gt;
+
+&lt;div&gt;&lt;h3&gt;Sobre a Cubos:&lt;/h3&gt;
+&lt;p&gt;Existimos para transformar a realidade ao nosso redor por meio de tecnologia. Somos um hub de conhecimento e inovação, criamos nossas próprias empresas digitais e apoiamos empresas na tomada de decisão, desenvolvimento e resolução de desafios técnicos complexos.&lt;/p&gt;
+&lt;h4&gt;Nós acreditamos que podemos mudar o mundo, e:&lt;/h4&gt;
+&lt;p&gt;Não temos medo de cair 😎&lt;/p&gt;
+&lt;p&gt;Cuidamos e respeitamos as pessoas 💕&lt;/p&gt;
+&lt;p&gt;Buscamos sair do padrão 🚀&lt;/p&gt;
+&lt;p&gt;Fazemos entregas fodas 🎁&lt;/p&gt;
+&lt;p&gt;Focamos nos usuários 🔍&lt;/p&gt;
+&lt;p&gt;Somos um hub de conhecimento 🧠&lt;/p&gt;
+&lt;h3&gt;Sobre a vaga:&lt;/h3&gt;
+&lt;p&gt;A vaga é para o nosso Banco de Talentos de Backend Pleno, ou seja, surgindo uma vaga efetiva, iremos primeiramente olhar para o Banco de Talentos e chamar as pessoas que estejam pré-aprovadas.&amp;nbsp;&lt;/p&gt;
+&lt;p&gt;Ao se cadastrar para essa vaga, você passará pelo nosso processo seletivo e se tornará uma pessoa apta para as oportunidades que possam surgir a qualquer momento.&amp;nbsp;&lt;/p&gt;
+&lt;p&gt;Com o Banco de Talentos, não há prazos entre as etapas, mas à medida que você avança, torna-se mais propenso a ser contatado e chamado para entrevistas, além de ficar pré-aprovado para fazer parte do nosso time.&lt;/p&gt;
+&lt;h4&gt;&lt;strong&gt;Responsabilidades:&lt;/strong&gt;&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;Contribuir ativamente nas fases de ideação, planejamento e desenvolvimento dos produtos dos nossos clientes, trazendo insights e ideias para aprimorar e inovar nas soluções tecnológicas;&lt;/li&gt;
+&lt;li&gt;Participar de discussões sobre as tecnologias a serem utilizadas nos projetos, oferecendo avaliações críticas e sugestões para garantir a escolha das melhores ferramentas e abordagens tecnológicas para cada situação;&lt;/li&gt;
+&lt;li&gt;Criar endpoints de APIs que serão consumidas pelo nosso time Web e Mobile;&lt;/li&gt;
+&lt;li&gt;Compreender as ferramentas que usa em um contexto DevOps, sendo capaz, em situações problemáticas, de desenvolver um raciocínio lógico consistente para investigar e resolver o problema;&lt;/li&gt;
+&lt;li&gt;Disposição para ajudar e compartilhar conhecimento;&lt;/li&gt;
+&lt;li&gt;Ser uma pessoa curiosa e estar disposto a se arriscar em novas tecnologias.&lt;strong&gt;&lt;br&gt;&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;&lt;strong&gt;&lt;strong&gt;Requisitos e Qualificações:&lt;/strong&gt;&lt;/strong&gt;&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Experiência construindo APIs em NodeJS com Typescript;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Experiência com bancos de dados SQL e NoSQL;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Experiência com testes unitários e de integração;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Experiência com Docker;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Experiência com CI/CD.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;&lt;strong&gt;Diferenciais:&lt;/strong&gt;&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Conhecimento em Kubernetes;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Experiência em processamento assíncrono, fluxos agendados e fluxos com fila de processamento;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Experiência em monitoramento, análise de desempenho e resolução de problemas para otimizar a saúde e o desempenho de aplicações;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Leitura na língua inglesa.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;To apply:&lt;/strong&gt; &lt;a href="https://weworkremotely.com/remote-jobs/cubos-tecnologia-banco-de-talentos-pessoa-desenvolvedora-backend-pleno"&gt;https://weworkremotely.com/remote-jobs/cubos-tecnologia-banco-de-talentos-pessoa-desenvolvedora-backend-pleno&lt;/a&gt;&lt;/p&gt;
+</description>
+      <pubDate>Thu, 04 Jun 2026 16:08:56 +0000</pubDate>
+      <expires_at>Sat, 04 Jul 2026 16:08:56 +0000</expires_at>
+      <guid>https://weworkremotely.com/remote-jobs/cubos-tecnologia-banco-de-talentos-pessoa-desenvolvedora-backend-pleno</guid>
+      <link>https://weworkremotely.com/remote-jobs/cubos-tecnologia-banco-de-talentos-pessoa-desenvolvedora-backend-pleno</link>
+    </item>
+    <item>
+      <title>Premiersoft: Engenheiro DevOps (GitHub e CI/CD) | Remoto</title>
+      <region>Anywhere in the World</region>
+      <country></country>
+      <state></state>
+      <skills>Cross-Browser Development, Decision Frameworks, Productivity Software, Software Support, Computer Vision, SaaS, DevOps, Hardware/Software Support, Cross-Selling, and HR Software</skills>
+      <category>DevOps and Sysadmin</category>
+      <type>Full-Time</type>
+      <description>
+
+&lt;p&gt;
+  &lt;strong&gt;Headquarters:&lt;/strong&gt; BR
+    &lt;br /&gt;&lt;strong&gt;URL:&lt;/strong&gt; &lt;a href="http://premiersoft.net"&gt;http://premiersoft.net&lt;/a&gt;
+&lt;/p&gt;
+
+&lt;div&gt;&lt;p&gt;&lt;strong&gt;Na Premiersoft, transformamos desafios em soluções reais!&lt;/strong&gt;&lt;br&gt;Com mais de uma década de atuação em desenvolvimento, somos movidos por um propósito claro: &lt;strong&gt;criar experiências tecnológicas que impulsionam negócios&lt;/strong&gt; e aceleram a transformação dos nossos clientes.&lt;/p&gt;
+&lt;p&gt;Nosso time, formado por mais de 200 &lt;strong&gt;#Heroes&lt;/strong&gt;, une excelência técnica ao nosso DNA: &lt;strong&gt;Team Player, Growth Driven e Problem Solver&lt;/strong&gt;.&amp;nbsp;Somos movidos por desafios, guiados pela inovação e comprometidos com a &lt;strong&gt;entrega de soluções de alto impacto&lt;/strong&gt;, todos os dias.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Sobre a oportunidade:&amp;nbsp;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Você atuará como executor das atividades operacionais ao longo das ondas de migração, com forte interação com squads de desenvolvimento e ponto focal técnico para desbloqueios. Oportunidade ideal para quem busca consolidar experiência em projetos DevOps de larga escala, atuando em ambiente corporativo crítico e em time técnico estruturado.&amp;nbsp;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Você será responsável por:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Realizar validações técnicas pós-migração: integridade de histórico, contagem de objetos, integridade de&amp;nbsp;Git&amp;nbsp;LFS, validação de&amp;nbsp;PRs&amp;nbsp;e&amp;nbsp;issues&amp;nbsp;migrados&amp;nbsp;&lt;/li&gt;
+&lt;li&gt;Ajustar integrações de pipelines,&amp;nbsp;webhooks&amp;nbsp;e&amp;nbsp;secrets&amp;nbsp;de CI/CD no novo ambiente&amp;nbsp;&lt;/li&gt;
+&lt;li&gt;Atuar como ponto focal técnico das&amp;nbsp;squads&amp;nbsp;durante a transição, atendendo dúvidas e desbloqueios&amp;nbsp;&lt;/li&gt;
+&lt;li&gt;Apoiar a elaboração de documentação técnica,&amp;nbsp;runbooks&amp;nbsp;operacionais e materiais de treinamento&amp;nbsp;&lt;/li&gt;
+&lt;li&gt;Reportar progresso e&amp;nbsp;issues&amp;nbsp;ao&amp;nbsp;Technical&amp;nbsp;Lead em cadência ágil&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;O que você precisa ter:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Experiência prática com&amp;nbsp;Git&amp;nbsp;em nível avançado (rebase, cherry-pick, recuperação de histórico, manipulação de LFS)&amp;nbsp;&lt;/li&gt;
+&lt;li&gt;Vivência com GitHub (Cloud ou Enterprise) e GitHub&amp;nbsp;Actions&amp;nbsp;&lt;/li&gt;
+&lt;li&gt;Experiência com pipelines de CI/CD e integração com ferramentas adjacentes (Jira,&amp;nbsp;SonarQube, registries de artefatos)&amp;nbsp;&lt;/li&gt;
+&lt;li&gt;Scripting&amp;nbsp;em&amp;nbsp;Bash&amp;nbsp;e/ou Python para automação de tarefas operacionais&amp;nbsp;&lt;/li&gt;
+&lt;li&gt;Perfil hands-on, organizado e com boa comunicação para atuação direta com&amp;nbsp;squads&amp;nbsp;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Será um diferencial se você tiver:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Experiência prévia em projetos de migração de repositórios&amp;nbsp;Git&amp;nbsp;&lt;/li&gt;
+&lt;li&gt;Conhecimento em outras plataformas&amp;nbsp;Git&amp;nbsp;(GitLab,&amp;nbsp;Bitbucket, Azure&amp;nbsp;DevOps)&amp;nbsp;&lt;/li&gt;
+&lt;li&gt;Certificação&amp;nbsp;GitHub Foundations&amp;nbsp;ou&amp;nbsp;GitHub Actions&amp;nbsp;&lt;/li&gt;
+&lt;li&gt;Vivência com Docker e ambientes&amp;nbsp;containerizados&amp;nbsp;&lt;/li&gt;
+&lt;li&gt;Inglês técnico&amp;nbsp;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;📍 Contratação Remota&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;span lang="PT-BR" xml:lang="PT-BR"&gt;🔵 O que oferecemos:&amp;nbsp;&lt;/span&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;div&gt;
+&lt;ul&gt;
+&lt;li&gt;Ambiente &lt;strong&gt;colaborativo&lt;/strong&gt;, com &lt;strong&gt;troca constante de conhecimento&lt;/strong&gt;;&lt;/li&gt;
+&lt;li&gt;Cultura aberta à &lt;strong&gt;inovação, ideias e protagonismo&lt;/strong&gt;;&lt;/li&gt;
+&lt;li&gt;Uso de &lt;strong&gt;tecnologias atuais&lt;/strong&gt; e boas práticas de mercado;&lt;/li&gt;
+&lt;li&gt;Foco em &lt;strong&gt;excelência técnica &lt;/strong&gt;e &lt;strong&gt;impacto real&lt;/strong&gt; nas entregas;&lt;/li&gt;
+&lt;li&gt;Incentivo contínuo ao &lt;strong&gt;aprendizado e desenvolvimento profissional&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;&amp;nbsp;&lt;span lang="PT-BR" xml:lang="PT-BR"&gt;🔵 Nossos benefícios&lt;/span&gt;:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;TotalPass:&lt;/strong&gt; acesso a academias, estúdios e práticas de bem-estar;&lt;/li&gt;
+&lt;li&gt;Convênio com clínica de &lt;strong&gt;saúde mental&lt;/strong&gt;;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Descanso remunerado:&lt;/strong&gt; 10 dias úteis para recarregar as energias e cuidar de você;&lt;/li&gt;
+&lt;li&gt;Gifts via Flash&lt;strong&gt; - birthday gift &lt;/strong&gt;e &lt;strong&gt;time in company gift&lt;/strong&gt;;&lt;/li&gt;
+&lt;li&gt;Bônus por &lt;strong&gt;indicação de talentos - &lt;/strong&gt;&lt;strong&gt;R$ 2.000,00 por contratação&lt;/strong&gt;;&lt;/li&gt;
+&lt;li&gt;Desenvolvimento contínuo com &lt;strong&gt;PDI, feedbacks e apoio a certificações&lt;/strong&gt;;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Aulas de inglês gratuitas: &lt;/strong&gt;preparando você para atuação em oportunidades internacionais;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;🎯 &amp;nbsp;&lt;a href="https://conhecanossabase.premiersoft.net/" title="Veja como é fazer parte do time Premiersoft"&gt;Veja como é fazer parte do time Premiersoft&lt;/a&gt; &amp;nbsp;&lt;/p&gt;
+&lt;p&gt;🎯 &lt;a href="https://premiersoft.net/quem-somos/"&gt;Saiba mais sobre nós&lt;/a&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt;🎯 &lt;a href="Conheça%20nossa%20base!%20|%20Premiersoft"&gt;Conheça nossa Sede&lt;/a&gt; &amp;nbsp;&lt;/p&gt;
+&lt;p&gt;A comunicação ao longo do processo seletivo acontece por e-mail ou WhatsApp. Para não perder nenhuma atualização, adicione o domínio&amp;nbsp;&lt;strong&gt;@premiersoft.net&lt;/strong&gt; à sua lista de remetentes confiáveis e fique de olho na sua caixa de entrada e spam.&lt;/p&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;To apply:&lt;/strong&gt; &lt;a href="https://weworkremotely.com/remote-jobs/premiersoft-engenheiro-devops-github-e-ci-cd-remoto"&gt;https://weworkremotely.com/remote-jobs/premiersoft-engenheiro-devops-github-e-ci-cd-remoto&lt;/a&gt;&lt;/p&gt;
+</description>
+      <pubDate>Thu, 04 Jun 2026 16:08:56 +0000</pubDate>
+      <expires_at>Sat, 04 Jul 2026 16:08:56 +0000</expires_at>
+      <guid>https://weworkremotely.com/remote-jobs/premiersoft-engenheiro-devops-github-e-ci-cd-remoto</guid>
+      <link>https://weworkremotely.com/remote-jobs/premiersoft-engenheiro-devops-github-e-ci-cd-remoto</link>
+    </item>
+    <item>
+      <media:content url="https://wwr-pro.s3.amazonaws.com/logos/0171/5415/logo.gif" type="image/png"/>
+      <title>BlueMatrix: DevOps Engineer - EMEA/US Shift</title>
+      <region>Anywhere in the World</region>
+      <country></country>
+      <state></state>
+      <skills>Adobe Photoshop, Cross-Browser Development, Database, Decision Frameworks, Estimating and Cost Forecasting, Computer Vision, DevOps, Cross-Selling, Deal Closure, and Composition</skills>
+      <category>DevOps and Sysadmin</category>
+      <type>Full-Time</type>
+      <description>&lt;img src="https://we-work-remotely.imgix.net/logos/0171/5415/logo.gif?ixlib=rails-4.0.0&amp;w=50&amp;h=50&amp;dpr=2&amp;fit=fill&amp;auto=compress" /&gt;
+
+&lt;p&gt;
+  &lt;strong&gt;Headquarters:&lt;/strong&gt; Hyderabad
+    &lt;br /&gt;&lt;strong&gt;URL:&lt;/strong&gt; &lt;a href="http://bluematrix.com"&gt;http://bluematrix.com&lt;/a&gt;
+&lt;/p&gt;
+
+&lt;div class="content"&gt;&lt;div class="section-wrapper page-full-width"&gt;&lt;div class="section page-centered"&gt;&lt;div&gt;&lt;b&gt;Responsibilities&lt;/b&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;• Implement and maintain CI/CD pipelines using GoCD and GitLab.&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;•&lt;/span&gt;&lt;span&gt;&amp;nbsp;&lt;/span&gt;&lt;span&gt;Manage Terraform and Terragrunt modules to provision and maintain infrastructure.&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;•&lt;/span&gt;&lt;span&gt;&amp;nbsp;&lt;/span&gt;&lt;span&gt;Automate configuration management and environment setup using Ansible.&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;•&lt;/span&gt;&lt;span&gt;&amp;nbsp;&lt;/span&gt;&lt;span&gt;Administer and optimize Linux-based systems across hybrid cloud environments.&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;•&lt;/span&gt;&lt;span&gt;&amp;nbsp;&lt;/span&gt;&lt;span&gt;Support database cluster configurations (e.g., MySQL, Cassandra) and troubleshoot issues.&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;•&lt;/span&gt;&lt;span&gt;&amp;nbsp;&lt;/span&gt;&lt;span&gt;Deploy and maintain Docker and Kubernetes environments across multiple tiers.&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;•&lt;/span&gt;&lt;span&gt;&amp;nbsp;&lt;/span&gt;&lt;span&gt;Contribute to infrastructure observability using AWS CloudWatch and log pipelines.&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;•&lt;/span&gt;&lt;span&gt;&amp;nbsp;&lt;/span&gt;&lt;span&gt;Support secrets management, IAM policies, and environment-specific access control using SSM and AWS best practices.&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;&amp;nbsp;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;Qualifications&lt;/b&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;•&lt;/span&gt;&lt;span&gt;&amp;nbsp;&lt;/span&gt;&lt;span&gt;4+ years of DevOps experience with AWS and Linux-based systems.&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;•&lt;/span&gt;&lt;span&gt;&amp;nbsp;&lt;/span&gt;&lt;span&gt;Strong experience with CI/CD tools (GitLab, GoCD).&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;• Hands-on with Terraform, Terragrunt, and Ansible.&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;•&lt;/span&gt;&lt;span&gt;&amp;nbsp;&lt;/span&gt;&lt;span&gt;Experience supporting and tuning database clusters (MySQL, Cassandra, or similar).&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;•&lt;/span&gt;&lt;span&gt;&amp;nbsp;&lt;/span&gt;&lt;span&gt;Proficient in containerization and orchestration (Docker, Kubernetes).&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;• Familiar with scripting (e.g., Bash, Python).&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;•&lt;/span&gt;&lt;span&gt;&amp;nbsp;&lt;/span&gt;&lt;span&gt;Experience in regulated or high-availability environments (FinTech, healthcare, etc.) is a plus.&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;&amp;nbsp;&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="section page-centered"&gt;&lt;div&gt;₹15,00,000 - ₹30,00,000 a year&lt;/div&gt;&lt;/div&gt;&lt;div class="section page-centered"&gt;&lt;div class="text-small italic text-gray-700"&gt;We may use artificial intelligence (AI) tools to support parts of the hiring process, such as reviewing applications, analyzing resumes, or assessing responses. These tools assist our recruitment team but do not replace human judgment. Final hiring decisions are ultimately made by humans. If you would like more information about how your data is processed, please contact us.&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;To apply:&lt;/strong&gt; &lt;a href="https://weworkremotely.com/remote-jobs/bluematrix-devops-engineer-emea-us-shift"&gt;https://weworkremotely.com/remote-jobs/bluematrix-devops-engineer-emea-us-shift&lt;/a&gt;&lt;/p&gt;
+</description>
+      <pubDate>Thu, 04 Jun 2026 16:08:56 +0000</pubDate>
+      <expires_at>Sat, 04 Jul 2026 16:08:56 +0000</expires_at>
+      <guid>https://weworkremotely.com/remote-jobs/bluematrix-devops-engineer-emea-us-shift</guid>
+      <link>https://weworkremotely.com/remote-jobs/bluematrix-devops-engineer-emea-us-shift</link>
+    </item>
+    <item>
+      <media:content url="https://wwr-pro.s3.amazonaws.com/logos/0169/0644/logo.gif" type="image/png"/>
+      <title>Lightup Network Solutions GmbH &amp; Co. KG: Technical Product Lead for Innovative Telecom Services - 100% Remote - 6 hours per day</title>
+      <region>Anywhere in the World</region>
+      <country></country>
+      <state>Hessen</state>
+      <skills>Linux, DevOps, and Product Designer</skills>
+      <category>DevOps and Sysadmin</category>
+      <type>Full-Time</type>
+      <description>&lt;img src="https://we-work-remotely.imgix.net/logos/0169/0644/logo.gif?ixlib=rails-4.0.0&amp;w=50&amp;h=50&amp;dpr=2&amp;fit=fill&amp;auto=compress" /&gt;
+
+&lt;p&gt;
+  &lt;strong&gt;Headquarters:&lt;/strong&gt; Frankfurt, Germany
+    &lt;br /&gt;&lt;strong&gt;URL:&lt;/strong&gt; &lt;a href="https://www.lightupnet.de"&gt;https://www.lightupnet.de&lt;/a&gt;
+&lt;/p&gt;
+
+&lt;h1&gt;Technical Product Lead for Innovative Telecom Services - 100% Remote - 6 hours per day&lt;/h1&gt;
+&lt;h2&gt;Creating Telecom-centric Web Services&lt;/h2&gt;
+&lt;p&gt;You would work 6 hours per day, Monday to Friday. Freelancer contract. The monthly salary is 2000 EUR.&lt;/p&gt;
+&lt;p&gt;We are a small, 100% remote telecommunications services company based in Germany and Switzerland established in 1998. Our team currently consists of 10 people working remotely across different countries and time zones.&lt;/p&gt;
+&lt;p&gt;We build and operate innovative web-based products in the telecommunications and ISP space for &lt;strong&gt;retail, business and enterprise clients and telecom operators&lt;/strong&gt;. Our projects sit at the intersection of telecom infrastructure, customer-facing web applications, automation, billing, provisioning, and operational processes.&lt;/p&gt;
+&lt;p&gt;We are now looking for a &lt;strong&gt;Technical Product Lead&amp;nbsp;&lt;/strong&gt;to take ownership of translating complex telecom product ideas into clear technical concepts, development tasks, and working software.&lt;/p&gt;
+&lt;h2&gt;The role&lt;/h2&gt;
+&lt;p&gt;You would work 6 hours per day, Monday to Friday. Freelancer contract. The monthly salary is 2000 EUR.&lt;/p&gt;
+&lt;p&gt;We are looking for someone with a strong technical background who can understand complex infrastructure-driven services, structure them into practical web projects, and lead developers through implementation.&lt;/p&gt;
+&lt;p&gt;You will work directly with the &lt;strong&gt;G&lt;/strong&gt;&lt;strong&gt;eneral Manager&lt;/strong&gt; and act as the bridge between business ideas, telecom/ISP knowledge, product requirements, and software development.&lt;/p&gt;
+&lt;p&gt;Your job is to make sure that ideas become clear specifications, that developers know exactly what to build, and that projects move forward with quality, speed, and technical sanity.&lt;/p&gt;
+&lt;h2&gt;Responsibilities&lt;/h2&gt;
+&lt;p&gt;You would work 6 hours per day, Monday to Friday. Freelancer contract. The monthly salary is 2000 EUR.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Translate high-level product and business ideas into clear technical concepts, specifications, user stories, and development tickets&lt;/li&gt;
+&lt;li&gt;Lead and coordinate a small remote developer team&lt;/li&gt;
+&lt;li&gt;Break down complex telecom/ISP workflows into practical web application features&lt;/li&gt;
+&lt;li&gt;Define MVPs, priorities, milestones, and delivery plans&lt;/li&gt;
+&lt;li&gt;Review developer output from a functional and technical perspective&lt;/li&gt;
+&lt;li&gt;Challenge unclear requirements, weak architecture, and poor implementation choices&lt;/li&gt;
+&lt;li&gt;Ensure that web applications are built with scalability, maintainability, security, and operational reality in mind&lt;/li&gt;
+&lt;li&gt;Help design customer portals, admin backends, provisioning flows, billing-related workflows, APIs, dashboards, and internal tools&lt;/li&gt;
+&lt;li&gt;Identify technical risks, blockers, dependencies, and missing pieces early&lt;/li&gt;
+&lt;li&gt;Keep projects moving without unnecessary meetings or corporate overhead&lt;/li&gt;
+&lt;li&gt;Report progress, risks, and decisions directly to the General Manager&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;What we are looking for&lt;/h2&gt;
+&lt;p&gt;You would work 6 hours per day, Monday to Friday. Freelancer contract. The monthly salary is 2000 EUR.&lt;/p&gt;
+&lt;p&gt;You should be a technical generalist with a strong product sense.&lt;/p&gt;
+&lt;p&gt;Ideally, you come from one or more of these backgrounds:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Technical Product Lead&lt;/li&gt;
+&lt;li&gt;Engineering Lead&lt;/li&gt;
+&lt;li&gt;Tech Lead&lt;/li&gt;
+&lt;li&gt;Solution Architect&lt;/li&gt;
+&lt;li&gt;Senior DevOps Engineer&lt;/li&gt;
+&lt;li&gt;Senior Sysadmin&lt;/li&gt;
+&lt;li&gt;ISP / Telecom Engineer&lt;/li&gt;
+&lt;li&gt;Technical company builder&lt;/li&gt;
+&lt;li&gt;Fractional CTO&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;You do not necessarily need to be the main developer yourself, but you must understand enough to lead developers, evaluate technical decisions, and know when something is overbuilt, underbuilt, unclear, or simply wrong.&lt;/p&gt;
+&lt;h2&gt;Required experience&lt;/h2&gt;
+&lt;p&gt;You would work 6 hours per day, Monday to Friday. Freelancer contract. The monthly salary is 2000 EUR.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Strong understanding of web applications, APIs, databases, backend systems, and software delivery&lt;/li&gt;
+&lt;li&gt;Profound knowledge of Linux (CentOS, Ubuntu, other distros) environments&lt;/li&gt;
+&lt;li&gt;Good understanding of networking concepts such as TCP/IP, DNS, routing, IPv4/IPv6, firewalls, VPNs and related infrastructure&lt;/li&gt;
+&lt;li&gt;Experience working with developers and turning requirements into clear technical tasks&lt;/li&gt;
+&lt;li&gt;Ability to structure complex systems into manageable modules, milestones, and deliverables&lt;/li&gt;
+&lt;li&gt;Practical understanding of security, monitoring, logging, reliability, and operational requirements&lt;/li&gt;
+&lt;li&gt;Experience working in remote teams&lt;/li&gt;
+&lt;li&gt;Strong written communication skills in English&lt;/li&gt;
+&lt;li&gt;Perfect English grammar without using AI&lt;/li&gt;
+&lt;li&gt;Ability to work independently and take ownership&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Nice to have&lt;/h2&gt;
+&lt;p&gt;You would work 6 hours per day, Monday to Friday. Freelancer contract. The monthly salary is 2000 EUR. Yes, sorry for repeating this over and over and but people tend to just scroll and apply without reading, so we want to make sure this is clear from the beginning. :-)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Experience in telecommunications, ISP, hosting, datacenter, VoIP, SIP, cloud infrastructure, or B2B SaaS&lt;/li&gt;
+&lt;li&gt;Understanding of Linux environments, many years of experience with Linux/GNU command line tools from a time before AI, Python, Bash and/or PHP or all of them, other programming/scripting languages, Proxmox, Virtual Machines, Apache/nginx, MariaDB, MySQL, PostgreSQL, server hardware &amp;amp; networking gear, IPMI / KVM-over-IP, BGP, IP address management, CIDR, provisioning systems, billing workflows, customer portals, network automation&lt;/li&gt;
+&lt;li&gt;Experience building or managing self-service platforms for customers or internal teams&lt;/li&gt;
+&lt;li&gt;Experience with small companies, startups, founder-led teams, or distributed freelancer teams&lt;/li&gt;
+&lt;li&gt;Hands-on development experience, even if you no longer want to code full-time&lt;/li&gt;
+&lt;li&gt;German language skills are a plus, but not mandatory&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;What makes this role different&lt;/h2&gt;
+&lt;p&gt;You would work 6 hours per day, Monday to Friday. Freelancer contract. The monthly salary is 2000 EUR.&lt;/p&gt;
+&lt;p&gt;This role is for someone who enjoys the messy middle between product, technology, business, and execution.&lt;/p&gt;
+&lt;p&gt;You should be comfortable taking a rough idea like:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;“We need a customer portal for managing telecom services, provisioning, billing, and support workflows.”&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;and turning it into:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;a clear product concept&lt;/li&gt;
+&lt;li&gt;a technical architecture&lt;/li&gt;
+&lt;li&gt;implementation phases&lt;/li&gt;
+&lt;li&gt;developer tickets&lt;/li&gt;
+&lt;li&gt;acceptance criteria&lt;/li&gt;
+&lt;li&gt;priorities&lt;/li&gt;
+&lt;li&gt;risks&lt;/li&gt;
+&lt;li&gt;delivery checkpoints&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;We need someone who understands what should be built, why it matters, and how to get developers to build it properly.&lt;/p&gt;
+&lt;h2&gt;Working style&lt;/h2&gt;
+&lt;p&gt;You would work 6 hours per day, Monday to Friday. Freelancer contract. The monthly salary is 2000 EUR.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;100% Remote&lt;/li&gt;
+&lt;li&gt;Freelancer agreement&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;6 hours&lt;/strong&gt; per day work-time (Monday to Friday)&lt;/li&gt;
+&lt;li&gt;Monthly salary: &lt;strong&gt;2000 EUR&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;Direct collaboration with the General Manager&lt;/li&gt;
+&lt;li&gt;Small team, fast decisions, low bureaucracy&lt;/li&gt;
+&lt;li&gt;Focus on practical delivery, not corporate process&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;You may be a good fit if you...&lt;/h2&gt;
+&lt;p&gt;By the way, you would work 6 hours per day, Monday to Friday. Freelancer contract. The monthly salary is 2000 EUR.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Have a strong technical background but also understand product and customers&lt;/li&gt;
+&lt;li&gt;Can speak with developers, management, and business stakeholders&lt;/li&gt;
+&lt;li&gt;Are comfortable with telecom, ISP, infrastructure, and web platforms&lt;/li&gt;
+&lt;li&gt;Like creating clarity from vague ideas&lt;/li&gt;
+&lt;li&gt;Can write excellent technical specifications and tickets&lt;/li&gt;
+&lt;li&gt;Know how to push developers without micromanaging them&lt;/li&gt;
+&lt;li&gt;Prefer pragmatic execution over endless meetings&lt;/li&gt;
+&lt;li&gt;Have worked in small, remote, technically complex environments&lt;/li&gt;
+&lt;li&gt;Can challenge assumptions and make things move forward&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;How to apply&lt;/h2&gt;
+&lt;p&gt;PS: You would work 6 hours per day, Monday to Friday. Freelancer contract. The monthly salary is 2000 EUR.&lt;/p&gt;
+&lt;p&gt;You can apply via WWR or by sending an E-Mail to &lt;a href="mailto:jobs@lightupnet.de"&gt;jobs@lightupnet.de&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Please send us:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;A short introduction about your background&lt;/li&gt;
+&lt;li&gt;Ideally, your CV&lt;/li&gt;
+&lt;li&gt;Relevant projects you have led or helped build&lt;/li&gt;
+&lt;li&gt;Your experience with telecom, ISP, infrastructure, SaaS, or web platforms&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;You can apply via WWR or by sending an E-Mail to &lt;a href="mailto:jobs@lightupnet.de"&gt;jobs@lightupnet.de&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;We are especially interested in people who have previously worked as technical company builders, engineering leads, solution architects, senior sysadmins, DevOps leads, or technical product leads in infrastructure-heavy environments.&lt;/p&gt;
+&lt;p&gt;You can apply via WWR or by sending an E-Mail to &lt;a href="mailto:jobs@lightupnet.de"&gt;jobs@lightupnet.de&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;To apply:&lt;/strong&gt; &lt;a href="https://weworkremotely.com/remote-jobs/lightup-network-solutions-gmbh-co-kg-technical-product-lead-for-innovative-telecom-services"&gt;https://weworkremotely.com/remote-jobs/lightup-network-solutions-gmbh-co-kg-technical-product-lead-for-innovative-telecom-services&lt;/a&gt;&lt;/p&gt;
+</description>
+      <pubDate>Mon, 01 Jun 2026 19:37:33 +0000</pubDate>
+      <expires_at>Wed, 01 Jul 2026 19:37:33 +0000</expires_at>
+      <guid>https://weworkremotely.com/remote-jobs/lightup-network-solutions-gmbh-co-kg-technical-product-lead-for-innovative-telecom-services</guid>
+      <link>https://weworkremotely.com/remote-jobs/lightup-network-solutions-gmbh-co-kg-technical-product-lead-for-innovative-telecom-services</link>
+    </item>
+    <item>
+      <title>FIAP: BDR - outbound - Pré-vendas</title>
+      <region>Anywhere in the World</region>
+      <country></country>
+      <state></state>
+      <skills>Paid Social Media Advertising, Social Media Marketing, Tracking and Attribution, Bug Tracking, Social Media Management, Social Media Ads, KPI Tracking, Social Media Content, and Inventory Tracking</skills>
+      <category>DevOps and Sysadmin</category>
+      <type>Full-Time</type>
+      <description>
+
+&lt;p&gt;
+  &lt;strong&gt;Headquarters:&lt;/strong&gt; BR
+    &lt;br /&gt;&lt;strong&gt;URL:&lt;/strong&gt; &lt;a href="http://alura.com.br"&gt;http://alura.com.br&lt;/a&gt;
+&lt;/p&gt;
+
+&lt;div&gt;&lt;p&gt;&lt;strong&gt;Descrição da vaga&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;A Alura é a maior plataforma de ensino em tecnologia do Brasil e você pode fazer parte dessa história de sucesso através dessa posição!&amp;nbsp;&lt;/p&gt;
+&lt;p&gt;Quer trabalhar em uma empresa que investe na sua carreira e, ainda, valoriza a educação e a tecnologia?&lt;/p&gt;
+&lt;p&gt;Então #VemPraAlura #MergulheEmTecnologia&lt;/p&gt;
+&lt;p&gt;É importante dizer que valorizamos a diversidade e estamos buscando tornar o nosso ambiente mais plural e inclusivo, por isso, incentivamos que mulheres, pessoas negras e indígenas e pessoas LGBTQIA+ se inscrevam.&lt;/p&gt;
+&lt;p&gt;Se fez sentido para você, esperamos sua inscrição!&lt;/p&gt;
+&lt;p&gt;Em sua atuação como....&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Responsabilidades e atribuições&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Realizar prospecção ativa via telefone, e-mail, LinkedIn e WhatsApp.&lt;/li&gt;
+&lt;li&gt;Identificar e mapear leads qualificados dentro do perfil ideal de cliente (ICP).&lt;/li&gt;
+&lt;li&gt;Utilizar técnicas de vendas consultivas para engajar potenciais clientes e entender suas&amp;nbsp;necessidades.&lt;/li&gt;
+&lt;li&gt;Alimentar e atualizar o CRM (HubSpot) com informações precisas e estratégicas.&lt;/li&gt;
+&lt;li&gt;Criar cadências de contato personalizadas e realizar follow-ups de qualidade.&lt;/li&gt;
+&lt;li&gt;Colaborar com o time de Growth e Marketing para otimizar estratégias de prospecção.&lt;/li&gt;
+&lt;li&gt;Gerar SQLs (Sales Qualified Leads) para o time de vendas, garantindo um pipeline consistente e&amp;nbsp;qualificado.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Requisitos e qualificações&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Experiência prévia como BDR, SDR ou em funções comerciais relacionadas (mínimo de 6&amp;nbsp;meses).&lt;/li&gt;
+&lt;li&gt;Conhecimento em técnicas de prospecção e vendas consultivas (SPIN, BANT, etc.).&lt;/li&gt;
+&lt;li&gt;Experiência no uso de CRMs (HubSpot é um diferencial).&lt;/li&gt;
+&lt;li&gt;Habilidade para trabalhar com ferramentas de prospecção, como LinkedIn Sales Navigator, Ramper ou similares.&lt;/li&gt;
+&lt;li&gt;Familiaridade com KPIs de prospecção (número de leads trabalhados, taxa de conversão, etc.).XXXX&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Não é obrigatório, mas seria legal se você tivesse:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Certificações ou cursos na área de vendas (Inbound Sales, Outbound Sales, etc.).&lt;/li&gt;
+&lt;li&gt;Experiência com prospecção em empresas do segmento de tecnologia ou educação.&lt;/li&gt;
+&lt;li&gt;Habilidade para personalizar cadências de prospecção e abordagens estratégicas.&lt;/li&gt;
+&lt;li&gt;Vivência em um ambiente comercial 100% remoto.&lt;/li&gt;
+&lt;li&gt;Conhecimento em marketing digital e estratégias de Growth.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Informações adicionais&lt;/strong&gt;&lt;br&gt;&lt;strong&gt;Salário, saúde, alimentação e bem estar:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Vale-Refeição: R$710,00 por mês (depositado em cartão de benefício flexível);&lt;/li&gt;
+&lt;li&gt;Vale-Alimentação: R$167,00 por mês;&lt;/li&gt;
+&lt;li&gt;Apoio home-office, que você poderá usar como preferir: R$90,00 por mês;&lt;/li&gt;
+&lt;li&gt;Convênio médico (cobertura de 70%) e odontológico (opcional) da SulAmérica Saúde;&lt;/li&gt;
+&lt;li&gt;Licenças maternidade e paternidade estendidas;&lt;/li&gt;
+&lt;li&gt;Seguro de vida;&amp;nbsp;&lt;/li&gt;
+&lt;li&gt;Gympass;&lt;/li&gt;
+&lt;li&gt;Day off no mês do seu aniversário;&lt;/li&gt;
+&lt;li&gt;Suporte de equipamentos para o seu local de trabalho ser o mais confortável possível.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Ambiente de trabalho:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Horários de trabalho flexíveis;&lt;/li&gt;
+&lt;li&gt;Dress code criado por você;&lt;/li&gt;
+&lt;li&gt;Cultura de trabalho humanizada que respeita e valoriza todas as pessoas, incentivando a diversidade e a inclusão;&lt;/li&gt;
+&lt;li&gt;Meio colaborativo e com abertura para propor ideias e ajudar na construção de projetos e ações;&lt;/li&gt;
+&lt;li&gt;Eventos internos que abordam temáticas de grande relevância para a sociedade, favorecendo a disseminação do conhecimento.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Desenvolvimento profissional e pessoal:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;One on One com a sua liderança, um momento para falar sobre sua carreira e/ou sua vida pessoal. A ideia é que seja um espaço aberto e acolhedor para você levar o que quiser;&lt;/li&gt;
+&lt;li&gt;Ambiente horizontal, ou seja, não contamos com uma progressão de carreira em escadinha. No lugar disso, queremos que você foque no seu desenvolvimento pessoal e daremos todo o incentivo para que você possa crescer e ter oportunidades em suas áreas de interesse;&lt;/li&gt;
+&lt;li&gt;Networking com grandes profissionais da área da educação e da tecnologia;&lt;/li&gt;
+&lt;li&gt;Acesso gratuito às plataformas de educação e tecnologia do Grupo Alura (Alura, Alura Língua, PM3 e e-books da Casa do Código) para que você se desenvolva em todos os âmbitos que deseja e explore novos horizontes.&lt;/li&gt;
+&lt;li&gt;Desconto em graduação, pós-graduação e MBA na FIAP;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;E aí, você quer colaborar com a gente para transformar vidas e carreiras? Se inscreva em nossa vaga!&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;MAIS SOBRE NÓS:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Artigo sobre nossa cultura e valores&lt;/strong&gt;: &lt;a href="https://www.alura.com.br/artigos/grupo-alura"&gt;https://www.alura.com.br/artigos/grupo-alura&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Artigo sobre nosso ambiente de trabalho&lt;/strong&gt;:&amp;nbsp;&lt;a href="https://www.alura.com.br/artigos/5-curiosidades-como-e-trabalhar-grupo-alura"&gt;https://www.alura.com.br/artigos/5-curiosidades-como-e-trabalhar-grupo-alura&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;To apply:&lt;/strong&gt; &lt;a href="https://weworkremotely.com/remote-jobs/fiap-bdr-outbound-pre-vendas"&gt;https://weworkremotely.com/remote-jobs/fiap-bdr-outbound-pre-vendas&lt;/a&gt;&lt;/p&gt;
+</description>
+      <pubDate>Thu, 28 May 2026 21:37:28 +0000</pubDate>
+      <expires_at>Sat, 27 Jun 2026 21:37:28 +0000</expires_at>
+      <guid>https://weworkremotely.com/remote-jobs/fiap-bdr-outbound-pre-vendas</guid>
+      <link>https://weworkremotely.com/remote-jobs/fiap-bdr-outbound-pre-vendas</link>
+    </item>
+    <item>
+      <title>Cubos Tecnologia: [Banco de Talentos] Pessoa Desenvolvedora Frontend Junior</title>
+      <region>Anywhere in the World</region>
+      <country></country>
+      <state></state>
+      <skills>Cross-Browser Development, Version Control, DevOps, and Cross-Selling</skills>
+      <category>DevOps and Sysadmin</category>
+      <type>Full-Time</type>
+      <description>
+
+&lt;p&gt;
+  &lt;strong&gt;Headquarters:&lt;/strong&gt; BR
+    &lt;br /&gt;&lt;strong&gt;URL:&lt;/strong&gt; &lt;a href="http://cubos.io"&gt;http://cubos.io&lt;/a&gt;
+&lt;/p&gt;
+
+&lt;div&gt;&lt;h3&gt;Sobre a Cubos:&amp;nbsp;&lt;/h3&gt;
+&lt;p&gt;Existimos para transformar a realidade ao nosso redor por meio de tecnologia. Somos um hub de conhecimento e inovação, criamos nossas próprias empresas digitais e apoiamos empresas na tomada de decisão, desenvolvimento&lt;/p&gt;
+&lt;p&gt;e resolução de desafios técnicos complexos.&lt;/p&gt;
+&lt;h4&gt;Nós acreditamos que podemos mudar o mundo, mas também acreditamos que:&amp;nbsp;&lt;/h4&gt;
+&lt;p&gt;Não temos medo de cair 😎&lt;/p&gt;
+&lt;p&gt;Cuidamos e respeitamos as pessoas 💕&lt;/p&gt;
+&lt;p&gt;Buscamos sair do padrão 🚀&lt;br&gt;Fazemos entregas fodas 🎁&lt;/p&gt;
+&lt;p&gt;Focamos nos usuários 🔍&lt;/p&gt;
+&lt;p&gt;Somos um hub de conhecimento 🧠&lt;/p&gt;
+&lt;h3&gt;Sobre a vaga:&amp;nbsp;&lt;/h3&gt;
+&lt;h4&gt;Responsabilidades:&amp;nbsp;&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Participar ativamente das etapas de ideação, planejamento e desenvolvimento dos produtos dos nossos clientes;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Participar de discussão das tecnologias que serão utilizadas nos projetos;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Desenvolvimento de aplicações web responsivas com React.js (ou outras bibliotecas), consumindo web services, baseadas em layouts feitos por nossos designers, visando uma UX de excelência;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Deploy com continuous integration / continuous deployment;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Ser uma pessoa curiosa e estar disposta a se arriscar em novas tecnologias;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Disposição para ajudar e compartilhar conhecimento.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;Requisitos e Qualificações:&amp;nbsp;&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Experiência com React;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Experiência com Nodejs;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Proficiência em Javascript (ES6+);&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Proficiência em HTML e CSS;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Conhecimento em Typescript;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Conhecimento em versionamento com Git;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Experiência fazendo interfaces de usuário complexas para a Web;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;Diferenciais:&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Experiência com Vue.js;&amp;nbsp;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Experiência com testes automatizados no frontend;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Conhecimento em acessibilidade e SEO;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Conhecimento com backend, Node em especial;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Apresentação de portfólio, Github ou similares;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Habilidades em padrões de design de interface e experiência de usuário;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Conhecimento em pré-processadores de CSS (Sass, Stylus, Less, etc) ou CSS in JS (styled-components, emotion, etc).&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;To apply:&lt;/strong&gt; &lt;a href="https://weworkremotely.com/remote-jobs/cubos-tecnologia-banco-de-talentos-pessoa-desenvolvedora-frontend-junior"&gt;https://weworkremotely.com/remote-jobs/cubos-tecnologia-banco-de-talentos-pessoa-desenvolvedora-frontend-junior&lt;/a&gt;&lt;/p&gt;
+</description>
+      <pubDate>Thu, 28 May 2026 21:37:28 +0000</pubDate>
+      <expires_at>Sat, 27 Jun 2026 21:37:28 +0000</expires_at>
+      <guid>https://weworkremotely.com/remote-jobs/cubos-tecnologia-banco-de-talentos-pessoa-desenvolvedora-frontend-junior</guid>
+      <link>https://weworkremotely.com/remote-jobs/cubos-tecnologia-banco-de-talentos-pessoa-desenvolvedora-frontend-junior</link>
+    </item>
+    <item>
+      <title>Cubos Tecnologia: [Banco de Talentos] Pessoa Desenvolvedora Flutter Pleno</title>
+      <region>Anywhere in the World</region>
+      <country></country>
+      <state></state>
+      <skills>Adobe Photoshop, Cross-Browser Development, Estimating and Cost Forecasting, InfoSec, DevOps, iOS, Cross-Selling, Deal Closure, Composition, and Display Advertising</skills>
+      <category>DevOps and Sysadmin</category>
+      <type>Full-Time</type>
+      <description>
+
+&lt;p&gt;
+  &lt;strong&gt;Headquarters:&lt;/strong&gt; BR
+    &lt;br /&gt;&lt;strong&gt;URL:&lt;/strong&gt; &lt;a href="http://cubos.io"&gt;http://cubos.io&lt;/a&gt;
+&lt;/p&gt;
+
+&lt;div&gt;&lt;h3&gt;Sobre a Cubos:&lt;/h3&gt;
+&lt;p&gt;Existimos para transformar a realidade ao nosso redor por meio de tecnologia. Somos um hub de conhecimento e inovação, criamos nossas próprias empresas digitais e apoiamos empresas na tomada de decisão, desenvolvimento e resolução de desafios técnicos complexos.&lt;/p&gt;
+&lt;h4&gt;Nós acreditamos que podemos mudar o mundo, e:&lt;/h4&gt;
+&lt;p&gt;Não temos medo de cair 😎&lt;/p&gt;
+&lt;p&gt;Cuidamos e respeitamos as pessoas 💕&lt;/p&gt;
+&lt;p&gt;Buscamos sair do padrão 🚀&lt;/p&gt;
+&lt;p&gt;Fazemos entregas fodas 🎁&lt;/p&gt;
+&lt;p&gt;Focamos nos usuários 🔍&lt;/p&gt;
+&lt;p&gt;Somos um hub de conhecimento 🧠&lt;/p&gt;
+&lt;h3&gt;&lt;strong&gt;Sobre a vaga:&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;A vaga é para o nosso Banco de Talentos de Flutter Pleno, ou seja, surgindo uma vaga efetiva, iremos primeiramente olhar para o Banco de Talentos e chamar as pessoas que estejam pré-aprovadas.&amp;nbsp;&lt;/p&gt;
+&lt;p&gt;Ao se cadastrar para essa vaga, você passará pelo nosso processo seletivo e se tornará uma pessoa apta para as oportunidades que possam surgir a qualquer momento.&amp;nbsp;&lt;/p&gt;
+&lt;p&gt;Com o Banco de Talentos, não há prazos entre as etapas, mas à medida que você avança, torna-se mais propenso a ser contatado e chamado para entrevistas, além de ficar pré-aprovado para fazer parte do nosso time.&lt;/p&gt;
+&lt;h4&gt;&lt;strong&gt;Responsabilidades:&lt;/strong&gt;&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Participar ativamente nas etapas de ideação, planejamento e desenvolvimento dos produtos dos nossos clientes;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Participar de discussão das tecnologias que serão utilizadas nos projetos;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Desenvolvimento de aplicações nativas Android e iOS usando Flutter, construindo layouts feitos por nossos designers, visando uma UX de excelência (pixel perfect);&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Deploy com CI/CD;&amp;nbsp;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Garantir a qualidade dos entregáveis do projeto.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;&lt;strong&gt;Requisitos e Qualificações:&lt;/strong&gt;&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Domínio de versionamento de projetos usando Git;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Domínio sobre arquiteturas MVC e Arquitetura Limpa;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Sólido conhecimento do SDK Flutter e da linguagem Dart 3;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Sólido conhecimento consumindo web services;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Conhecimento de banco de dados SQLite/SQL/NoSQL;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Domínio construindo layouts, estilos, componentes e animações em Flutter;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Experiência com CI/CD para Apple Store e Google Play;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Experiência com testes unitários e de widgets;&amp;nbsp;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Disposição para ajudar e compartilhar conhecimento&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Domínio em gerenciamento de estado.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;&lt;strong&gt;Diferenciais:&lt;/strong&gt;&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Conhecimento de RPC;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Desenvolvimento utilizando flavors no Flutter;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Monitoração do código Flutter (APM);&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Experiência com análise estática de código Flutter/Dart;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Código Limpo.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;To apply:&lt;/strong&gt; &lt;a href="https://weworkremotely.com/remote-jobs/cubos-tecnologia-banco-de-talentos-pessoa-desenvolvedora-flutter-pleno"&gt;https://weworkremotely.com/remote-jobs/cubos-tecnologia-banco-de-talentos-pessoa-desenvolvedora-flutter-pleno&lt;/a&gt;&lt;/p&gt;
+</description>
+      <pubDate>Thu, 28 May 2026 21:37:28 +0000</pubDate>
+      <expires_at>Sat, 27 Jun 2026 21:37:28 +0000</expires_at>
+      <guid>https://weworkremotely.com/remote-jobs/cubos-tecnologia-banco-de-talentos-pessoa-desenvolvedora-flutter-pleno</guid>
+      <link>https://weworkremotely.com/remote-jobs/cubos-tecnologia-banco-de-talentos-pessoa-desenvolvedora-flutter-pleno</link>
+    </item>
+    <item>
+      <title>Cubos Tecnologia: [Banco de Talentos] Pessoa Desenvolvedora Frontend Pleno</title>
+      <region>Anywhere in the World</region>
+      <country></country>
+      <state></state>
+      <skills>Cross-Browser Development, Version Control, DevOps, and Cross-Selling</skills>
+      <category>DevOps and Sysadmin</category>
+      <type>Full-Time</type>
+      <description>
+
+&lt;p&gt;
+  &lt;strong&gt;Headquarters:&lt;/strong&gt; BR
+    &lt;br /&gt;&lt;strong&gt;URL:&lt;/strong&gt; &lt;a href="http://cubos.io"&gt;http://cubos.io&lt;/a&gt;
+&lt;/p&gt;
+
+&lt;div&gt;&lt;h3&gt;&lt;strong&gt;Sobre a Cubos:&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;Existimos para transformar a realidade ao nosso redor por meio de tecnologia. Somos um hub de conhecimento e inovação, criamos nossas próprias empresas digitais e apoiamos empresas na tomada de decisão, desenvolvimento e resolução de desafios técnicos complexos.&lt;/p&gt;
+&lt;h4&gt;Nós acreditamos que podemos mudar o mundo, e:&lt;/h4&gt;
+&lt;p&gt;Não temos medo de cair 😎&lt;/p&gt;
+&lt;p&gt;Cuidamos e respeitamos as pessoas 💕&lt;/p&gt;
+&lt;p&gt;Buscamos sair do padrão 🚀&lt;/p&gt;
+&lt;p&gt;Fazemos entregas fodas 🎁&lt;/p&gt;
+&lt;p&gt;Focamos nos usuários 🔍&lt;/p&gt;
+&lt;p&gt;Somos um hub de conhecimento 🧠&lt;/p&gt;
+&lt;h3&gt;&lt;strong&gt;Sobre a vaga:&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;A vaga é para o nosso Banco de Talentos de Frontend Pleno, ou seja, surgindo uma vaga efetiva, iremos primeiramente olhar para o Banco de Talentos e chamar as pessoas que estejam pré-aprovadas.&amp;nbsp;&lt;/p&gt;
+&lt;p&gt;Ao se cadastrar para essa vaga, você passará pelo nosso processo seletivo e se tornará uma pessoa apta para as oportunidades que possam surgir a qualquer momento.&amp;nbsp;&lt;/p&gt;
+&lt;p&gt;Com o Banco de Talentos, não há prazos entre as etapas, mas à medida que você avança, torna-se mais propenso a ser contatado e chamado para entrevistas, além de ficar pré-aprovado para fazer parte do nosso time.&lt;/p&gt;
+&lt;h4&gt;&lt;strong&gt;Responsabilidades:&lt;/strong&gt;&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Participar ativamente nas etapas de ideação, planejamento e desenvolvimento dos produtos dos nossos clientes;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Participar de discussão das tecnologias que serão utilizadas nos projetos;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Desenvolvimento de aplicações web responsivas com React.js, consumindo web services, baseadas em layouts feitos por nossos designers, visando uma UX de excelência;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Deploy com CI/CD;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Ser uma pessoa curiosa e estar disposta a se arriscar em novas tecnologias.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;&lt;strong&gt;Requisitos e Qualificações:&lt;/strong&gt;&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Experiência com React;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Experiência com Nodejs;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Proficiência em Javascript (ES6+);&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Proficiência em HTML e CSS;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Conhecimento em Typescript;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Conhecimento em versionamento com Git;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Experiência fazendo interfaces de usuário complexas para a Web;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Disposição para ajudar e compartilhar conhecimento.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;&lt;strong&gt;Diferenciais:&lt;/strong&gt;&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Experiência com testes automatizados no frontend;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Experiência com GraphQL;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Conhecimento em acessibilidade e SEO;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Apresentação de portfólio, Github ou similares;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Habilidades em padrões de design de interface e experiência de usuário;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Conhecimento em pré-processadores de CSS (Sass, Stylus, Less, etc) ou CSS in JS (styled-components, emotion, etc).&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;To apply:&lt;/strong&gt; &lt;a href="https://weworkremotely.com/remote-jobs/cubos-tecnologia-banco-de-talentos-pessoa-desenvolvedora-frontend-pleno"&gt;https://weworkremotely.com/remote-jobs/cubos-tecnologia-banco-de-talentos-pessoa-desenvolvedora-frontend-pleno&lt;/a&gt;&lt;/p&gt;
+</description>
+      <pubDate>Thu, 28 May 2026 21:37:28 +0000</pubDate>
+      <expires_at>Sat, 27 Jun 2026 21:37:28 +0000</expires_at>
+      <guid>https://weworkremotely.com/remote-jobs/cubos-tecnologia-banco-de-talentos-pessoa-desenvolvedora-frontend-pleno</guid>
+      <link>https://weworkremotely.com/remote-jobs/cubos-tecnologia-banco-de-talentos-pessoa-desenvolvedora-frontend-pleno</link>
+    </item>
+    <item>
+      <media:content url="https://wwr-pro.s3.amazonaws.com/logos/0171/5346/logo.gif" type="image/png"/>
+      <title>Ignition, Inc.: Mac MSP Help Desk Guru (work from home)</title>
+      <region>Anywhere in the World</region>
+      <country></country>
+      <state>California</state>
+      <skills>Technical Support</skills>
+      <category>DevOps and Sysadmin</category>
+      <type>Full-Time</type>
+      <description>&lt;img src="https://we-work-remotely.imgix.net/logos/0171/5346/logo.gif?ixlib=rails-4.0.0&amp;w=50&amp;h=50&amp;dpr=2&amp;fit=fill&amp;auto=compress" /&gt;
+
+&lt;p&gt;
+  &lt;strong&gt;Headquarters:&lt;/strong&gt; ignitionit.com
+    &lt;br /&gt;&lt;strong&gt;URL:&lt;/strong&gt; &lt;a href="https://ignitionit.com"&gt;https://ignitionit.com&lt;/a&gt;
+&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Fully Remote · Work from home · Full-time (Eastern or Pacific time zones) · Apple-first&amp;nbsp;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;TL;DR&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;ignitionit.com is a seasoned, Apple-first MSP — in business for almost 30 years — and we're hiring a Help Desk Technician to be the friendly, capable first voice our clients reach when something isn't working. This position is a remote, work-from-home, full-time role.&lt;/p&gt;
+&lt;p&gt;We've written this as a junior-to-mid-level job description because that's where most great people start on our team. But if you're more seasoned — comfortable in identity, MDM, or security work — don't scroll past. We'd be delighted to find someone who can step in higher up the ladder, and we'll happily talk about a more senior scope and comp if that's you.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;What the actual job???&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Unlike many IT shops, we believe that the technology is the tactic. The actual job is making people feel taken care of. One of our core values is “49% tech support, 51% human support.”&lt;/p&gt;
+&lt;p&gt;You'll succeed by configuring devices, resetting access, untangling email, and chasing down the gremlin that's been haunting someone's conference room. But you'll know you succeeded when a client exhales and says, “Thank goodness you're on it!” That Warm Fuzzy Feeling™ is the actual product. The green lights on the dashboard are just how we get there.&lt;/p&gt;
+&lt;p&gt;In a typical week, you might:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Onboard a new hire at a fast-growing startup: provision their Mac, set up their Google Workspace or Microsoft 365 accounts, enroll the device in MDM, and make sure day one feels effortless.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Offboard a departing employee cleanly — recover the laptop, revoke access, and close the loop so nothing's left dangling. All boxes checked, ticket notated and closed, client followed up with.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Field a "my email stopped working" ticket that turns out to be a DNS thing, a phishing-filter thing, or a "they changed their password on their phone three weeks ago" thing.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Help a family office or RIA get a touchy Zoom Room or conference-room AV setup behaving before a meeting — over the phone.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Triage the queue so phones get answered fast, emails don't rot, and nobody feels forgotten — even when the honest answer is, “We're on it, but here's the realistic timeline."&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;⠀ You'll be the front line: helping with what you can, researching what you can't, and pinging the rest of the team when you're genuinely stuck. That last part is a skill, not a weakness — knowing when to ask is half the job.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;About ignitionit.com&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;We're one of the oldest Apple Technical Partners on the planet, and one of the only certified Apple Premier Partners — that’s kinda like getting knighted by the ghost of Steve Jobs. We started where you’d expect to find Macs (creative agencies, non-profits, education) but our primary clients today are cutting-edge, venture-backed AI SaaS startups, VC and private equity firms, registered investment advisors — many of them operating under stringent compliance expectations (SOC 2, SEC). That means we hold ourselves to a higher standard than the scrappy shop we started as. Polished, reliable, security-minded work is the baseline now — but always with a smile!&lt;/p&gt;
+&lt;p&gt;What hasn't changed: relationships are still our most valuable currency — with clients, with vendors, and with each other. We're a tight, supportive team. We teach each other what we know, cover for each other when life throws a punch, and care a little too much about doing things the right way. We're still a bit weird, and our clients seem to like us that way.&lt;/p&gt;
+&lt;p&gt;We move fast, priorities shift, it’s not always documented (whatever it is), our tool set and list of supported platforms is sprawling, and some days the to-do list is longer than you'd like. If you can stay warm under pressure, create order out of chaos, learn new stuff fast because you love it, and speak up when you need help, you'll thrive here.&lt;/p&gt;
+&lt;p&gt;If you need a rigid, fully-documented, never-changes environment where nobody trusts you with admin access, where you will be micro-managed so you never have to wonder whether or not you’re doing the right thing, this isn't it. You’ll have a ton of independence on our team, and freedom to use your best judgment to get the ball over the finish line, but that also means we expect you to be naturally responsible, honest, and highly accountable — to yourself, your teammates, and the clients. As they say, the price of freedom is eternal vigilance.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;The tech you'll work with (and grow into)&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Day one, you'll be living in:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Apple at the core — macOS, iOS, Apple Business Manager, and MDM (Jamf / Iru / Intune / Workspace ONE / and more)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Yes, PCs too — about one-third of our users are driving Windows&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Google Workspace and Microsoft 365 admin consoles&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Identity and access — SSO, MFA, and security keys (Okta, Entra ID, Yubikey, and friends)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Lots of other security tools — our stack is constantly evolving and may vary from client to client&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;The everyday productivity stack — Slack, Zoom, conference-room AV, networking basics (Meraki), and endpoint tooling&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;⠀ You don't need to know all of this. You need to be the kind of person who wants to. As you grow, there's a clear path into infrastructure administration, project architecture and implementation, and — for the right person — security and compliance work (phishing simulations, endpoint detection, SOC 2 / CIS / SEC readiness, due diligence questionnaire support, etc.). That's where our most senior people live, and it's wide open.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Who we hope you are&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;The hard requirements — we won't move forward unless you:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Can work standard business hours in Eastern or Pacific time zones (we currently need both)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Have a quiet home workspace and reliable broadband&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Have proven Apple aptitude — you actually use and like the Apple ecosystem&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Have at least 2 years of IT support experience on the job. Go-getters who are just getting started and can prove they have a deep, demonstrable history of teaching themselves technology for the sheer joy of it might also make the cut.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;⠀ Everything else — and this is the longer list, on purpose. We figure technical skills are teachable; character takes a lot longer. So we're looking for someone who:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Genuinely cares — about clients, teammates, and doing right by people&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Loves to learn, and proves it in how they spend their time&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Reads, and writes clearly — clear writing is clear thinking, and you'll do a lot of it&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Stays calm and kind with a frustrated person on the other end of the line&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Can tell the difference between good customer service and fantastic customer service, and refuses to settle for the former&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Notices when something's being done inefficiently and fixes it (you may boast about it later, that’s fine)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Proofreads their own work (yes, we noticed whether you proofread your application)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Has a sense of humor, and doesn't take themselves too seriously&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Regarding AI&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Our company founder/CEO is headquartered in the Bay Area. We work with innovative, ambitious companies developing AI products. Our team members hold a range of opinions about whether AI is “good or bad” for humans, but at the end of the day, we embrace the plain fact that it is here, we must embrace it to evolve, and our clients increasingly depend on us to help them embrace it, too, to help them evolve and stay competitive.&lt;/p&gt;
+&lt;p&gt;Our CEO's opinion: AI will not replace human labor any time soon; rather, AI is a new opportunity to either (a) get things done faster, or (b) get a much higher quality of output than before. If you’re an AI tinkerer, great! We want to hear how you’re using it and see your latest vibe project. If you’re allergic to AI or have no interest in learning new habits to work effectively with it, this is not the place for you.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Compensation &amp;amp; logistics&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Base salary: For applicants closer to the junior side who are located in the USA, $50,000–$65,000/yr, depending on experience level and your local geographical price index. With experience, comp goes up from there. Genuinely experienced, more senior candidates can be slotted higher — let's talk. Applicants outside the USA will be compensated according to your local employment market.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Type &amp;amp; location: Full-time, work from home, fully remote. Eastern or Pacific time zones.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Benefits: Medical / dental / vision for the employee, 401(k) with employer contribution, 2 weeks of PTO annually to start, and a stipend for your home internet.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;How to apply&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;The first step is really easy and only takes 10 minutes — no resume, no cover letter, no essays. Here's how:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Take this online Culture Index assessment (about 10 minutes): We use it to screen for people whose natural wiring fits how our team works.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;If your profile lines up with what we're looking for, we'll reach out and ask you to complete a 60-minute TestGorilla assessment for critical thinking skills, send us your resume, and maybe a couple of other items.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;From there, we conduct between 2-4 video interviews. One of these might be a live technical assessment.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;If the Culture Index step feels like a strange way to start a job application — that's kind of the point. Remember the phrase Think Different?&lt;/p&gt;
+&lt;p&gt;Ignition is an equal opportunity employer. We welcome and will consider all qualified applicants. Good luck in your search — and may the Force be with you!&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;To apply:&lt;/strong&gt; &lt;a href="https://weworkremotely.com/remote-jobs/ignition-inc-mac-msp-help-desk-guru-work-from-home"&gt;https://weworkremotely.com/remote-jobs/ignition-inc-mac-msp-help-desk-guru-work-from-home&lt;/a&gt;&lt;/p&gt;
+</description>
+      <pubDate>Thu, 28 May 2026 07:25:37 +0000</pubDate>
+      <expires_at>Sat, 27 Jun 2026 07:25:37 +0000</expires_at>
+      <guid>https://weworkremotely.com/remote-jobs/ignition-inc-mac-msp-help-desk-guru-work-from-home</guid>
+      <link>https://weworkremotely.com/remote-jobs/ignition-inc-mac-msp-help-desk-guru-work-from-home</link>
+    </item>
+    <item>
+      <title>Centralreach: Director, AI Product Development</title>
+      <region>Anywhere in the World</region>
+      <country></country>
+      <state></state>
+      <skills></skills>
+      <category>DevOps and Sysadmin</category>
+      <type>Full-Time</type>
+      <description>
+
+&lt;p&gt;
+  &lt;strong&gt;Headquarters:&lt;/strong&gt; Remote - US
+&lt;/p&gt;
+
+&lt;div class="job__description body"&gt;&lt;div&gt;&lt;p&gt;CentralReach is a leading provider of autism and IDD care software for Applied Behavior Analysis (ABA), multidisciplinary therapy, and special education. Trusted by more than 200,000 users, we enable therapy providers, educators, and employers to scale the way they deliver ABA and related therapies with innovative technology, market-leading industry expertise, and world-class customer satisfaction.&amp;nbsp;&lt;/p&gt;&lt;/div&gt;&lt;div&gt;&lt;p&gt;&lt;span&gt;CentralReach’s&amp;nbsp;AI team&amp;nbsp;operates&amp;nbsp;as an AI Foundry: a cross-functional group that rapidly builds,&amp;nbsp;validates, and scales AI-enabled product capabilities. The Principal Software Engineer, AI Applications is the senior-most engineer on the AI team and&amp;nbsp;sets&amp;nbsp;the technical bar for how AI-powered product experiences are designed, built, evaluated, and&amp;nbsp;operated.&lt;/span&gt;&lt;span&gt;&amp;nbsp;&lt;/span&gt;&lt;/p&gt;&lt;br&gt;&lt;p&gt;&lt;span&gt;This role is hands-on and deeply engaged across the&amp;nbsp;&lt;/span&gt;&lt;span&gt;early stages&amp;nbsp;of development of&amp;nbsp;&lt;/span&gt;&lt;span&gt;AI applications&lt;/span&gt;&lt;span&gt;,&amp;nbsp;&lt;/span&gt;&lt;span&gt;from early prototypes and pilots through production hardening and scale. They partner closely with AI&amp;nbsp;&lt;/span&gt;&lt;span&gt;p&lt;/span&gt;&lt;span&gt;roduct&amp;nbsp;&lt;/span&gt;&lt;span&gt;b&lt;/span&gt;&lt;span&gt;uilders, Product&amp;nbsp;&lt;/span&gt;&lt;span&gt;organization&amp;nbsp;&lt;/span&gt;&lt;span&gt;leaders&lt;/span&gt;&lt;span&gt;&amp;nbsp;&lt;/span&gt;&lt;span&gt;and DevOps to translate customer problems into reliable AI features that integrate seamlessly with&amp;nbsp;CentralReach’s&amp;nbsp;core workflows. They also establish engineering standards for AI application development: evaluation and quality thresholds, observability,&amp;nbsp;guardrails&lt;/span&gt;&lt;span&gt;&amp;nbsp;and&amp;nbsp;&lt;/span&gt;&lt;span&gt;performance management.&lt;/span&gt;&lt;/p&gt;&lt;br&gt;&lt;p&gt;&lt;strong&gt;&lt;span&gt;Key Accountabilities:&lt;/span&gt;&lt;/strong&gt;&lt;span&gt;&amp;nbsp;&lt;/span&gt;&lt;/p&gt;&lt;br&gt;&lt;p&gt;&lt;span&gt;&amp;nbsp;&lt;/span&gt;&lt;span&gt;Technical Leadership &amp;amp; Engineering Excellence&lt;/span&gt;&lt;span&gt;&amp;nbsp;&lt;/span&gt;&lt;/p&gt;&lt;br&gt;&lt;ul&gt;&lt;br&gt;&lt;li&gt;&lt;span&gt;Serve as the technical lead for AI application development within the AI Foundry, setting standards for code quality, architecture, and delivery&lt;/span&gt;&lt;span&gt;&amp;nbsp;&lt;/span&gt;&lt;/li&gt;&lt;br&gt;&lt;/ul&gt;&lt;br&gt;&lt;ul&gt;&lt;br&gt;&lt;li&gt;&lt;span&gt;Lead by&amp;nbsp;doing:&amp;nbsp;design and implement core AI application components, critical services, and integration layers&lt;/span&gt;&lt;span&gt;&amp;nbsp;&lt;/span&gt;&lt;/li&gt;&lt;br&gt;&lt;/ul&gt;&lt;br&gt;&lt;ul&gt;&lt;br&gt;&lt;li&gt;&lt;span&gt;Mentor AI engineers; raise the bar on engineering rigor and AI-specific best practices&lt;/span&gt;&lt;span&gt;&amp;nbsp;&lt;/span&gt;&lt;/li&gt;&lt;br&gt;&lt;/ul&gt;&lt;br&gt;&lt;ul&gt;&lt;br&gt;&lt;li&gt;&lt;span&gt;Establish quality thresholds and release criteria (accuracy, latency, reliability, cost, and user trust)&lt;/span&gt;&lt;span&gt;&amp;nbsp;&lt;/span&gt;&lt;/li&gt;&lt;br&gt;&lt;li&gt;&lt;span&gt;Design safeguards and “safe failure modes”: fallback behaviors, confidence thresholds, user controls, content filtering, and transparency patterns&lt;/span&gt;&lt;span&gt;&amp;nbsp;&lt;/span&gt;&lt;/li&gt;&lt;br&gt;&lt;/ul&gt;&lt;br&gt;&lt;p&gt;&lt;span&gt;AI Application Development (Hands-On)&lt;/span&gt;&lt;span&gt;&amp;nbsp;&lt;/span&gt;&lt;/p&gt;&lt;br&gt;&lt;ul&gt;&lt;br&gt;&lt;li&gt;&lt;span&gt;Build AI-powered product capabilities end-to-end (service + workflow integration + instrumentation), including&lt;/span&gt;&lt;span&gt;&amp;nbsp;&lt;/span&gt;&lt;span&gt;LLM-enabled workflows, RAG, summarization, classification, and automation patterns&lt;/span&gt;&lt;span&gt;&amp;nbsp;&lt;/span&gt;&lt;/li&gt;&lt;br&gt;&lt;/ul&gt;&lt;br&gt;&lt;ul&gt;&lt;br&gt;&lt;li&gt;&lt;span&gt;Build and&amp;nbsp;maintain&amp;nbsp;shared libraries/components for AI application development (prompt/tooling patterns, service templates, evaluation utilities, safety layers)&lt;/span&gt;&lt;span&gt;&amp;nbsp;&lt;/span&gt;&lt;/li&gt;&lt;br&gt;&lt;/ul&gt;&lt;br&gt;&lt;ul&gt;&lt;br&gt;&lt;li&gt;&lt;span&gt;Own technical readiness for production: reliability, observability, performance tuning, and incident response preparedness&lt;/span&gt;&lt;span&gt;&amp;nbsp;&lt;/span&gt;&lt;/li&gt;&lt;br&gt;&lt;li&gt;&lt;span&gt;Collaborate with&amp;nbsp;&lt;/span&gt;&lt;span&gt;platform Engineering and&amp;nbsp;&lt;/span&gt;&lt;span&gt;DevOps to ensure&lt;/span&gt;&lt;span&gt;&amp;nbsp;&lt;/span&gt;&lt;span&gt;CI/CD and environment consistency&lt;/span&gt;&lt;span&gt;, s&lt;/span&gt;&lt;span&gt;caling strategies&lt;/span&gt;&lt;span&gt;,&amp;nbsp;&lt;/span&gt;&lt;span&gt;cost controls for inference&lt;/span&gt;&lt;span&gt;&amp;nbsp;and s&lt;/span&gt;&lt;span&gt;ecrets management and secure data handling&lt;/span&gt;&lt;span&gt;&amp;nbsp;&lt;/span&gt;&lt;/li&gt;&lt;br&gt;&lt;/ul&gt;&lt;br&gt;&lt;p&gt;&lt;span&gt;Cross-Functional Delivery &amp;amp; Integration&lt;/span&gt;&lt;span&gt;&amp;nbsp;&lt;/span&gt;&lt;/p&gt;&lt;br&gt;&lt;ul&gt;&lt;br&gt;&lt;li&gt;&lt;span&gt;Partner tightly with AI&amp;nbsp;&lt;/span&gt;&lt;span&gt;p&lt;/span&gt;&lt;span&gt;roduct&amp;nbsp;&lt;/span&gt;&lt;span&gt;b&lt;/span&gt;&lt;span&gt;uilders and workflow Product owners to translate validated prototypes into production implementations&lt;/span&gt;&lt;span&gt;&amp;nbsp;&lt;/span&gt;&lt;/li&gt;&lt;br&gt;&lt;li&gt;&lt;span&gt;Collaborate with core engineering teams to integrate AI capabilities into&amp;nbsp;CentralReach’s&amp;nbsp;main platforms&lt;/span&gt;&lt;span&gt;&amp;nbsp;&lt;/span&gt;&lt;/li&gt;&lt;br&gt;&lt;/ul&gt;&lt;br&gt;&lt;p&gt;&lt;span&gt;Strategic Direction &amp;amp; Innovation&lt;/span&gt;&lt;span&gt;&amp;nbsp;&lt;/span&gt;&lt;/p&gt;&lt;br&gt;&lt;ul&gt;&lt;br&gt;&lt;li&gt;&lt;span&gt;Identify&amp;nbsp;and prioritize foundational investments that increase delivery velocity and reduce long-term maintenance: reusable components, platform primitives, and standardized patterns&lt;/span&gt;&lt;span&gt;&amp;nbsp;&lt;/span&gt;&lt;/li&gt;&lt;br&gt;&lt;/ul&gt;&lt;br&gt;&lt;ul&gt;&lt;br&gt;&lt;li&gt;&lt;span&gt;Evaluate build vs. buy decisions for AI tooling and recommend approaches aligned to CR constraints&lt;/span&gt;&lt;span&gt;&amp;nbsp;&lt;/span&gt;&lt;/li&gt;&lt;br&gt;&lt;li&gt;&lt;span&gt;Stay current with AI application engineering practices and help translate emerging techniques into safe, valuable product capabilities&lt;/span&gt;&lt;span&gt;&amp;nbsp;&lt;/span&gt;&lt;/li&gt;&lt;br&gt;&lt;/ul&gt;&lt;br&gt;&lt;p&gt;&lt;span&gt;&amp;nbsp;&lt;/span&gt;&lt;/p&gt;&lt;br&gt;&lt;p&gt;&lt;strong&gt;&lt;span&gt;Desired Skills and Experience:&lt;/span&gt;&lt;/strong&gt;&lt;span&gt;&amp;nbsp;&lt;/span&gt;&lt;/p&gt;&lt;br&gt;&lt;ul&gt;&lt;br&gt;&lt;li&gt;&lt;span&gt;&amp;nbsp;Bachelor's degree or equivalent work experience&lt;/span&gt;&lt;/li&gt;&lt;br&gt;&lt;/ul&gt;&lt;br&gt;&lt;ul&gt;&lt;br&gt;&lt;li&gt;&lt;span&gt;10+ years of professional software engineering experience, with principal-level scope and&amp;nbsp;demonstrated&amp;nbsp;technical leadership&lt;/span&gt;&lt;span&gt;&amp;nbsp;&lt;/span&gt;&lt;/li&gt;&lt;br&gt;&lt;/ul&gt;&lt;br&gt;&lt;ul&gt;&lt;br&gt;&lt;li&gt;&lt;span&gt;Strong experience building and operating production distributed systems and backend services&lt;/span&gt;&lt;span&gt;&amp;nbsp;&lt;/span&gt;&lt;/li&gt;&lt;br&gt;&lt;/ul&gt;&lt;br&gt;&lt;ul&gt;&lt;br&gt;&lt;li&gt;&lt;span&gt;Demonstrated hands-on experience delivering AI/ML-powered product features (LLMs and/or traditional ML), including evaluation and monitoring&lt;/span&gt;&lt;span&gt;&amp;nbsp;&lt;/span&gt;&lt;/li&gt;&lt;br&gt;&lt;/ul&gt;&lt;br&gt;&lt;ul&gt;&lt;br&gt;&lt;li&gt;&lt;span&gt;Experience with retrieval systems and search relevance (RAG, embeddings, indexing, ranking, evaluation)&lt;/span&gt;&lt;span&gt;&amp;nbsp;&lt;/span&gt;&lt;/li&gt;&lt;br&gt;&lt;/ul&gt;&lt;br&gt;&lt;ul&gt;&lt;br&gt;&lt;li&gt;&lt;span&gt;Strong system&amp;nbsp;design skills: APIs, data flows, integration patterns,&amp;nbsp;performance&amp;nbsp;and reliability tradeoffs&lt;/span&gt;&lt;span&gt;&amp;nbsp;&lt;/span&gt;&lt;/li&gt;&lt;br&gt;&lt;/ul&gt;&lt;br&gt;&lt;ul&gt;&lt;br&gt;&lt;li&gt;&lt;span&gt;Experience with observability and operational excellence (logging, metrics, tracing, alerting, incident response)&lt;/span&gt;&lt;span&gt;&amp;nbsp;&lt;/span&gt;&lt;/li&gt;&lt;br&gt;&lt;/ul&gt;&lt;br&gt;&lt;ul&gt;&lt;br&gt;&lt;li&gt;&lt;span&gt;Ability to communicate technical concepts clearly to product, design, and executive stakeholders&lt;/span&gt;&lt;span&gt;&amp;nbsp;&lt;/span&gt;&lt;/li&gt;&lt;br&gt;&lt;/ul&gt;&lt;br&gt;&lt;ul&gt;&lt;br&gt;&lt;li&gt;&lt;span&gt;Experience in&amp;nbsp;&lt;/span&gt;&lt;span&gt;a healthcare&amp;nbsp;&lt;/span&gt;&lt;span&gt;SaaS environment&lt;/span&gt;&lt;span&gt;&amp;nbsp;&lt;/span&gt;&lt;/li&gt;&lt;br&gt;&lt;/ul&gt;&lt;br&gt;&lt;ul&gt;&lt;br&gt;&lt;li&gt;&lt;span&gt;Familiarity with multi-tenant architectures and enterprise access control models&lt;/span&gt;&lt;span&gt;&amp;nbsp;&lt;/span&gt;&lt;/li&gt;&lt;br&gt;&lt;/ul&gt;&lt;br&gt;&lt;ul&gt;&lt;br&gt;&lt;li&gt;&lt;span&gt;Experience building internal platforms/tooling that improve developer experience and standardize best practices&lt;/span&gt;&lt;/li&gt;&lt;br&gt;&lt;/ul&gt;&lt;br&gt;&lt;p&gt;&amp;nbsp;&lt;/p&gt;&lt;br&gt;&lt;p&gt;&lt;span&gt;&lt;span&gt;#LI-Remote&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;&lt;div class="job__pay-ranges"&gt;&lt;div class="pay-range"&gt;&lt;p class="body body--medium"&gt;Base Salary Range&lt;/p&gt;&lt;p class="body"&gt;$180,000 - $200,000 USD&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;p&gt;Backed by Roper Technologies, Inc. (Nasdaq: ROP), and led by award-winning CEO Chris Sullens, CentralReach is entering an exciting phase of growth, innovation, and scale. &amp;nbsp;&lt;/p&gt;&lt;br&gt;&lt;p&gt;Recognized as one of the best places to work over 10 times by organizations such as Inc, Built In, and NJBIZ, our culture is centered around impact, inclusion, and flexibility. As a hybrid company with collaborative offices in Ft. Lauderdale, FL; Holmdel, NJ; and Verona, Italy, we foster a workplace where top talent can thrive and make a real difference in the lives of those we serve.&lt;br&gt;&lt;br&gt;We offer competitive compensation, comprehensive health benefits, generous PTO, 401(k) matching, and paid parental leave. Our team members also enjoy hybrid work schedules, career development support, wellness programs, and opportunities to give back through CR Cares™, our community engagement initiative.&lt;/p&gt;&lt;br&gt;&lt;p&gt;Be part of a market leader driving the future of care. Explore opportunities at&amp;nbsp;&lt;a href="https://nam12.safelinks.protection.outlook.com/?url=https%3A%2F%2Fcentralreach.com%2Fcareers%2F&amp;amp;data=05%7C02%7Cjamie.madarasz%40centralreach.com%7Cb7b1c0d4e2354127669a08dda36f3df3%7C515bdea7d91847b3b73f5700d21635ec%7C0%7C0%7C638846420463140236%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&amp;amp;sdata=WNerHqhY5w8%2Fh6TrRUbAh6uyPQJS8ymWAWaKuyJfaHo%3D&amp;amp;reserved=0"&gt;centralreach.com/careers&lt;/a&gt;. &amp;nbsp;&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;To apply:&lt;/strong&gt; &lt;a href="https://weworkremotely.com/remote-jobs/centralreach-director-ai-product-development"&gt;https://weworkremotely.com/remote-jobs/centralreach-director-ai-product-development&lt;/a&gt;&lt;/p&gt;
+</description>
+      <pubDate>Fri, 22 May 2026 20:31:32 +0000</pubDate>
+      <expires_at>Sun, 21 Jun 2026 20:31:32 +0000</expires_at>
+      <guid>https://weworkremotely.com/remote-jobs/centralreach-director-ai-product-development</guid>
+      <link>https://weworkremotely.com/remote-jobs/centralreach-director-ai-product-development</link>
+    </item>
+    <item>
+      <title>Cubos Tecnologia: [Cubos DevOps] Pessoa Engenheira de DevOps Pleno</title>
+      <region>Anywhere in the World</region>
+      <country></country>
+      <state></state>
+      <skills>Adobe Photoshop, Cross-Browser Development, Database, Estimating and Cost Forecasting, Computer Vision, InfoSec, DevOps, Cross-Selling, Deal Closure, and Composition</skills>
+      <category>DevOps and Sysadmin</category>
+      <type>Full-Time</type>
+      <description>
+
+&lt;p&gt;
+  &lt;strong&gt;Headquarters:&lt;/strong&gt; BR
+    &lt;br /&gt;&lt;strong&gt;URL:&lt;/strong&gt; &lt;a href="http://cubos.io"&gt;http://cubos.io&lt;/a&gt;
+&lt;/p&gt;
+
+&lt;div&gt;&lt;h3&gt;Sobre a Cubos DevOps:&lt;/h3&gt;
+&lt;p&gt;Somos especialistas em gestão de infraestrutura e automação de processos de Cloud para atender às necessidades dos nossos clientes para mantê-los competitivos. Nosso foco é fornecer produtos e serviços que impulsionam a transformação digital e promovem o sucesso de nossos clientes. Operando em um ambiente dinâmico e colaborativo e tendo o comprometimento com a excelência em todas as áreas do nosso negócio, desde o desenvolvimento de produtos até o suporte ao cliente.&lt;/p&gt;
+&lt;h4&gt;Sobre a vaga:&lt;/h4&gt;
+&lt;h5&gt;Responsabilidades:&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Escrever scripts e automações em tecnologias variadas;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Escrever módulos Terraform para provisionamento de recursos em infra;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Implantar soluções de monitoramento (disponibilidade, performance e segurança);&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Agir proativamente em identificar, remediar e corrigir problemas.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5&gt;Requisitos e Qualificações:&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Ler e escrever em inglês confortavelmente;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Experiência prévia gerenciando aplicações na AWS ou GCP;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Conhecer os princípios de DevOps e de GitOps;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Conhecimento em orquestração de containers com Kubernetes;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Habilidades em programação em JavaScript (é preferível em JS, mas outras linguagens também são aceitáveis);&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Domínio de gerenciamento de infraestrutura com Terraform;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Entender sobre administração de sistemas Linux;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Domínio na criação e configuração de pipelines utilizando GitHub Actions ou GitLab CI.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5&gt;Diferenciais:&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Conhecer o funcionamento de bancos de dados relacionais (como por exemplo PostgreSQL, MySQL, etc) para analisar métricas e aplicar otimizações;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Expertise na gestão de ferramentas de GitOps, incluindo ArgoCD ou FluxCD;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Conhecimento aprofundado em Prometheus e Grafana.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Proficiência na configuração de pipelines para aplicações móveis em iOS e Android;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Possuir certificação na área.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;To apply:&lt;/strong&gt; &lt;a href="https://weworkremotely.com/remote-jobs/cubos-tecnologia-cubos-devops-pessoa-engenheira-de-devops-pleno"&gt;https://weworkremotely.com/remote-jobs/cubos-tecnologia-cubos-devops-pessoa-engenheira-de-devops-pleno&lt;/a&gt;&lt;/p&gt;
+</description>
+      <pubDate>Thu, 21 May 2026 20:02:40 +0000</pubDate>
+      <expires_at>Sat, 20 Jun 2026 20:02:40 +0000</expires_at>
+      <guid>https://weworkremotely.com/remote-jobs/cubos-tecnologia-cubos-devops-pessoa-engenheira-de-devops-pleno</guid>
+      <link>https://weworkremotely.com/remote-jobs/cubos-tecnologia-cubos-devops-pessoa-engenheira-de-devops-pleno</link>
+    </item>
+    <item>
+      <title>Radix: Profissional IaC| DevOps</title>
+      <region>Anywhere in the World</region>
+      <country></country>
+      <state></state>
+      <skills>Cross-Browser Development, Version Control, Computer Vision, DevOps, and Cross-Selling</skills>
+      <category>DevOps and Sysadmin</category>
+      <type>Full-Time</type>
+      <description>
+
+&lt;p&gt;
+  &lt;strong&gt;Headquarters:&lt;/strong&gt; BR
+    &lt;br /&gt;&lt;strong&gt;URL:&lt;/strong&gt; &lt;a href="http://radixeng.com.br"&gt;http://radixeng.com.br&lt;/a&gt;
+&lt;/p&gt;
+
+&lt;div&gt;&lt;div&gt;
+&lt;div&gt;
+&lt;p&gt;&lt;span lang="PT-BR" xml:lang="PT-BR"&gt;A primeira coisa que você precisa saber é que aqui você não vai cair na rotina. A Radix desenvolve soluções para empresas de diferentes setores e indústrias. Cada projeto tem suas tecnologias, soluções e prazos e você terá oportunidade de atuar e experimentar diferentes desafios. Além da nossa atuação pelo Brasil, com escritório no Rio de janeiro, São Paulo e Belo Horizonte, temos também filiais nos Estados Unidos, fazendo com que a Radix se consolide cada vez mais como uma empresa &lt;strong&gt;global&lt;/strong&gt;.&lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div&gt;
+&lt;p&gt;&lt;span lang="PT-BR" xml:lang="PT-BR"&gt;Quer fazer parte dessa história e transformar ideias e sonhos em realidade?&lt;/span&gt;&amp;nbsp;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div&gt;
+&lt;h3&gt;Como profissional de IaC / Devops vocÊ vai:&lt;/h3&gt;
+&lt;p&gt;Atuar na automação, provisionamento e gestão de infraestrutura em nuvem Azure utilizando práticas modernas de Infrastructure as Code (IaC), garantindo ambientes padronizados, seguros e escaláveis para suportar o ciclo de vida dos projetos de desenvolvimento.&lt;/p&gt;
+
+&lt;h3&gt;Responsabilidades Principais&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Provisionamento de Infraestrutura Azure&lt;/strong&gt;Projetar, implementar e manter recursos de infraestrutura no Azure (VNets, AKS, App Services, Storage Accounts, Key Vault, Azure SQL, ACR, entre outros) de forma automatizada e rastreável via código.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Infrastructure as Code com Terraform e Terragrunt &lt;/strong&gt;Desenvolver e manter módulos Terraform reutilizáveis para provisionamento de recursos Azure. Utilizar Terragrunt para orquestrar ambientes múltiplos (dev, staging, prod), gerenciar dependências entre módulos e garantir DRY (Don't Repeat Yourself) na estrutura de IaC.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Criação e Gestão de Pipelines CI/CD &lt;/strong&gt;Construir e manter pipelines de integração e entrega contínua utilizando Azure DevOps (Pipelines YAML) e/ou GitHub Actions, cobrindo builds, testes, provisionamento de infraestrutura (pipeline de IaC) e deploy de aplicações.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Gestão de Estado e Boas Práticas de IaC &lt;/strong&gt;Configurar e gerenciar remote state do Terraform (Azure Storage Account + Blob Container), implementar locking de estado, versionamento de módulos e separação por workspaces/ambientes.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Segurança e Governança &lt;/strong&gt;Aplicar práticas de segurança em infraestrutura: uso de Azure Key Vault para gestão de secrets, definição de políticas IAM (RBAC), Azure Policy, e garantia de conformidade nos recursos provisionados.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Monitoramento e Observabilidade &lt;/strong&gt;Configurar recursos de monitoramento via código (Azure Monitor, Log Analytics Workspace, Application Insights), garantindo visibilidade sobre a saúde da infraestrutura e aplicações.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Documentação e Padronização &lt;/strong&gt;Manter documentação técnica atualizada, padrões de nomenclatura de recursos, tagging strategy e guias de uso dos módulos de IaC para as equipes de desenvolvimento.&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div&gt;
+&lt;p&gt;&lt;strong&gt;&lt;span lang="PT-BR" xml:lang="PT-BR"&gt;Benefícios:&amp;nbsp;&lt;/span&gt;&amp;nbsp;&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Assistência Médica Nacional (para o titular e dependentes, com quarto privativo)&lt;/li&gt;
+&lt;li&gt;Assistência odontológica nacional (para o titular e dependentes)&lt;/li&gt;
+&lt;li&gt;Vale refeição / alimentação flexível&lt;/li&gt;
+&lt;li&gt;Auxílio home office&amp;nbsp;&lt;/li&gt;
+&lt;li&gt;Day off (no mês do aniversário)&lt;/li&gt;
+&lt;li&gt;Wellhub (antigo Gympass)&lt;/li&gt;
+&lt;li&gt;Licença Maternidade (6 meses) e Paternidade (20 dias) estendidas&lt;/li&gt;
+&lt;li&gt;Auxílio creche para filhos de até 3 anos (por filho)&amp;nbsp;&lt;/li&gt;
+&lt;li&gt;Apoio em saúde mental com a Wellz&lt;/li&gt;
+&lt;li&gt;Clube de Vantagens com descontos em diversos parceiros&lt;/li&gt;
+&lt;li&gt;Convênio com instituições de ensino e cursos de idioma&lt;/li&gt;
+&lt;li&gt;Desenvolvimento Profissional (Universidade Corporativa)&lt;/li&gt;
+&lt;li&gt;Parceria com empresa de coworkings no Brasil&lt;/li&gt;
+&lt;li&gt;Programa de Qualidade de Vida e Bem-Estar&lt;/li&gt;
+&lt;li&gt;Médico consultor para acompanhamento de radixers&lt;/li&gt;
+&lt;li&gt;Planos de incentivos&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div&gt;
+&lt;div&gt;
+&lt;p&gt;&lt;span lang="PT-BR" xml:lang="PT-BR"&gt;&amp;nbsp;&lt;/span&gt;&amp;nbsp;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div&gt;
+&lt;p&gt;&lt;strong&gt;&lt;span lang="PT-BR" xml:lang="PT-BR"&gt;A Radix está sempre no topo das Melhores Empresas para se trabalhar porque:&lt;/span&gt;&lt;span lang="PT-BR" xml:lang="PT-BR"&gt;&amp;nbsp;&lt;/span&gt;&amp;nbsp;&lt;/strong&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;span lang="PT-BR" xml:lang="PT-BR"&gt;Temos profissionais comprometidos, dedicados, curiosos e inovadores.&amp;nbsp;&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;O espírito de equipe é a nossa maior força. Trabalhamos de forma cooperativa e sabemos que estamos juntos, remando na mesma direção.&lt;/li&gt;
+&lt;li&gt;Temos um ambiente diverso, que valoriza equidade e inclusão.&amp;nbsp;&lt;/li&gt;
+&lt;li&gt;Nossa jornada de trabalho é flexível e em quase todos os projetos é possível trabalhar de qualquer lugar do Brasil.&amp;nbsp;&lt;/li&gt;
+&lt;li&gt;Valorizamos o bem-estar e o cuidado com as nossas pessoas, com programas de apoio à saúde mental, psiquiatra e médico consultor disponíveis.&amp;nbsp;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div&gt;&amp;nbsp;&lt;/div&gt;
+&lt;div&gt;
+&lt;p&gt;&lt;strong&gt;&lt;span lang="PT-BR" xml:lang="PT-BR"&gt;Curtiu?&lt;br&gt;&lt;/span&gt;&lt;/strong&gt;&lt;strong&gt;&lt;span lang="PT-BR" xml:lang="PT-BR"&gt;#VemPraRadix&lt;/span&gt; &lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Código da vaga: 2b73&lt;/strong&gt;&lt;/p&gt;
+&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;To apply:&lt;/strong&gt; &lt;a href="https://weworkremotely.com/remote-jobs/radix-profissional-iac-devops"&gt;https://weworkremotely.com/remote-jobs/radix-profissional-iac-devops&lt;/a&gt;&lt;/p&gt;
+</description>
+      <pubDate>Thu, 21 May 2026 20:02:40 +0000</pubDate>
+      <expires_at>Sat, 20 Jun 2026 20:02:40 +0000</expires_at>
+      <guid>https://weworkremotely.com/remote-jobs/radix-profissional-iac-devops</guid>
+      <link>https://weworkremotely.com/remote-jobs/radix-profissional-iac-devops</link>
+    </item>
+    <item>
+      <title>Cubos Tecnologia: [Banco de Talentos] Product Manager Pleno</title>
+      <region>Anywhere in the World</region>
+      <country></country>
+      <state></state>
+      <skills></skills>
+      <category>DevOps and Sysadmin</category>
+      <type>Full-Time</type>
+      <description>
+
+&lt;p&gt;
+  &lt;strong&gt;Headquarters:&lt;/strong&gt; BR
+    &lt;br /&gt;&lt;strong&gt;URL:&lt;/strong&gt; &lt;a href="http://cubos.io"&gt;http://cubos.io&lt;/a&gt;
+&lt;/p&gt;
+
+&lt;div&gt;&lt;h3&gt;Sobre a Cubos:&lt;/h3&gt;
+&lt;p&gt;Existimos para transformar a realidade ao nosso redor por meio de tecnologia. Somos um hub de conhecimento e inovação, criamos nossas próprias empresas digitais e apoiamos empresas na tomada de decisão, desenvolvimento e resolução de desafios técnicos complexos.&lt;/p&gt;
+&lt;h4&gt;Nós acreditamos que podemos mudar o mundo, e:&lt;/h4&gt;
+&lt;p&gt;Não temos medo de cair 😎&lt;/p&gt;
+&lt;p&gt;Cuidamos e respeitamos as pessoas 💕&lt;/p&gt;
+&lt;p&gt;Buscamos sair do padrão 🚀&lt;/p&gt;
+&lt;p&gt;Fazemos entregas fodas 🎁&lt;/p&gt;
+&lt;p&gt;Focamos nos usuários 🔍&lt;/p&gt;
+&lt;p&gt;Somos um hub de conhecimento 🧠&lt;/p&gt;
+&lt;h3&gt;&lt;strong&gt;Sobre a vaga:&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;A vaga é para o nosso Banco de Talentos de Product Manager, ou seja, surgindo uma vaga efetiva, olharemos primeiramente&amp;nbsp; para o Banco de Talentos e chamaremos as pessoas que estejam pré-aprovadas.&amp;nbsp;&lt;/p&gt;
+&lt;p&gt;Ao se cadastrar para essa vaga, você passará pelo nosso processo seletivo e se tornará uma pessoa apta para as oportunidades que possam surgir a qualquer momento.&amp;nbsp;&lt;/p&gt;
+&lt;p&gt;Com o Banco de Talentos, não há prazos entre as etapas, mas à medida que você avança, torna-se mais propenso a ser contatado e chamado para entrevistas, além de ficar pré-aprovado para fazer parte do nosso time.&lt;strong&gt;&lt;br&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;h4&gt;&lt;strong&gt;Responsabilidades:&amp;nbsp;&lt;/strong&gt;&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Participar e colaborar na definição dos KR's e seus KPI's&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Realizar UX research;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Analisar dados quantitativos e qualitativos;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Priorizar problemas e funcionalidades;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Elaboração e gerenciamento do backlog do produto.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Operacionalizar o mapeamento a fundo das oportunidades/problemas e seus impactos, utilizando-se de fatos e dados.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Planeja e acorda com o time técnico a execução das iniciativas priorizadas na Squad.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;&lt;strong&gt;Requisitos e Qualificações:&amp;nbsp;&lt;/strong&gt;&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Conhecimento sobre o processo de Discovery e suas metodologias;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Conhecer técnicas de UX research.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Experiência como UX, PM, PO ou ter background de Consultoria;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Capacidade analítica para identificar problemas e levantar hipóteses;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Saber conduzir reuniões com clientes e stakeholders;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Perfil empreendedor para identificar oportunidades no mercado.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;&lt;strong&gt;Diferenciais:&lt;/strong&gt;&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Experiência como Product Manager;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Experiência com Teste A/B;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Experiência com gestão de projetos;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Realizar análise de dados das pesquisas&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Product delivery e relacionamento com desenvolvedores.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;To apply:&lt;/strong&gt; &lt;a href="https://weworkremotely.com/remote-jobs/cubos-tecnologia-banco-de-talentos-product-manager-pleno"&gt;https://weworkremotely.com/remote-jobs/cubos-tecnologia-banco-de-talentos-product-manager-pleno&lt;/a&gt;&lt;/p&gt;
+</description>
+      <pubDate>Thu, 21 May 2026 20:02:40 +0000</pubDate>
+      <expires_at>Sat, 20 Jun 2026 20:02:40 +0000</expires_at>
+      <guid>https://weworkremotely.com/remote-jobs/cubos-tecnologia-banco-de-talentos-product-manager-pleno</guid>
+      <link>https://weworkremotely.com/remote-jobs/cubos-tecnologia-banco-de-talentos-product-manager-pleno</link>
+    </item>
+    <item>
+      <title>Cubos Tecnologia: [BANCO DE TALENTOS] Product Manager Jr.</title>
+      <region>Anywhere in the World</region>
+      <country></country>
+      <state></state>
+      <skills></skills>
+      <category>DevOps and Sysadmin</category>
+      <type>Full-Time</type>
+      <description>
+
+&lt;p&gt;
+  &lt;strong&gt;Headquarters:&lt;/strong&gt; BR
+    &lt;br /&gt;&lt;strong&gt;URL:&lt;/strong&gt; &lt;a href="http://cubos.io"&gt;http://cubos.io&lt;/a&gt;
+&lt;/p&gt;
+
+&lt;div&gt;&lt;h3&gt;Sobre a Cubos:&amp;nbsp;&lt;/h3&gt;
+&lt;p&gt;Existimos para transformar a realidade ao nosso redor por meio de tecnologia. Somos um hub de conhecimento e inovação, criamos nossas próprias empresas digitais e apoiamos empresas na tomada de decisão, desenvolvimento&amp;nbsp;e resolução de desafios técnicos complexos.&lt;/p&gt;
+&lt;h3&gt;&lt;br&gt;Nós acreditamos que podemos mudar o mundo, mas também acreditamos que:&amp;nbsp;&lt;/h3&gt;
+&lt;p&gt;Não temos medo de cair 😎&lt;br&gt;Cuidamos e respeitamos as pessoas 💕&lt;br&gt;Buscamos sair do padrão 🚀&lt;br&gt;Fazemos entregas fodas 🎁&lt;br&gt;Focamos nos usuários 🔍&lt;br&gt;Somos um hub de conhecimento 🧠&lt;/p&gt;
+&lt;h3&gt;Sobre a vaga:&amp;nbsp;&lt;/h3&gt;
+&lt;h4&gt;Responsabilidades:&amp;nbsp;&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;Apoio ao PM e ao time em atividades operacionais;&lt;/li&gt;
+&lt;li&gt;Criação e acompanhamento de task;&lt;/li&gt;
+&lt;li&gt;Pesquisas e captura de informações;&lt;/li&gt;
+&lt;li&gt;Refinamento de escopo.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;Requisitos:&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;Conhecimento de Frameworks iniciais de produto;&lt;/li&gt;
+&lt;li&gt;Entendimento das metodologias ágeis;&lt;/li&gt;
+&lt;li&gt;Comunicação clara e objetiva;&lt;/li&gt;
+&lt;li&gt;Facilidade em trabalho em equipe.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;To apply:&lt;/strong&gt; &lt;a href="https://weworkremotely.com/remote-jobs/cubos-tecnologia-banco-de-talentos-product-manager-jr"&gt;https://weworkremotely.com/remote-jobs/cubos-tecnologia-banco-de-talentos-product-manager-jr&lt;/a&gt;&lt;/p&gt;
+</description>
+      <pubDate>Thu, 21 May 2026 20:02:40 +0000</pubDate>
+      <expires_at>Sat, 20 Jun 2026 20:02:40 +0000</expires_at>
+      <guid>https://weworkremotely.com/remote-jobs/cubos-tecnologia-banco-de-talentos-product-manager-jr</guid>
+      <link>https://weworkremotely.com/remote-jobs/cubos-tecnologia-banco-de-talentos-product-manager-jr</link>
+    </item>
+    <item>
+      <title>Alice: DevOps Engineer</title>
+      <region>Anywhere in the World</region>
+      <country></country>
+      <state></state>
+      <skills>Containers, Cross-Browser Development, Infrastructure Orchestration, Monitoring and Analytics, Computer Vision, DevOps, Kubernetes, Network Monitoring, Performance Monitoring, and Cross-Selling</skills>
+      <category>DevOps and Sysadmin</category>
+      <type>Full-Time</type>
+      <description>
+
+&lt;p&gt;
+  &lt;strong&gt;Headquarters:&lt;/strong&gt; BR
+    &lt;br /&gt;&lt;strong&gt;URL:&lt;/strong&gt; &lt;a href="http://alice.com.br"&gt;http://alice.com.br&lt;/a&gt;
+&lt;/p&gt;
+
+&lt;div&gt;&lt;h3&gt;Por que isso não é “só mais um trabalho”&lt;/h3&gt;
+&lt;p&gt;Na Alice, a gente não oferece um lugar para assistir da arquibancada — você vai entrar na arena de uma das jornadas de crescimento mais ousadas da América Latina em tecnologia e saúde.&lt;/p&gt;
+&lt;p&gt;Como Software Engineer, você vai construir tecnologia de ponta com impacto direto em melhorar a vida das pessoas. Se você tem fome de gerar resultados, aprender rápido e fazer parte da &lt;a href="https://www.fastcompany.com/91269610/latin-america-most-innovative-companies-2025"&gt;empresa mais inovadora da América Latina&lt;/a&gt;, continue lendo.&lt;/p&gt;
+&lt;h3&gt;Atenção: Na Alice, a Engenharia opera 100% no modelo de Agentic Development. Se você não tem experiência e entusiasmo em atuar como orquestrador de agentes de AI, esta vaga não é para você.&amp;nbsp;&lt;br&gt;&lt;br&gt;&lt;br&gt;Sobre a Alice&lt;/h3&gt;
+&lt;p&gt;Nossa missão é tornar o mundo mais saudável. Para chegar lá, estamos construindo algo raro: uma experiência de saúde em que as pessoas realmente confiam, se engajam e até amam. Somos um plano de saúde para empresas movido por tecnologia — unindo cuidado e seguro de saúde — e entregamos resultados superiores de saúde com menor custo para mais de 90 mil membros (e crescendo).&lt;/p&gt;
+&lt;p&gt;Site Institucional: &lt;a href="https://alice.com.br/"&gt;https://alice.com.br/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Blog institucional: &lt;a href="https://alice.com.br/blog/"&gt;https://alice.com.br/blog/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Blog Tech: &lt;a href="https://alice.com.br/tech/"&gt;https://alice.com.br/tech/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;/p&gt;
+&lt;h3&gt;Sobre a posição&lt;/h3&gt;
+&lt;p&gt;DevOps Engineer na Alice é a pessoa que vai além de manter a infraestrutura no ar! Nessa posição, esperamos que você atue em diversas dimensões cruciais para a nossa missão de tornar o mundo mais saudável.&lt;/p&gt;
+&lt;p&gt;Plataforma e Infraestrutura: Construir e evoluir nossa plataforma em AWS e Kubernetes, com soluções sustentáveis e escaláveis; Desenhar e manter Infrastructure as Code (Terraform, Helm) com versionamento, revisão e testes; Decompor mudanças de plataforma em tarefas que fazem sentido para agentes — ordem, dependências, paralelismo, nível de autonomia; Colaborar com decisões de arquitetura cross squads; Manter nossas ADRs, documentações, rules e skills atualizados.&lt;/p&gt;
+&lt;p&gt;Confiabilidade, Entrega e Operação: Construir e evoluir nossos pipelines de CI/CD e estratégias de release (canary, blue/green, rollback) via agentes; Trabalhar spec-first em todo o ciclo — planejar, codar, debugar, testar, documentar, revisar diffs e iterar; Ser responsável pelo ciclo de vida da plataforma (deploy, métricas, alarmes, SLOs) e pelos guardrails que mantêm a qualidade (testes de infra, linting, policy checks, security scans); Usar agentes também em operação, investigando incidentes via MCPs (Datadog, logs, traces, GitHub); Participar do on-call, evoluindo runbooks e automações que reduzem ruído e MTTR; Garantir alto desempenho, alta disponibilidade e segurança dos sistemas.&lt;/p&gt;
+&lt;p&gt;Liderança Técnica: Contribuir com os desafios de plataforma e de todo o time de tecnologia, compartilhando ideias, soluções, módulos de IaC, arquiteturas, skills, subagents, rules e workflows reutilizáveis; Evoluir os arquivos de contexto do seu domínio para elevar a qualidade do que os agentes produzem em mudanças de infraestrutura; Publicar e manter skills no nosso marketplace interno; Aprimorar a experiência de desenvolvimento na Alice (tooling de plataforma, ambientes efêmeros, deploys self-service, observabilidade) e mentorar colegas no mindset de orquestrador.&lt;/p&gt;
+&lt;p&gt;Produto / Negócio: Trabalhar junto com pessoas Engenheiras de Software, Designers e Product Managers para entender as dores dos usuários e dos times internos, criando as melhores soluções de plataforma; Ajudar o time a decidir onde cabe automação agentic e onde queremos judgement humano, especialmente em mudanças críticas de produção e em fluxos com cuidado, dados clínicos e decisões regulatórias; Colaborar para o fortalecimento de cultura do time, participando ativamente dos ritos e processos da squad.&lt;br&gt;&lt;br&gt;&lt;/p&gt;
+&lt;h3&gt;Sobre o time de Engenharia na Alice&lt;/h3&gt;
+&lt;p&gt;Fazer parte da equipe de Engenharia da Alice significa ter a responsabilidade e o privilégio de trabalhar para tornar o mundo mais saudável. Nossa missão é enorme e buscamos pessoas alinhadas com nosso propósito e com alta competência e resiliência para transformar o sistema de saúde no Brasil. É um desafio gigante, mas muito gratificante, e que traz inúmeras oportunidades de crescimento.&lt;/p&gt;
+&lt;p&gt;Somos um time colaborativo e que busca excelência técnica, sem perder de vista o real objetivo de cada uma das linhas que escrevemos. Você vai trabalhar junto às áreas de negócios e produtos, com muitas iniciativas já amadurecidas e outras tantas para tirar do zero.&lt;/p&gt;
+&lt;p&gt;Focamos em qualidade e em decisões diligentes. Ao mesmo tempo que buscamos evoluir todos os dias e nos reinventar, somos um time que foca em decisões consistentes, racionais e bem documentadas.&lt;/p&gt;
+&lt;p&gt;Somos remotos. Se preferir trabalhar no &lt;a href="https://www.youtube.com/watch?v=HunxHjeZGcg"&gt;escritório&lt;/a&gt; (como algumas pessoas do nosso time), nosso endereço é na Avenida Rebouças, 3535. Outros times da Alice trabalham de forma híbrida (produto, design, negócios, operações).&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;h3&gt;O que te faz uma pessoa candidata forte&lt;/h3&gt;
+&lt;p&gt;Fundamentos de plataforma e infraestrutura&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Experiência sólida operando infraestrutura em AWS (VPC, IAM, EC2, EKS/ECS, RDS, S3, networking, custos);&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Proficiência com Kubernetes em produção (deployments, autoscaling, networking, RBAC, observabilidade, troubleshooting);&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Experiência sólida com Infrastructure as Code (Terraform, Helm) — modularização, versionamento, testes e revisão de mudanças;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Experiência com pipelines de CI/CD (GitHub Actions, Jenkins ou equivalente) e estratégias de release (blue/green, canary, rollback, feature flags);&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Vivência com sistemas distribuídos / micro-serviços e suas armadilhas operacionais;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Forte prática com observabilidade e monitoramento (Datadog, Prometheus, logs, traces, definição de SLIs/SLOs e alarmes);&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Experiência com as melhores práticas de segurança e privacidade de dados (gestão de secrets, least privilege, hardening, varreduras de vulnerabilidade, conformidade);&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Capacidade de codar quando necessário (Python, Go, Bash ou similar) para construir tooling de plataforma e automações;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Experiência sólida como liderança de projetos técnicos de plataforma (migrações, padronizações cross squad, ferramentas internas, decisões arquiteturais);&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Agentic development&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Capacidade de adaptar sua forma de trabalho continuamente para extrair o máximo de benefício dos melhores modelos / harnesses / frameworks de AI.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Uso regular de ferramenta agentic em modo agente, não apenas autocomplete (Claude Code, Cursor, Augment Code, Codex ou equivalente);&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Spec-driven development em todo o ciclo: planeja antes de gerar, revisa diffs, usa testes como verificação, e aplica o mesmo rigor em debugging, documentação e investigação de incidentes;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Context engineering: configura e mantém CLAUDE.md, AGENTS.md, .cursorrules e equivalentes; sabe dividir tarefas em codebases grandes;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Failure literacy: conhece modos de falha (hallucination, context rot, loops, sycophancy) e ajusta o processo a partir deles;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Multiplicação: já criou skill, subagent, rule, template de prompt ou workflow que o time adotou;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Guardrails e autonomia: decide o que delega ao agente e o que exige revisão humana;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Diferenciais: orquestrar múltiplas instâncias/worktrees em paralelo; operar long-running agents; escrever evals para skills, prompts e workflows (medir qualidade de output e detectar regressão); avaliar ferramentas criticamente (custo, qualidade, segurança, privacidade); liderar adoção de agentic development em um time ou organização.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;h3&gt;Mentalidade&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Forte senso de comprometimento e foco no resultado;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Apaixonada por tecnologia e por saúde;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Entusiasmo genuíno por agentic development, com vontade de empurrar a fronteira do que é possível hoje.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;h3&gt;Remuneração&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Fazemos o nosso melhor para compensar de forma competitiva.&amp;nbsp;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Sempre fazemos nossa melhor oferta.&amp;nbsp;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Não negociamos (isso é bom para você).&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;To apply:&lt;/strong&gt; &lt;a href="https://weworkremotely.com/remote-jobs/alice-devops-engineer"&gt;https://weworkremotely.com/remote-jobs/alice-devops-engineer&lt;/a&gt;&lt;/p&gt;
+</description>
+      <pubDate>Thu, 21 May 2026 20:02:40 +0000</pubDate>
+      <expires_at>Sat, 20 Jun 2026 20:02:40 +0000</expires_at>
+      <guid>https://weworkremotely.com/remote-jobs/alice-devops-engineer</guid>
+      <link>https://weworkremotely.com/remote-jobs/alice-devops-engineer</link>
+    </item>
+    <item>
+      <media:content url="https://wwr-pro.s3.amazonaws.com/logos/0171/5247/logo.gif" type="image/png"/>
+      <title>Catamaran Research: Platform Engineer</title>
+      <region>Anywhere in the World</region>
+      <country></country>
+      <state></state>
+      <skills></skills>
+      <category>DevOps and Sysadmin</category>
+      <type>Full-Time</type>
+      <description>&lt;img src="https://we-work-remotely.imgix.net/logos/0171/5247/logo.gif?ixlib=rails-4.0.0&amp;w=50&amp;h=50&amp;dpr=2&amp;fit=fill&amp;auto=compress" /&gt;
+
+&lt;p&gt;
+  &lt;strong&gt;Headquarters:&lt;/strong&gt; 
+    &lt;br /&gt;&lt;strong&gt;URL:&lt;/strong&gt; &lt;a href="https://catamaran-research.ai/"&gt;https://catamaran-research.ai/&lt;/a&gt;
+&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Apply at&amp;nbsp;&lt;/strong&gt;&lt;a href="https://catamaran-research.ai/careers"&gt;&lt;strong&gt;catamaran-research.ai/careers&lt;/strong&gt;&lt;/a&gt;&lt;strong&gt;.&lt;/strong&gt;&amp;nbsp;Applications through other channels will not be reviewed.&lt;/p&gt;&lt;h3&gt;&lt;strong&gt;&lt;br&gt;About Us&lt;/strong&gt;&lt;/h3&gt;&lt;p&gt;We are building the cloud compute layer for the agent age: think AWS or GCP, but designed around AI agents as first-class cloud users. Existing cloud primitives were designed for humans clicking consoles or writing static IaC, not for autonomous agents that needs to spin up environments, run untrusted code, and manage its own resources at runtime.&lt;/p&gt;&lt;p&gt;We are venture-backed and led by three technical co-founders with backgrounds in high-frequency trading, ML engineering, and quantitative research.&lt;/p&gt;&lt;p&gt;&lt;em&gt;No recruiters, but we welcome every referral.&lt;/em&gt;&lt;/p&gt;&lt;h3&gt;&lt;strong&gt;The Role&lt;/strong&gt;&lt;/h3&gt;&lt;p&gt;This is a foundational, greenfield project. You will design and build the platform infrastructure from scratch, collaborating directly with the founding team.&lt;/p&gt;&lt;p&gt;You will build the infrastructure that other infrastructure runs on: the multi-cloud substrate, compute fleet management, networking, and the tooling that lets the team ship safely. The workloads are bursty, ephemeral, and untrusted, with millisecond-latency requirements and hard isolation between tenants. You will work with physical infrastructure and GPUs, not just managed cloud services.&lt;/p&gt;&lt;p&gt;The goal is production that is boring in the useful sense: deployable, diagnosable, recoverable.&lt;/p&gt;&lt;h3&gt;&lt;strong&gt;What You'll Own&lt;/strong&gt;&lt;/h3&gt;&lt;ul&gt;&lt;li&gt;&lt;p&gt;Multi-cloud platform infrastructure (AWS, GCP, Azure): networking, IAM, DNS/TLS, and compute fleets.&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;Physical infrastructure and GPU provisioning.&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;IaC (Terraform/Pulumi), CI/CD pipelines, rollback workflows, and release processes.&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;Observability: metrics, logs, traces, alerts, and dashboards.&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;SLOs, incident response, on-call rotation, postmortems, and runbooks.&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;Capacity planning, cost modelling, and cloud spend optimization.&lt;/p&gt;&lt;/li&gt;&lt;/ul&gt;&lt;h3&gt;&lt;strong&gt;You Are A Fit If&lt;/strong&gt;&lt;/h3&gt;&lt;ul&gt;&lt;li&gt;&lt;p&gt;You can write code, not just glue scripts, and you use AI tools daily to amplify your output. You direct it well, understand what it produces, and know when it's wrong. If you're not AI-native, this isn't the right role.&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;You have worked across multiple cloud providers and understand their networking, IAM, and compute differences.&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;You can debug cloud networking, DNS/TLS, IAM, and host-level failures without a separate ops team.&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;You have experience with physical infrastructure, bare-metal, or GPU environments, not just managed cloud services.&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;You care about reliability as a product feature, not just infrastructure hygiene.&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;You communicate clearly and keep the team informed. When something breaks, people hear it from you first.&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;You stay constructive when requirements change. Uncertainty doesn't block you.&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;You think about the business, not just the code. You spot opportunities, seek out the actual workflow, and prototype solutions within constraints.&lt;/p&gt;&lt;/li&gt;&lt;/ul&gt;&lt;h3&gt;&lt;strong&gt;Useful Experience&lt;/strong&gt;&lt;/h3&gt;&lt;ul&gt;&lt;li&gt;&lt;p&gt;Building platform tooling or internal developer platforms.&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;Bare-metal provisioning, GPU fleet management, or physical infrastructure at scale.&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;Infrastructure for multi-tenant isolation workloads (VMs, containers, or sandboxes).&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;Low-latency or high-throughput infrastructure where milliseconds matter.&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;Cost modelling and unit-economics visibility for cloud compute.&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;Cross-cloud networking: VPCs, load balancers, DNS, CDN, and connectivity between providers.&lt;/p&gt;&lt;/li&gt;&lt;/ul&gt;&lt;h3&gt;&lt;strong&gt;What we Offer&lt;/strong&gt;&lt;/h3&gt;&lt;ul&gt;&lt;li&gt;&lt;p&gt;Competitive salary in the geographies we hire in, plus meaningful early-stage equity.&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;Shape the platform infrastructure of a high-potential startup from day one.&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;High autonomy, high trust. You get a problem and the space to solve it, not a task list.&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;A small team where everyone wears multiple hats, with direct access to founders.&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;Distributed across Singapore and Europe; self-sufficient, async-friendly.&lt;/p&gt;&lt;/li&gt;&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;To apply:&lt;/strong&gt; &lt;a href="https://weworkremotely.com/remote-jobs/catamaran-research-platform-engineer"&gt;https://weworkremotely.com/remote-jobs/catamaran-research-platform-engineer&lt;/a&gt;&lt;/p&gt;
+</description>
+      <pubDate>Wed, 13 May 2026 13:17:13 +0000</pubDate>
+      <expires_at>Fri, 12 Jun 2026 13:17:13 +0000</expires_at>
+      <guid>https://weworkremotely.com/remote-jobs/catamaran-research-platform-engineer</guid>
+      <link>https://weworkremotely.com/remote-jobs/catamaran-research-platform-engineer</link>
+    </item>
+  </channel>
+</rss>

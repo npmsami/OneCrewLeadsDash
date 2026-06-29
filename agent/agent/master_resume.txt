@@ -1,0 +1,32 @@
+MAHAD SALEEM
+Senior DevOps / Cloud / AI Infrastructure Engineer
+Lahore, Pakistan | Available immediately | Remote only (Contract or Full-time) | Regions: US, EMEA, MENA, APAC, Worldwide
+
+SUMMARY
+Senior engineer with 5+ years building and securing multi-cloud infrastructure (AWS, Azure, GCP). Deep hands-on work across Kubernetes, Terraform, CI/CD, DevSecOps and AI/LLM automation. Managed 4+ concurrent production environments and cut deployment time by 60% through pipeline optimization.
+
+EXPERIENCE
+Senior DevOps Engineer - NETSOL Technologies, Lahore (20XX - Present)  <-- FIX DATES
+- Migrated 5 applications from GitHub to Azure DevOps with zero downtime
+- Reduced deployment time by 60% through CI/CD pipeline optimization
+- Resolved critical production swap incidents via container memory management
+- Built AWS Secrets Manager rotation alerting with Slack notifications
+- Managed multi-cloud infrastructure across 4+ concurrent production environments (AWS, Azure, GCP)
+- Built end-to-end AI automation workflows using n8n and LLM APIs (OpenAI, Anthropic)
+
+[EARLIER ROLE - COMPANY, TITLE, DATES - FILL ME IN OR DELETE]
+- [achievement bullet]
+
+SKILLS
+Cloud: AWS, Azure, GCP | Containers: Docker, Kubernetes (on-prem + managed)
+IaC: Terraform, Ansible | CI/CD: GitHub Actions, Azure DevOps, Jenkins
+Monitoring: Grafana, Prometheus, Datadog | Security: DevSecOps, IAM, Secrets Management, Security Hub
+Web/Proxy: Nginx, Application Gateway | Scripting: Bash, Python
+Databases: MongoDB Atlas, PostgreSQL | AI/Automation: n8n, LLM APIs (OpenAI, Anthropic), Agentic Workflows, API Orchestration
+Other: FinOps, Multi-cloud Architecture, Network Security
+
+CERTIFICATIONS
+[FILL IN OR DELETE]
+
+EDUCATION
+[Degree, University, Year - FILL ME IN]

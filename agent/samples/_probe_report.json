@@ -1,0 +1,220 @@
+{
+  "remoteok": {
+    "status": 200,
+    "count": 100,
+    "firstElementKeys": [
+      "last_updated",
+      "legal"
+    ],
+    "sampleKeys": [
+      "slug",
+      "id",
+      "epoch",
+      "date",
+      "company",
+      "company_logo",
+      "position",
+      "tags",
+      "description",
+      "location",
+      "apply_url",
+      "salary_min",
+      "salary_max",
+      "logo",
+      "url"
+    ],
+    "sample": {
+      "position": "Auxiliar Administrativo Remoto",
+      "company": "Empresa Confidencial",
+      "location": "TaboÃ£o da Serra, ",
+      "date": "2026-06-11T11:33:28+00:00",
+      "url": "https://remoteOK.com/remote-jobs/remote-auxiliar-administrativo-remoto-empresa-confidencial-1133267",
+      "tags": [],
+      "salary_min": 0
+    }
+  },
+  "remotive": {
+    "status": 200,
+    "count": 28,
+    "sampleKeys": [
+      "id",
+      "url",
+      "title",
+      "company_name",
+      "company_logo",
+      "category",
+      "tags",
+      "job_type",
+      "publication_date",
+      "candidate_required_location",
+      "salary",
+      "description"
+    ],
+    "sample": {
+      "title": "iOS Developer",
+      "company_name": "nooro",
+      "candidate_required_location": "USA",
+      "publication_date": "2026-06-09T21:15:39",
+      "url": "https://remotive.com/remote-jobs/software-development/ios-developer-1956455",
+      "salary": "$60k-$130k (depending on experience)",
+      "job_type": "full_time"
+    }
+  },
+  "arbeitnow": {
+    "status": 200,
+    "count": 100,
+    "sampleKeys": [
+      "slug",
+      "company_name",
+      "title",
+      "description",
+      "remote",
+      "url",
+      "tags",
+      "job_types",
+      "location",
+      "created_at"
+    ],
+    "sample": {
+      "title": "IT Systemadministrator Infrastruktur & KI Consultant (m/w/d)",
+      "company_name": "Intercon Solutions GmbH",
+      "remote": false,
+      "location": "Berlin",
+      "created_at": 1781263846,
+      "url": "https://www.arbeitnow.com/jobs/companies/intercon-solutions-gmbh/it-systemadministrator-infrastruktur-ki-consultant-berlin-161960",
+      "tags": [
+        "System and Network Administration"
+      ],
+      "job_types": []
+    }
+  },
+  "jobicy": {
+    "status": 200,
+    "count": 5,
+    "topLevelKeys": [
+      "apiVersion",
+      "documentationUrl",
+      "friendlyNotice",
+      "jobCount",
+      "xRayCache",
+      "clientKey",
+      "lastUpdate",
+      "appliedFilters",
+      "jobs",
+      "success"
+    ],
+    "sampleKeys": [
+      "id",
+      "url",
+      "jobSlug",
+      "jobTitle",
+      "companyName",
+      "companyLogo",
+      "jobIndustry",
+      "jobType",
+      "jobGeo",
+      "jobLevel",
+      "jobExcerpt",
+      "jobDescription",
+      "pubDate",
+      "salaryMin",
+      "salaryMax",
+      "salaryCurrency",
+      "salaryPeriod"
+    ],
+    "sample": {
+      "jobTitle": "Principal DevOps Engineer (Poland Remote)",
+      "companyName": "Turnitin, LLC",
+      "jobGeo": "Poland",
+      "jobLevel": "Senior",
+      "pubDate": "2026-06-10T05:43:16+00:00",
+      "url": "https://jobicy.com/jobs/145949-principal-devops-engineer-poland-remote",
+      "jobType": [
+        "Full-Time"
+      ]
+    }
+  },
+  "himalayas": {
+    "status": 200,
+    "count": 20,
+    "topLevelKeys": [
+      "comments",
+      "updatedAt",
+      "offset",
+      "limit",
+      "totalCount",
+      "jobs"
+    ],
+    "sampleKeys": [
+      "title",
+      "excerpt",
+      "companyName",
+      "companySlug",
+      "companyLogo",
+      "employmentType",
+      "minSalary",
+      "maxSalary",
+      "salaryPeriod",
+      "seniority",
+      "currency",
+      "locationRestrictions",
+      "timezoneRestrictions",
+      "categories",
+      "parentCategories",
+      "description",
+      "pubDate",
+      "expiryDate",
+      "applicationLink",
+      "guid"
+    ],
+    "sample": {
+      "title": "IEP Specialist - Fully Remote | Upto $120/hr",
+      "excerpt": "About the jobMercor connects elite creative and technical talent with leading AI research labs.",
+      "companyName": "mercor",
+      "companySlug": "mercor",
+      "companyLogo": "https://cdn-images.himalayas.app/6jo5q9nua35jgtdfm41nq6b7ocqf",
+      "employmentType": "Contractor",
+      "minSalary": 80,
+      "maxSalary": 120,
+      "salaryPeriod": "hourly",
+      "seniority": [
+        "Mid-level"
+      ],
+      "currency": "USD",
+      "locationRestrictions": [
+        "Australia"
+      ],
+      "timezoneRestrictions": [
+        8,
+        8.75,
+        9,
+        9.5,
+        10,
+        10.5
+      ],
+      "categories": [
+        "IEP-Evaluator",
+        "Special-Education-Evaluator",
+        "AI-Content-Evaluator",
+        "Education-Quality-Assurance",
+        "Contract-Evaluator",
+        "IEP-Specialist",
+        "Remote-Special-Needs-Education-Specialist",
+        "IEP-Coordinator",
+        "Remote-Educational-Support-Specialist",
+        "Remote-Disability-Specialist"
+      ],
+      "parentCategories": [],
+      "description": "<h3>About the job</h3><p><strong>Mercor</strong> connects elite creative and technical talent with leading AI research l",
+      "pubDate": 1781267752,
+      "expiryDate": 1786451750,
+      "applicationLink": "https://himalayas.app/companies/mercor/jobs/iep-specialist-fully-remote-upto-120-hr",
+      "guid": "https://himalayas.app/companies/mercor/jobs/iep-specialist-fully-remote-upto-120-hr"
+    }
+  },
+  "wwr_rss": {
+    "status": 200,
+    "rssItems": 26,
+    "sampleTitle": "<title>Revvity: Principal DevOps Engineer – Build, Release and Cloud Automation</title>"
+  }
+}

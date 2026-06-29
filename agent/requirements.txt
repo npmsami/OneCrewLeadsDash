@@ -1,0 +1,8 @@
+# Job Application Agent — Python port (replaces the n8n workflow)
+requests>=2.31
+feedparser>=6.0          # WeWorkRemotely RSS
+python-dateutil>=2.9     # lenient posted_at parsing (Date.parse equivalent)
+python-dotenv>=1.0       # local .env loading
+supabase>=2.4            # store (replaces Google Sheets)
+# Gmail send + inbox read use plain requests against the REST API (agent/google.py),
+# so no google-api-python-client / google-auth needed.

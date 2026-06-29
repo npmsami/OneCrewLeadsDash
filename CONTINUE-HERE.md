@@ -41,14 +41,29 @@ The agent writes leads to Supabase; this dashboard reads them + holds the Candid
 - OAuth flow: `/api/google/auth` + `/api/google/callback`. Refresh token in **locked `gmail_auth` table** (RLS deny-all; service-role only). Settings page shows Connect/Reconnect + status.
 - Env needed (dashboard + Vercel): `GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET` (web client; redirect URIs registered: team-scoped vercel `/api/google/callback` + localhost). Scopes gmail.send + gmail.readonly + email.
 - User connects on the live site with the Workspace sending address.
+- GOTCHA: "Google OAuth isn't configured" = GOOGLE_CLIENT_ID/SECRET not on the live deployment → add in Vercel (Production) + REDEPLOY.
 
-## ▶ NEXT (build order)
-1. (DONE) dashboard, password gate, deploy fix, templates, **email quality locked**, follow-up engine, **Gmail connect flow**.
-2. **Agent send layer** `agent/google.py`: read refresh token from `gmail_auth` (service role) + `GOOGLE_CLIENT_ID/SECRET` → mint access token → Gmail API send (attach resume from Drive link) + read inbox for follow-up reply detection. Wire into pipeline (gated by settings.send_emails) + followup.py.
-3. **Batch send throttle**: ~40 emails over ~20 min (≈30s spacing).
-4. **DKIM/DMARC checklist** for the Workspace domain (deliverability).
-5. **Expand discovery** (JSearch multi-query) + raise MAX_JOBS_PER_RUN + **GitHub Actions cron**. Solve Hunter 25/mo cap.
-6. Flip go-live (settings.send_emails) when ready.
+## Resume = uploaded file (NOT Drive link)
+- Private Supabase Storage bucket **`resumes`** (5MB, PDF only). Dashboard Settings has an upload (`ResumeUpload` + `uploadResumeAction`); stores object at path `resume.pdf`, sets `settings.resume_url`=storage path + `resume_filename`=original name. Agent downloads via service role from bucket to attach. Storage round-trip verified.
+
+## ▶ SESSION UPDATE 2026-06-30 (agent side — big progress)
+Architecture reshaped + 3 steps shipped. Agent lives at `../job-application-agent/agent/` (still a SEPARATE local folder, NOT yet in git — will become a **monorepo subfolder** of this repo in step 4).
+
+**New run model (user's design):**
+- **Scrape = MANUAL dashboard button**, server-enforced **24h cooldown lock** (store `last_scrape_at`, check in `/api/scrape` before dispatch). Click → GitHub Actions `workflow_dispatch`. One scrape/day.
+- **Follow-up = AUTO cron**, daily **12am Pakistan = `0 19 * * *` UTC** (PKT=UTC+5, no DST). Runs followup.py: inbox reply check → send follow-ups → status updates (dashboard reads Supabase).
+- Trigger mechanism = **GitHub Actions** (free, no server). Dashboard button → Next API route (holds GitHub token) → GitHub dispatch API.
+
+**DONE this session (all verified):**
+1. ✅ **Hunter daily cap** — Starter=500/mo → `HUNTER_DAILY_CAP=15` (~450/mo). New Supabase `usage` table (day pk, hunter_calls; RLS-locked). pipeline computes `budget=15−spent_today`, enriches fresh within budget, then **drains backlog** of scored-but-unenriched rows (best score first) so a big free pile flows out ~15/day across the month. Discovery+scoring UNCAPPED. `MAX_JOBS_PER_RUN` 10→30. (smoke_hunter_cap.py)
+2. ✅ **Gmail layer `agent/google.py`** — plain requests + stdlib email (no google libs). `access_token()` mints from gmail_auth refresh token + GOOGLE_CLIENT_ID/SECRET; `send_email()` attaches resume from `resumes` bucket; `fetch_inbox()`→[{sender,ts}] for reply detection; `is_ready()` guard. **LIVE-verified**: connected as **growth@onecrewtech.com**, inbox read + real test send both worked. Creds now in agent `.env` (client_id 428003591947-…, project onecrew-500802). (smoke_gmail_offline.py / smoke_gmail_live.py)
+3. ✅ **Wired into pipeline + followup** — pipeline `_send_cold_email` (→status `applied`; fail→`send_error`), followup `_send_followup` (no resume re-attach; uses real inbox). Both gated `sending = settings.send_emails AND google.is_ready`. New knob `SEND_THROTTLE_SECONDS=30`. **Gate poised at DRY-RUN** (gmail ready=True, send_emails=False). Flipping `settings.send_emails` is the ONLY remaining go-live switch.
+
+## ▶ NEXT (resume here)
+4. **GitHub Actions + monorepo** (NOT STARTED): move agent → subfolder of this repo + `.vercelignore` (so Vercel ignores Python); write `scrape.yml` (`workflow_dispatch`) + `followup.yml` (`0 19 * * *` + dispatch); add repo Actions secrets (OpenAI, Hunter, Supabase service-role, GOOGLE_CLIENT_ID/SECRET, JSearch, etc.). Was about to write the two workflow files + a SECRETS.md checklist for review BEFORE restructuring/pushing.
+5. **Dashboard Scrape button** (NOT STARTED): `/api/scrape` route (holds GitHub token, checks 24h lock via `last_scrape_at`, dispatches scrape.yml) + button with countdown + "Hunter today: X/15" indicator. Add **`send_error` chip** to `src/lib/status.ts` (new status value the agent now emits).
+6. **Before go-live:** upload resume PDF in dashboard Settings (`resumes` bucket is EMPTY → emails would send unattached). Then flip settings.send_emails.
+7. Later: DKIM/DMARC checklist for onecrewtech.com; JSearch multi-query expansion.
 
 ## Working style
 Incremental — ONE step per turn, check in between. Dry-run footing (send_emails=false) until the user flips go-live.
