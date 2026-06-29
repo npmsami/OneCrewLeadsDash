@@ -42,6 +42,10 @@ jobs:
           cache-dependency-path: agent/requirements.txt
       - name: Install deps
         run: pip install -r requirements.txt
+      - name: DEBUG url shape
+        run: python -c "import os,supabase;v=os.environ.get('SUPABASE_URL','');print('supabase',supabase.__version__);print('LEN',len(v),'STARTS_HTTPS',v.startswith('https://'),'FIRST_ORD',ord(v[0]) if v else None,'LAST_ORD',ord(v[-1]) if v else None)"
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
       - name: Run pipeline (discover -> score -> enrich -> draft/send)
         run: python -m agent.pipeline
         env:
