@@ -20,6 +20,7 @@ const META: Record<string, StatusMeta> = {
   geo_blocked:  { label: "Geo blocked",  chip: "text-faint bg-white/5 ring-white/10",     dot: "bg-faint" },
   low_match:    { label: "Low match",    chip: "text-faint bg-white/5 ring-white/10",     dot: "bg-faint" },
   score_error:  { label: "Score error",  chip: "text-danger bg-danger/10 ring-danger/25", dot: "bg-danger" },
+  send_error:   { label: "Send error",   chip: "text-danger bg-danger/10 ring-danger/25", dot: "bg-danger" },
 };
 
 export function statusMeta(status: string): StatusMeta {
