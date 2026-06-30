@@ -16,7 +16,7 @@ from datetime import datetime, timezone
 from typing import Any
 
 from ..config import get_config
-from .. import google
+from .. import google, unsub
 from ..store import get_gmail_auth
 from . import email_writer, scrape, store
 
@@ -43,19 +43,11 @@ def run() -> dict[str, int]:
         len(leads), cap, sending, settings.get("send_emails"), gmail_ready,
     )
 
-    # One-click unsubscribe header (bulk-deliverability requirement): mailto to
-    # the sending inbox + the hosted https opt-out. Built once per run.
-    send_headers: dict[str, str] | None = None
+    # Shared bits for the per-recipient unsubscribe (mailto + signed https link).
+    sender_addr = app_url = ""
     if sending:
         sender_addr = str(get_gmail_auth(cfg).get("gmail_address") or settings.get("sender_email") or "").strip()
-        unsub_url = str(settings.get("unsubscribe_url") or "").strip()
-        parts = []
-        if sender_addr:
-            parts.append(f"<mailto:{sender_addr}?subject=unsubscribe>")
-        if unsub_url:
-            parts.append(f"<{unsub_url}>")
-        if parts:
-            send_headers = {"List-Unsubscribe": ", ".join(parts)}
+    app_url = str(settings.get("app_url") or "").strip()
 
     for lead in leads:
         email = str(lead.get("email") or "").strip()
@@ -74,7 +66,9 @@ def run() -> dict[str, int]:
             continue
 
         ai = email_writer.analyze(cfg, lead, site)
-        built = email_writer.build_email(settings, lead, site, ai)
+        # Per-recipient signed unsubscribe link (body footer + List-Unsubscribe).
+        unsub_link = unsub.unsubscribe_url(cfg, app_url, email)
+        built = email_writer.build_email(settings, lead, site, ai, unsubscribe_url=unsub_link or None)
 
         fields: dict[str, Any] = {
             "subject": built["subject"],
@@ -86,8 +80,19 @@ def run() -> dict[str, int]:
         }
 
         if sending:
+            # List-Unsubscribe: signed https one-click (preferred) + mailto fallback.
+            parts = []
+            if unsub_link:
+                parts.append(f"<{unsub_link}>")
+            if sender_addr:
+                parts.append(f"<mailto:{sender_addr}?subject=unsubscribe>")
+            headers: dict[str, str] | None = None
+            if parts:
+                headers = {"List-Unsubscribe": ", ".join(parts)}
+                if unsub_link:
+                    headers["List-Unsubscribe-Post"] = "List-Unsubscribe=One-Click"
             try:
-                google.send_html_email(cfg, built["to"], built["subject"], built["html"], headers=send_headers)
+                google.send_html_email(cfg, built["to"], built["subject"], built["html"], headers=headers)
                 fields.update(status="sent", sent_at=_now_iso(), error="")
                 counts["sent"] += 1
                 log.info("  %s -> sent", email)

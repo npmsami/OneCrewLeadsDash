@@ -9,6 +9,8 @@ export async function proxy(req: NextRequest) {
   if (!password) return NextResponse.next();
 
   if (req.nextUrl.pathname === "/login") return NextResponse.next();
+  // Public endpoint — recipients clicking unsubscribe aren't logged in.
+  if (req.nextUrl.pathname.startsWith("/api/unsubscribe")) return NextResponse.next();
 
   const cookie = req.cookies.get(AUTH_COOKIE)?.value;
   if (cookie && cookie === (await tokenFor(password))) return NextResponse.next();

@@ -37,10 +37,20 @@ export async function uploadLeadsAction(
     };
   }
 
+  const admin = supabaseAdmin();
+
+  // Never re-queue an address that has unsubscribed — suppression beats re-import.
+  const { data: sup } = await admin.from("audit_suppressions").select("email");
+  const suppressed = new Set((sup ?? []).map((r: { email: string }) => r.email));
+  const kept = parsed.rows.filter((r) => !suppressed.has(r.email));
+  const suppressedCount = parsed.rows.length - kept.length;
+
   // New leads land as 'pending'; re-uploading an existing email leaves its row
   // (and any prior status) untouched so we never re-queue an already-sent lead.
-  const rows = parsed.rows.map((r) => ({ ...r, status: "pending" as const }));
-  const admin = supabaseAdmin();
+  const rows = kept.map((r) => ({ ...r, status: "pending" as const }));
+  if (rows.length === 0) {
+    return { ok: false, message: `All ${parsed.rows.length} rows are on the unsubscribe list — nothing imported.` };
+  }
   try {
     for (let i = 0; i < rows.length; i += CHUNK) {
       const slice = rows.slice(i, i + CHUNK);
@@ -55,7 +65,11 @@ export async function uploadLeadsAction(
 
   revalidatePath("/website-audit");
   revalidatePath("/website-audit/leads");
-  const extra = parsed.skipped ? ` (${parsed.skipped} skipped — no email)` : "";
+  const notes = [
+    parsed.skipped ? `${parsed.skipped} skipped — no email` : "",
+    suppressedCount ? `${suppressedCount} on unsubscribe list` : "",
+  ].filter(Boolean).join(", ");
+  const extra = notes ? ` (${notes})` : "";
   return {
     ok: true,
     message: `Imported ${rows.length} lead${rows.length === 1 ? "" : "s"}${extra}. New ones are queued as pending.`,

@@ -26,7 +26,7 @@ export default async function AuditLeadsPage({
   const { data } = await query.order("updated_at", { ascending: false }).limit(ROW_LIMIT);
   const leads = (data as AuditLead[] | undefined) ?? [];
 
-  const tabs = ["all", "pending", "dry_run", "sent", "skipped", "send_error"];
+  const tabs = ["all", "pending", "dry_run", "sent", "skipped", "send_error", "unsubscribed"];
 
   return (
     <div className="mx-auto max-w-6xl px-6 py-10 md:px-10">

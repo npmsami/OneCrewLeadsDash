@@ -231,9 +231,13 @@ ${sign_img}
 
 
 def build_email(
-    settings: dict[str, Any], lead: dict[str, Any], site: dict[str, Any], ai: dict[str, Any]
+    settings: dict[str, Any], lead: dict[str, Any], site: dict[str, Any], ai: dict[str, Any],
+    unsubscribe_url: str | None = None,
 ) -> dict[str, Any]:
-    """Assemble the final personalized HTML email from settings + lead + AI output."""
+    """Assemble the final personalized HTML email from settings + lead + AI output.
+
+    `unsubscribe_url`, when given, overrides the footer opt-out link with a
+    per-recipient signed URL (falls back to the static settings value)."""
     s = lambda k: str(settings.get(k) or "").strip()  # noqa: E731
     g = lambda k: str(lead.get(k) or "").strip()       # noqa: E731
 
@@ -324,7 +328,7 @@ def build_email(
         website_url_agency=scrape.normalize_url(agency_site) or "#",
         website_display=scrape.domain_of(agency_site) or agency_site,
         sender_address=s("sender_address"),
-        unsubscribe_url=s("unsubscribe_url") or "#",
+        unsubscribe_url=(unsubscribe_url or s("unsubscribe_url") or "#"),
     )
 
     return {

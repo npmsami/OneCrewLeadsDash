@@ -79,8 +79,19 @@ create table if not exists public.audit_settings (
   daily_send_cap  smallint not null default 45,   -- leads processed per Run (batch size)
   send_emails     boolean  not null default false,
   last_run_at     timestamptz,           -- run-lock: blocks overlapping outreach batches
+  app_url         text,                  -- deployed dashboard URL, for unsubscribe links
   updated_at      timestamptz not null default now()
 );
+
+-- Permanent opt-out list. Source of truth for "never email this address again",
+-- independent of whether a lead row exists (survives re-imports). Written by the
+-- /api/unsubscribe endpoint (service role); nothing public reads it.
+create table if not exists public.audit_suppressions (
+  email      text primary key,
+  source     text,                       -- unsubscribe | manual
+  created_at timestamptz not null default now()
+);
+alter table public.audit_suppressions enable row level security;
 
 drop trigger if exists trg_audit_settings_updated_at on public.audit_settings;
 create trigger trg_audit_settings_updated_at

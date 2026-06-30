@@ -61,6 +61,7 @@ export interface AuditSettings {
   daily_send_cap: number;
   send_emails: boolean;
   last_run_at: string | null;
+  app_url: string | null;
 }
 
 export interface AuditRunState {
@@ -75,6 +76,7 @@ export const AUDIT_STATUS_META: Record<string, { label: string; cls: string }> =
   sent: { label: "Sent", cls: "bg-ok/10 text-ok ring-ok/25" },
   skipped: { label: "Skipped", cls: "bg-white/5 text-faint ring-border-soft" },
   send_error: { label: "Send error", cls: "bg-danger/10 text-danger ring-danger/25" },
+  unsubscribed: { label: "Unsubscribed", cls: "bg-white/5 text-faint ring-border-soft" },
 };
 
 // ---------------------------------------------------------------------------

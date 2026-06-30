@@ -87,6 +87,13 @@ export function AuditSettingsForm({ settings }: { settings: AuditSettings | null
           <Field label="Logo image URL (hosted PNG)" name="logo_url" defaultValue={s?.logo_url} hint="Must be a public raster URL — SVG won't render in email." />
           <Field label="Hero banner URL (hosted image)" name="hero_url" defaultValue={s?.hero_url} hint="Use a direct-image host (e.g. dl.dropboxusercontent.com)." />
         </div>
+        <Field
+          label="Dashboard URL (for one-click unsubscribe links)"
+          name="app_url"
+          defaultValue={s?.app_url}
+          placeholder="https://your-dashboard.vercel.app"
+          hint="Your deployed dashboard's public URL. Powers the signed unsubscribe link in every email — set this before going live."
+        />
       </div>
 
       <div className="card space-y-4 p-5">

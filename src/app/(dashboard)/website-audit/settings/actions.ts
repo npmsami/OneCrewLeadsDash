@@ -32,6 +32,7 @@ export async function updateAuditSettingsAction(
     website_url: str("website_url"),
     logo_url: str("logo_url"),
     hero_url: str("hero_url"),
+    app_url: str("app_url"),
     daily_send_cap: Number.isFinite(cap) && cap > 0 ? Math.min(cap, 200) : 45,
     send_emails: formData.get("send_emails") === "on",
   };
@@ -43,6 +44,7 @@ export async function updateAuditSettingsAction(
     ["Calendar link", payload.calendar_link],
     ["Website URL", payload.website_url],
     ["Unsubscribe URL", payload.unsubscribe_url],
+    ["Dashboard URL", payload.app_url],
   ] as const) {
     if (v && !URL_RE.test(v)) return { ok: false, message: `${label} must be a full URL (https://…).` };
   }
