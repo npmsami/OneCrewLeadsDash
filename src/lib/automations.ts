@@ -35,7 +35,7 @@ export const AUTOMATIONS: Automation[] = [
     name: "Website Audit Outreach",
     tagline: "Personalized HTML cold emails",
     basePath: "/website-audit",
-    available: false,
+    available: true,
     nav: [
       { href: "/website-audit", label: "Overview" },
       { href: "/website-audit/leads", label: "Leads" },

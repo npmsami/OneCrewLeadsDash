@@ -76,8 +76,9 @@ create table if not exists public.audit_settings (
   hero_url        text,                  -- banner image URL
   logo_url        text,                  -- white logo for dark header (optional)
   sign_img_url    text,                  -- signature headshot (optional)
-  daily_send_cap  smallint not null default 40,
+  daily_send_cap  smallint not null default 45,   -- leads processed per Run (batch size)
   send_emails     boolean  not null default false,
+  last_run_at     timestamptz,           -- run-lock: blocks overlapping outreach batches
   updated_at      timestamptz not null default now()
 );
 
