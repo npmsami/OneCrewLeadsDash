@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState, useTransition } from "react";
-import { triggerScrapeAction } from "@/app/(dashboard)/scrape-action";
+import { triggerScrapeAction } from "@/app/(dashboard)/job-applications/scrape-action";
 import type { ScrapeState } from "@/lib/scrape";
 
 function fmt(ms: number): string {

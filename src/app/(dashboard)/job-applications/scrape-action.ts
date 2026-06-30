@@ -55,7 +55,7 @@ export async function triggerScrapeAction(): Promise<ScrapeState> {
     .from("run_state")
     .upsert({ id: "singleton", last_scrape_at: new Date(now).toISOString() }, { onConflict: "id" });
 
-  revalidatePath("/");
+  revalidatePath("/job-applications");
   return {
     ok: true,
     message: "Scrape started — leads will appear here in a few minutes.",

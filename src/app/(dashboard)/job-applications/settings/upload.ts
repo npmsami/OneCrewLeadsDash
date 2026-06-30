@@ -41,6 +41,6 @@ export async function uploadResumeAction(_prev: UploadState, formData: FormData)
     .eq("id", "singleton");
   if (dbErr) return { ok: false, message: dbErr.message };
 
-  revalidatePath("/settings");
+  revalidatePath("/job-applications/settings");
   return { ok: true, message: `Uploaded ${file.name}.` };
 }

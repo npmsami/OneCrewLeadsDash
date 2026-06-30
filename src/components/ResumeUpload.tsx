@@ -1,7 +1,7 @@
 "use client";
 
 import { useActionState } from "react";
-import { uploadResumeAction, type UploadState } from "@/app/(dashboard)/settings/upload";
+import { uploadResumeAction, type UploadState } from "@/app/(dashboard)/job-applications/settings/upload";
 
 const initial: UploadState = { ok: false, message: "" };
 

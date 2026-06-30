@@ -41,7 +41,7 @@ export async function updateSettingsAction(
     return { ok: false, message: e instanceof Error ? e.message : "Failed to save settings." };
   }
 
-  revalidatePath("/settings");
-  revalidatePath("/");
+  revalidatePath("/job-applications/settings");
+  revalidatePath("/job-applications");
   return { ok: true, message: "Candidate Signature saved." };
 }
