@@ -17,6 +17,7 @@ from typing import Any
 
 from ..config import get_config
 from .. import google
+from ..store import get_gmail_auth
 from . import email_writer, scrape, store
 
 log = logging.getLogger(__name__)
@@ -41,6 +42,20 @@ def run() -> dict[str, int]:
         "audit run: %d pending lead(s), cap=%d, send=%s (settings.send_emails=%s, gmail_ready=%s)",
         len(leads), cap, sending, settings.get("send_emails"), gmail_ready,
     )
+
+    # One-click unsubscribe header (bulk-deliverability requirement): mailto to
+    # the sending inbox + the hosted https opt-out. Built once per run.
+    send_headers: dict[str, str] | None = None
+    if sending:
+        sender_addr = str(get_gmail_auth(cfg).get("gmail_address") or settings.get("sender_email") or "").strip()
+        unsub_url = str(settings.get("unsubscribe_url") or "").strip()
+        parts = []
+        if sender_addr:
+            parts.append(f"<mailto:{sender_addr}?subject=unsubscribe>")
+        if unsub_url:
+            parts.append(f"<{unsub_url}>")
+        if parts:
+            send_headers = {"List-Unsubscribe": ", ".join(parts)}
 
     for lead in leads:
         email = str(lead.get("email") or "").strip()
@@ -72,7 +87,7 @@ def run() -> dict[str, int]:
 
         if sending:
             try:
-                google.send_html_email(cfg, built["to"], built["subject"], built["html"])
+                google.send_html_email(cfg, built["to"], built["subject"], built["html"], headers=send_headers)
                 fields.update(status="sent", sent_at=_now_iso(), error="")
                 counts["sent"] += 1
                 log.info("  %s -> sent", email)

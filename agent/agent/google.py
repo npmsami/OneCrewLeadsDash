@@ -115,22 +115,29 @@ def send_email(cfg: Config, to: str, subject: str, body: str,
 
 
 def build_html_raw(to: str, subject: str, html: str, text_fallback: str = "",
-                   from_addr: str = "") -> str:
-    """Assemble a multipart/alternative email (plain-text + HTML) -> base64url raw."""
+                   from_addr: str = "", headers: dict[str, str] | None = None) -> str:
+    """Assemble a multipart/alternative email (plain-text + HTML) -> base64url raw.
+
+    `headers` adds extra top-level headers (e.g. List-Unsubscribe) — important
+    for bulk deliverability."""
     msg = EmailMessage()
     msg["To"] = to
     msg["Subject"] = subject
     if from_addr:
         msg["From"] = from_addr
+    for k, v in (headers or {}).items():
+        if v:
+            msg[k] = v
     msg.set_content(text_fallback or "This email is best viewed in an HTML-capable client.")
     msg.add_alternative(html, subtype="html")
     return base64.urlsafe_b64encode(msg.as_bytes()).decode()
 
 
-def send_html_email(cfg: Config, to: str, subject: str, html: str, text_fallback: str = "") -> str:
+def send_html_email(cfg: Config, to: str, subject: str, html: str, text_fallback: str = "",
+                    headers: dict[str, str] | None = None) -> str:
     """Send one HTML email via Gmail (used by the website-audit automation)."""
     _, from_addr = access_token(cfg)
-    raw = build_html_raw(to, subject, html, text_fallback, from_addr)
+    raw = build_html_raw(to, subject, html, text_fallback, from_addr, headers)
     resp = requests.post(f"{_GMAIL_API}/messages/send", headers=_headers(cfg),
                          json={"raw": raw}, timeout=_TIMEOUT)
     if resp.status_code != 200:
