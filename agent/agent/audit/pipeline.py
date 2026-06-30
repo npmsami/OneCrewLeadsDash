@@ -9,6 +9,7 @@ drafted to status 'dry_run' with its email_html stored, nothing sent.
 from __future__ import annotations
 
 import logging
+import random
 import time
 from collections import Counter
 from datetime import datetime, timezone
@@ -79,7 +80,11 @@ def run() -> dict[str, int]:
                 fields.update(status="send_error", error=str(exc)[:300])
                 counts["send_error"] += 1
                 log.warning("  %s -> send_error: %s", email, exc)
-            time.sleep(cfg.send_throttle_seconds)
+            # Human-like spacing: fixed throttle + random jitter (anti-spam).
+            jitter = random.uniform(0, cfg.send_throttle_jitter_seconds) if cfg.send_throttle_jitter_seconds > 0 else 0
+            delay = cfg.send_throttle_seconds + jitter
+            log.info("  …waiting %.0fs before next send", delay)
+            time.sleep(delay)
         else:
             fields["status"] = "dry_run"
             counts["dry_run"] += 1

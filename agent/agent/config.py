@@ -78,6 +78,9 @@ class Config:
     hunter_daily_cap: int = field(default_factory=lambda: _env_int("HUNTER_DAILY_CAP", 15))
     # Seconds to wait between real sends (deliverability — spaced, not bursty).
     send_throttle_seconds: int = field(default_factory=lambda: _env_int("SEND_THROTTLE_SECONDS", 30))
+    # Extra random jitter (0..N seconds) added on top of the throttle between
+    # sends, so the cadence looks human instead of a fixed-interval bot. 0 = off.
+    send_throttle_jitter_seconds: int = field(default_factory=lambda: _env_int("SEND_THROTTLE_JITTER_SECONDS", 0))
 
     @property
     def master_resume(self) -> str:
