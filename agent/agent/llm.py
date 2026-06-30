@@ -35,15 +35,29 @@ def _throttle() -> None:
         _last_call = time.monotonic()
 
 
-def chat(prompt: str, cfg: Config) -> dict[str, Any]:
+def chat(
+    prompt: str,
+    cfg: Config,
+    *,
+    temperature: float = 0,
+    system: str | None = None,
+) -> dict[str, Any]:
     """Call OpenAI chat-completions. Returns the parsed response JSON.
 
     On a transport/HTTP error returns {"error": {"message": ...}} so callers can
     record `score_error` exactly like the n8n Parse nodes did (onError=continue).
+
+    `temperature` defaults to 0 (deterministic scoring); the website-audit writer
+    passes a higher value for varied copy. `system`, when given, is sent as a
+    leading system message (the audit writer uses a long persona prompt).
     """
-    body: dict[str, Any] = {"model": cfg.llm_model, "messages": [{"role": "user", "content": prompt}]}
+    messages: list[dict[str, str]] = []
+    if system:
+        messages.append({"role": "system", "content": system})
+    messages.append({"role": "user", "content": prompt})
+    body: dict[str, Any] = {"model": cfg.llm_model, "messages": messages}
     if not cfg.llm_omit_temperature:
-        body["temperature"] = 0
+        body["temperature"] = temperature
 
     headers = {
         "Content-Type": "application/json",

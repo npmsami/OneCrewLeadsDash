@@ -114,6 +114,30 @@ def send_email(cfg: Config, to: str, subject: str, body: str,
     return str(resp.json().get("id") or "")
 
 
+def build_html_raw(to: str, subject: str, html: str, text_fallback: str = "",
+                   from_addr: str = "") -> str:
+    """Assemble a multipart/alternative email (plain-text + HTML) -> base64url raw."""
+    msg = EmailMessage()
+    msg["To"] = to
+    msg["Subject"] = subject
+    if from_addr:
+        msg["From"] = from_addr
+    msg.set_content(text_fallback or "This email is best viewed in an HTML-capable client.")
+    msg.add_alternative(html, subtype="html")
+    return base64.urlsafe_b64encode(msg.as_bytes()).decode()
+
+
+def send_html_email(cfg: Config, to: str, subject: str, html: str, text_fallback: str = "") -> str:
+    """Send one HTML email via Gmail (used by the website-audit automation)."""
+    _, from_addr = access_token(cfg)
+    raw = build_html_raw(to, subject, html, text_fallback, from_addr)
+    resp = requests.post(f"{_GMAIL_API}/messages/send", headers=_headers(cfg),
+                         json={"raw": raw}, timeout=_TIMEOUT)
+    if resp.status_code != 200:
+        raise GmailNotReady(f"send failed ({resp.status_code}): {resp.text[:300]}")
+    return str(resp.json().get("id") or "")
+
+
 # ---------------------------------------------------------------------------
 # Inbox read (for reply detection)
 # ---------------------------------------------------------------------------

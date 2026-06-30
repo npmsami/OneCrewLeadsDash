@@ -12,3 +12,4 @@ __pycache__/
 # local artifacts
 output/
 *.pdf
+scripts/_audit_preview.html
