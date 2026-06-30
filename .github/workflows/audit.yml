@@ -1,0 +1,47 @@
+name: Website audit outreach (manual)
+
+# Triggered by the dashboard "Run outreach" button (via the GitHub dispatch API)
+# or by hand from the Actions tab. No schedule — outreach runs on demand after
+# you upload a batch of leads. Send is gated by audit_settings.send_emails, so
+# until that's flipped on, a run just drafts every lead to status 'dry_run'.
+on:
+  workflow_dispatch:
+    inputs:
+      reason:
+        description: Optional note shown in the run log
+        required: false
+        default: manual
+
+permissions:
+  contents: read
+
+# Non-secret tunables — edit here, takes effect on the next run (no redeploy).
+# The per-run batch size lives in audit_settings.daily_send_cap (dashboard).
+env:
+  LLM_MODEL: gpt-4o-mini
+  SEND_THROTTLE_SECONDS: "30"
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    defaults:
+      run:
+        working-directory: agent
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: agent/requirements.txt
+      - name: Install deps
+        run: pip install -r requirements.txt
+      - name: Run audit outreach (fetch -> AI -> build HTML -> draft/send)
+        run: python -m agent.audit.pipeline
+        env:
+          LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
+          GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
