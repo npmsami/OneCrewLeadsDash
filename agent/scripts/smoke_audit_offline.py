@@ -64,6 +64,7 @@ lead = {"email": "owner@brightsmile.com", "first_name": "Dana", "company": "Brig
 ai = {
     "business_name": "Bright Smile Dental",
     "website_summary": "a family and cosmetic dental clinic in Austin",
+    "pain_point": "Every evening patients searching for a dentist hit your site, find no way to book, and call the practice down the street instead.",
     "gaps": ["No online booking", "Slow lead follow-up"],
     "subject_line": "Booking ideas for Bright Smile",
     "growth_section_html": '<p style="margin:0 0 14px;">A quick look shows opportunity.</p>'
@@ -78,7 +79,7 @@ check("no leftover ${ placeholders", "${" not in html)
 check("hero rendered (hero_url set)", "hero.jpg" in html)
 check("greet uses first name", "Hi Dana," in html)
 check("business name in body", "Bright Smile Dental" in html)
-check("summary clause present", "family and cosmetic dental clinic in Austin" in html)
+check("pain-point opens the body", "call the practice down the street" in html)
 check("AI growth section used (not fallback)", "fewer phone calls" in html)
 check("subject in <title>", "<title>Booking ideas for Bright Smile</title>" in html)
 

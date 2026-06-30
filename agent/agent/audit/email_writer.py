@@ -45,13 +45,20 @@ SYSTEM_PROMPT = (
     "what they actually sell or do. No generic filler. - Be credible and "
     "consultative, never hypey. No buzzword soup, no invented statistics. - Only "
     "infer from the provided content. Never state facts you cannot support. - The "
-    "reader is a busy owner/executive. Lead with their benefit and keep it tight.  "
+    "reader is a busy owner/executive. OPEN with the specific pain it is costing "
+    "them, then the benefit, and keep it tight.  "
     "Respond with ONLY a valid JSON object (no markdown, no code fences, no "
     'commentary), in exactly this shape: {   "business_name": "the company name '
     '(infer from the site; fall back to the domain)",   "industry": "short label, '
     'e.g. dental clinic, law firm, fitness franchise",   "website_summary": "one '
     'plain sentence describing what they do",   "gaps": ["2 to 4 short, specific '
-    'gaps or opportunities you noticed"],   "subject_line": "a personalized, '
+    'gaps or opportunities you noticed"],   "pain_point": "one or two sentences '
+    "that OPEN the email by naming the single most concrete, costly problem or "
+    "missed opportunity THIS business likely faces, grounded in their site (e.g. "
+    "lost after-hours leads, slow enquiry response, manual booking, low "
+    "conversion). Lead with their pain and what it is costing them — no greeting, "
+    'no generic opener, not about us; make it feel specific to them.",   '
+    '"subject_line": "a personalized, '
     "curiosity-driven subject under 55 characters; no ALL CAPS, no emojis, no "
     'clickbait",   "growth_section_html": "an HTML fragment for the personalized '
     'section of the email" }  Requirements for "growth_section_html": - No <html>, '
@@ -192,8 +199,8 @@ _HTML = Template(
 ${hero_block}
 <tr><td style="padding:36px 36px 6px 36px;">
 <p style="margin:0 0 16px;color:#0A0A0B;font-size:16px;line-height:1.7;">Hi ${greet_name},</p>
-<p style="margin:0 0 16px;color:#3F3F46;font-size:15px;line-height:1.7;">I came across <a href="${website_url}" style="color:#0A0A0B;text-decoration:underline;">${domain_display}</a> and spent a few minutes really looking at what you do${summary_clause}</p>
-<p style="margin:0;color:#3F3F46;font-size:15px;line-height:1.7;">We're ${agency_name} — we build web &amp; mobile apps, AI agents and automation, end to end. After looking at your site, here's where I think we could help:</p>
+<p style="margin:0 0 16px;color:#3F3F46;font-size:15px;line-height:1.7;">${pain_point}</p>
+<p style="margin:0;color:#3F3F46;font-size:15px;line-height:1.7;">We're ${agency_name} — we build web &amp; mobile apps, AI agents and automation, end to end, and that's exactly the kind of gap we close. After a closer look at <a href="${website_url}" style="color:#0A0A0B;text-decoration:underline;">${domain_display}</a>, here's where we could help:</p>
 </td></tr>
 <tr><td style="padding:18px 36px 8px 36px;">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#FAFAFA;border:1px solid #E4E4E7;border-radius:12px;">
@@ -269,7 +276,15 @@ def build_email(
     if not growth or len(growth) < 30 or not _is_balanced(growth):
         growth = _fallback_growth()
 
-    summary_clause = f" — {re.sub(r'.$', '', summary) if summary.endswith('.') else summary}." if summary else "."
+    # Pain-led opening line. Falls back to a generic-but-pain-framed line if the
+    # AI returned nothing usable.
+    pain_point = str(ai.get("pain_point") or "").strip()
+    if len(pain_point) < 15:
+        pain_point = (
+            f"A lot of {business_name}'s potential customers land on the site after "
+            "hours or fire off a quick enquiry — and when there's no instant way to "
+            "book or get an answer, most of them quietly move on to a competitor."
+        )
 
     agency = s("agency_name") or "OneCrew Technologies"
     logo_text = (agency.split()[0].upper() if agency.split() else "ONECREW")
@@ -315,7 +330,7 @@ def build_email(
         greet_name=greet_name,
         website_url=website_href or "#",
         domain_display=domain or "your website",
-        summary_clause=summary_clause,
+        pain_point=pain_point,
         agency_name=agency,
         business_name=business_name,
         growth_html=growth,

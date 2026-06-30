@@ -21,6 +21,7 @@ ai = {
     "business_name": "Bright Smile Dental",
     "industry": "dental clinic",
     "website_summary": "a family and cosmetic dental practice serving Austin",
+    "pain_point": "Every evening and weekend, Austin patients searching for a dentist land on your site, find no way to book, and end up calling the practice down the street instead — that's booked chairs walking out the door.",
     "gaps": ["No online booking", "Slow follow-up to new patient enquiries", "No after-hours capture"],
     "subject_line": "Turning more Austin visitors into booked patients",
     "growth_section_html": (
