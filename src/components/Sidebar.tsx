@@ -15,9 +15,10 @@ export function Sidebar() {
 
   return (
     <aside className="hidden md:flex w-64 shrink-0 flex-col gap-1 border-r border-border-soft bg-bg-soft/60 px-4 py-6">
-      <Link href={active.basePath} className="mb-7 flex items-center gap-2.5 px-2">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/logo.svg" alt="One Crew" className="h-9 w-9 shrink-0" />
+      <Link href={active.basePath} className="mb-7 flex items-center gap-3 px-2">
+        <span className="grid h-9 w-9 place-items-center rounded-xl bg-gradient-to-br from-accent to-accent-2 text-sm font-bold text-white shadow-lg shadow-accent/20">
+          OC
+        </span>
         <span className="flex flex-col leading-tight">
           <span className="text-sm font-semibold tracking-tight">One Crew</span>
           <span className="text-[11px] text-faint">Automation Hub</span>

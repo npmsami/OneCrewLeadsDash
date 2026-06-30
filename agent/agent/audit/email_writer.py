@@ -271,11 +271,19 @@ def build_email(
     logo_text = (agency.split()[0].upper() if agency.split() else "ONECREW")
     logo_url, hero_url, sign_url = s("logo_url"), s("hero_url"), s("sign_img_url")
 
+    # Header brand: the logo image (when set) sits beside the wordmark text.
+    wordmark = (
+        '<span style="color:#ffffff;font-size:17px;font-weight:700;'
+        f'letter-spacing:3px;vertical-align:middle;">{logo_text}</span>'
+    )
     logo_block = (
-        f'<img src="{logo_url}" alt="{agency}" height="28" '
-        'style="display:block;border:0;height:28px;width:auto;">'
+        (
+            f'<img src="{logo_url}" alt="{agency}" width="27" height="30" '
+            'style="display:inline-block;border:0;width:27px;height:30px;'
+            'vertical-align:middle;margin-right:10px;">' + wordmark
+        )
         if logo_url
-        else f'<span style="color:#ffffff;font-size:17px;font-weight:700;letter-spacing:3px;">{logo_text}</span>'
+        else wordmark
     )
     hero_block = (
         f'<tr><td style="padding:0;font-size:0;line-height:0;"><img src="{hero_url}" '
