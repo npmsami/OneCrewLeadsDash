@@ -99,7 +99,7 @@ insert into public.audit_settings (
   'OneCrew Technologies',
   'support@onecrewtech.com',
   'https://www.onecrewtech.com/unsubscribe',
-  'https://www.onecrewtech.com/contact',
+  'https://cal.com/onecrewtech/30min',
   'https://www.onecrewtech.com',
   -- direct-image host (dl.dropboxusercontent.com) so it renders in email clients;
   -- the www.dropbox.com/...?raw=1 share form serves an HTML page, not the image.

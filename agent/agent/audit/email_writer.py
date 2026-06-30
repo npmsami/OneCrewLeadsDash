@@ -206,7 +206,7 @@ ${growth_html}
 <tr><td style="padding:20px 36px 6px 36px;">
 <p style="margin:0 0 20px;color:#3F3F46;font-size:15px;line-height:1.7;">If even one of these is interesting, I'd love to show you exactly how it would work for ${business_name} — no pressure, no jargon.</p>
 <table role="presentation" cellpadding="0" cellspacing="0"><tr><td bgcolor="#0A0A0B" style="border-radius:8px;background:#0A0A0B;">
-<a href="${calendar_link}" style="display:inline-block;padding:14px 30px;color:#ffffff;font-size:15px;font-weight:600;text-decoration:none;border-radius:8px;">Book a 15-minute call &rarr;</a>
+<a href="${calendar_link}" style="display:inline-block;padding:14px 30px;color:#ffffff;font-size:15px;font-weight:600;text-decoration:none;border-radius:8px;">Book a 30-minute call &rarr;</a>
 </td></tr></table>
 <p style="margin:18px 0 0;color:#71717A;font-size:14px;line-height:1.7;">…or just hit <strong style="color:#3F3F46;">reply</strong> and tell me which idea interests you most — I'll send back exactly how we'd build it for ${business_name}.</p>
 </td></tr>
