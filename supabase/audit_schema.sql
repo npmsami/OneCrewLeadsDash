@@ -101,7 +101,9 @@ insert into public.audit_settings (
   'https://www.onecrewtech.com/unsubscribe',
   'https://www.onecrewtech.com/contact',
   'https://www.onecrewtech.com',
-  'https://www.dropbox.com/scl/fi/9d76140rf574kiewepnb4/Picsart_26-06-15_03-41-30-746.jpg.jpeg?rlkey=0zkyusjr762eqakk0n22jqzjn&st=0nyjfelx&raw=1',
+  -- direct-image host (dl.dropboxusercontent.com) so it renders in email clients;
+  -- the www.dropbox.com/...?raw=1 share form serves an HTML page, not the image.
+  'https://dl.dropboxusercontent.com/scl/fi/9d76140rf574kiewepnb4/Picsart_26-06-15_03-41-30-746.jpg.jpeg?rlkey=0zkyusjr762eqakk0n22jqzjn&raw=1',
   false
 )
 on conflict (id) do nothing;
