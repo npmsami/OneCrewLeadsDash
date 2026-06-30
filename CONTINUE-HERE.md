@@ -63,13 +63,18 @@ Architecture reshaped + 3 steps shipped. Agent lives at `../job-application-agen
 4. ✅ **GitHub Actions + monorepo**: agent now lives in THIS repo at `agent/` (runtime `cd agent && python -m agent.pipeline|followup`); `.vercelignore` excludes it from Vercel. Workflows live+active: `Scrape leads (manual)` (id 304332489, `workflow_dispatch`) + `Follow-up engine (daily)` (id 304332488, `0 19 * * *` UTC = 12am PKT + dispatch). Secrets checklist: `.github/SECRETS.md`.
 5. ✅ **Dashboard Scrape button**: server action `src/app/(dashboard)/scrape-action.ts` (server-side 24h lock via `run_state` table → dispatches scrape.yml via GitHub API) + `src/components/ScrapeButton.tsx` (live countdown) + Overview "Hunter today X/15". `send_error` chip added. Build green.
 
-## ▶ GO-LIVE CHECKLIST (resume here — user actions)
-1. **`GITHUB_DISPATCH_TOKEN`** → Vercel (Production) + `.env.local`, then redeploy. Token = fine-grained (Actions: R/W on the repo) if you own it, else CLASSIC PAT (`repo`+`workflow`) if collaborator. Then test the Scrape button dispatches CI.
-2. **Add the 7 Actions secrets** (`.github/SECRETS.md`) so the workflows actually run: LLM_API_KEY, HUNTER_API_KEY, JSEARCH_API_KEY, SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY, GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET.
-3. **Upload resume PDF** in dashboard Settings (`resumes` bucket is EMPTY → emails would send unattached).
-4. **Flip `settings.send_emails=true`** in dashboard Settings = go live (Gmail layer already live-verified; gate currently holds at dry-run).
-5. Retire the stale old agent folder `../job-application-agent/` once CI is green (avoid divergence).
-- Later: DKIM/DMARC checklist for onecrewtech.com; JSearch multi-query expansion.
+## ▶ CI VERIFIED GREEN (2026-06-30) — the whole runner works
+First successful end-to-end scrape on GitHub Actions: 217 discovered → 30 processed → run complete `{dry_run:11, geo_blocked:12, low_match:6, manual_apply:1}`, Hunter 12/15. **30 real leads now in Supabase `applications`** (dashboard shows them). Dispatch + button confirmed working. Still dry-run (`send_emails=false`) — the 11 drafts are NOT sent.
+- ✅ `GITHUB_DISPATCH_TOKEN` added (button dispatches CI).
+- ✅ 7 Actions secrets set correctly. **GOTCHA (cost ~1h):** `gh secret set NAME --body -` stores a literal `-`, NOT stdin → showed as supabase "Invalid URL". Correct: `printf '%s' "$v" | gh secret set NAME --repo R` (no --body), or `--body "$v"`.
+- NOTE: the dashboard Scrape button is on its 24h cooldown (keyed to the user's first click ~2026-06-29 23:45 UTC; the verified runs went via `gh`, which bypasses the lock). Reset by clearing `run_state.last_scrape_at` if you want to click again sooner.
+
+## ▶ GO-LIVE CHECKLIST (remaining — user actions)
+1. **Upload resume PDF** in dashboard Settings (`resumes` bucket is EMPTY → emails would send unattached; body says "Resume attached").
+2. **Flip `settings.send_emails=true`** in dashboard Settings = go live (Gmail layer live-verified; gate currently holds at dry-run). Next scrape/follow-up then actually sends.
+3. Skim a few of the 11 drafts in `/leads` first (subjects look grounded/strong).
+4. Retire the stale old agent folder `../job-application-agent/` (CI is green; monorepo `agent/` is canonical). Keep its `.venv`/`.env` if you still run smokes locally.
+- Later: DKIM/DMARC checklist for onecrewtech.com; JSearch multi-query expansion; raise discovery volume.
 
 ## Working style
 Incremental — ONE step per turn, check in between. Dry-run footing (send_emails=false) until the user flips go-live.
