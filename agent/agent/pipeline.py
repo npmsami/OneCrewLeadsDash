@@ -59,6 +59,7 @@ def _send_cold_email(cfg: Config, drafted: dict, send_ctx: dict, outcomes: Count
         "job_id": drafted["job_id"], "status": "applied",
         "applied_at": datetime.now(tz=timezone.utc).isoformat(),
         "email_subject": drafted.get("email_subject"),
+        "email_body": drafted.get("email_body"),
         "notes": ("Sent to " + to + ": " + str(drafted.get("email_subject") or ""))[:300],
     })
     outcomes["applied"] += 1
@@ -86,16 +87,20 @@ def _enrich_and_route(scored: dict, cfg: Config, profile: dict, budget: dict, se
         store.incr_hunter_calls(cfg, 1)
     store.upsert(cfg, _pick(enriched, _ENRICH_FIELDS))
 
+    # Draft the application email for EVERY lead — even when no recruiter email
+    # was found — so manual_apply rows carry a ready-to-copy draft in the dashboard.
+    drafted = write_email(enriched, cfg, profile)
+
     if not enriched.get("email_found"):
         store.upsert(cfg, {
             "job_id": enriched["job_id"], "status": "manual_apply",
-            "notes": "No recruiter email found - apply manually via job_url",
+            "email_subject": drafted.get("email_subject"),
+            "email_body": drafted.get("email_body"),
+            "notes": "No recruiter email found - apply manually via job_url (draft ready to copy).",
         })
         outcomes["manual_apply"] += 1
         log.info("  [manual_apply] %.40s @ %s", enriched.get("job_title"), enriched.get("company"))
         return
-
-    drafted = write_email(enriched, cfg, profile)
 
     if send_ctx["sending"]:
         _send_cold_email(cfg, drafted, send_ctx, outcomes)
@@ -106,6 +111,7 @@ def _enrich_and_route(scored: dict, cfg: Config, profile: dict, budget: dict, se
         "job_id": drafted["job_id"],
         "status": "dry_run",
         "email_subject": drafted.get("email_subject"),
+        "email_body": drafted.get("email_body"),
         "notes": ("TEST MODE: email NOT sent (dry-run). " + (drafted.get("email_note") or "")).strip(),
     })
     outcomes["dry_run"] += 1

@@ -28,7 +28,7 @@ VALID_COLUMNS = {
     "posted_date", "scraped_at", "match_score", "geo_eligible", "geo_reason",
     "seniority_match", "matched_keywords", "missing_keywords", "recruiter_name",
     "recruiter_email", "email_confidence", "email_source", "resume_filename",
-    "resume_drive_link", "email_subject", "applied_at", "reply_received",
+    "resume_drive_link", "email_subject", "email_body", "applied_at", "reply_received",
     "reply_date", "followup_sent", "followup_date", "status", "notes",
 }
 

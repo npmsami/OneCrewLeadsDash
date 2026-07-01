@@ -36,6 +36,7 @@ create table if not exists public.applications (
   resume_filename   text,
   resume_drive_link text,
   email_subject     text,
+  email_body        text,                             -- full drafted email (shown in the dashboard detail view)
 
   -- lifecycle -----------------------------------------------------------------
   applied_at        timestamptz,
