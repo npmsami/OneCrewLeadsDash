@@ -76,5 +76,24 @@ First successful end-to-end scrape on GitHub Actions: 217 discovered → 30 proc
 4. Retire the stale old agent folder `../job-application-agent/` (CI is green; monorepo `agent/` is canonical). Keep its `.venv`/`.env` if you still run smokes locally.
 - Later: DKIM/DMARC checklist for onecrewtech.com; JSearch multi-query expansion; raise discovery volume.
 
+## ▶ SESSION UPDATE 2026-07-02 — LinkedIn source, cost cut, manual-apply pivot
+Big direction change: **LinkedIn is now the MAIN source (via Apify), Hunter dropped, model shifted to high-volume MANUAL APPLY** (no cold emails sent). All pushed to `main`.
+
+**Cost cut — Hunter DROPPED (commit a718dfc):** was ~90% of the bill (~$34–49/mo, flat subscription). Local `.env` `HUNTER_API_KEY` commented, **prod GH secret `HUNTER_API_KEY` deleted**. Empty key ⇒ pipeline skips Hunter. `HUNTER_DAILY_CAP`/`usage` logic now inert. **USER MUST still cancel the Hunter plan on hunter.io** — dropping the key doesn't stop the charge.
+
+**LinkedIn via Apify = MAIN source (commits 4d9f941, 1ac143f):** WHY needed — JSearch = Google-for-Jobs wrapper; LinkedIn deliberately withholds listings from it, so JSearch returns ~0 real LinkedIn (mostly reposter spam: JobHub/JobLeads/liveblog365). Apify actor **`cheap_scraper~linkedin-job-scraper`** (no cookies; keyword+locations+workType). Input: `{keyword:[...], locations:[REAL LinkedIn geos — "Worldwide" invalid], workType:["remote"], publishedAt:r86400|r604800|r2592000}`; **min 150 results/run** (aborts below). Output→`normalize_apify_linkedin` in `sources.py` (source="linkedin"; **location prefixed "Remote - "** so US-remote passes geo). Wired FIRST in `fetch_all`. Cost ~$0.00074/job. **Geo lesson:** query the CANDIDATE'S REGION, not US — US/UK locations return jobs needing local work-auth → scorer geo_blocks them. Set `APIFY_LOCATIONS=Pakistan,United Arab Emirates,India` → geo_blocks fell 58→1–3, applicable LinkedIn drafts rose 6→15. Config in `config.py` + `scrape.yml`: `APIFY_TOKEN` (secret set), `APIFY_ACTOR/KEYWORDS/LOCATIONS/MAX_RESULTS` (200). **Apify acct `endearing_row`, FREE plan ($5 credits ≈ 6750 jobs/mo)**; token `apify_api_4I7h…` was pasted in chat → user may rotate.
+
+**Manual-apply model — no wrong emails (commit 8b703c2):** careers@ guessing produced junk emails (reposter/hosting domains). Added `EMAIL_PATTERN_FALLBACK` (default **off**) in `config.py`; `enrich.finalize_email(use_pattern=...)` skips the careers@ guess ⇒ no email found ⇒ routes to **manual_apply** with draft + real job link. Existing bad emails cleaned in DB (pattern rows → recruiter_email null, dry_run→manual_apply). `has_email=0` verified on a fresh scrape.
+
+**Email persistence + dashboard detail (commits 9eb7c73, dcfb8af):** new `applications.email_body` column (migration applied) + in `VALID_COLUMNS`; pipeline now **drafts for manual_apply too** and stores subject+body on applied/dry_run/manual_apply. New **lead detail drawer** `src/components/LeadRow.tsx` — click a row → portal modal with full email (subject+body) + **Copy** button, scoring, contact, meta, "Open job posting ↗". `email_body` added to `src/lib/types.ts`.
+
+**Volume scaled for manual apply (commit ba24e2f):** `MAX_JOBS_PER_RUN` 30→100, `JSEARCH_NUM_PAGES` 3→10 (**needs JSearch Pro** — free 200/mo would exhaust), `LOOKBACK_HOURS` 168→336. JSearch query also fixed to `remote devops cloud sre platform engineer` (81dc12b — "remote" essential).
+
+**Email copy (commit a8ce463):** removed **"no pressure"** from the CTA — deleted from `settings.email_template` AND added to `_DONT_USE` in `email_writer.py`. **LinkedIn link** already wired: `_signature` includes `settings.candidate_linkedin` (currently EMPTY → user adding it in Settings → Candidate Signature; validates https URL). New drafts pick it up.
+
+**Cost model now:** Apify (LinkedIn) + free boards + JSearch, **no Hunter** ≈ **$7–20/mo**; add JSearch Pro ($25) → ~$32–45/mo. Supabase/Vercel/GitHub free.
+
+**PENDING user actions (2026-07-02):** (1) **cancel Hunter subscription** on hunter.io; (2) **subscribe JSearch Pro** on RapidAPI (NUM_PAGES=10 needs it); (3) **add candidate_linkedin** in Settings; (4) optionally rotate the Apify token; (5) still open from before: upload resume PDF + flip send_emails if/when returning to auto-send (currently manual-apply, so sending is moot). NOTE `send_error` chip + Hunter-today Overview widget reference the now-dropped Hunter — cosmetic, ignore/clean later.
+
 ## Working style
-Incremental — ONE step per turn, check in between. Dry-run footing (send_emails=false) until the user flips go-live.
+Incremental — ONE step per turn, check in between. **Now MANUAL-APPLY mode** (no emails sent; leads = draft + real job link). Was dry-run/send before; sending is currently out of scope.
