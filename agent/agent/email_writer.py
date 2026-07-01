@@ -30,7 +30,8 @@ _ACHIEVEMENTS = (
 )
 _DONT_USE = (
     '"I hope this email finds you well", "I am writing to apply", "I am passionate about", '
-    '"I would love to", "Please find attached", "I came across your posting", "I am excited to"'
+    '"I would love to", "Please find attached", "I came across your posting", "I am excited to", '
+    '"no pressure"'
 )
 
 # Used when settings has no template (shouldn't happen, the column is seeded).
