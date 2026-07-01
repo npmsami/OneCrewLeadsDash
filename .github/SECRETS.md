@@ -10,7 +10,7 @@ repository secret** (or `gh secret set NAME` from the CLI).
 | Secret | Source | Required |
 |---|---|---|
 | `LLM_API_KEY` | OpenAI API key (`.env` → `LLM_API_KEY`) | ✅ |
-| `HUNTER_API_KEY` | Hunter.io key (`.env`) | ✅ |
+| `HUNTER_API_KEY` | Hunter.io key — **DROPPED to cut cost (2026-07-01); secret removed.** Enrichment falls to the free `careers@<domain>` path. Re-add to restore named-recruiter lookups. | ⬜ optional |
 | `JSEARCH_API_KEY` | RapidAPI JSearch key (`.env`) | ✅ |
 | `SUPABASE_URL` | `https://dzhnxsgrnohyswhbjthc.supabase.co` | ✅ |
 | `SUPABASE_SERVICE_ROLE_KEY` | Supabase → Project Settings → API → service_role (`.env`) | ✅ |
@@ -33,4 +33,5 @@ repository secret** (or `gh secret set NAME` from the CLI).
   GitHub auto-disables the schedule after **60 days of repo inactivity** — re-enable
   from the Actions tab if that happens.
 - A run with `send_emails=false` (current state) is a safe dry-run: it scores,
-  enriches (within the Hunter cap), and drafts, but sends nothing.
+  enriches (now via the free `careers@<domain>` path, Hunter dropped), and drafts,
+  but sends nothing.
