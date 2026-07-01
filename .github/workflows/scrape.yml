@@ -35,7 +35,12 @@ env:
   # ("Worldwide" is invalid); this set approximates worldwide-remote. Actor
   # min 150 results/run; ~$0.00074/job (200/run ~= $4.4/mo, within free credits).
   APIFY_KEYWORDS: devops engineer,cloud engineer,site reliability engineer,platform engineer
-  APIFY_LOCATIONS: United States,United Kingdom,India,Pakistan
+  # Query the candidate's remote-hiring region (Pakistan + Gulf/India that hire
+  # PK-remote). US/UK returned jobs requiring LOCAL work authorization -> our
+  # scorer geo-blocked them. Region-targeting is how Apify filters "applicable"
+  # at scrape time (LinkedIn has no "open-to-internationals" facet).
+  # Worldwide-remote-open roles are caught by the free boards (RemoteOK/WWR/etc.).
+  APIFY_LOCATIONS: Pakistan,United Arab Emirates,India
   APIFY_MAX_RESULTS: "200"
 
 jobs:
