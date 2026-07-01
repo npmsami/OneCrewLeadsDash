@@ -199,8 +199,9 @@ _HTML = Template(
 ${hero_block}
 <tr><td style="padding:36px 36px 6px 36px;">
 <p style="margin:0 0 16px;color:#0A0A0B;font-size:16px;line-height:1.7;">Hi ${greet_name},</p>
+<p style="margin:0 0 16px;color:#3F3F46;font-size:15px;line-height:1.7;">I came across <a href="${website_url}" style="color:#0A0A0B;text-decoration:underline;">${domain_display}</a> and spent a few minutes really looking at what you do${summary_tail}</p>
 <p style="margin:0 0 16px;color:#3F3F46;font-size:15px;line-height:1.7;">${pain_point}</p>
-<p style="margin:0;color:#3F3F46;font-size:15px;line-height:1.7;">We're ${agency_name} — we build web &amp; mobile apps, AI agents and automation, end to end, and that's exactly the kind of gap we close. After a closer look at <a href="${website_url}" style="color:#0A0A0B;text-decoration:underline;">${domain_display}</a>, here's where we could help:</p>
+<p style="margin:0;color:#3F3F46;font-size:15px;line-height:1.7;">We're ${agency_name} — we build web &amp; mobile apps, AI agents and automation, end to end, and that's exactly the kind of gap we close. Here's where we could help:</p>
 </td></tr>
 <tr><td style="padding:18px 36px 8px 36px;">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#FAFAFA;border:1px solid #E4E4E7;border-radius:12px;">
@@ -224,12 +225,12 @@ ${sign_img}
 <p style="margin:0;color:#0A0A0B;font-size:15px;line-height:1.6;">Best,<br>
 <strong>${sender_name}</strong><br>
 <span style="color:#71717A;font-size:14px;">${sender_title}</span><br>
-<span style="color:#71717A;font-size:14px;"><a href="mailto:${sender_email}" style="color:#71717A;text-decoration:none;">${sender_email}</a> &middot; ${sender_phone} &middot; <a href="${website_url_agency}" style="color:#71717A;text-decoration:none;">${website_display}</a></span></p>
+<span style="color:#71717A;font-size:14px;"><a href="mailto:${sender_email}" style="color:#71717A;text-decoration:none;">${sender_email}</a> &middot; <a href="${website_url_agency}" style="color:#71717A;text-decoration:none;">${website_display}</a></span></p>
 </td></tr></table>
 <p style="margin:18px 0 0;color:#71717A;font-size:13px;line-height:1.6;"><strong style="color:#3F3F46;">P.S.</strong> Curious which of these would be quickest to launch for ${business_name}? Reply &ldquo;which one&rdquo; and I'll tell you straight.</p>
 </td></tr>
 </table>
-<p style="margin:20px 0 0;color:#A1A1AA;font-size:12px;line-height:1.6;font-family:${font};">${sender_address}<br>You received this because we believe ${agency_name} could genuinely help your business. <a href="${unsubscribe_url}" style="color:#A1A1AA;text-decoration:underline;">Unsubscribe</a> &middot; or just reply &ldquo;unsubscribe&rdquo; and we'll remove you right away.</p>
+<p style="margin:20px 0 0;color:#A1A1AA;font-size:12px;line-height:1.6;font-family:${font};">${address_line}You received this because we believe ${agency_name} could genuinely help your business. <a href="${unsubscribe_url}" style="color:#A1A1AA;text-decoration:underline;">Unsubscribe</a> &middot; or just reply &ldquo;unsubscribe&rdquo; and we'll remove you right away.</p>
 </td></tr>
 </table>
 </body>
@@ -269,6 +270,13 @@ def build_email(
     subject = re.sub(r"\s+", " ", subject).strip()[:70]
 
     summary = str(ai.get("website_summary") or "").strip()
+    # Intro opener: "...what you do, <one line about their business>." Lowercase the
+    # first letter so it reads naturally after the comma; omit if there's no summary.
+    summary_clause = summary.rstrip(".")
+    if summary_clause:
+        summary_clause = summary_clause[0].lower() + summary_clause[1:]
+    summary_tail = f", {summary_clause}." if summary_clause else "."
+
     gaps_val = ai.get("gaps")
     gaps = " | ".join(gaps_val) if isinstance(gaps_val, list) else str(gaps_val or "")
 
@@ -318,9 +326,16 @@ def build_email(
         else ""
     )
 
+    # CAN-SPAM postal address is optional: only render the line when set, so an
+    # empty setting doesn't leave a stray blank line above the unsubscribe text.
+    sender_address = s("sender_address")
+    address_line = f"{sender_address}<br>" if sender_address else ""
+
     agency_site = s("website_url")
     html = _HTML.safe_substitute(
         subject=subject,
+        summary_tail=summary_tail,
+        address_line=address_line,
         preheader=f"A few specific ideas for {business_name}, from the team at {agency}.",
         pre_spacer="&nbsp;&zwnj;" * 40,
         font=_FONT,
@@ -339,10 +354,8 @@ def build_email(
         sender_name=s("sender_name"),
         sender_title=s("sender_title"),
         sender_email=s("sender_email"),
-        sender_phone=s("sender_phone"),
         website_url_agency=scrape.normalize_url(agency_site) or "#",
         website_display=scrape.domain_of(agency_site) or agency_site,
-        sender_address=s("sender_address"),
         unsubscribe_url=(unsubscribe_url or s("unsubscribe_url") or "#"),
     )
 
