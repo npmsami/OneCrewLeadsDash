@@ -19,15 +19,18 @@ permissions:
 env:
   LLM_MODEL: gpt-4o-mini
   HUNTER_DAILY_CAP: "15"
-  MAX_JOBS_PER_RUN: "30"
+  # High-volume manual-apply mode: no emails sent, so scrape wide.
+  MAX_JOBS_PER_RUN: "100"
   MIN_SCORE: "70"
-  LOOKBACK_HOURS: "168"
+  LOOKBACK_HOURS: "336"          # 14 days, wider pool
   SEND_THROTTLE_SECONDS: "30"
   # "remote" in the query is essential: without it JSearch returns onsite US
   # metro jobs (job_is_remote=false) that the geo filter drops. With it, results
   # are 100% genuinely-remote and pass through.
+  # NOTE: NUM_PAGES=10 -> ~10 JSearch requests/run. Requires JSearch PRO
+  # (10k/mo); the free 200/mo tier would exhaust mid-month.
   JSEARCH_QUERY: remote devops cloud sre platform engineer
-  JSEARCH_NUM_PAGES: "3"
+  JSEARCH_NUM_PAGES: "10"
 
 jobs:
   scrape:
