@@ -23,8 +23,11 @@ env:
   MIN_SCORE: "70"
   LOOKBACK_HOURS: "168"
   SEND_THROTTLE_SECONDS: "30"
-  JSEARCH_QUERY: devops cloud sre platform engineer
-  JSEARCH_NUM_PAGES: "1"
+  # "remote" in the query is essential: without it JSearch returns onsite US
+  # metro jobs (job_is_remote=false) that the geo filter drops. With it, results
+  # are 100% genuinely-remote and pass through.
+  JSEARCH_QUERY: remote devops cloud sre platform engineer
+  JSEARCH_NUM_PAGES: "3"
 
 jobs:
   scrape:
