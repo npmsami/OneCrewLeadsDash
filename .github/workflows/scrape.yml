@@ -31,6 +31,12 @@ env:
   # (10k/mo); the free 200/mo tier would exhaust mid-month.
   JSEARCH_QUERY: remote devops cloud sre platform engineer
   JSEARCH_NUM_PAGES: "10"
+  # LinkedIn via Apify (main source). Locations must be real LinkedIn geos
+  # ("Worldwide" is invalid); this set approximates worldwide-remote. Actor
+  # min 150 results/run; ~$0.00074/job (200/run ~= $4.4/mo, within free credits).
+  APIFY_KEYWORDS: devops engineer,cloud engineer,site reliability engineer,platform engineer
+  APIFY_LOCATIONS: United States,United Kingdom,India,Pakistan
+  APIFY_MAX_RESULTS: "200"
 
 jobs:
   scrape:
@@ -55,6 +61,7 @@ jobs:
           HUNTER_API_KEY: ${{ secrets.HUNTER_API_KEY }}
           APOLLO_API_KEY: ${{ secrets.APOLLO_API_KEY }}
           JSEARCH_API_KEY: ${{ secrets.JSEARCH_API_KEY }}
+          APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
           GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}

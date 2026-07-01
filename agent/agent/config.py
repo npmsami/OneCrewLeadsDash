@@ -49,6 +49,18 @@ class Config:
     jsearch_query: str = field(default_factory=lambda: _env("JSEARCH_QUERY", "devops cloud sre platform engineer"))
     jsearch_num_pages: int = field(default_factory=lambda: _env_int("JSEARCH_NUM_PAGES", 1))
 
+    # --- Discovery: LinkedIn via Apify (MAIN source) ---
+    # Runs a no-cookie LinkedIn Jobs actor with workType=remote. Locations must be
+    # real LinkedIn geo names ("Worldwide" is NOT valid); we query a set of markets
+    # to approximate worldwide-remote. Actor aborts below 150 results/run.
+    apify_token: str = field(default_factory=lambda: _env("APIFY_TOKEN"))
+    apify_actor: str = field(default_factory=lambda: _env("APIFY_ACTOR", "cheap_scraper~linkedin-job-scraper"))
+    apify_keywords: str = field(default_factory=lambda: _env(
+        "APIFY_KEYWORDS", "devops engineer,cloud engineer,site reliability engineer,platform engineer"))
+    apify_locations: str = field(default_factory=lambda: _env(
+        "APIFY_LOCATIONS", "United States,United Kingdom,India,Pakistan"))
+    apify_max_results: int = field(default_factory=lambda: _env_int("APIFY_MAX_RESULTS", 200))
+
     # --- Storage (Supabase) ---
     supabase_url: str = field(default_factory=lambda: _env("SUPABASE_URL"))
     supabase_service_role_key: str = field(default_factory=lambda: _env("SUPABASE_SERVICE_ROLE_KEY"))

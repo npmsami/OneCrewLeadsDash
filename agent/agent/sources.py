@@ -206,6 +206,39 @@ def normalize_jsearch(data: Any) -> list[dict]:
     return out
 
 
+def normalize_apify_linkedin(items: Any) -> list[dict]:
+    # cheap_scraper/linkedin-job-scraper output. Every result is remote (we pass
+    # workType=remote), so we prefix "Remote" onto the location tag: a US-remote
+    # job is NOT a US-onsite job, and the geo hard-filter keys off "remote" to
+    # keep it (otherwise "United States" alone would be dropped as country-locked).
+    out = []
+    for j in items if isinstance(items, list) else []:
+        if not isinstance(j, dict):
+            continue
+        title = _s(j.get("jobTitle"))
+        company = _s(j.get("companyName"))
+        url = _s(j.get("jobUrl") or j.get("applyUrl"))
+        if not title or not company or not url:
+            continue
+        loc = _s(j.get("location"))
+        sal = j.get("salaryInfo")
+        salary = " - ".join(str(x) for x in sal) if isinstance(sal, list) and sal else _s(sal)
+        tags = [t for t in (_s(j.get("experienceLevel")), _s(j.get("contractType")), _s(j.get("sector"))) if t]
+        out.append({
+            "title": title,
+            "company": company,
+            "url": url,
+            "location_tag": ("Remote - " + loc) if loc else "Remote",
+            "posted_at": _s(j.get("publishedAt")),
+            "description": _s(j.get("jobDescription")),
+            "tags": tags,
+            "salary_raw": salary,
+            "company_website": "",   # actor exposes only the LinkedIn company page
+            "source": "linkedin",
+        })
+    return out
+
+
 def normalize_wwr(entries: Any) -> list[dict]:
     # We Work Remotely RSS items: title is 'Company: Role'.
     out = []
@@ -296,12 +329,39 @@ def fetch_jsearch(cfg) -> list[dict]:
     return normalize_jsearch(_get_json("https://jsearch.p.rapidapi.com/search", headers, params))
 
 
+def fetch_apify_linkedin(cfg) -> list[dict]:
+    """LinkedIn Jobs via the Apify actor (main source). Remote-only, across the
+    configured markets. Returns [] when no APIFY_TOKEN is set."""
+    if not getattr(cfg, "apify_token", ""):
+        return []
+    keywords = [k.strip() for k in cfg.apify_keywords.split(",") if k.strip()]
+    locations = [loc.strip() for loc in cfg.apify_locations.split(",") if loc.strip()]
+    if not keywords:
+        return []
+    lb = cfg.lookback_hours
+    posted = "r86400" if lb <= 24 else ("r604800" if lb <= 168 else "r2592000")
+    body: dict[str, Any] = {"keyword": keywords, "workType": ["remote"], "publishedAt": posted}
+    if locations:
+        body["locations"] = locations
+    # The actor aborts below 150 results; never request fewer than that floor.
+    max_items = max(150, cfg.apify_max_results)
+    url = (f"https://api.apify.com/v2/acts/{cfg.apify_actor}/run-sync-get-dataset-items"
+           f"?token={cfg.apify_token}&maxItems={max_items}")
+    resp = requests.post(url, json=body, timeout=300)
+    resp.raise_for_status()
+    data = resp.json()
+    return normalize_apify_linkedin(data if isinstance(data, list) else [])
+
+
 def fetch_all(cfg=None) -> list[dict]:
     """Merge Sources: every feed concatenated into one list.
 
-    Keyless feeds always run; JSearch runs only when cfg carries a RapidAPI key.
+    Keyless feeds always run; LinkedIn (Apify) and JSearch run only when cfg
+    carries the relevant key.
     """
     merged: list[dict] = []
+    if cfg is not None:
+        merged += _safe("linkedin", lambda: fetch_apify_linkedin(cfg))  # main source
     merged += _safe("remoteok", fetch_remoteok)
     merged += _safe("remotive", fetch_remotive)
     merged += _safe("arbeitnow", fetch_arbeitnow)
