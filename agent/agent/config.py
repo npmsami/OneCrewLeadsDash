@@ -82,6 +82,10 @@ class Config:
 
     # --- Behaviour knobs ---
     send_emails: bool = field(default_factory=lambda: _env("SEND_EMAILS", "false").lower() == "true")
+    # Guess a careers@<domain> address when no real recruiter email is found.
+    # Off by default: in manual-apply mode it only produces wrong/unusable emails
+    # (careers@ of a reposter/hosting domain). Leads route to manual_apply instead.
+    email_pattern_fallback: bool = field(default_factory=lambda: _env("EMAIL_PATTERN_FALLBACK", "false").lower() == "true")
     min_score: int = field(default_factory=lambda: _env_int("MIN_SCORE", 70))
     lookback_hours: int = field(default_factory=lambda: _env_int("LOOKBACK_HOURS", 168))
     max_jobs_per_run: int = field(default_factory=lambda: _env_int("MAX_JOBS_PER_RUN", 30))

@@ -182,8 +182,11 @@ def pick_apollo(ctx: dict[str, Any], response: dict[str, Any]) -> dict[str, Any]
 # ---------------------------------------------------------------------------
 # Finalize
 # ---------------------------------------------------------------------------
-def finalize_email(ctx: dict[str, Any]) -> dict[str, Any]:
-    if not ctx.get("recruiter_email") and ctx.get("company_domain"):
+def finalize_email(ctx: dict[str, Any], use_pattern: bool = True) -> dict[str, Any]:
+    # careers@<domain> is only a guess; skip it unless explicitly enabled (it
+    # produces wrong emails for reposter/hosting domains, and manual apply needs
+    # no email anyway). Without a real email the job routes to manual_apply.
+    if use_pattern and not ctx.get("recruiter_email") and ctx.get("company_domain"):
         ctx["recruiter_email"] = "careers@" + ctx["company_domain"].lower()
         ctx["recruiter_name"] = ctx.get("recruiter_name") or "Hiring Team"
         ctx["email_confidence"] = "medium"
@@ -204,4 +207,4 @@ def enrich(ctx: dict[str, Any], cfg: Config) -> dict[str, Any]:
     if not ctx.get("recruiter_email") and cfg.apollo_api_key:
         ctx = pick_apollo(ctx, apollo_search(ctx, cfg))
 
-    return finalize_email(ctx)
+    return finalize_email(ctx, use_pattern=cfg.email_pattern_fallback)
