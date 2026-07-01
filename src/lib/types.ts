@@ -36,6 +36,7 @@ export interface Application {
   resume_filename: string | null;
   resume_drive_link: string | null;
   email_subject: string | null;
+  email_body: string | null;
   applied_at: string | null;
   reply_received: boolean;
   reply_date: string | null;

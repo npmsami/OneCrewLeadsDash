@@ -1,6 +1,6 @@
 import { Suspense } from "react";
 import { supabaseRead } from "@/lib/supabase";
-import { StatusBadge } from "@/components/StatusBadge";
+import { LeadRow } from "@/components/LeadRow";
 import { LeadsFilters } from "@/components/LeadsFilters";
 import { ACTIVE_STATUSES } from "@/lib/status";
 import type { Application } from "@/lib/types";
@@ -8,11 +8,6 @@ import type { Application } from "@/lib/types";
 export const dynamic = "force-dynamic";
 
 const ROW_LIMIT = 500;
-
-function fmtDate(iso: string | null): string {
-  if (!iso) return "—";
-  return new Date(iso).toLocaleDateString(undefined, { month: "short", day: "numeric" });
-}
 
 interface SearchParams {
   q?: string;
@@ -82,29 +77,7 @@ export default async function LeadsPage({
             </thead>
             <tbody className="divide-y divide-border-soft">
               {leads.map((l) => (
-                <tr key={l.job_id} className="hover:bg-white/[0.02]">
-                  <td className="max-w-xs px-5 py-3.5">
-                    <a
-                      href={l.job_url ?? "#"}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="block truncate font-medium text-fg hover:text-accent-2"
-                    >
-                      {l.job_title ?? "Untitled role"}
-                    </a>
-                    <span className="block truncate text-xs text-faint">
-                      {l.company ?? "Unknown"} · {l.source ?? "—"}
-                    </span>
-                  </td>
-                  <td className="px-3 py-3.5 text-xs text-muted">{l.matched_track ?? "—"}</td>
-                  <td className="px-3 py-3.5 text-right tabular-nums text-muted">{l.match_score ?? "—"}</td>
-                  <td className="px-3 py-3.5"><StatusBadge status={l.status} /></td>
-                  <td className="max-w-[14rem] px-3 py-3.5">
-                    <span className="block truncate text-xs text-muted">{l.recruiter_email || "—"}</span>
-                    {l.email_source && <span className="text-[11px] text-faint">{l.email_source}</span>}
-                  </td>
-                  <td className="px-5 py-3.5 text-right text-xs text-faint">{fmtDate(l.posted_date)}</td>
-                </tr>
+                <LeadRow key={l.job_id} lead={l} />
               ))}
               {leads.length === 0 && (
                 <tr>
