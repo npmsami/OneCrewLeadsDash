@@ -1,8 +1,7 @@
 import Link from "next/link";
-import { supabaseRead, supabaseAdmin } from "@/lib/supabase";
+import { supabaseRead } from "@/lib/supabase";
 import { StatusBadge } from "@/components/StatusBadge";
 import { ScrapeButton } from "@/components/ScrapeButton";
-import { HUNTER_DAILY_CAP } from "@/lib/scrape";
 import type { Application, ApplicationStats } from "@/lib/types";
 
 export const dynamic = "force-dynamic";
@@ -20,24 +19,13 @@ function timeAgo(iso: string | null): string {
 
 export default async function OverviewPage() {
   const sb = supabaseRead();
-  const admin = supabaseAdmin();
-  const today = new Date().toISOString().slice(0, 10); // UTC date, matches the agent's usage counter
-  const [{ data: statsRows }, { data: recent }, { data: runState }, { data: usageRow }] = await Promise.all([
+  const [{ data: statsRows }, { data: recent }] = await Promise.all([
     sb.from("application_stats").select("*").limit(1),
     sb.from("applications").select("*").order("updated_at", { ascending: false }).limit(8),
-    admin.from("run_state").select("last_scrape_at").eq("id", "singleton").maybeSingle(),
-    admin.from("usage").select("hunter_calls").eq("day", today).maybeSingle(),
   ]);
 
   const stats = (statsRows?.[0] as ApplicationStats | undefined) ?? null;
   const leads = (recent as Application[] | undefined) ?? [];
-
-  // 24h lock + today's Hunter spend for the Scrape button.
-  const lastScrapeAt = (runState as { last_scrape_at: string | null } | null)?.last_scrape_at ?? null;
-  const lockedUntil = lastScrapeAt
-    ? new Date(new Date(lastScrapeAt).getTime() + 24 * 60 * 60 * 1000).toISOString()
-    : null;
-  const hunterToday = (usageRow as { hunter_calls: number } | null)?.hunter_calls ?? 0;
 
   const cards = [
     { label: "Total leads", value: stats?.total ?? 0, hint: "discovered & scored" },
@@ -54,14 +42,14 @@ export default async function OverviewPage() {
         <div>
           <h1 className="text-2xl font-semibold tracking-tight">Overview</h1>
           <p className="mt-1 text-sm text-muted">
-            Last scrape {timeAgo(stats?.last_scraped_at ?? null)} · manual scrape · follow-ups run daily
+            Last scrape {timeAgo(stats?.last_scraped_at ?? null)} · JSearch + Apify · follow-ups run daily
           </p>
         </div>
         <div className="flex items-center gap-4">
           <Link href="/job-applications/leads" className="text-sm font-medium text-muted transition hover:text-fg">
             View all leads →
           </Link>
-          <ScrapeButton lockedUntil={lockedUntil} hunterToday={hunterToday} hunterCap={HUNTER_DAILY_CAP} />
+          <ScrapeButton />
         </div>
       </header>
 

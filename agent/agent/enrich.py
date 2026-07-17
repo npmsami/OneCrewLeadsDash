@@ -1,12 +1,14 @@
-"""Recruiter-email enrichment — port of the Extract Domain → Hunter → Apollo →
-Finalize chain (CODE.extractDomain / pickHunter / pickApollo / finalizeEmail).
+"""Recruiter-email enrichment — Extract Domain → Apollo → Finalize chain.
 
-Resolution order, best-first:
-  1. Hunter domain-search (free 25/mo) — ranks recruiting/HR > generic careers@
-     > eng leadership > confidence.
-  2. Apollo people-search (only if Hunter found nothing AND APOLLO_API_KEY set).
-  3. careers@<domain> pattern (only if a real company domain is known).
-  4. Nothing -> status stays 'scored' and the pipeline routes to manual_apply.
+Resolution order, best-first (Hunter removed):
+  1. Apollo people-search (only if APOLLO_API_KEY is set).
+  2. careers@<domain> pattern (only if a real company domain is known AND
+     EMAIL_PATTERN_FALLBACK is on).
+  3. Nothing -> status stays 'scored' and the pipeline routes to manual_apply.
+
+In the current manual-apply footing neither Apollo nor the pattern is enabled,
+so leads carry no recruiter email and route to manual_apply with a ready-to-copy
+draft; the domain is still resolved for display.
 """
 from __future__ import annotations
 
@@ -39,9 +41,6 @@ BOARD_HOSTS = {
 }
 _SUBDOMAIN_STRIP = re.compile(r"^(jobs|careers|career|apply|hire|boards|job|work)\.")
 
-_RANK_RECRUITER = re.compile(r"(recruit|talent|people ops|people operations|\bhr\b|human resources|hiring)")
-_RANK_GENERIC = re.compile(r"(careers|jobs|talent|recruiting|hiring|hr)@")
-_RANK_LEADERSHIP = re.compile(r"(engineering manager|head of engineering|vp (of )?engineering|cto|co-?founder|founder)")
 _APOLLO_BAD = re.compile(r"not_unlocked|domain\.com$")
 
 
@@ -78,66 +77,7 @@ def extract_domain(ctx: dict[str, Any]) -> str:
 
 
 # ---------------------------------------------------------------------------
-# Hunter
-# ---------------------------------------------------------------------------
-def hunter_search(domain: str, company: str, cfg: Config) -> dict[str, Any]:
-    params = {"api_key": cfg.hunter_api_key, "limit": 10}
-    if domain:
-        params["domain"] = domain
-    else:
-        params["company"] = company
-    _throttle()
-    try:
-        resp = requests.get("https://api.hunter.io/v2/domain-search", params=params, timeout=_TIMEOUT)
-        return resp.json()
-    except Exception as exc:  # noqa: BLE001
-        log.warning("Hunter lookup failed: %s", exc)
-        return {}
-
-
-def _rank(e: dict[str, Any]) -> int:
-    pos = str(e.get("position") or "").lower()
-    val = str(e.get("value") or "").lower()
-    if _RANK_RECRUITER.search(pos):
-        return 400
-    if _RANK_GENERIC.search(val):
-        return 300
-    if _RANK_LEADERSHIP.search(pos):
-        return 200
-    if e.get("type") == "generic":
-        return 50
-    return 100
-
-
-def pick_hunter(ctx: dict[str, Any], response: dict[str, Any]) -> dict[str, Any]:
-    d = (response or {}).get("data") or {}
-    emails = d.get("emails") if isinstance(d.get("emails"), list) else []
-    if d.get("domain") and not ctx.get("company_domain"):
-        ctx["company_domain"] = str(d["domain"]).lower()
-
-    best, best_score = None, -1.0
-    for e in emails:
-        if not e or not e.get("value"):
-            continue
-        s = _rank(e) + (float(e.get("confidence") or 0) / 100)
-        if s > best_score:
-            best, best_score = e, s
-
-    ctx["recruiter_email"] = ""
-    ctx["recruiter_name"] = ""
-    ctx["email_confidence"] = ""
-    ctx["email_source"] = ""
-    if best:
-        ctx["recruiter_email"] = str(best["value"])
-        ctx["recruiter_name"] = " ".join(filter(None, [best.get("first_name"), best.get("last_name")])) or "Hiring Team"
-        c = float(best.get("confidence") or 0)
-        ctx["email_confidence"] = "high" if c >= 70 else ("medium" if c >= 40 else "low")
-        ctx["email_source"] = "hunter"
-    return ctx
-
-
-# ---------------------------------------------------------------------------
-# Apollo (fallback)
+# Apollo (only enrichment provider)
 # ---------------------------------------------------------------------------
 _APOLLO_TITLES = [
     "Technical Recruiter", "Recruiter", "Talent Acquisition Specialist", "Head of Talent",
@@ -198,11 +138,8 @@ def finalize_email(ctx: dict[str, Any], use_pattern: bool = True) -> dict[str, A
 
 
 def enrich(ctx: dict[str, Any], cfg: Config) -> dict[str, Any]:
-    """Full enrichment chain for one scored job."""
+    """Enrichment chain for one scored job (Apollo, then optional pattern)."""
     ctx["company_domain"] = extract_domain(ctx)
-
-    if cfg.hunter_api_key:
-        ctx = pick_hunter(ctx, hunter_search(ctx["company_domain"], ctx.get("company", ""), cfg))
 
     if not ctx.get("recruiter_email") and cfg.apollo_api_key:
         ctx = pick_apollo(ctx, apollo_search(ctx, cfg))

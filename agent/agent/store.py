@@ -9,7 +9,6 @@ columns supplied, leaving the rest intact.
 from __future__ import annotations
 
 import logging
-from datetime import datetime, timezone
 from functools import lru_cache
 from typing import Any
 
@@ -87,53 +86,9 @@ def get_all_rows(cfg: Config) -> list[dict[str, Any]]:
     return resp.data or []
 
 
-def get_scored_awaiting_enrichment(cfg: Config) -> list[dict[str, Any]]:
-    """Backlog: rows scored on a prior run but not yet enriched (no recruiter
-    email yet) because the Hunter daily cap was already spent. Best leads first.
-    The cap deliberately defers these; each later run drains a slice of them."""
-    resp = (
-        get_client(cfg).table(TABLE).select("*")
-        .eq("status", "scored")
-        .order("match_score", desc=True)
-        .execute()
-    )
-    return [r for r in (resp.data or []) if not r.get("recruiter_email")]
-
-
 def delete_job(cfg: Config, job_id: str) -> None:
     """Test/maintenance helper — remove one row by id."""
     get_client(cfg).table(TABLE).delete().eq("job_id", job_id).execute()
-
-
-# ---------------------------------------------------------------------------
-# Daily API-usage counter (Hunter cap)
-# ---------------------------------------------------------------------------
-USAGE_TABLE = "usage"
-
-
-def _utc_today() -> str:
-    return datetime.now(tz=timezone.utc).date().isoformat()
-
-
-def get_hunter_calls_today(cfg: Config) -> int:
-    """How many Hunter domain-searches have been spent so far this UTC day."""
-    resp = (
-        get_client(cfg).table(USAGE_TABLE)
-        .select("hunter_calls").eq("day", _utc_today()).limit(1).execute()
-    )
-    rows = resp.data or []
-    return int(rows[0]["hunter_calls"]) if rows else 0
-
-
-def incr_hunter_calls(cfg: Config, n: int = 1) -> int:
-    """Record n Hunter calls against today's quota. Single-runner (the cron),
-    so a read-modify-write upsert is safe — no concurrent writers."""
-    today = _utc_today()
-    new_total = get_hunter_calls_today(cfg) + n
-    get_client(cfg).table(USAGE_TABLE).upsert(
-        {"day": today, "hunter_calls": new_total}, on_conflict="day"
-    ).execute()
-    return new_total
 
 
 # ---------------------------------------------------------------------------

@@ -354,20 +354,17 @@ def fetch_apify_linkedin(cfg) -> list[dict]:
 
 
 def fetch_all(cfg=None) -> list[dict]:
-    """Merge Sources: every feed concatenated into one list.
+    """Merge Sources: LinkedIn (Apify) + JSearch only, concatenated into one list.
 
-    Keyless feeds always run; LinkedIn (Apify) and JSearch run only when cfg
-    carries the relevant key.
+    These are now the ONLY two discovery sources. Each runs only when cfg carries
+    the relevant key (APIFY_TOKEN / JSEARCH_API_KEY). The six keyless free boards
+    (remoteok / remotive / arbeitnow / jobicy / himalayas / weworkremotely) were
+    retired: JSearch + Apify return real company domains and genuinely-remote
+    roles, so the noisier free feeds are no longer merged. Their fetchers and
+    normalizers are kept above should they ever need to be re-enabled.
     """
     merged: list[dict] = []
     if cfg is not None:
         merged += _safe("linkedin", lambda: fetch_apify_linkedin(cfg))  # main source
-    merged += _safe("remoteok", fetch_remoteok)
-    merged += _safe("remotive", fetch_remotive)
-    merged += _safe("arbeitnow", fetch_arbeitnow)
-    merged += _safe("jobicy", fetch_jobicy)
-    merged += _safe("himalayas", fetch_himalayas)
-    merged += _safe("weworkremotely", fetch_wwr)
-    if cfg is not None:
         merged += _safe("jsearch", lambda: fetch_jsearch(cfg))
     return _decode_entities(merged)

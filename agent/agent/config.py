@@ -40,8 +40,7 @@ class Config:
     llm_model: str = field(default_factory=lambda: _env("LLM_MODEL", "gpt-4o-mini"))
     llm_api_key: str = field(default_factory=lambda: _env("LLM_API_KEY"))
 
-    # --- Enrichment ---
-    hunter_api_key: str = field(default_factory=lambda: _env("HUNTER_API_KEY"))
+    # --- Enrichment (Apollo only; Hunter removed) ---
     apollo_api_key: str = field(default_factory=lambda: _env("APOLLO_API_KEY"))
 
     # --- Discovery: JSearch (RapidAPI) ---
@@ -89,9 +88,6 @@ class Config:
     min_score: int = field(default_factory=lambda: _env_int("MIN_SCORE", 70))
     lookback_hours: int = field(default_factory=lambda: _env_int("LOOKBACK_HOURS", 168))
     max_jobs_per_run: int = field(default_factory=lambda: _env_int("MAX_JOBS_PER_RUN", 30))
-    # Cap Hunter domain-search calls per UTC day so the monthly plan quota
-    # (Starter = 500/mo) lasts the whole month. ~15/day = ~450/mo (safe headroom).
-    hunter_daily_cap: int = field(default_factory=lambda: _env_int("HUNTER_DAILY_CAP", 15))
     # Seconds to wait between real sends (deliverability — spaced, not bursty).
     send_throttle_seconds: int = field(default_factory=lambda: _env_int("SEND_THROTTLE_SECONDS", 30))
     # Extra random jitter (0..N seconds) added on top of the throttle between

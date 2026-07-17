@@ -68,23 +68,10 @@ def _send_cold_email(cfg: Config, drafted: dict, send_ctx: dict, outcomes: Count
         time.sleep(cfg.send_throttle_seconds)
 
 
-def _enrich_and_route(scored: dict, cfg: Config, profile: dict, budget: dict, send_ctx: dict, outcomes: Counter) -> None:
-    """Enrich one scored job, then route it: deferred (Hunter cap spent) ->
-    manual_apply (no email) -> applied (live send) / dry_run. Mutates budget."""
-    # Hunter cap only gates jobs that would actually spend a Hunter search.
-    if cfg.hunter_api_key and budget["hunter"] <= 0:
-        store.upsert(cfg, {
-            "job_id": scored["job_id"], "status": "scored",
-            "notes": "Hunter daily cap reached - enrichment deferred to next run",
-        })
-        outcomes["deferred"] += 1
-        log.info("  [deferred    ] %.40s @ %s", scored.get("job_title"), scored.get("company"))
-        return
-
+def _enrich_and_route(scored: dict, cfg: Config, profile: dict, send_ctx: dict, outcomes: Counter) -> None:
+    """Enrich one scored job, then route it: manual_apply (no email) ->
+    applied (live send) / dry_run."""
     enriched = enrich(scored, cfg)
-    if cfg.hunter_api_key:  # enrich() makes exactly one Hunter search when the key is set
-        budget["hunter"] -= 1
-        store.incr_hunter_calls(cfg, 1)
     store.upsert(cfg, _pick(enriched, _ENRICH_FIELDS))
 
     # Draft the application email for EVERY lead — even when no recruiter email
@@ -138,11 +125,6 @@ def run(cfg: Config | None = None) -> dict[str, int]:
         log.info("dry-run (send_emails=false): score/enrich/draft, never send")
     send_ctx = {"sending": sending, "resume": resume, "resume_name": resume_name}
 
-    # Hunter daily budget: cap minus whatever earlier runs today already spent.
-    spent_today = store.get_hunter_calls_today(cfg)
-    budget = {"hunter": max(0, cfg.hunter_daily_cap - spent_today)}
-    log.info("hunter budget: %d/%d remaining today", budget["hunter"], cfg.hunter_daily_cap)
-
     existing = store.get_existing_rows(cfg)
     raw = fetch_all(cfg)
     filtered = hard_filters(raw, cfg)
@@ -164,19 +146,7 @@ def run(cfg: Config | None = None) -> dict[str, int]:
             log.info("  [%-12s] %.40s @ %s", scored["status"], scored["job_title"], scored["company"])
             continue
 
-        _enrich_and_route(scored, cfg, profile, budget, send_ctx, outcomes)
-
-    # --- Backlog: scored-but-unenriched rows deferred by earlier cap hits.
-    # Drain a slice now while budget remains, best leads first. This is what
-    # makes a large free-scraped pile flow out at ~cap/day across the month. ---
-    if cfg.hunter_api_key and budget["hunter"] > 0:
-        backlog = store.get_scored_awaiting_enrichment(cfg)
-        if backlog:
-            log.info("backlog: %d scored awaiting enrichment, %d budget left", len(backlog), budget["hunter"])
-        for row in backlog:
-            if budget["hunter"] <= 0:
-                break
-            _enrich_and_route(row, cfg, profile, budget, send_ctx, outcomes)
+        _enrich_and_route(scored, cfg, profile, send_ctx, outcomes)
 
     summary = dict(outcomes)
     log.info("run complete %s -> %s", datetime.now(tz=timezone.utc).isoformat(timespec="seconds"), summary or "no fresh jobs")

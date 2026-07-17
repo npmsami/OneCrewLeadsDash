@@ -1,8 +1,8 @@
 name: Scrape leads (manual)
 
 # Triggered by the dashboard "Scrape leads" button (via the GitHub dispatch API)
-# or by hand from the Actions tab. No schedule — scraping is user-controlled,
-# rate-limited to once/24h by the dashboard's server-side lock.
+# or by hand from the Actions tab. No schedule and no cooldown — every button
+# click starts a fresh JSearch + Apify scrape.
 on:
   workflow_dispatch:
     inputs:
@@ -15,10 +15,9 @@ permissions:
   contents: read
 
 # Non-secret tunables — edit here, takes effect on the next run (no redeploy).
-# Hunter is still hard-capped at HUNTER_DAILY_CAP per UTC day inside the agent.
+# Discovery is JSearch + Apify only (the free boards were retired); no Hunter.
 env:
   LLM_MODEL: gpt-4o-mini
-  HUNTER_DAILY_CAP: "15"
   # High-volume manual-apply mode: no emails sent, so scrape wide.
   MAX_JOBS_PER_RUN: "100"
   MIN_SCORE: "70"
@@ -39,7 +38,6 @@ env:
   # PK-remote). US/UK returned jobs requiring LOCAL work authorization -> our
   # scorer geo-blocked them. Region-targeting is how Apify filters "applicable"
   # at scrape time (LinkedIn has no "open-to-internationals" facet).
-  # Worldwide-remote-open roles are caught by the free boards (RemoteOK/WWR/etc.).
   APIFY_LOCATIONS: Pakistan,United Arab Emirates,India
   APIFY_MAX_RESULTS: "200"
 
@@ -63,7 +61,6 @@ jobs:
         run: python -m agent.pipeline
         env:
           LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
-          HUNTER_API_KEY: ${{ secrets.HUNTER_API_KEY }}
           APOLLO_API_KEY: ${{ secrets.APOLLO_API_KEY }}
           JSEARCH_API_KEY: ${{ secrets.JSEARCH_API_KEY }}
           APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
