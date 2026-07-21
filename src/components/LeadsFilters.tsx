@@ -2,30 +2,34 @@
 
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import {
+  type LeadFilterParams,
+  hasActiveFilters,
+  leadFiltersToQuery,
+  SOURCE_OPTIONS,
+} from "@/lib/leads";
 
-interface Props {
-  q: string;
-  status: string;
-  source: string;
-  score: string;
-  sort: string;
-}
+const LEADS_PATH = "/job-applications/leads";
 
 const STATUS_OPTIONS = [
   { value: "all", label: "All statuses" },
-  { value: "active", label: "Active (apply-track)" },
-  { value: "dry_run", label: "Dry run" },
+  { value: "remaining", label: "Remaining" },
+  { value: "queued", label: "Queued" },
   { value: "applied", label: "Applied" },
-  { value: "followed_up", label: "Followed up" },
-  { value: "replied", label: "Replied" },
-  { value: "manual_apply", label: "Manual apply" },
-  { value: "geo_blocked", label: "Geo blocked" },
-  { value: "low_match", label: "Low match" },
-  { value: "score_error", label: "Score error" },
+  { value: "done", label: "Done" },
+  { value: "failed", label: "Failed" },
 ];
 
-const SOURCE_OPTIONS = [
-  "all", "remoteok", "remotive", "arbeitnow", "jobicy", "himalayas", "weworkremotely", "jsearch",
+const QUALIFIED_OPTIONS = [
+  { value: "all", label: "Qualified: any" },
+  { value: "yes", label: "Qualified" },
+  { value: "no", label: "Unqualified" },
+];
+
+const EMAIL_OPTIONS = [
+  { value: "all", label: "Email: any" },
+  { value: "yes", label: "Has email" },
+  { value: "no", label: "No email" },
 ];
 
 const SCORE_OPTIONS = [
@@ -44,24 +48,15 @@ const SORT_OPTIONS = [
 const selectClass =
   "rounded-lg border border-border bg-panel-2 px-3 py-2 text-sm text-fg outline-none transition focus:border-accent/60 focus:ring-2 focus:ring-accent/25";
 
-export function LeadsFilters(props: Props) {
+export function LeadsFilters(props: LeadFilterParams) {
   const router = useRouter();
   const [q, setQ] = useState(props.q);
 
-  function pushWith(overrides: Partial<Props>) {
-    const next: Props = { ...props, q, ...overrides };
-    const params = new URLSearchParams();
-    if (next.q) params.set("q", next.q);
-    if (next.status && next.status !== "all") params.set("status", next.status);
-    if (next.source && next.source !== "all") params.set("source", next.source);
-    if (next.score) params.set("score", next.score);
-    if (next.sort && next.sort !== "score") params.set("sort", next.sort);
-    const qs = params.toString();
-    router.push(qs ? `/leads?${qs}` : "/leads");
+  function pushWith(overrides: Partial<LeadFilterParams>) {
+    const next: LeadFilterParams = { ...props, q, ...overrides };
+    const qs = leadFiltersToQuery(next);
+    router.push(qs ? `${LEADS_PATH}?${qs}` : LEADS_PATH);
   }
-
-  const hasFilters =
-    props.q || props.status !== "all" || props.source !== "all" || props.score || props.sort !== "score";
 
   return (
     <div className="glass flex flex-wrap items-center gap-2.5 rounded-xl p-3">
@@ -88,10 +83,18 @@ export function LeadsFilters(props: Props) {
         {STATUS_OPTIONS.map((o) => <option key={o.value} value={o.value}>{o.label}</option>)}
       </select>
 
+      <select className={selectClass} value={props.qualified} onChange={(e) => pushWith({ qualified: e.target.value })}>
+        {QUALIFIED_OPTIONS.map((o) => <option key={o.value} value={o.value}>{o.label}</option>)}
+      </select>
+
       <select className={selectClass} value={props.source} onChange={(e) => pushWith({ source: e.target.value })}>
         {SOURCE_OPTIONS.map((s) => (
           <option key={s} value={s}>{s === "all" ? "All sources" : s}</option>
         ))}
+      </select>
+
+      <select className={selectClass} value={props.email} onChange={(e) => pushWith({ email: e.target.value })}>
+        {EMAIL_OPTIONS.map((o) => <option key={o.value} value={o.value}>{o.label}</option>)}
       </select>
 
       <select className={selectClass} value={props.score} onChange={(e) => pushWith({ score: e.target.value })}>
@@ -102,9 +105,9 @@ export function LeadsFilters(props: Props) {
         {SORT_OPTIONS.map((o) => <option key={o.value} value={o.value}>{o.label}</option>)}
       </select>
 
-      {hasFilters && (
+      {hasActiveFilters(props) && (
         <button
-          onClick={() => { setQ(""); router.push("/leads"); }}
+          onClick={() => { setQ(""); router.push(LEADS_PATH); }}
           className="rounded-lg px-3 py-2 text-sm text-muted transition hover:bg-white/5 hover:text-fg"
         >
           Clear

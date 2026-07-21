@@ -143,6 +143,7 @@ def hard_filters(jobs: list[dict], cfg: Config) -> list[dict]:
             "company": company,
             "job_url": url,
             "source": str(j.get("source") or "unknown"),
+            "publisher": j.get("publisher"),
             "location_tag": loc or "Remote",
             "posted_date": posted_iso,
             "scraped_at": datetime.now(tz=timezone.utc).isoformat(),

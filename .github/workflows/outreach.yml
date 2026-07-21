@@ -1,0 +1,49 @@
+name: Outreach queue (send one due email)
+
+# Human-gated sending. The dashboard "Apply" button enqueues a reviewed email
+# into outreach_queue; this worker runs every 5 minutes and sends at most ONE
+# due item, so the ~8-10 min gaps baked into scheduled_at are honored and the
+# cadence stays human. Safe to overlap: a guarded queued->sending claim prevents
+# double-sends. Nothing goes out unless settings.send_emails is true.
+on:
+  schedule:
+    - cron: "*/5 * * * *"     # every 5 min (UTC). GitHub may delay under load.
+  workflow_dispatch:
+    inputs:
+      reason:
+        description: Optional note shown in the run log
+        required: false
+        default: manual
+
+permissions:
+  contents: read
+
+# Prevent two ticks from running at once (extra belt-and-suspenders on top of
+# the DB-level claim lock).
+concurrency:
+  group: outreach-queue
+  cancel-in-progress: false
+
+jobs:
+  send:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    defaults:
+      run:
+        working-directory: agent
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: agent/requirements.txt
+      - name: Install deps
+        run: pip install -r requirements.txt
+      - name: Process one due outreach item
+        run: python -m agent.outreach
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
+          GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}

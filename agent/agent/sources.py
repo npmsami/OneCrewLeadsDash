@@ -167,6 +167,29 @@ def normalize_himalayas(data: Any) -> list[dict]:
     return out
 
 
+# JSearch aggregates many boards; job_publisher tells us which one a result came
+# from. We surface the big ones as first-class `source` values so the dashboard
+# can filter by "glassdoor" / "monster" / "linkedin" — Glassdoor and Monster have
+# no usable public API of their own and are heavily anti-bot, so riding JSearch's
+# aggregation (tagged by publisher) is the robust way to include them. See
+# docs/SOURCES.md.
+_PUBLISHER_SOURCE = {
+    "glassdoor": "glassdoor",
+    "monster": "monster",
+    "linkedin": "linkedin",
+    "indeed": "indeed",
+    "ziprecruiter": "ziprecruiter",
+}
+
+
+def _publisher_to_source(publisher: str) -> str:
+    p = publisher.lower()
+    for needle, src in _PUBLISHER_SOURCE.items():
+        if needle in p:
+            return src
+    return "jsearch"
+
+
 def normalize_jsearch(data: Any) -> list[dict]:
     # JSearch (RapidAPI) aggregates LinkedIn/Indeed/Glassdoor/ZipRecruiter etc.
     # Unlike the keyless feeds it exposes employer_website -> a real company domain.
@@ -175,6 +198,7 @@ def normalize_jsearch(data: Any) -> list[dict]:
     for j in jobs:
         if not isinstance(j, dict):
             continue
+        publisher = _s(j.get("job_publisher"))
         country = _s(j.get("job_country"))
         if j.get("job_is_remote"):
             location = "Remote" + (", " + country if country else "")
@@ -201,7 +225,8 @@ def normalize_jsearch(data: Any) -> list[dict]:
             "tags": tags,
             "salary_raw": salary,
             "company_website": _s(j.get("employer_website")),
-            "source": "jsearch",
+            "source": _publisher_to_source(publisher),
+            "publisher": publisher,
         })
     return out
 
@@ -354,17 +379,18 @@ def fetch_apify_linkedin(cfg) -> list[dict]:
 
 
 def fetch_all(cfg=None) -> list[dict]:
-    """Merge Sources: LinkedIn (Apify) + JSearch only, concatenated into one list.
+    """Merge discovery sources into one list.
 
-    These are now the ONLY two discovery sources. Each runs only when cfg carries
-    the relevant key (APIFY_TOKEN / JSEARCH_API_KEY). The six keyless free boards
-    (remoteok / remotive / arbeitnow / jobicy / himalayas / weworkremotely) were
-    retired: JSearch + Apify return real company domains and genuinely-remote
-    roles, so the noisier free feeds are no longer merged. Their fetchers and
-    normalizers are kept above should they ever need to be re-enabled.
+    Active sources: LinkedIn (Apify, main), JSearch (which also carries
+    Glassdoor/Monster/Indeed results tagged via `publisher`), and Himalayas (a
+    keyless remote board, re-enabled by request). Each keyed source runs only
+    when cfg carries the relevant token. The remaining keyless boards
+    (remoteok / remotive / arbeitnow / jobicy / weworkremotely) stay retired but
+    their fetchers/normalizers are kept above for easy re-enable.
     """
     merged: list[dict] = []
     if cfg is not None:
         merged += _safe("linkedin", lambda: fetch_apify_linkedin(cfg))  # main source
         merged += _safe("jsearch", lambda: fetch_jsearch(cfg))
+    merged += _safe("himalayas", fetch_himalayas)
     return _decode_entities(merged)

@@ -6,6 +6,13 @@
 Premium dashboard (brand **One Crew**) for the Python **job-application agent** (`../job-application-agent/`).
 The agent writes leads to Supabase; this dashboard reads them + holds the Candidate Signature config.
 
+## ▶ SESSION UPDATE 2026-07-21 — Human-gated outreach + leads ops (NOT pushed)
+Big feature build. Migration `supabase/migrations/0002_outreach_and_status.sql` (APPLIED to prod). Agent + dashboard both build/typecheck clean; **22 pytest + 23 vitest green**. Nothing sends until `settings.send_emails=true`.
+- **DB:** `applications` +`app_status`(remaining|queued|applied|done|failed)+`qualified`+`publisher`; new tables `outreach_queue` (edited email + partial-unique-index dup-send guard), `resumes` (multi, PDF/DOCX), `scrape_runs` (stats); `settings` +`default_resume_id`+`daily_send_cap`; `application_stats` view extended (security_invoker).
+- **Agent:** Hunter re-added (primary email finder, capped, rate/credit-safe — reverses the cost-cut); Himalayas re-enabled; **Glassdoor/Monster arrive via JSearch `job_publisher` tagging** (no scraper — see `docs/SOURCES.md`); pipeline **no longer auto-sends** (every lead = draft, app_status stays `remaining`) + writes a `scrape_runs` summary; new `agent/outreach.py` worker (one due send/tick, optimistic-lock claim, idempotent) + `.github/workflows/outreach.yml` (`*/5` cron); `google.send_email` now supports DOCX.
+- **Dashboard:** fixed the broken filter route (was pushing to `/leads`, page is `/job-applications/leads`); filters extended (app_status, qualified, source incl. glassdoor/monster/himalayas, score, email availability) + count bar; Overview scrape-stats panel + score-sorted, clickable Recent Activity; **new lead detail page** `/job-applications/leads/[jobId]` with editable email review (recipient/subject/body/resume) → **Apply queues (never sends)** + cancel/retry + Mark Applied/status dropdown; multi-resume manager in Settings. Pure helpers `src/lib/{leads,outreach,resumes}.ts` are unit-tested.
+- **User TODO to go live:** (1) add `HUNTER_API_KEY` GH Actions secret (re-adds cost — cancel note: it was dropped 7/01); (2) upload a resume in Settings; (3) push (adds `outreach.yml` cron on main); (4) flip `settings.send_emails=true` when ready. Test locally with the RETIRED venv: `cd agent && <retired>/.venv/Scripts/python -m pytest`; `npm run test`.
+
 ## Stack & coordinates
 - **Next.js 16** (App Router, Turbopack) + React 19 + **Tailwind v4** + TypeScript, deploy on **Vercel**
 - Supabase project_ref `dzhnxsgrnohyswhbjthc`; tables `applications` (+ `application_stats` view) and `settings` (singleton Candidate Signature)

@@ -29,6 +29,8 @@ VALID_COLUMNS = {
     "recruiter_email", "email_confidence", "email_source", "resume_filename",
     "resume_drive_link", "email_subject", "email_body", "applied_at", "reply_received",
     "reply_date", "followup_sent", "followup_date", "status", "notes",
+    # human apply-flow (migration 0002): user-facing status, qualification, publisher
+    "app_status", "qualified", "publisher",
 }
 
 # Typed columns where an empty string is invalid and must become SQL NULL.
@@ -99,6 +101,8 @@ _SETTINGS_DEFAULTS = {
     "candidate_name": "", "candidate_email": "", "candidate_linkedin": "",
     "resume_url": "", "resume_filename": "Resume.pdf", "send_emails": False,
     "email_template": "", "followup_template": "",
+    # migration 0002: default resume pointer + provider send cap
+    "default_resume_id": None, "daily_send_cap": 40,
 }
 
 
@@ -137,3 +141,100 @@ def download_resume(cfg: Config) -> tuple[bytes, str] | tuple[None, None]:
         return None, None
     data = get_client(cfg).storage.from_("resumes").download(path)
     return data, str(profile.get("resume_filename") or "Resume.pdf")
+
+
+# ---------------------------------------------------------------------------
+# Resumes (multi-resume table, migration 0002)
+# ---------------------------------------------------------------------------
+RESUMES_TABLE = "resumes"
+
+
+def get_resume(cfg: Config, resume_id: str) -> dict[str, Any] | None:
+    resp = get_client(cfg).table(RESUMES_TABLE).select("*").eq("id", resume_id).limit(1).execute()
+    return (resp.data or [None])[0]
+
+
+def download_resume_by_id(cfg: Config, resume_id: str) -> tuple[bytes, str, str] | tuple[None, None, None]:
+    """Download a specific stored resume by id -> (bytes, filename, mime)."""
+    row = get_resume(cfg, resume_id)
+    if not row or not row.get("storage_path"):
+        return None, None, None
+    data = get_client(cfg).storage.from_("resumes").download(str(row["storage_path"]))
+    return data, str(row.get("filename") or "Resume.pdf"), str(row.get("mime") or "application/pdf")
+
+
+# ---------------------------------------------------------------------------
+# Outreach queue (migration 0002) — the human-gated send pipeline
+# ---------------------------------------------------------------------------
+QUEUE_TABLE = "outreach_queue"
+
+
+def get_due_queue_item(cfg: Config, now_iso: str) -> dict[str, Any] | None:
+    """Oldest queued item whose scheduled_at has arrived. One per tick."""
+    resp = (get_client(cfg).table(QUEUE_TABLE).select("*")
+            .eq("status", "queued").lte("scheduled_at", now_iso)
+            .order("scheduled_at", desc=False).limit(1).execute())
+    return (resp.data or [None])[0]
+
+
+def claim_queue_item(cfg: Config, item_id: str, prev_attempts: int) -> dict[str, Any] | None:
+    """Atomically transition queued -> sending. The `.eq('status','queued')`
+    guard means only ONE worker can win the row -> no double-send. Returns the
+    claimed row, or None if another worker already took it."""
+    resp = (get_client(cfg).table(QUEUE_TABLE)
+            .update({"status": "sending", "attempts": prev_attempts + 1})
+            .eq("id", item_id).eq("status", "queued").execute())
+    return (resp.data or [None])[0]
+
+
+def mark_queue_sent(cfg: Config, item_id: str, job_id: str, message_id: str, sent_iso: str) -> None:
+    """Record a successful send: queue -> sent, lead app_status -> applied."""
+    client = get_client(cfg)
+    client.table(QUEUE_TABLE).update({
+        "status": "sent", "provider_message_id": message_id, "sent_at": sent_iso, "last_error": None,
+    }).eq("id", item_id).execute()
+    upsert(cfg, {"job_id": job_id, "app_status": "applied", "applied_at": sent_iso})
+
+
+def mark_queue_failed(cfg: Config, item_id: str, job_id: str, error: str) -> None:
+    """Record a failed send: queue -> failed (retryable), lead app_status -> failed."""
+    client = get_client(cfg)
+    client.table(QUEUE_TABLE).update({
+        "status": "failed", "last_error": error[:500],
+    }).eq("id", item_id).execute()
+    upsert(cfg, {"job_id": job_id, "app_status": "failed"})
+
+
+def count_sent_today(cfg: Config, day_iso: str) -> int:
+    """Emails actually sent today (provider daily-cap enforcement)."""
+    resp = (get_client(cfg).table(QUEUE_TABLE).select("id", count="exact")
+            .eq("status", "sent").gte("sent_at", day_iso).execute())
+    return resp.count or 0
+
+
+# ---------------------------------------------------------------------------
+# Scrape-run stats (migration 0002) — one summary row per pipeline run
+# ---------------------------------------------------------------------------
+SCRAPE_RUNS_TABLE = "scrape_runs"
+
+
+def insert_scrape_run(cfg: Config, summary: dict[str, Any]) -> None:
+    get_client(cfg).table(SCRAPE_RUNS_TABLE).insert(summary).execute()
+
+
+# ---------------------------------------------------------------------------
+# Hunter usage counter (re-added; reuses the existing `usage` table)
+# ---------------------------------------------------------------------------
+USAGE_TABLE = "usage"
+
+
+def get_hunter_calls(cfg: Config, day_iso: str) -> int:
+    resp = get_client(cfg).table(USAGE_TABLE).select("hunter_calls").eq("day", day_iso).limit(1).execute()
+    row = (resp.data or [{}])[0]
+    return int(row.get("hunter_calls") or 0)
+
+
+def incr_hunter_calls(cfg: Config, day_iso: str, n: int = 1) -> None:
+    current = get_hunter_calls(cfg, day_iso)
+    get_client(cfg).table(USAGE_TABLE).upsert(
+        {"day": day_iso, "hunter_calls": current + n}, on_conflict="day").execute()

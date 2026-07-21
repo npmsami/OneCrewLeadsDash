@@ -15,9 +15,12 @@ permissions:
   contents: read
 
 # Non-secret tunables — edit here, takes effect on the next run (no redeploy).
-# Discovery is JSearch + Apify only (the free boards were retired); no Hunter.
+# Discovery = Apify (LinkedIn) + JSearch (also carries Glassdoor/Monster/Indeed,
+# tagged by publisher) + Himalayas. Hunter finds recruiter emails (capped).
 env:
   LLM_MODEL: gpt-4o-mini
+  # Hunter daily search cap (paid plan credit protection; usage table tracks it).
+  HUNTER_DAILY_CAP: "25"
   # High-volume manual-apply mode: no emails sent, so scrape wide.
   MAX_JOBS_PER_RUN: "100"
   MIN_SCORE: "70"
@@ -57,10 +60,11 @@ jobs:
           cache-dependency-path: agent/requirements.txt
       - name: Install deps
         run: pip install -r requirements.txt
-      - name: Run pipeline (discover -> score -> enrich -> draft/send)
+      - name: Run pipeline (discover -> score -> enrich -> draft)
         run: python -m agent.pipeline
         env:
           LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
+          HUNTER_API_KEY: ${{ secrets.HUNTER_API_KEY }}
           APOLLO_API_KEY: ${{ secrets.APOLLO_API_KEY }}
           JSEARCH_API_KEY: ${{ secrets.JSEARCH_API_KEY }}
           APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}

@@ -77,7 +77,7 @@ def score_job(job: dict[str, Any], cfg: Config) -> dict[str, Any]:
         ctx.update({
             "match_score": None, "matched_track": "", "matched_keywords": "",
             "missing_keywords": "", "seniority_match": "", "geo_eligible": None,
-            "geo_reason": "", "status": "score_error",
+            "geo_reason": "", "status": "score_error", "qualified": False,
             "notes": ("LLM scoring failed: " + error_message(response, raw))[:300],
         })
         return ctx
@@ -105,6 +105,7 @@ def score_job(job: dict[str, Any], cfg: Config) -> dict[str, Any]:
         "geo_eligible": geo,
         "geo_reason": str(parsed.get("geo_reason") or ""),
         "status": status,
+        "qualified": status == "scored",  # passed the score + geo gate
         "notes": str(parsed.get("skip_reason") or ""),
     })
     return ctx

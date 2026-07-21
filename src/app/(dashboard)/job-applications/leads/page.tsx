@@ -2,20 +2,22 @@ import { Suspense } from "react";
 import { supabaseRead } from "@/lib/supabase";
 import { LeadRow } from "@/components/LeadRow";
 import { LeadsFilters } from "@/components/LeadsFilters";
-import { ACTIVE_STATUSES } from "@/lib/status";
-import type { Application } from "@/lib/types";
+import { parseLeadFilters, applyLeadFilters, type QueryLike } from "@/lib/leads";
+import type { Application, ApplicationStats } from "@/lib/types";
 
 export const dynamic = "force-dynamic";
 
 const ROW_LIMIT = 500;
 
-interface SearchParams {
-  q?: string;
-  status?: string;
-  source?: string;
-  score?: string;
-  sort?: string;
-}
+type SearchParams = Record<string, string | undefined>;
+
+const COUNT_TABS: { key: keyof ApplicationStats; label: string }[] = [
+  { key: "remaining", label: "Remaining" },
+  { key: "queued", label: "Queued" },
+  { key: "app_applied", label: "Applied" },
+  { key: "done", label: "Done" },
+  { key: "failed", label: "Failed" },
+];
 
 export default async function LeadsPage({
   searchParams,
@@ -23,31 +25,20 @@ export default async function LeadsPage({
   searchParams: Promise<SearchParams>;
 }) {
   const sp = await searchParams;
-  const q = (sp.q ?? "").trim();
-  const status = sp.status ?? "all";
-  const source = sp.source ?? "all";
-  const score = sp.score ?? "";
-  const sort = sp.sort ?? "score";
+  const filters = parseLeadFilters(sp);
 
   const sb = supabaseRead();
-  let query = sb.from("applications").select("*");
+  const base = sb.from("applications").select("*") as unknown as QueryLike;
+  const query = applyLeadFilters(base, filters) as unknown as {
+    limit: (n: number) => Promise<{ data: Application[] | null }>;
+  };
 
-  if (q) {
-    const safe = q.replace(/[,()%*]/g, " ").trim();
-    if (safe) query = query.or(`job_title.ilike.%${safe}%,company.ilike.%${safe}%`);
-  }
-  if (status === "active") query = query.in("status", ACTIVE_STATUSES);
-  else if (status !== "all") query = query.eq("status", status);
-  if (source !== "all") query = query.eq("source", source);
-  const minScore = Number(score);
-  if (minScore > 0) query = query.gte("match_score", minScore);
-
-  if (sort === "posted") query = query.order("posted_date", { ascending: false, nullsFirst: false });
-  else if (sort === "updated") query = query.order("updated_at", { ascending: false });
-  else query = query.order("match_score", { ascending: false, nullsFirst: false });
-
-  const { data } = await query.limit(ROW_LIMIT);
-  const leads = (data as Application[] | undefined) ?? [];
+  const [{ data }, { data: statsRows }] = await Promise.all([
+    query.limit(ROW_LIMIT),
+    sb.from("application_stats").select("*").limit(1),
+  ]);
+  const leads = data ?? [];
+  const stats = (statsRows?.[0] as ApplicationStats | undefined) ?? null;
 
   return (
     <div className="mx-auto max-w-6xl px-6 py-10 md:px-10">
@@ -58,8 +49,20 @@ export default async function LeadsPage({
         </p>
       </header>
 
+      {/* Clear per-status counts */}
+      {stats && (
+        <div className="mb-4 grid grid-cols-2 gap-3 sm:grid-cols-5">
+          {COUNT_TABS.map((t) => (
+            <div key={t.key} className="card px-4 py-3">
+              <div className="text-2xl font-semibold tabular-nums text-fg">{Number(stats[t.key] ?? 0)}</div>
+              <div className="text-xs text-faint">{t.label}</div>
+            </div>
+          ))}
+        </div>
+      )}
+
       <Suspense>
-        <LeadsFilters q={q} status={status} source={source} score={score} sort={sort} />
+        <LeadsFilters {...filters} />
       </Suspense>
 
       <div className="card mt-4 overflow-hidden">

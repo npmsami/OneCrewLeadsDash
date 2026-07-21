@@ -1,7 +1,7 @@
 import { supabaseRead, supabaseAdmin } from "@/lib/supabase";
 import { SettingsForm } from "@/components/SettingsForm";
-import { ResumeUpload } from "@/components/ResumeUpload";
-import type { Settings } from "@/lib/types";
+import { ResumeManager } from "@/components/ResumeManager";
+import type { Resume, Settings } from "@/lib/types";
 
 export const dynamic = "force-dynamic";
 
@@ -33,14 +33,12 @@ export default async function SettingsPage({
   const connected = Boolean(gmail?.refresh_token);
   const banner = gmailStatus ? GMAIL_MSG[gmailStatus] : null;
 
-  // Signed preview link for the uploaded resume (private bucket).
-  let resumePreview: string | null = null;
-  if (settings?.resume_url) {
-    const { data: signed } = await supabaseAdmin().storage
-      .from("resumes")
-      .createSignedUrl(settings.resume_url, 3600);
-    resumePreview = signed?.signedUrl ?? null;
-  }
+  const { data: resumeRows } = await supabaseRead()
+    .from("resumes")
+    .select("*")
+    .order("is_default", { ascending: false })
+    .order("uploaded_at", { ascending: false });
+  const resumes = (resumeRows as Resume[] | undefined) ?? [];
 
   return (
     <div className="mx-auto max-w-3xl px-6 py-10 md:px-10">
@@ -84,7 +82,7 @@ export default async function SettingsPage({
       </div>
 
       <div className="mb-6">
-        <ResumeUpload filename={settings?.resume_filename || "resume.pdf"} previewUrl={resumePreview} />
+        <ResumeManager resumes={resumes} />
       </div>
 
       <SettingsForm settings={settings} />

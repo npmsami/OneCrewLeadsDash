@@ -88,9 +88,24 @@ def _headers(cfg: Config) -> dict[str, str]:
 # ---------------------------------------------------------------------------
 # Send
 # ---------------------------------------------------------------------------
+def _split_mime(mime: str, filename: str) -> tuple[str, str]:
+    """Return (maintype, subtype) for an attachment. Falls back to the file
+    extension, then to application/octet-stream."""
+    if mime and "/" in mime:
+        maintype, subtype = mime.split("/", 1)
+        return maintype, subtype
+    ext = filename.rsplit(".", 1)[-1].lower() if "." in filename else ""
+    if ext == "pdf":
+        return "application", "pdf"
+    if ext == "docx":
+        return "application", "vnd.openxmlformats-officedocument.wordprocessingml.document"
+    return "application", "octet-stream"
+
+
 def build_raw(to: str, subject: str, body: str, from_addr: str = "",
-              attachment: bytes | None = None, filename: str = "Resume.pdf") -> str:
-    """Assemble a plain-text email (optional PDF attachment) -> base64url raw."""
+              attachment: bytes | None = None, filename: str = "Resume.pdf",
+              attachment_mime: str = "application/pdf") -> str:
+    """Assemble a plain-text email (optional PDF/DOCX attachment) -> base64url raw."""
     msg = EmailMessage()
     msg["To"] = to
     msg["Subject"] = subject
@@ -98,15 +113,17 @@ def build_raw(to: str, subject: str, body: str, from_addr: str = "",
         msg["From"] = from_addr
     msg.set_content(body)
     if attachment:
-        msg.add_attachment(attachment, maintype="application", subtype="pdf", filename=filename)
+        maintype, subtype = _split_mime(attachment_mime, filename)
+        msg.add_attachment(attachment, maintype=maintype, subtype=subtype, filename=filename)
     return base64.urlsafe_b64encode(msg.as_bytes()).decode()
 
 
 def send_email(cfg: Config, to: str, subject: str, body: str,
-               attachment: bytes | None = None, filename: str = "Resume.pdf") -> str:
+               attachment: bytes | None = None, filename: str = "Resume.pdf",
+               attachment_mime: str = "application/pdf") -> str:
     """Send one plain-text email via Gmail. Returns the sent message id."""
     _, from_addr = access_token(cfg)
-    raw = build_raw(to, subject, body, from_addr, attachment, filename)
+    raw = build_raw(to, subject, body, from_addr, attachment, filename, attachment_mime)
     resp = requests.post(f"{_GMAIL_API}/messages/send", headers=_headers(cfg),
                          json={"raw": raw}, timeout=_TIMEOUT)
     if resp.status_code != 200:

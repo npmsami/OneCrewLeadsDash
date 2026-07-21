@@ -1,0 +1,5 @@
+# Dev/test deps for the agent. Install alongside requirements.txt:
+#   pip install -r requirements.txt -r requirements-dev.txt
+# Run the suite from the agent/ directory:
+#   python -m pytest
+pytest>=8.0

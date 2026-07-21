@@ -40,7 +40,13 @@ class Config:
     llm_model: str = field(default_factory=lambda: _env("LLM_MODEL", "gpt-4o-mini"))
     llm_api_key: str = field(default_factory=lambda: _env("LLM_API_KEY"))
 
-    # --- Enrichment (Apollo only; Hunter removed) ---
+    # --- Enrichment (Hunter primary, Apollo secondary) ---
+    # Hunter finds professional recruiter/company emails. Key is BACKEND-ONLY
+    # (GitHub Actions secret + agent .env) and never exposed to the dashboard.
+    hunter_api_key: str = field(default_factory=lambda: _env("HUNTER_API_KEY"))
+    # Daily search cap so a paid Hunter plan's monthly credits aren't burned in
+    # one run; tracked in the Supabase `usage` table (day -> hunter_calls).
+    hunter_daily_cap: int = field(default_factory=lambda: _env_int("HUNTER_DAILY_CAP", 25))
     apollo_api_key: str = field(default_factory=lambda: _env("APOLLO_API_KEY"))
 
     # --- Discovery: JSearch (RapidAPI) ---
@@ -93,6 +99,16 @@ class Config:
     # Extra random jitter (0..N seconds) added on top of the throttle between
     # sends, so the cadence looks human instead of a fixed-interval bot. 0 = off.
     send_throttle_jitter_seconds: int = field(default_factory=lambda: _env_int("SEND_THROTTLE_JITTER_SECONDS", 0))
+
+    # --- Outreach queue (human-gated send) ---
+    # The dashboard "Apply" button enqueues a lead; a scheduled worker
+    # (agent.outreach) sends ONE due item per tick. The gap between consecutive
+    # sends is randomized in [min, max] minutes (default ~8-10) at enqueue time.
+    outreach_min_gap_minutes: int = field(default_factory=lambda: _env_int("OUTREACH_MIN_GAP_MINUTES", 8))
+    outreach_max_gap_minutes: int = field(default_factory=lambda: _env_int("OUTREACH_MAX_GAP_MINUTES", 10))
+    # Hard ceiling on emails actually sent per calendar day (provider limit /
+    # deliverability). Overridden by settings.daily_send_cap when present.
+    outreach_daily_cap: int = field(default_factory=lambda: _env_int("OUTREACH_DAILY_CAP", 40))
 
     @property
     def master_resume(self) -> str:
