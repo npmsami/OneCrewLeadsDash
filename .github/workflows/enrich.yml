@@ -1,0 +1,65 @@
+name: Find recruiter emails (re-enrich backlog)
+
+# Works down the backlog of qualified leads that have no recruiter email yet:
+# Hunter (searched by company NAME, so LinkedIn leads resolve) then Apollo.
+# A lead that gets an email is re-addressed to that person and moves from
+# manual_apply to dry_run, ready for the user to review + Apply.
+#
+# Runs daily and on demand from the dashboard. Spend is bounded by BOTH caps
+# below and shared with the scrape pipeline through the Supabase `usage` table,
+# so the two workflows draw from one allowance. Nothing here sends email.
+on:
+  schedule:
+    - cron: "0 8 * * *"      # daily 08:00 UTC — after the overnight scrape
+  workflow_dispatch:
+    inputs:
+      reason:
+        description: Optional note shown in the run log
+        required: false
+        default: manual
+      job_id:
+        description: Enrich only this lead (dashboard per-lead "Find email"). Blank = whole backlog.
+        required: false
+        default: ""
+
+permissions:
+  contents: read
+
+concurrency:
+  group: enrich-backlog
+  cancel-in-progress: false
+
+env:
+  # Hunter's allowance resets MONTHLY, so the monthly cap is the real guard.
+  # Free plan = 50 searches/mo -> 45 leaves headroom. Starter = 500/mo.
+  HUNTER_MONTHLY_CAP: "45"
+  # Per-day ceiling so one run can't drain the month in a single pass.
+  HUNTER_DAILY_CAP: "10"
+
+jobs:
+  enrich:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    defaults:
+      run:
+        working-directory: agent
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: agent/requirements.txt
+      - name: Install deps
+        run: pip install -r requirements.txt
+      - name: Re-enrich backlog (Hunter -> Apollo)
+        run: python -m agent.reenrich
+        env:
+          # Blank on the schedule -> whole backlog; set by the dashboard's
+          # per-lead button -> that lead only.
+          REENRICH_JOB_ID: ${{ inputs.job_id }}
+          LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
+          HUNTER_API_KEY: ${{ secrets.HUNTER_API_KEY }}
+          APOLLO_API_KEY: ${{ secrets.APOLLO_API_KEY }}
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}

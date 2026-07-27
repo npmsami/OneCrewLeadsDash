@@ -37,7 +37,12 @@ _LOG_NEW_FIELDS = ("job_id", "job_title", "company", "source", "publisher",
                    "job_url", "posted_date", "scraped_at")
 _SCORE_FIELDS = ("job_id", "match_score", "matched_track", "matched_keywords", "missing_keywords",
                  "seniority_match", "geo_eligible", "geo_reason", "status", "qualified", "notes")
-_ENRICH_FIELDS = ("job_id", "recruiter_name", "recruiter_email", "email_confidence", "email_source", "status")
+_ENRICH_FIELDS = ("job_id", "recruiter_name", "recruiter_email", "recruiter_title",
+                  "email_confidence", "email_source", "company_domain", "status")
+
+# The JD is stored (truncated) so an email can be re-drafted later with the same
+# grounding the first draft had — the writer reads 4k, the scorer 7k.
+_DESCRIPTION_LIMIT = 20_000
 
 
 def _pick(row: dict, fields) -> dict:
@@ -48,7 +53,8 @@ def _enrich_and_route(scored: dict, cfg: Config, profile: dict, hunter_state: di
     """Enrich one scored job and store a draft. Never sends — the lead waits in
     the dashboard for the user to review + Apply."""
     enriched = enrich(scored, cfg, hunter_state)
-    store.upsert(cfg, _pick(enriched, _ENRICH_FIELDS))
+    store.upsert(cfg, {**_pick(enriched, _ENRICH_FIELDS),
+                       "enriched_at": datetime.now(tz=timezone.utc).isoformat()})
 
     # Draft the application email for EVERY qualified lead (even without a
     # recruiter email) so the review screen always has something to edit.
@@ -83,18 +89,23 @@ def run(cfg: Config | None = None) -> dict[str, int]:
 
     profile = store.get_settings(cfg)
 
-    # Hunter per-run budget (daily cap minus what's already spent today).
+    # Hunter per-run budget: the tighter of the daily and monthly caps, shared
+    # with the re-enrich worker via the `usage` table. `cache` dedupes lookups
+    # so several jobs at one company cost a single search.
     today_iso = started_at.date().isoformat()
-    spent_today = store.get_hunter_calls(cfg, today_iso) if cfg.hunter_api_key else 0
+    month_prefix = today_iso[:7]
     hunter_state = {
-        "remaining": max(0, cfg.hunter_daily_cap - spent_today),
+        "remaining": store.hunter_remaining(cfg, today_iso, month_prefix),
         "used": 0,
         "disabled": not bool(cfg.hunter_api_key),
+        "cache": {},
     }
     if cfg.hunter_api_key:
-        log.info("Hunter enabled: %d/%d searches left today", hunter_state["remaining"], cfg.hunter_daily_cap)
+        log.info("Hunter enabled: %d searches available (daily cap %d, monthly cap %d)",
+                 hunter_state["remaining"], cfg.hunter_daily_cap, cfg.hunter_monthly_cap)
     else:
         log.info("Hunter disabled (no HUNTER_API_KEY)")
+    log.info("Apollo %s", "enabled" if cfg.apollo_api_key else "disabled (no APOLLO_API_KEY)")
 
     existing = store.get_existing_rows(cfg)
     raw = fetch_all(cfg)
@@ -119,7 +130,11 @@ def run(cfg: Config | None = None) -> dict[str, int]:
 
     for job in fresh:
         source_breakdown[str(job.get("source") or "unknown")] += 1
-        store.upsert(cfg, {**_pick(job, _LOG_NEW_FIELDS), "status": "new"})
+        store.upsert(cfg, {
+            **_pick(job, _LOG_NEW_FIELDS),
+            "job_description": str(job.get("description") or "")[:_DESCRIPTION_LIMIT],
+            "status": "new",
+        })
 
         scored = score_job(job, cfg)
         store.upsert(cfg, _pick(scored, _SCORE_FIELDS))

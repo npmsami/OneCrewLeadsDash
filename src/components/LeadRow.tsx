@@ -36,7 +36,12 @@ export function LeadRow({ lead }: { lead: Application }) {
       </td>
       <td className="max-w-[14rem] px-3 py-3.5">
         <span className="block truncate text-xs text-muted">{lead.recruiter_email || "—"}</span>
-        {lead.email_source && <span className="text-[11px] text-faint">{lead.email_source}</span>}
+        {lead.recruiter_name && (
+          <span className="block truncate text-[11px] text-faint">
+            {lead.recruiter_name}
+            {lead.recruiter_title ? ` · ${lead.recruiter_title}` : ""}
+          </span>
+        )}
       </td>
       <td className="px-5 py-3.5 text-right text-xs text-faint">{fmtDate(lead.posted_date)}</td>
     </tr>

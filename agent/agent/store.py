@@ -31,11 +31,15 @@ VALID_COLUMNS = {
     "reply_date", "followup_sent", "followup_date", "status", "notes",
     # human apply-flow (migration 0002): user-facing status, qualification, publisher
     "app_status", "qualified", "publisher",
+    # enrichment (migration 0003): what the provider resolved + when we last tried
+    "company_domain", "recruiter_title", "enriched_at",
+    # migration 0004: JD text kept so emails can be re-drafted with grounding
+    "job_description",
 }
 
 # Typed columns where an empty string is invalid and must become SQL NULL.
 _NULLABLE_TYPED = {
-    "posted_date", "scraped_at", "applied_at", "reply_date", "followup_date",  # timestamptz
+    "posted_date", "scraped_at", "applied_at", "reply_date", "followup_date", "enriched_at",  # timestamptz
     "match_score",  # smallint
     "geo_eligible",  # boolean
 }
@@ -91,6 +95,41 @@ def get_all_rows(cfg: Config) -> list[dict[str, Any]]:
 def delete_job(cfg: Config, job_id: str) -> None:
     """Test/maintenance helper — remove one row by id."""
     get_client(cfg).table(TABLE).delete().eq("job_id", job_id).execute()
+
+
+# Fields the re-enrich pass needs to look a company up and re-draft its email.
+_BACKLOG_FIELDS = (
+    "job_id,job_title,company,company_domain,job_url,source,match_score,matched_track,"
+    "matched_keywords,missing_keywords,seniority_match,geo_reason,status,enriched_at,"
+    "job_description,email_subject,email_body"
+)
+
+
+def get_lead_for_enrich(cfg: Config, job_id: str) -> list[dict[str, Any]]:
+    """One specific lead, for the dashboard's per-lead 'Find email' action."""
+    resp = (get_client(cfg).table(TABLE).select(_BACKLOG_FIELDS)
+            .eq("job_id", job_id).limit(1).execute())
+    return resp.data or []
+
+
+def get_enrich_backlog(cfg: Config, limit: int = 50) -> list[dict[str, Any]]:
+    """Qualified leads that still have no recruiter email, best match first.
+
+    Never-attempted rows sort ahead of already-attempted ones, so a repeated run
+    works down fresh companies instead of re-paying for the same dead ends. Rows
+    the user has already acted on (queued/applied/done) are excluded — enriching
+    them would only churn an email that has shipped.
+    """
+    resp = (get_client(cfg).table(TABLE)
+            .select(_BACKLOG_FIELDS)
+            .is_("recruiter_email", "null")
+            .eq("status", "manual_apply")
+            .eq("app_status", "remaining")
+            .order("enriched_at", desc=False, nullsfirst=True)
+            .order("match_score", desc=True, nullsfirst=False)
+            .limit(limit)
+            .execute())
+    return resp.data or []
 
 
 # ---------------------------------------------------------------------------
@@ -232,6 +271,34 @@ def get_hunter_calls(cfg: Config, day_iso: str) -> int:
     resp = get_client(cfg).table(USAGE_TABLE).select("hunter_calls").eq("day", day_iso).limit(1).execute()
     row = (resp.data or [{}])[0]
     return int(row.get("hunter_calls") or 0)
+
+
+def get_hunter_calls_month(cfg: Config, month_prefix: str) -> int:
+    """Searches spent so far in a calendar month ('YYYY-MM').
+
+    Hunter's allowance resets monthly, not daily, so the monthly total is the
+    cap that actually matters — a daily cap alone would burn a Free plan's whole
+    month in two runs.
+    """
+    resp = (get_client(cfg).table(USAGE_TABLE)
+            .select("hunter_calls")
+            .gte("day", month_prefix + "-01")
+            .lte("day", month_prefix + "-31")
+            .execute())
+    return sum(int((r or {}).get("hunter_calls") or 0) for r in (resp.data or []))
+
+
+def hunter_remaining(cfg: Config, day_iso: str, month_prefix: str) -> int:
+    """Searches this run may spend: the tighter of the daily and monthly caps.
+
+    Shared by the scrape pipeline and the re-enrich worker so two runs on the
+    same day draw from one allowance instead of each getting a full budget.
+    """
+    if not cfg.hunter_api_key:
+        return 0
+    daily = cfg.hunter_daily_cap - get_hunter_calls(cfg, day_iso)
+    monthly = cfg.hunter_monthly_cap - get_hunter_calls_month(cfg, month_prefix)
+    return max(0, min(daily, monthly))
 
 
 def incr_hunter_calls(cfg: Config, day_iso: str, n: int = 1) -> None:

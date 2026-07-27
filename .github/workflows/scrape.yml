@@ -19,8 +19,11 @@ permissions:
 # tagged by publisher) + Himalayas. Hunter finds recruiter emails (capped).
 env:
   LLM_MODEL: gpt-4o-mini
-  # Hunter daily search cap (paid plan credit protection; usage table tracks it).
-  HUNTER_DAILY_CAP: "25"
+  # Hunter search caps. The MONTHLY one is the real guard (Hunter's allowance
+  # resets monthly: Free = 50, Starter = 500); the daily one stops a single big
+  # scrape from draining it. Shared with enrich.yml via the `usage` table.
+  HUNTER_MONTHLY_CAP: "45"
+  HUNTER_DAILY_CAP: "10"
   # High-volume manual-apply mode: no emails sent, so scrape wide.
   MAX_JOBS_PER_RUN: "100"
   MIN_SCORE: "70"

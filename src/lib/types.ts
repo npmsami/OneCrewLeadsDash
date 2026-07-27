@@ -41,6 +41,12 @@ export interface Application {
   recruiter_email: string | null;
   email_confidence: string | null;
   email_source: string | null;
+  // enrichment (migration 0003) — what Hunter/Apollo resolved, and when we tried
+  recruiter_title: string | null;
+  company_domain: string | null;
+  enriched_at: string | null;
+  // migration 0004 — grounding text for drafting/re-drafting the email
+  job_description: string | null;
   resume_filename: string | null;
   resume_drive_link: string | null;
   email_subject: string | null;

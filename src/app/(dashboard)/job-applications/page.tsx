@@ -2,6 +2,7 @@ import Link from "next/link";
 import { supabaseRead } from "@/lib/supabase";
 import { StatusBadge } from "@/components/StatusBadge";
 import { ScrapeButton } from "@/components/ScrapeButton";
+import { FindEmailsButton } from "@/components/FindEmailsButton";
 import { appStatusMeta } from "@/lib/status";
 import type { Application, ApplicationStats, ScrapeRun } from "@/lib/types";
 
@@ -27,24 +28,33 @@ function fmtDateTime(iso: string | null): string {
 
 export default async function OverviewPage() {
   const sb = supabaseRead();
-  const [{ data: statsRows }, { data: recent }, { data: runRows }] = await Promise.all([
-    sb.from("application_stats").select("*").limit(1),
-    // Recent activity: SAME score-based sort as the Leads page default.
-    sb.from("applications").select("*").order("match_score", { ascending: false, nullsFirst: false }).limit(8),
-    sb.from("scrape_runs").select("*").order("finished_at", { ascending: false }).limit(1),
-  ]);
+  const [{ data: statsRows }, { data: recent }, { data: runRows }, withEmail, needEmail] =
+    await Promise.all([
+      sb.from("application_stats").select("*").limit(1),
+      // Recent activity: SAME score-based sort as the Leads page default.
+      sb.from("applications").select("*").order("match_score", { ascending: false, nullsFirst: false }).limit(8),
+      sb.from("scrape_runs").select("*").order("finished_at", { ascending: false }).limit(1),
+      // Email coverage: of the leads still awaiting a decision, how many have a
+      // recipient to send to vs. how many are still blocked on enrichment.
+      sb.from("applications").select("job_id", { count: "exact", head: true })
+        .eq("app_status", "remaining").not("recruiter_email", "is", null),
+      sb.from("applications").select("job_id", { count: "exact", head: true })
+        .eq("app_status", "remaining").eq("status", "manual_apply").is("recruiter_email", null),
+    ]);
 
   const stats = (statsRows?.[0] as ApplicationStats | undefined) ?? null;
   const leads = (recent as Application[] | undefined) ?? [];
   const lastRun = (runRows?.[0] as ScrapeRun | undefined) ?? null;
+  const readyToSend = withEmail.count ?? 0;
+  const awaitingEmail = needEmail.count ?? 0;
 
   const cards = [
     { label: "Total leads", value: stats?.total ?? 0, hint: "discovered & scored" },
     { label: "Qualified", value: stats?.qualified ?? 0, hint: "passed score + geo", accent: true },
-    { label: "Remaining", value: stats?.remaining ?? 0, hint: "not yet actioned" },
+    { label: "Ready to send", value: readyToSend, hint: "have a recruiter email", accent: true },
+    { label: "Awaiting email", value: awaitingEmail, hint: "no contact found yet" },
     { label: "Queued", value: stats?.queued ?? 0, hint: "in the send queue" },
     { label: "Applied", value: stats?.app_applied ?? 0, hint: "emails sent / marked" },
-    { label: "Avg match", value: stats?.avg_score != null ? `${stats.avg_score}` : "—", hint: "score / 100" },
   ];
 
   const runStats = lastRun
@@ -70,6 +80,13 @@ export default async function OverviewPage() {
           <Link href="/job-applications/leads" className="text-sm font-medium text-muted transition hover:text-fg">
             View all leads →
           </Link>
+          <FindEmailsButton
+            hint={
+              awaitingEmail > 0
+                ? `${awaitingEmail} lead${awaitingEmail === 1 ? "" : "s"} still need a contact`
+                : "Hunter → Apollo, best-scoring first"
+            }
+          />
           <ScrapeButton />
         </div>
       </header>

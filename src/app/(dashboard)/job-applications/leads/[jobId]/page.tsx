@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { supabaseRead } from "@/lib/supabase";
 import { StatusBadge } from "@/components/StatusBadge";
 import { LeadReview } from "@/components/LeadReview";
+import { FindEmailsButton } from "@/components/FindEmailsButton";
 import { appStatusMeta } from "@/lib/status";
 import type { Application, OutreachQueue, Resume, Settings } from "@/lib/types";
 
@@ -82,6 +83,41 @@ export default async function LeadDetailPage({
         )}
       </header>
 
+      {/* Who this email goes to — the thing to sanity-check before sending. */}
+      <section className="card mt-6 p-5">
+        <div className="mb-3 flex items-center justify-between gap-4">
+          <h2 className="text-xs font-semibold uppercase tracking-wide text-faint">Contact</h2>
+          {lead.email_source && (
+            <span className="text-xs text-faint">
+              via {lead.email_source}
+              {lead.email_confidence ? ` · ${lead.email_confidence} confidence` : ""}
+            </span>
+          )}
+        </div>
+        {lead.recruiter_email ? (
+          <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+            <span className="text-sm font-medium text-fg">{lead.recruiter_name || "Hiring Team"}</span>
+            {lead.recruiter_title && <span className="text-xs text-muted">{lead.recruiter_title}</span>}
+            <span className="w-full font-mono text-xs text-accent-2">{lead.recruiter_email}</span>
+            {lead.company_domain && <span className="text-xs text-faint">{lead.company_domain}</span>}
+          </div>
+        ) : (
+          <div className="flex flex-wrap items-center justify-between gap-4">
+            <p className="text-sm text-muted">
+              No contact found yet
+              {lead.enriched_at ? ` (last checked ${fmtDateTime(lead.enriched_at)})` : ""}. Look the company
+              up, or type a recipient in below and apply anyway.
+            </p>
+            <FindEmailsButton
+              jobId={lead.job_id}
+              variant="quiet"
+              label="Find email for this company"
+              hint="Uses one Hunter search"
+            />
+          </div>
+        )}
+      </section>
+
       {/* Editable email review + Apply + status controls (client) */}
       <LeadReview
         jobId={lead.job_id}
@@ -101,16 +137,29 @@ export default async function LeadDetailPage({
         <div className="col-span-2"><Field label="Geo reason" value={lead.geo_reason} /></div>
         <div className="col-span-2"><Field label="Matched keywords" value={lead.matched_keywords} /></div>
         <div className="col-span-2"><Field label="Missing keywords" value={lead.missing_keywords} /></div>
-        <Field label="Recruiter" value={lead.recruiter_name} />
-        <Field label="Email source" value={lead.email_source} />
-        <Field label="Email confidence" value={lead.email_confidence} />
         <Field label="Publisher" value={lead.publisher} />
         <Field label="Posted" value={fmtDateTime(lead.posted_date)} />
         <Field label="Scraped" value={fmtDateTime(lead.scraped_at)} />
+        <Field label="Enriched" value={fmtDateTime(lead.enriched_at)} />
         <Field label="Applied" value={fmtDateTime(lead.applied_at)} />
         <Field label="Updated" value={fmtDateTime(lead.updated_at)} />
         {lead.notes && <div className="col-span-2"><Field label="Notes" value={lead.notes} /></div>}
       </section>
+
+      {/* The text the email was grounded in — collapsed, it's long. */}
+      {lead.job_description && (
+        <details className="card mt-6 p-5">
+          <summary className="cursor-pointer text-xs font-semibold uppercase tracking-wide text-faint">
+            Job description
+            <span className="ml-2 font-normal normal-case tracking-normal text-faint">
+              (what the email was written from)
+            </span>
+          </summary>
+          <p className="mt-4 whitespace-pre-wrap text-sm leading-relaxed text-muted">
+            {lead.job_description}
+          </p>
+        </details>
+      )}
     </div>
   );
 }

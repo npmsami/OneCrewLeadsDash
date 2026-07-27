@@ -44,9 +44,13 @@ class Config:
     # Hunter finds professional recruiter/company emails. Key is BACKEND-ONLY
     # (GitHub Actions secret + agent .env) and never exposed to the dashboard.
     hunter_api_key: str = field(default_factory=lambda: _env("HUNTER_API_KEY"))
-    # Daily search cap so a paid Hunter plan's monthly credits aren't burned in
-    # one run; tracked in the Supabase `usage` table (day -> hunter_calls).
-    hunter_daily_cap: int = field(default_factory=lambda: _env_int("HUNTER_DAILY_CAP", 25))
+    # Daily search cap so one run can't drain the allowance; tracked in the
+    # Supabase `usage` table (day -> hunter_calls).
+    hunter_daily_cap: int = field(default_factory=lambda: _env_int("HUNTER_DAILY_CAP", 10))
+    # Hunter's allowance resets MONTHLY, so this is the cap that actually
+    # protects the plan (Free = 50 searches/mo; Starter = 500). Keep it a little
+    # under the plan limit so a miscount can't overrun it.
+    hunter_monthly_cap: int = field(default_factory=lambda: _env_int("HUNTER_MONTHLY_CAP", 45))
     apollo_api_key: str = field(default_factory=lambda: _env("APOLLO_API_KEY"))
 
     # --- Discovery: JSearch (RapidAPI) ---
