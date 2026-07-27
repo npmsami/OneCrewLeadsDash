@@ -47,6 +47,10 @@ export interface Application {
   enriched_at: string | null;
   // migration 0004 — grounding text for drafting/re-drafting the email
   job_description: string | null;
+  // migration 0005 — AI follow-up draft awaiting the user's review
+  followup_subject: string | null;
+  followup_body: string | null;
+  followup_generated_at: string | null;
   resume_filename: string | null;
   resume_drive_link: string | null;
   email_subject: string | null;
@@ -65,9 +69,14 @@ export interface Application {
   updated_at: string;
 }
 
+// What an outreach_queue row is carrying. A lead can have one active row of
+// each kind (migration 0005 scopes the dup-send guard to job_id + kind).
+export type OutreachKind = "initial" | "followup";
+
 export interface OutreachQueue {
   id: string;
   job_id: string;
+  kind: OutreachKind | string;
   to_email: string;
   subject: string | null;
   body: string | null;
@@ -122,6 +131,15 @@ export interface ApplicationStats {
   failed: number;
   qualified: number;
   unqualified: number;
+}
+
+export interface SentEmailStats {
+  total_sent: number;
+  replied: number;
+  awaiting_reply: number;
+  followup_ready: number;
+  followed_up: number;
+  last_sent_at: string | null;
 }
 
 export interface Settings {

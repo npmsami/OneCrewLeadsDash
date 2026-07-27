@@ -49,10 +49,10 @@ def test_happy_path_sends_one(monkeypatch):
     monkeypatch.setattr(outreach.google, "send_email", lambda *a, **k: "MID123")
     marked = {}
     monkeypatch.setattr(outreach.store, "mark_queue_sent",
-                        lambda c, i, j, m, t: marked.update({"id": i, "mid": m}))
+                        lambda c, i, j, m, t, kind="initial": marked.update({"id": i, "mid": m, "kind": kind}))
     res = outreach.process_due(_cfg())
     assert res["sent"] == 1 and res["message_id"] == "MID123"
-    assert marked == {"id": "q1", "mid": "MID123"}
+    assert marked == {"id": "q1", "mid": "MID123", "kind": "initial"}
 
 
 def test_lost_race_does_not_send(monkeypatch):
@@ -95,3 +95,28 @@ def test_send_failure_marks_failed(monkeypatch):
     res = outreach.process_due(_cfg())
     assert res["failed"] == "q1"
     assert "smtp down" in failed["err"]
+
+
+def test_followup_sends_without_re_attaching_the_resume(monkeypatch):
+    """A follow-up must not re-send the resume, and must not reset applied_at
+    (that timestamp anchors the 24h gate) — mark_queue_sent gets kind."""
+    _ready(monkeypatch)
+    item = {"id": "q2", "job_id": "j1", "to_email": "a@b.com", "subject": "Re: S", "body": "B",
+            "attempts": 0, "resume_id": None, "provider_message_id": None, "kind": "followup"}
+    monkeypatch.setattr(outreach.store, "get_due_queue_item", lambda c, n: dict(item))
+    monkeypatch.setattr(outreach.store, "claim_queue_item", lambda c, i, a: dict(item))
+    downloaded = {"hit": False}
+    monkeypatch.setattr(outreach.store, "download_resume_by_id",
+                        lambda c, r: downloaded.__setitem__("hit", True) or (b"x", "r.pdf", "application/pdf"))
+    sent = {}
+    monkeypatch.setattr(outreach.google, "send_email",
+                        lambda cfg, **k: sent.update(k) or "MID9")
+    marked = {}
+    monkeypatch.setattr(outreach.store, "mark_queue_sent",
+                        lambda c, i, j, m, t, kind="initial": marked.update({"kind": kind}))
+
+    res = outreach.process_due(_cfg())
+    assert res["sent"] == 1 and res["kind"] == "followup"
+    assert downloaded["hit"] is False       # resume never fetched
+    assert sent["attachment"] is None       # nor attached
+    assert marked["kind"] == "followup"     # so applied_at is left alone

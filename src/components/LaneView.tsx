@@ -2,7 +2,6 @@ import { Suspense } from "react";
 import { supabaseRead } from "@/lib/supabase";
 import { LeadsFilters } from "@/components/LeadsFilters";
 import { LeadsTable } from "@/components/LeadsTable";
-import { FindEmailsButton } from "@/components/FindEmailsButton";
 import {
   applyLeadFilters, applySourceGroup,
   type QueryLike, type SourceGroup, type LeadFilterParams,
@@ -18,8 +17,6 @@ interface Props {
   lane: "linkedin" | "outreach";
   filters: LeadFilterParams;
   emptyMessage?: string;
-  /** Show the backlog "Find emails" trigger (outreach lane only). */
-  showFindEmails?: boolean;
 }
 
 /**
@@ -28,7 +25,7 @@ interface Props {
  * actions are surfaced differ.
  */
 export async function LaneView({
-  title, subtitle, group, lane, filters, emptyMessage, showFindEmails,
+  title, subtitle, group, lane, filters, emptyMessage,
 }: Props) {
   const sb = supabaseRead();
 
@@ -69,15 +66,6 @@ export async function LaneView({
             {lane === "outreach" ? ` · ${withContact} with a recruiter email` : ""} · {subtitle}
           </p>
         </div>
-        {showFindEmails && (
-          <FindEmailsButton
-            hint={
-              leads.length - withContact > 0
-                ? `${leads.length - withContact} still need a contact`
-                : "Hunter lookup, best-scoring first"
-            }
-          />
-        )}
       </header>
 
       <Suspense>

@@ -1,7 +1,8 @@
 """Outreach queue worker — sends ONE due email per tick.
 
-Human-gated flow: the dashboard "Apply" button enqueues a reviewed/edited email
-into `outreach_queue` (status=queued) with a randomized `scheduled_at`. This
+Human-gated flow: the dashboard enqueues a reviewed/edited email into
+`outreach_queue` (status=queued) with a randomized `scheduled_at` — either an
+initial application ("Apply") or a follow-up ("Send follow-up", kind=followup). This
 worker, run on a ~5-min GitHub Actions cron, picks the single oldest due item,
 sends it, and marks it. The ~8-10 min gap between sends is baked into
 `scheduled_at` at enqueue time; sending at most one per tick keeps the cadence
@@ -53,9 +54,12 @@ def process_due(cfg: Config | None = None) -> dict:
         log.info("no due queue items")
         return {"sent": 0}
 
+    kind = str(item.get("kind") or "initial")
+
     # Idempotency: already sent (message id present) -> reconcile, don't re-send.
     if item.get("provider_message_id"):
-        store.mark_queue_sent(cfg, item["id"], item["job_id"], str(item["provider_message_id"]), now.isoformat())
+        store.mark_queue_sent(cfg, item["id"], item["job_id"], str(item["provider_message_id"]),
+                              now.isoformat(), kind=kind)
         log.info("item %s already had a message id -> reconciled", item["id"])
         return {"sent": 0, "reconciled": item["id"]}
 
@@ -66,7 +70,8 @@ def process_due(cfg: Config | None = None) -> dict:
         return {"sent": 0, "skipped": "lost_race"}
 
     # Resolve resume attachment: explicit choice -> account default -> none.
-    resume_id = item.get("resume_id") or profile.get("default_resume_id")
+    # Follow-ups never re-attach the resume; it went with the first email.
+    resume_id = None if kind == "followup" else (item.get("resume_id") or profile.get("default_resume_id"))
     data = fname = mime = None
     if resume_id:
         data, fname, mime = store.download_resume_by_id(cfg, str(resume_id))
@@ -82,9 +87,10 @@ def process_due(cfg: Config | None = None) -> dict:
         log.warning("send failed for %s -> failed: %s", item["job_id"], exc)
         return {"sent": 0, "failed": item["id"]}
 
-    store.mark_queue_sent(cfg, item["id"], item["job_id"], mid, datetime.now(tz=timezone.utc).isoformat())
-    log.info("sent %s to %s (msg %s)", item["job_id"], to, mid)
-    return {"sent": 1, "job_id": item["job_id"], "message_id": mid}
+    store.mark_queue_sent(cfg, item["id"], item["job_id"], mid,
+                          datetime.now(tz=timezone.utc).isoformat(), kind=kind)
+    log.info("sent %s %s to %s (msg %s)", kind, item["job_id"], to, mid)
+    return {"sent": 1, "kind": kind, "job_id": item["job_id"], "message_id": mid}
 
 
 if __name__ == "__main__":

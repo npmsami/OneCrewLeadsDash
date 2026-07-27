@@ -31,6 +31,7 @@ export const AUTOMATIONS: Automation[] = [
       { href: "/job-applications", label: "Overview" },
       { href: "/job-applications/linkedin", label: "LinkedIn Apply" },
       { href: "/job-applications/outreach", label: "Send Emails (Other)" },
+      { href: "/job-applications/sent", label: "Sent Emails" },
       { href: "/job-applications/leads", label: "All Leads" },
       { href: "/job-applications/settings", label: "Candidate Signature" },
     ],

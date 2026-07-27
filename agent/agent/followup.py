@@ -1,22 +1,25 @@
-"""Follow-up engine — daily reply-detection / follow-up / close.
+"""Follow-up engine — reply detection + follow-up DRAFTING. Never sends.
 
-Port of the n8n follow-up flow (Select Due -> Route -> follow-up/close), reading
-Supabase instead of a Sheet and using the candidate's editable followup_template.
+This engine used to send a follow-up on its own after 5 business days. It no
+longer sends anything: follow-ups are human-gated exactly like first contact.
+This pass only observes and prepares, and the user decides in the dashboard's
+Sent Emails screen (edit the draft -> queue it -> agent.outreach sends it).
 
 Lifecycle per lead:
-  applied,      no reply, >= 5 business days  -> send one follow-up -> followed_up
-  followed_up,  no reply, >= 3 days            -> closed   (never a third email)
-  any,          recruiter replied              -> replied  (stops)
+  applied,      recruiter replied             -> replied (stops; no follow-up)
+  applied,      no reply, >= 24h since sending -> DRAFT a follow-up onto the row
+                                                  (followup_subject/body), which
+                                                  unlocks the dashboard button
+  followed_up,  recruiter replied             -> replied
+  followed_up,  no reply, >= 3 days            -> closed  (never a third email)
 
-Reply detection needs the connected Gmail inbox (a list of {sender, ts}). Until
-Gmail is wired (see agent/google.py, step 4), `inbox` is empty -> follow-ups are
-time-based only and no replies are auto-detected. Sending is also deferred to the
-Gmail layer; until then this runs dry (marks status, stores the draft in notes).
+Reply detection reads the connected Gmail inbox (a list of {sender, ts}).
+Without Gmail the inbox is empty, so nothing is marked replied and drafting is
+purely time-based.
 """
 from __future__ import annotations
 
 import logging
-import time
 from collections import Counter
 from datetime import datetime, timedelta, timezone
 from typing import Any
@@ -31,7 +34,9 @@ from .email_writer import _signature, fill_template, strip_dashes
 
 log = logging.getLogger(__name__)
 
-FOLLOWUP_AFTER_BUSINESS_DAYS = 5
+# The dashboard unlocks "Send follow-up" once an email has gone unanswered for
+# this long. Hours, not business days: the user asked for a 24h gate.
+FOLLOWUP_AFTER_HOURS = 24
 CLOSE_AFTER_DAYS = 3
 
 _DEFAULT_FU_TEMPLATE = (
@@ -58,28 +63,24 @@ def _truthy(v: Any) -> bool:
     return v is True or str(v).lower() == "true"
 
 
-def business_days_since(iso: Any, now: datetime) -> int:
-    start = _parse(iso)
-    if not start:
-        return 0
-    days, d = 0, start
-    while True:
-        d = d + timedelta(days=1)
-        if d > now:
-            break
-        if d.weekday() < 5:  # Mon-Fri
-            days += 1
-    return days
-
-
 def days_since(iso: Any, now: datetime) -> float:
     start = _parse(iso)
     return 0.0 if not start else (now - start).total_seconds() / 86400
 
 
-def select_due(rows: list[dict], inbox: list[dict], now: datetime) -> list[tuple[dict, str]]:
-    """Decide per row: 'replied' | 'followup' | 'close' | (skip)."""
+def select_due(rows: list[dict], inbox: list[dict], now: datetime,
+               sent_at_by_job: dict[str, str] | None = None) -> list[tuple[dict, str]]:
+    """Decide per row: 'replied' | 'draft_followup' | 'close' | (skip).
+
+    'draft_followup' prepares an editable draft; it never means "send".
+
+    `sent_at_by_job` maps job_id -> when the first email actually went out
+    (outreach_queue). A lead only becomes follow-up-eligible if it appears
+    there: `applied_at` alone is not proof an email was sent, since the manual
+    "Mark applied" button stamps it too.
+    """
     out: list[tuple[dict, str]] = []
+    sent_at_by_job = sent_at_by_job or {}
 
     def replied_after(email: str, since_iso: Any) -> bool:
         since = _parse(since_iso)
@@ -93,11 +94,14 @@ def select_due(rows: list[dict], inbox: list[dict], now: datetime) -> list[tuple
             continue
         status = str(r.get("status") or "").lower()
 
-        if status == "applied" and not _truthy(r.get("followup_sent")):
-            if replied_after(email, r.get("applied_at")):
+        sent_at = sent_at_by_job.get(str(r.get("job_id") or ""))
+        if sent_at and not _truthy(r.get("followup_sent")):
+            if replied_after(email, sent_at):
                 out.append((r, "replied"))
-            elif business_days_since(r.get("applied_at"), now) >= FOLLOWUP_AFTER_BUSINESS_DAYS:
-                out.append((r, "followup"))
+            elif (days_since(sent_at, now) * 24 >= FOLLOWUP_AFTER_HOURS
+                  and not str(r.get("followup_body") or "").strip()):
+                # Draft once; a draft already on the row is the user's to edit.
+                out.append((r, "draft_followup"))
         elif status == "followed_up":
             if replied_after(email, r.get("followup_date") or r.get("applied_at")):
                 out.append((r, "replied"))
@@ -144,25 +148,22 @@ def write_followup(job: dict[str, Any], cfg: Config, profile: dict[str, Any]) ->
     return ctx
 
 
-def _send_followup(cfg: Config, row: dict, drafted: dict, iso: str, throttle: bool, outcomes: Counter) -> None:
-    """LIVE send of one follow-up (no resume re-attach). Failure -> send_error."""
-    try:
-        google.send_email(cfg, to=str(row.get("recruiter_email") or ""),
-                          subject=drafted["fu_subject"], body=drafted["fu_body"])
-    except Exception as exc:  # noqa: BLE001
-        store.upsert(cfg, {"job_id": row["job_id"], "status": "send_error",
-                           "notes": ("Follow-up send failed: " + str(exc))[:300]})
-        outcomes["send_error"] += 1
-        log.warning("  follow-up send_error %s: %s", row.get("company"), exc)
-        return
+def _store_followup_draft(cfg: Config, row: dict, drafted: dict, iso: str) -> None:
+    """Park an editable follow-up draft on the lead. Sending is the user's call:
+    the Sent Emails screen unlocks once this exists, and queues it from there.
+
+    Deliberately does NOT touch `status`, `followup_sent` or `followup_date` —
+    those still mean "a follow-up actually went out", and the outreach worker
+    sets them when it sends the queued follow-up.
+    """
     store.upsert(cfg, {
-        "job_id": row["job_id"], "status": "followed_up",
-        "followup_sent": True, "followup_date": iso,
-        "notes": ("Follow-up sent: " + drafted["fu_subject"])[:300],
+        "job_id": row["job_id"],
+        "followup_subject": drafted["fu_subject"],
+        "followup_body": drafted["fu_body"],
+        "followup_generated_at": iso,
+        "notes": ("Follow-up draft ready - review + send from Sent Emails. "
+                  + (drafted.get("fu_note") or "")).strip()[:300],
     })
-    outcomes["followup"] += 1
-    if throttle and cfg.send_throttle_seconds > 0:
-        time.sleep(cfg.send_throttle_seconds)
 
 
 def run(cfg: Config | None = None, now: datetime | None = None, inbox: list[dict] | None = None) -> dict[str, int]:
@@ -175,11 +176,11 @@ def run(cfg: Config | None = None, now: datetime | None = None, inbox: list[dict
         inbox = google.fetch_inbox(cfg) if google.is_ready(cfg) else []
 
     profile = store.get_settings(cfg)
-    sending = bool(profile.get("send_emails")) and google.is_ready(cfg)
     rows = store.get_all_rows(cfg)
-    due = select_due(rows, inbox, now)
-    log.info("follow-up scan: %d rows, %d due (inbox msgs: %d, send=%s)",
-             len(rows), len(due), len(inbox), sending)
+    sent_at_by_job = store.get_sent_initial_map(cfg)
+    due = select_due(rows, inbox, now, sent_at_by_job)
+    log.info("follow-up scan: %d rows, %d due (inbox msgs: %d) - drafting only, never sends",
+             len(rows), len(due), len(inbox))
 
     outcomes: Counter[str] = Counter()
     iso = now.isoformat()
@@ -191,18 +192,9 @@ def run(cfg: Config | None = None, now: datetime | None = None, inbox: list[dict
         elif action == "close":
             store.upsert(cfg, {"job_id": row["job_id"], "status": "closed"})
             outcomes["close"] += 1
-        elif action == "followup":
-            drafted = write_followup(row, cfg, profile)
-            if sending:
-                _send_followup(cfg, row, drafted, iso, throttle=True, outcomes=outcomes)
-            else:
-                store.upsert(cfg, {
-                    "job_id": row["job_id"], "status": "followed_up",
-                    "followup_sent": True, "followup_date": iso,
-                    "notes": ("TEST MODE: follow-up NOT sent (dry-run). " + (drafted.get("fu_note") or "")
-                              + "subject: " + drafted["fu_subject"]).strip(),
-                })
-                outcomes["followup"] += 1
+        elif action == "draft_followup":
+            _store_followup_draft(cfg, row, write_followup(row, cfg, profile), iso)
+            outcomes["drafted"] += 1
 
     log.info("follow-up complete -> %s", dict(outcomes) or "nothing due")
     return dict(outcomes)

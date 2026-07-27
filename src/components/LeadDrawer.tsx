@@ -4,7 +4,6 @@ import { useEffect, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { StatusBadge } from "./StatusBadge";
 import { LeadReview } from "./LeadReview";
-import { FindEmailsButton } from "./FindEmailsButton";
 import { appStatusMeta } from "@/lib/status";
 import { setAppStatusAction } from "@/app/(dashboard)/job-applications/actions";
 import { APP_STATUSES, type Application, type OutreachQueue, type Resume } from "@/lib/types";
@@ -154,18 +153,14 @@ export function LeadDrawer({ lead, resumes, defaultResumeId, latestQueue, lane, 
                 {lead.company_domain && <span className="text-xs text-faint">{lead.company_domain}</span>}
               </div>
             ) : (
-              <div className="flex flex-wrap items-center justify-between gap-4">
-                <p className="text-sm text-muted">
-                  No contact found yet
-                  {lead.enriched_at ? ` (last checked ${fmtDateTime(lead.enriched_at)})` : ""}.
-                </p>
-                <FindEmailsButton
-                  jobId={lead.job_id}
-                  variant="quiet"
-                  label="Find email for this company"
-                  hint="Uses one Hunter search"
-                />
-              </div>
+              <p className="text-sm text-muted">
+                No contact found yet
+                {lead.enriched_at
+                  ? ` — last checked ${fmtDateTime(lead.enriched_at)}.`
+                  : " — queued for the next automatic lookup."}{" "}
+                Lookups run automatically after each scrape and every 6 hours, best
+                match score first. You can also type a recipient in below and apply anyway.
+              </p>
             )}
           </section>
 

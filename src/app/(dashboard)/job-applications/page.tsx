@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { supabaseRead } from "@/lib/supabase";
 import { ScrapeButton } from "@/components/ScrapeButton";
-import { FindEmailsButton } from "@/components/FindEmailsButton";
 import { RecentLeads } from "@/components/RecentLeads";
 import type {
   Application, ApplicationStats, OutreachQueue, Resume, ScrapeRun, Settings,
@@ -95,13 +94,6 @@ export default async function OverviewPage() {
           <Link href="/job-applications/leads" className="text-sm font-medium text-muted transition hover:text-fg">
             View all leads →
           </Link>
-          <FindEmailsButton
-            hint={
-              awaitingEmail > 0
-                ? `${awaitingEmail} lead${awaitingEmail === 1 ? "" : "s"} still need a contact`
-                : "Hunter lookup, best-scoring first"
-            }
-          />
           <ScrapeButton />
         </div>
       </header>

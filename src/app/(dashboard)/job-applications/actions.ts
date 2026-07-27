@@ -2,7 +2,7 @@
 
 import { revalidatePath } from "next/cache";
 import { supabaseAdmin } from "@/lib/supabase";
-import { validateEnqueue, isValidAppStatus, computeScheduledAt } from "@/lib/outreach";
+import { validateEnqueue, isValidAppStatus, computeScheduledAt, followupUnlocked } from "@/lib/outreach";
 
 export interface ActionState {
   ok: boolean;
@@ -14,6 +14,9 @@ export interface ActionState {
 function revalidateLead(jobId: string) {
   revalidatePath("/job-applications");
   revalidatePath("/job-applications/leads");
+  revalidatePath("/job-applications/linkedin");
+  revalidatePath("/job-applications/outreach");
+  revalidatePath("/job-applications/sent");
   revalidatePath(`/job-applications/leads/${jobId}`);
 }
 
@@ -63,6 +66,7 @@ export async function enqueueOutreachAction(
       subject: input.subject,
       body: input.body,
       resume_id: input.resumeId || null,
+      kind: "initial",
       status: "queued",
       scheduled_at: scheduledAt,
     });
@@ -130,4 +134,79 @@ export async function retryOutreachAction(queueId: string, jobId: string): Promi
   }
   revalidateLead(jobId);
   return { ok: true, message: "Re-queued." };
+}
+
+// --- Send a follow-up (Sent Emails screen) ----------------------------------
+/**
+ * Queues the reviewed follow-up as a second outreach_queue row (kind=followup),
+ * sent by the same spaced worker as first contact. Gated server-side, not just
+ * in the UI: 24h must have passed since the original send, the recruiter must
+ * not have replied, and no follow-up may already be out.
+ */
+export async function enqueueFollowupAction(
+  jobId: string,
+  input: { to: string; subject: string; body: string },
+): Promise<ActionState> {
+  if (!jobId) return { ok: false, message: "Missing lead id." };
+  const valid = validateEnqueue(input);
+  if (!valid.ok) return valid;
+
+  const sb = supabaseAdmin();
+  try {
+    const [{ data: leadRows, error: leadErr }, { data: sentRows }] = await Promise.all([
+      sb.from("applications").select("reply_received,followup_sent").eq("job_id", jobId).limit(1),
+      // Gate on when the first email actually went out, matching the UI and
+      // the sent_email_stats view.
+      sb.from("outreach_queue").select("sent_at")
+        .eq("job_id", jobId).eq("kind", "initial").eq("status", "sent")
+        .order("sent_at", { ascending: false }).limit(1),
+    ]);
+    if (leadErr) return { ok: false, message: leadErr.message };
+    const lead = leadRows?.[0];
+    if (!lead) return { ok: false, message: "Lead not found." };
+
+    const gate = followupUnlocked(
+      { sentAt: sentRows?.[0]?.sent_at ?? null,
+        replyReceived: lead.reply_received, followupSent: lead.followup_sent },
+      Date.now(),
+    );
+    if (!gate.ok) return gate;
+
+    // Space it from the tail of the queue exactly like a first email.
+    const { data: tailRows } = await sb
+      .from("outreach_queue")
+      .select("scheduled_at")
+      .in("status", ["ready", "queued", "sending"])
+      .order("scheduled_at", { ascending: false })
+      .limit(1);
+    const tailMs = tailRows?.[0]?.scheduled_at ? new Date(tailRows[0].scheduled_at).getTime() : null;
+    const scheduledAt = computeScheduledAt(Date.now(), tailMs).toISOString();
+
+    const { error: insErr } = await sb.from("outreach_queue").insert({
+      job_id: jobId,
+      to_email: input.to.trim(),
+      subject: input.subject,
+      body: input.body,
+      resume_id: null,           // never re-attach the resume on a follow-up
+      kind: "followup",
+      status: "queued",
+      scheduled_at: scheduledAt,
+    });
+    if (insErr) {
+      if (insErr.code === "23505") {
+        return { ok: false, message: "A follow-up is already queued or sent for this lead." };
+      }
+      return { ok: false, message: insErr.message };
+    }
+
+    // Persist any edits so the screen shows what will actually go out.
+    await sb.from("applications")
+      .update({ followup_subject: input.subject, followup_body: input.body })
+      .eq("job_id", jobId);
+  } catch (e) {
+    return { ok: false, message: e instanceof Error ? e.message : "Failed to queue follow-up." };
+  }
+
+  revalidateLead(jobId);
+  return { ok: true, message: "Follow-up queued — it will send shortly." };
 }

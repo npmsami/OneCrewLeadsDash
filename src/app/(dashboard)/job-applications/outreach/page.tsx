@@ -23,7 +23,6 @@ export default async function SendEmailsPage({
       lane="outreach"
       filters={filters}
       emptyMessage="No non-LinkedIn leads match these filters."
-      showFindEmails
     />
   );
 }

@@ -3,7 +3,6 @@ import { notFound } from "next/navigation";
 import { supabaseRead } from "@/lib/supabase";
 import { StatusBadge } from "@/components/StatusBadge";
 import { LeadReview } from "@/components/LeadReview";
-import { FindEmailsButton } from "@/components/FindEmailsButton";
 import { appStatusMeta } from "@/lib/status";
 import type { Application, OutreachQueue, Resume, Settings } from "@/lib/types";
 
@@ -102,19 +101,14 @@ export default async function LeadDetailPage({
             {lead.company_domain && <span className="text-xs text-faint">{lead.company_domain}</span>}
           </div>
         ) : (
-          <div className="flex flex-wrap items-center justify-between gap-4">
-            <p className="text-sm text-muted">
-              No contact found yet
-              {lead.enriched_at ? ` (last checked ${fmtDateTime(lead.enriched_at)})` : ""}. Look the company
-              up, or type a recipient in below and apply anyway.
-            </p>
-            <FindEmailsButton
-              jobId={lead.job_id}
-              variant="quiet"
-              label="Find email for this company"
-              hint="Uses one Hunter search"
-            />
-          </div>
+          <p className="text-sm text-muted">
+            No contact found yet
+            {lead.enriched_at
+              ? ` — last checked ${fmtDateTime(lead.enriched_at)}.`
+              : " — queued for the next automatic lookup."}{" "}
+            Lookups run automatically after each scrape and every 6 hours, best match score
+            first. You can also type a recipient in below and apply anyway.
+          </p>
         )}
       </section>
 

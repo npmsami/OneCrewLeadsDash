@@ -2,7 +2,7 @@
 
 import { useState, useTransition } from "react";
 import { triggerScrapeAction } from "@/app/(dashboard)/job-applications/scrape-action";
-import type { ScrapeState } from "@/lib/scrape";
+import { SCRAPE_WATCH_KEY, type ScrapeState } from "@/lib/scrape";
 
 export function ScrapeButton() {
   const [msg, setMsg] = useState<{ ok: boolean; text: string } | null>(null);
@@ -10,9 +10,29 @@ export function ScrapeButton() {
 
   function onClick() {
     setMsg(null);
+
+    // Ask for notification permission on the click itself — browsers reject
+    // (and users resent) permission prompts that aren't tied to a gesture.
+    try {
+      if (typeof Notification !== "undefined" && Notification.permission === "default") {
+        void Notification.requestPermission();
+      }
+    } catch {
+      /* unsupported — the in-app toast is the fallback */
+    }
+
     startTransition(async () => {
       const r: ScrapeState = await triggerScrapeAction();
       setMsg({ ok: r.ok, text: r.message });
+      if (!r.ok) return;
+
+      // Hand off to ScrapeWatcher (mounted in the layout): it polls for the run
+      // to land, then refreshes whatever page you're on and notifies you.
+      // Stamp slightly in the past so a fast run can't finish inside the gap
+      // between dispatch and this write.
+      const since = new Date(Date.now() - 60_000).toISOString();
+      window.localStorage.setItem(SCRAPE_WATCH_KEY, since);
+      window.dispatchEvent(new Event("onecrew:scrape-started"));
     });
   }
 

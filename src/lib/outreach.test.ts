@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { validateEnqueue, isValidAppStatus, computeScheduledAt } from "./outreach";
+import { validateEnqueue, isValidAppStatus, computeScheduledAt, followupUnlocked } from "./outreach";
 
 describe("validateEnqueue", () => {
   it("rejects a missing recipient", () => {
@@ -45,5 +45,41 @@ describe("computeScheduledAt", () => {
     const tail = now - 60_000;
     const at = computeScheduledAt(now, tail, 8, 10, 0).getTime();
     expect(at).toBe(now + 8 * 60_000);
+  });
+});
+
+// ---------------------------------------------------------------------------
+// followupUnlocked — the 24h gate, enforced on BOTH the button and the server
+// ---------------------------------------------------------------------------
+describe("followupUnlocked", () => {
+  const sentAt = "2026-07-28T00:00:00.000Z";
+  const sentMs = Date.parse(sentAt);
+  const base = { sentAt, replyReceived: false, followupSent: false };
+
+  it("stays locked before 24h and says how long is left", () => {
+    const r = followupUnlocked(base, sentMs + 5 * 3_600_000);   // 5h in
+    expect(r.ok).toBe(false);
+    expect(r.message).toContain("19h");
+  });
+
+  it("unlocks exactly at 24h", () => {
+    expect(followupUnlocked(base, sentMs + 24 * 3_600_000).ok).toBe(true);
+  });
+
+  it("stays locked once they replied, however long it has been", () => {
+    const r = followupUnlocked({ ...base, replyReceived: true }, sentMs + 10 * 86_400_000);
+    expect(r.ok).toBe(false);
+    expect(r.message).toContain("replied");
+  });
+
+  it("never allows a second follow-up", () => {
+    const r = followupUnlocked({ ...base, followupSent: true }, sentMs + 10 * 86_400_000);
+    expect(r.ok).toBe(false);
+    expect(r.message).toContain("already been sent");
+  });
+
+  it("is locked when no email was actually sent (e.g. only Mark-applied)", () => {
+    expect(followupUnlocked({ ...base, sentAt: null }, sentMs).ok).toBe(false);
+    expect(followupUnlocked({ ...base, sentAt: "not-a-date" }, sentMs).ok).toBe(false);
   });
 });

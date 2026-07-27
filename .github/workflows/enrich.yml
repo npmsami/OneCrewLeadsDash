@@ -5,12 +5,18 @@ name: Find recruiter emails (re-enrich backlog)
 # A lead that gets an email is re-addressed to that person and moves from
 # manual_apply to dry_run, ready for the user to review + Apply.
 #
-# Runs daily and on demand from the dashboard. Spend is bounded by BOTH caps
-# below and shared with the scrape pipeline through the Supabase `usage` table,
-# so the two workflows draw from one allowance. Nothing here sends email.
+# Fully automatic — there is no button for this. It fires right after every
+# scrape (so a fresh batch of qualified leads gets contacts without anyone
+# asking) and again on a schedule to keep draining the backlog as the daily
+# Hunter allowance refills. Spend is bounded by BOTH caps below and shared with
+# the scrape pipeline through the Supabase `usage` table, so the two workflows
+# draw from one allowance. Nothing here sends email.
 on:
+  workflow_run:
+    workflows: ["Scrape leads (manual)"]
+    types: [completed]
   schedule:
-    - cron: "0 8 * * *"      # daily 08:00 UTC — after the overnight scrape
+    - cron: "0 */6 * * *"    # every 6h — picks up where the daily cap left off
   workflow_dispatch:
     inputs:
       reason:
@@ -18,7 +24,7 @@ on:
         required: false
         default: manual
       job_id:
-        description: Enrich only this lead (dashboard per-lead "Find email"). Blank = whole backlog.
+        description: Enrich only this lead. Blank = whole backlog.
         required: false
         default: ""
 
@@ -57,6 +63,7 @@ jobs:
         env:
           # Blank on the schedule -> whole backlog; set by the dashboard's
           # per-lead button -> that lead only.
+          # Only ever set by a manual dispatch; blank for scrape/schedule runs.
           REENRICH_JOB_ID: ${{ inputs.job_id }}
           LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
           HUNTER_API_KEY: ${{ secrets.HUNTER_API_KEY }}

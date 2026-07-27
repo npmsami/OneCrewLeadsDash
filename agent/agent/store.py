@@ -33,13 +33,16 @@ VALID_COLUMNS = {
     "app_status", "qualified", "publisher",
     # enrichment (migration 0003): what the provider resolved + when we last tried
     "company_domain", "recruiter_title", "enriched_at",
+    # migration 0005: editable follow-up draft awaiting the user's decision
+    "followup_subject", "followup_body", "followup_generated_at",
     # migration 0004: JD text kept so emails can be re-drafted with grounding
     "job_description",
 }
 
 # Typed columns where an empty string is invalid and must become SQL NULL.
 _NULLABLE_TYPED = {
-    "posted_date", "scraped_at", "applied_at", "reply_date", "followup_date", "enriched_at",  # timestamptz
+    "posted_date", "scraped_at", "applied_at", "reply_date", "followup_date", "enriched_at",
+    "followup_generated_at",  # timestamptz
     "match_score",  # smallint
     "geo_eligible",  # boolean
 }
@@ -208,6 +211,25 @@ def download_resume_by_id(cfg: Config, resume_id: str) -> tuple[bytes, str, str]
 QUEUE_TABLE = "outreach_queue"
 
 
+def get_sent_initial_map(cfg: Config) -> dict[str, str]:
+    """job_id -> when its FIRST email actually went out.
+
+    The follow-up gate anchors on this, not applications.applied_at: that column
+    is also stamped by the dashboard's manual "Mark applied" button, so a lead
+    nobody emailed would otherwise look due for a follow-up.
+    """
+    resp = (get_client(cfg).table(QUEUE_TABLE)
+            .select("job_id,sent_at")
+            .eq("kind", "initial").eq("status", "sent")
+            .execute())
+    out: dict[str, str] = {}
+    for r in resp.data or []:
+        jid, ts = r.get("job_id"), r.get("sent_at")
+        if jid and ts and ts > out.get(jid, ""):
+            out[jid] = ts
+    return out
+
+
 def get_due_queue_item(cfg: Config, now_iso: str) -> dict[str, Any] | None:
     """Oldest queued item whose scheduled_at has arrived. One per tick."""
     resp = (get_client(cfg).table(QUEUE_TABLE).select("*")
@@ -226,13 +248,24 @@ def claim_queue_item(cfg: Config, item_id: str, prev_attempts: int) -> dict[str,
     return (resp.data or [None])[0]
 
 
-def mark_queue_sent(cfg: Config, item_id: str, job_id: str, message_id: str, sent_iso: str) -> None:
-    """Record a successful send: queue -> sent, lead app_status -> applied."""
+def mark_queue_sent(cfg: Config, item_id: str, job_id: str, message_id: str, sent_iso: str,
+                    kind: str = "initial") -> None:
+    """Record a successful send.
+
+    An initial email moves the lead to applied. A follow-up must NOT reset
+    applied_at (that timestamp anchors the 24h follow-up gate and the reply
+    window) — it stamps the follow-up marks instead.
+    """
     client = get_client(cfg)
     client.table(QUEUE_TABLE).update({
         "status": "sent", "provider_message_id": message_id, "sent_at": sent_iso, "last_error": None,
     }).eq("id", item_id).execute()
-    upsert(cfg, {"job_id": job_id, "app_status": "applied", "applied_at": sent_iso})
+
+    if kind == "followup":
+        upsert(cfg, {"job_id": job_id, "status": "followed_up",
+                     "followup_sent": True, "followup_date": sent_iso})
+    else:
+        upsert(cfg, {"job_id": job_id, "app_status": "applied", "applied_at": sent_iso})
 
 
 def mark_queue_failed(cfg: Config, item_id: str, job_id: str, error: str) -> None:
