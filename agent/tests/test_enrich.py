@@ -1,4 +1,4 @@
-"""Hunter/Apollo enrichment: ranking, lookup targeting, caching, API status handling."""
+"""Hunter enrichment: ranking, lookup targeting, caching, API status handling."""
 import agent.enrich as enrich
 from agent.config import Config
 
@@ -141,7 +141,7 @@ def test_hunter_search_credit_limit_4xx(monkeypatch):
 # enrich() chain
 # ---------------------------------------------------------------------------
 def test_enrich_hunter_found_short_circuits_and_counts(monkeypatch):
-    cfg = _cfg(hunter_api_key="KEY", apollo_api_key="")
+    cfg = _cfg(hunter_api_key="KEY")
     monkeypatch.setattr(enrich, "hunter_search", lambda ctx, c: {
         "status": "ok",
         "data": {"emails": [{"value": "jane@acme.com", "type": "personal", "department": "hr", "confidence": 90}]},
@@ -157,7 +157,7 @@ def test_enrich_hunter_found_short_circuits_and_counts(monkeypatch):
 
 def test_enrich_caches_per_company_across_jobs(monkeypatch):
     """Ten jobs at one company must cost ONE search."""
-    cfg = _cfg(hunter_api_key="KEY", apollo_api_key="")
+    cfg = _cfg(hunter_api_key="KEY")
     calls = {"n": 0}
 
     def fake(ctx, c):
@@ -177,7 +177,7 @@ def test_enrich_caches_per_company_across_jobs(monkeypatch):
 
 def test_enrich_caches_misses_too(monkeypatch):
     """A company that yields nothing isn't paid for twice."""
-    cfg = _cfg(hunter_api_key="KEY", apollo_api_key="")
+    cfg = _cfg(hunter_api_key="KEY")
     calls = {"n": 0}
     monkeypatch.setattr(enrich, "hunter_search",
                         lambda ctx, c: calls.__setitem__("n", calls["n"] + 1) or {"status": "ok", "data": {}})
@@ -189,7 +189,7 @@ def test_enrich_caches_misses_too(monkeypatch):
 
 
 def test_enrich_rate_limit_disables_hunter(monkeypatch):
-    cfg = _cfg(hunter_api_key="KEY", apollo_api_key="")
+    cfg = _cfg(hunter_api_key="KEY")
     monkeypatch.setattr(enrich, "hunter_search", lambda ctx, c: {"status": "rate_limited"})
     ctx = {"company": "Acme", "company_website": "https://acme.com"}
     state = _state()
@@ -200,36 +200,12 @@ def test_enrich_rate_limit_disables_hunter(monkeypatch):
 
 
 def test_enrich_respects_exhausted_budget(monkeypatch):
-    cfg = _cfg(hunter_api_key="KEY", apollo_api_key="")
+    cfg = _cfg(hunter_api_key="KEY")
     called = {"hit": False}
     monkeypatch.setattr(enrich, "hunter_search",
                         lambda ctx, c: called.__setitem__("hit", True) or {"status": "ok", "data": {}})
     enrich.enrich({"company": "Acme"}, cfg, _state(remaining=0))
     assert called["hit"] is False   # Hunter never called
-
-
-def test_enrich_falls_back_to_apollo(monkeypatch):
-    cfg = _cfg(hunter_api_key="KEY", apollo_api_key="APOLLO")
-    monkeypatch.setattr(enrich, "hunter_search", lambda ctx, c: {"status": "ok", "data": {"domain": "acme.com"}})
-    monkeypatch.setattr(enrich, "apollo_search", lambda ctx, c: {"people": [
-        {"email": "rec@acme.com", "name": "Rey Cruz", "title": "Technical Recruiter"}]})
-    out = enrich.enrich({"company": "Acme"}, cfg, _state())
-    assert out["recruiter_email"] == "rec@acme.com"
-    assert out["email_source"] == "apollo"
-    assert out["recruiter_title"] == "Technical Recruiter"
-
-
-def test_apollo_plan_rejection_disables_apollo(monkeypatch):
-    cfg = _cfg(hunter_api_key="", apollo_api_key="APOLLO")
-    monkeypatch.setattr(enrich.requests, "post", lambda *a, **k: FakeResp(403, text="insufficient plan"))
-    state = _state(disabled=True)
-    enrich.enrich({"company": "Acme"}, cfg, state)
-    assert state["apollo_disabled"] is True
-
-
-def test_pick_apollo_ignores_locked_placeholder_emails():
-    ctx = enrich.pick_apollo({}, {"people": [{"email": "email_not_unlocked@domain.com", "name": "X"}]})
-    assert "recruiter_email" not in ctx
 
 
 def test_hunter_pagination_error_is_not_a_credit_stop(monkeypatch):

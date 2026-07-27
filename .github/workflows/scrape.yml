@@ -68,7 +68,6 @@ jobs:
         env:
           LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
           HUNTER_API_KEY: ${{ secrets.HUNTER_API_KEY }}
-          APOLLO_API_KEY: ${{ secrets.APOLLO_API_KEY }}
           JSEARCH_API_KEY: ${{ secrets.JSEARCH_API_KEY }}
           APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}

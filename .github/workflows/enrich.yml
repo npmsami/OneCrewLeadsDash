@@ -1,7 +1,7 @@
 name: Find recruiter emails (re-enrich backlog)
 
 # Works down the backlog of qualified leads that have no recruiter email yet:
-# Hunter (searched by company NAME, so LinkedIn leads resolve) then Apollo.
+# Hunter, searched by company NAME so board-hosted leads resolve to a domain.
 # A lead that gets an email is re-addressed to that person and moves from
 # manual_apply to dry_run, ready for the user to review + Apply.
 #
@@ -52,7 +52,7 @@ jobs:
           cache-dependency-path: agent/requirements.txt
       - name: Install deps
         run: pip install -r requirements.txt
-      - name: Re-enrich backlog (Hunter -> Apollo)
+      - name: Re-enrich backlog (Hunter)
         run: python -m agent.reenrich
         env:
           # Blank on the schedule -> whole backlog; set by the dashboard's
@@ -60,6 +60,5 @@ jobs:
           REENRICH_JOB_ID: ${{ inputs.job_id }}
           LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
           HUNTER_API_KEY: ${{ secrets.HUNTER_API_KEY }}
-          APOLLO_API_KEY: ${{ secrets.APOLLO_API_KEY }}
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}

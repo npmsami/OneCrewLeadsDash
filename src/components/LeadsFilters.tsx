@@ -1,6 +1,6 @@
 "use client";
 
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
 import {
   type LeadFilterParams,
@@ -9,7 +9,9 @@ import {
   SOURCE_OPTIONS,
 } from "@/lib/leads";
 
-const LEADS_PATH = "/job-applications/leads";
+// Filters stay on whatever lane you are viewing (All Leads / LinkedIn Apply /
+// Send Emails), so navigating never yanks you out of your section.
+const FALLBACK_PATH = "/job-applications/leads";
 
 const STATUS_OPTIONS = [
   { value: "all", label: "All statuses" },
@@ -50,12 +52,14 @@ const selectClass =
 
 export function LeadsFilters(props: LeadFilterParams) {
   const router = useRouter();
+  const pathname = usePathname();
+  const basePath = pathname || FALLBACK_PATH;
   const [q, setQ] = useState(props.q);
 
   function pushWith(overrides: Partial<LeadFilterParams>) {
     const next: LeadFilterParams = { ...props, q, ...overrides };
     const qs = leadFiltersToQuery(next);
-    router.push(qs ? `${LEADS_PATH}?${qs}` : LEADS_PATH);
+    router.push(qs ? `${basePath}?${qs}` : basePath);
   }
 
   return (
@@ -107,7 +111,7 @@ export function LeadsFilters(props: LeadFilterParams) {
 
       {hasActiveFilters(props) && (
         <button
-          onClick={() => { setQ(""); router.push(LEADS_PATH); }}
+          onClick={() => { setQ(""); router.push(basePath); }}
           className="rounded-lg px-3 py-2 text-sm text-muted transition hover:bg-white/5 hover:text-fg"
         >
           Clear

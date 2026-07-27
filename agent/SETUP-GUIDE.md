@@ -27,7 +27,6 @@ Open the **Config** node (the Set node right after the triggers). Fields marked 
 | Field | Set it to | Where to get it |
 |---|---|---|
 | `HUNTER_API_KEY` | your key | 1) Sign up free at https://hunter.io 2) Verify your email 3) Go to https://hunter.io/api-keys (Account menu → API) 4) Copy the key. Free plan = **25 searches/month** — enough for testing at 10 jobs/run for ~2 runs. |
-| `APOLLO_API_KEY` | *(leave empty)* | Optional fallback — **not free in any useful way, unlike Hunter.** Key location: app.apollo.io → **Settings → Integrations → API** (`app.apollo.io/#/settings/integrations/api-keys`) → create key with **"Set as master key"** ticked. But note: free accounts can call People *Search*, and per Apollo's docs it **returns no email addresses at all** — emails require the paid People *Enrichment* endpoint (consumes credits). So on a free account Apollo adds nothing here. **Leave blank; the workflow skips it cleanly** (Hunter → `careers@` pattern → manual_apply is the free path). If you ever buy an Apollo plan, repoint the `Apollo: Find People` node to `people/match` (enrichment) to get real emails. |
 
 ### 1.3 Google Sheet & Drive
 
@@ -163,9 +162,6 @@ Five credentials are referenced by the workflow. After import, nodes show a ⚠ 
 | 29 | `Extract Domain` | Code | Company domain from the job URL — unless it's a job-board host (then Hunter searches by company *name* instead). | — |
 | 30 | `Hunter: Find Email` | HTTP GET | Hunter domain-search (1 free credit per job). | — |
 | 31 | `Pick Hunter Email` | Code | Best contact: recruiter/talent/HR → generic `careers@` → engineering leadership → highest confidence. Maps confidence to high/medium/low. | — |
-| 32 | `Hunter Found?` | IF | Email found → skip Apollo. | — |
-| 33 | `Apollo: Find People` | HTTP POST | Fallback people-search by recruiter titles. Empty key → harmless failure, moves on. | — |
-| 34 | `Pick Apollo Email` | Code | Accepts only real unlocked addresses. | — |
 | 35 | `Finalize Email` | Code | Last resort `careers@<domain>` pattern; sets `email_found`. No email + no domain → manual path. | — |
 | 36 | `Save Enrichment` | Google Sheets | Writes recruiter columns, `status=enriched`. | Attach Sheets credential |
 
@@ -259,8 +255,8 @@ job_id	job_title	company	matched_track	source	job_url	posted_date	scraped_at	mat
 | 14 | `missing_keywords` | `Save Score` | What the JD wants that the profile lacks. Ex: `GCP; Rust` |
 | 15 | `recruiter_name` | `Save Enrichment` | Ex: `Sara Khan` — or `Hiring Team` when only a generic inbox was found. |
 | 16 | `recruiter_email` | `Save Enrichment` | Where the application goes. Ex: `sara.khan@acme.io` or `careers@acme.io` |
-| 17 | `email_confidence` | `Save Enrichment` | `high` (Hunter ≥70) \| `medium` (40–69, Apollo, or pattern) \| `low` |
-| 18 | `email_source` | `Save Enrichment` | `hunter` \| `apollo` \| `pattern` (careers@ guess) |
+| 17 | `email_confidence` | `Save Enrichment` | `high` (Hunter ≥80) \| `medium` (50–79 or pattern) \| `low` |
+| 18 | `email_source` | `Save Enrichment` | `hunter` \| `pattern` (careers@ guess) |
 | 19 | `resume_filename` | `Save Resume Link` | Ex: `Mahad_Saleem_Runware_Staff_DevOps_Engineer_20260612.pdf` |
 | 20 | `resume_drive_link` | `Save Resume Link` | Google Doc of the tailored resume. Ex: `https://docs.google.com/document/d/1aB.../edit` |
 | 21 | `email_subject` | `Mark Applied` / `Mark Dry Run` | The cold-email subject. Ex: `Senior DevOps Engineer - 60% faster deployments` |

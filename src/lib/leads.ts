@@ -90,3 +90,27 @@ export function applyLeadFilters<T extends QueryLike>(query: T, p: LeadFilterPar
 export const SOURCE_OPTIONS = [
   "all", "linkedin", "jsearch", "glassdoor", "monster", "indeed", "ziprecruiter", "himalayas",
 ];
+
+// ---------------------------------------------------------------------------
+// Source groups — the two workflow lanes in the sidebar.
+//
+// "linkedin": postings discovered on LinkedIn. Applied to BY HAND through
+//   LinkedIn itself, so these need the job link and a status control, not an
+//   email composer.
+// "other": every non-LinkedIn source (JSearch/Monster/Glassdoor/boards). These
+//   are the ones we email, because a real company domain is reachable.
+// ---------------------------------------------------------------------------
+export type SourceGroup = "all" | "linkedin" | "other";
+
+export const LINKEDIN_SOURCE = "linkedin";
+
+/** Restrict a query to one lane. Null sources count as "other" (never dropped). */
+export function applySourceGroup<T extends QueryLike>(query: T, group: SourceGroup): T {
+  if (group === "linkedin") return query.eq("source", LINKEDIN_SOURCE) as T;
+  if (group === "other") {
+    // `not(source, eq, linkedin)` alone would drop NULL sources, since
+    // NOT (NULL = 'linkedin') is NULL in SQL. The explicit is.null keeps them.
+    return query.or(`source.neq.${LINKEDIN_SOURCE},source.is.null`) as T;
+  }
+  return query;
+}

@@ -16,7 +16,6 @@ Actions → New repository secret** (or `gh secret set NAME` from the CLI).
 | `SUPABASE_SERVICE_ROLE_KEY` | Supabase → Project Settings → API → service_role (`.env`) | ✅ |
 | `GOOGLE_CLIENT_ID` | Google Cloud OAuth web client (`.env`) | ✅ |
 | `GOOGLE_CLIENT_SECRET` | same OAuth client (`.env`) | ✅ |
-| `APOLLO_API_KEY` | Apollo (fallback enrichment, used when Hunter misses or its cap is spent); leave unset to skip. NOTE: Apollo's free tier blocks the people-search API — the agent detects that rejection and disables Apollo for the run, so this realistically needs a paid Apollo plan. | ⬜ optional |
 
 ## NOT secrets (don't add these)
 - **Go-live toggle** `send_emails` and the **Candidate Signature** (name / email /
@@ -55,5 +54,5 @@ Actions → New repository secret** (or `gh secret set NAME` from the CLI).
   branch (main)** and GitHub auto-disables schedules after **60 days of repo
   inactivity** — re-enable from the Actions tab if that happens.
 - A run with `send_emails=false` (current state) is a safe dry-run: the pipeline
-  scores, enriches (Hunter → Apollo → optional pattern), and drafts, but never
+  scores, enriches (Hunter → optional careers@ pattern), and drafts, but never
   sends. Sending is fully human-gated through the dashboard Apply button + queue.

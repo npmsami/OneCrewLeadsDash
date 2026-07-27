@@ -1,9 +1,11 @@
 import { Suspense } from "react";
 import { supabaseRead } from "@/lib/supabase";
-import { LeadRow } from "@/components/LeadRow";
 import { LeadsFilters } from "@/components/LeadsFilters";
+import { LeadsTable } from "@/components/LeadsTable";
 import { parseLeadFilters, applyLeadFilters, type QueryLike } from "@/lib/leads";
-import type { Application, ApplicationStats } from "@/lib/types";
+import type {
+  Application, ApplicationStats, OutreachQueue, Resume, Settings,
+} from "@/lib/types";
 
 export const dynamic = "force-dynamic";
 
@@ -19,6 +21,8 @@ const COUNT_TABS: { key: keyof ApplicationStats; label: string }[] = [
   { key: "failed", label: "Failed" },
 ];
 
+// Every source in one table. The two focused lanes live at
+// /job-applications/linkedin and /job-applications/outreach.
 export default async function LeadsPage({
   searchParams,
 }: {
@@ -33,17 +37,30 @@ export default async function LeadsPage({
     limit: (n: number) => Promise<{ data: Application[] | null }>;
   };
 
-  const [{ data }, { data: statsRows }] = await Promise.all([
-    query.limit(ROW_LIMIT),
-    sb.from("application_stats").select("*").limit(1),
-  ]);
+  const [{ data }, { data: statsRows }, { data: resumeRows }, { data: settingsRows }, { data: queueRows }] =
+    await Promise.all([
+      query.limit(ROW_LIMIT),
+      sb.from("application_stats").select("*").limit(1),
+      sb.from("resumes").select("*").order("is_default", { ascending: false }),
+      sb.from("settings").select("default_resume_id").eq("id", "singleton").limit(1),
+      sb.from("outreach_queue").select("*").order("created_at", { ascending: false }),
+    ]);
+
   const leads = data ?? [];
   const stats = (statsRows?.[0] as ApplicationStats | undefined) ?? null;
+  const resumes = (resumeRows as Resume[] | undefined) ?? [];
+  const defaultResumeId =
+    (settingsRows?.[0] as Pick<Settings, "default_resume_id"> | undefined)?.default_resume_id ?? null;
+
+  const queueByJob: Record<string, OutreachQueue> = {};
+  for (const q of (queueRows as OutreachQueue[] | undefined) ?? []) {
+    if (!queueByJob[q.job_id]) queueByJob[q.job_id] = q;
+  }
 
   return (
     <div className="mx-auto max-w-6xl px-6 py-10 md:px-10">
       <header className="mb-6">
-        <h1 className="text-2xl font-semibold tracking-tight">Leads</h1>
+        <h1 className="text-2xl font-semibold tracking-tight">All Leads</h1>
         <p className="mt-1 text-sm text-muted">
           {leads.length}{leads.length === ROW_LIMIT ? "+" : ""} job{leads.length === 1 ? "" : "s"} matching your filters.
         </p>
@@ -65,34 +82,13 @@ export default async function LeadsPage({
         <LeadsFilters {...filters} />
       </Suspense>
 
-      <div className="card mt-4 overflow-hidden">
-        <div className="overflow-x-auto">
-          <table className="w-full text-sm">
-            <thead>
-              <tr className="border-b border-border text-left text-xs uppercase tracking-wide text-faint">
-                <th className="px-5 py-3 font-medium">Role</th>
-                <th className="px-3 py-3 font-medium">Track</th>
-                <th className="px-3 py-3 text-right font-medium">Score</th>
-                <th className="px-3 py-3 font-medium">Status</th>
-                <th className="px-3 py-3 font-medium">Contact</th>
-                <th className="px-5 py-3 text-right font-medium">Posted</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-border-soft">
-              {leads.map((l) => (
-                <LeadRow key={l.job_id} lead={l} />
-              ))}
-              {leads.length === 0 && (
-                <tr>
-                  <td colSpan={6} className="px-5 py-12 text-center text-sm text-faint">
-                    No leads match these filters.
-                  </td>
-                </tr>
-              )}
-            </tbody>
-          </table>
-        </div>
-      </div>
+      <LeadsTable
+        leads={leads}
+        resumes={resumes}
+        defaultResumeId={defaultResumeId}
+        queueByJob={queueByJob}
+        lane="outreach"
+      />
     </div>
   );
 }

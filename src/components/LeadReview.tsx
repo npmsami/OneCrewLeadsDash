@@ -21,6 +21,8 @@ interface Props {
   resumes: Resume[];
   defaultResumeId: string | null;
   latestQueue: OutreachQueue | null;
+  /** The LinkedIn lane renders its own Mark-applied controls, so skip ours. */
+  hideStatusControls?: boolean;
 }
 
 function fmtWhen(iso: string | null): string {
@@ -153,6 +155,7 @@ export function LeadReview(props: Props) {
       )}
 
       {/* Manual status controls */}
+      {!props.hideStatusControls && (
       <section className="card p-5">
         <h2 className="mb-3 text-xs font-semibold uppercase tracking-wide text-faint">Status</h2>
         <div className="flex flex-wrap items-center gap-3">
@@ -181,6 +184,7 @@ export function LeadReview(props: Props) {
           For LinkedIn / manual applications, mark it applied here once you&apos;ve submitted.
         </p>
       </section>
+      )}
 
       {msg && (
         <p className={`text-sm ${msg.ok ? "text-ok" : "text-danger"}`}>{msg.text}</p>

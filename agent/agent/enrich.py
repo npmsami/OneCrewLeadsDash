@@ -1,24 +1,28 @@
-"""Recruiter-email enrichment — Resolve company → Hunter → Apollo → Finalize.
+"""Recruiter-email enrichment — Resolve company → Hunter → Finalize.
 
 Resolution order, best-first:
-  1. Hunter.io domain-search (only if HUNTER_API_KEY is set and the daily cap is
-     not exhausted). Searched by company DOMAIN when we know one, otherwise by
+  1. Hunter.io domain-search (only if HUNTER_API_KEY is set and the caps are not
+     exhausted). Searched by company DOMAIN when we know one, otherwise by
      company NAME — Hunter resolves the name to a domain itself. The name path
-     is what makes LinkedIn leads work: their job_url is linkedin.com (a board
-     host), so domain extraction yields nothing and a domain-only lookup would
-     silently skip every LinkedIn job.
-  2. Apollo people-search (only if APOLLO_API_KEY is set) — searched by the
-     domain Hunter resolved, else by company name.
-  3. careers@<domain> pattern (only if a real company domain is known AND
+     is what makes non-board leads work at all: many job_urls point at a board
+     host (linkedin.com, builtin.com, ...), so domain extraction yields nothing
+     and a domain-only lookup would silently skip them.
+  2. careers@<domain> pattern (only if a real company domain is known AND
      EMAIL_PATTERN_FALLBACK is on).
-  4. Nothing -> status stays 'scored' and the pipeline routes to manual_apply.
+  3. Nothing -> status stays 'scored' and the pipeline routes to manual_apply.
 
-Hunter is capped per day (config.hunter_daily_cap, tracked in the `usage` table)
-so a plan's monthly searches aren't burned in one run, and results are cached
-per company for the whole run so ten jobs at one company cost ONE search.
-Missing emails, API errors, rate limits and credit exhaustion are all handled
-gracefully: one bad lookup never kills the run, and a rate/credit stop disables
-the provider for the rest of the run rather than hammering the API.
+Apollo was removed 2026-07-28: its People Search endpoint does not return email
+addresses at all (revealing one needs the separate, credit-consuming People
+Enrichment endpoint), so the search-only integration could never produce a
+usable address. Hunter is the single provider.
+
+Hunter is capped per day AND per month (config.hunter_daily_cap /
+hunter_monthly_cap, tracked in the `usage` table) so a plan's monthly searches
+aren't burned in one run, and results are cached per company for the whole run
+so ten jobs at one company cost ONE search. Missing emails, API errors, rate
+limits and credit exhaustion are all handled gracefully: one bad lookup never
+kills the run, and a rate/credit stop disables Hunter for the rest of the run
+rather than hammering the API.
 """
 from __future__ import annotations
 
@@ -36,7 +40,7 @@ from .config import Config
 log = logging.getLogger(__name__)
 
 _TIMEOUT = 30
-_MIN_INTERVAL = 1.5  # n8n batchInterval 1500ms for Hunter/Apollo
+_MIN_INTERVAL = 1.5  # polite spacing between Hunter calls (n8n used 1500ms)
 _lock = threading.Lock()
 _last_call = 0.0
 
@@ -51,8 +55,6 @@ BOARD_HOSTS = {
     "glassdoor.com", "monster.com", "dice.com", "jobleads.com", "liveblog365.com",
 }
 _SUBDOMAIN_STRIP = re.compile(r"^(jobs|careers|career|apply|hire|boards|job|work)\.")
-
-_APOLLO_BAD = re.compile(r"not_unlocked|email_not_unlocked|domain\.com$")
 
 # Company names that are job reposters / aggregators, not real employers. A
 # lookup against these burns a search and can only return a useless address, so
@@ -226,7 +228,7 @@ def pick_hunter(ctx: dict[str, Any], data: dict[str, Any]) -> dict[str, Any]:
     """Choose the best email from a Hunter domain-search response.
 
     Also records the domain Hunter resolved, so a name-based lookup still leaves
-    us with a usable company domain for Apollo/pattern fallback and the UI."""
+    us with a usable company domain for the careers@ fallback and the UI."""
     data = data or {}
     if data.get("domain") and not ctx.get("company_domain"):
         ctx["company_domain"] = str(data["domain"]).lower()
@@ -257,73 +259,6 @@ def pick_hunter(ctx: dict[str, Any], data: dict[str, Any]) -> dict[str, Any]:
 
 
 # ---------------------------------------------------------------------------
-# Apollo (secondary enrichment provider)
-# ---------------------------------------------------------------------------
-_APOLLO_TITLES = [
-    "Technical Recruiter", "Recruiter", "Talent Acquisition Specialist", "Head of Talent",
-    "HR Manager", "Engineering Manager", "Head of Engineering", "CTO",
-]
-
-
-def apollo_search(ctx: dict[str, Any], cfg: Config) -> dict[str, Any]:
-    """Query Apollo people-search by domain (preferred) or company name.
-
-    Returns the raw JSON, or {} on any transport error. A 4xx that signals plan
-    limits is surfaced as {"_stop": True} so the caller can disable Apollo for
-    the rest of the run (free Apollo plans reject the search API outright)."""
-    if not is_lookupable(ctx):
-        return {}
-    body: dict[str, Any] = {
-        "person_titles": _APOLLO_TITLES,
-        "page": 1,
-        "per_page": 5,
-    }
-    if ctx.get("company_domain"):
-        body["q_organization_domains"] = ctx["company_domain"]
-    if ctx.get("company"):
-        body["q_organization_name"] = str(ctx["company"]).strip()
-    headers = {"Content-Type": "application/json", "X-Api-Key": cfg.apollo_api_key}
-    _throttle()
-    try:
-        resp = requests.post("https://api.apollo.io/api/v1/mixed_people/search",
-                             headers=headers, json=body, timeout=_TIMEOUT)
-    except Exception as exc:  # noqa: BLE001
-        log.warning("Apollo lookup failed: %s", exc)
-        return {}
-    if resp.status_code in (401, 403, 422, 429):
-        log.warning("Apollo %s (plan/limit) -> Apollo disabled for this run: %s",
-                    resp.status_code, resp.text[:200])
-        return {"_stop": True}
-    if resp.status_code >= 400:
-        log.warning("Apollo %s: %s", resp.status_code, resp.text[:200])
-        return {}
-    try:
-        return resp.json() or {}
-    except Exception:  # noqa: BLE001
-        return {}
-
-
-def pick_apollo(ctx: dict[str, Any], response: dict[str, Any]) -> dict[str, Any]:
-    people = (response or {}).get("people") or (response or {}).get("contacts") or []
-    for p in people:
-        em = str((p or {}).get("email") or "")
-        if em and "@" in em and not _APOLLO_BAD.search(em):
-            ctx["recruiter_email"] = em
-            ctx["recruiter_name"] = str(p.get("name")
-                                        or " ".join(filter(None, [p.get("first_name"), p.get("last_name")]))
-                                        or "Hiring Team")
-            ctx["email_confidence"] = "medium"
-            ctx["email_source"] = "apollo"
-            if p.get("title"):
-                ctx["recruiter_title"] = str(p["title"])
-            org = (p.get("organization") or {}) if isinstance(p.get("organization"), dict) else {}
-            if org.get("primary_domain") and not ctx.get("company_domain"):
-                ctx["company_domain"] = str(org["primary_domain"]).lower()
-            break
-    return ctx
-
-
-# ---------------------------------------------------------------------------
 # Finalize
 # ---------------------------------------------------------------------------
 def finalize_email(ctx: dict[str, Any], use_pattern: bool = True) -> dict[str, Any]:
@@ -342,13 +277,12 @@ def finalize_email(ctx: dict[str, Any], use_pattern: bool = True) -> dict[str, A
 
 
 def enrich(ctx: dict[str, Any], cfg: Config, hunter_state: dict[str, Any] | None = None) -> dict[str, Any]:
-    """Enrichment chain for one scored job: Hunter -> Apollo -> optional pattern.
+    """Enrichment chain for one scored job: Hunter -> optional careers@ pattern.
 
     `hunter_state` is the mutable per-run budget the pipeline threads through:
-        {"remaining": int, "used": int, "disabled": bool,
-         "cache": {company_key: result}, "apollo_disabled": bool}
-    It caps Hunter searches across the run, short-circuits once the daily cap is
-    reached or a provider reports a rate/credit limit, and reuses one lookup for
+        {"remaining": int, "used": int, "disabled": bool, "cache": {key: result}}
+    It caps Hunter searches across the run, short-circuits once the cap is
+    reached or Hunter reports a rate/credit limit, and reuses one lookup for
     every job at the same company.
     """
     ctx["company_domain"] = extract_domain(ctx)
@@ -379,15 +313,6 @@ def enrich(ctx: dict[str, Any], cfg: Config, hunter_state: dict[str, Any] | None
             state["disabled"] = True
             log.warning("Hunter rate/credit limit hit -> Hunter disabled for the rest of this run")
         # 'error'/'skip' -> just fall through to the next provider
-
-    if not ctx.get("recruiter_email") and cfg.apollo_api_key and not state.get("apollo_disabled"):
-        resp = apollo_search(ctx, cfg)
-        if resp.get("_stop"):
-            state["apollo_disabled"] = True
-        else:
-            ctx = pick_apollo(ctx, resp)
-            if ctx.get("email_source") == "apollo":
-                state["apollo_used"] = state.get("apollo_used", 0) + 1
 
     # Remember this company for the rest of the run (a miss is cached too, so a
     # dead company isn't looked up ten times).

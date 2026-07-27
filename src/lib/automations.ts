@@ -24,9 +24,14 @@ export const AUTOMATIONS: Automation[] = [
     tagline: "Auto-apply to remote roles",
     basePath: "/job-applications",
     available: true,
+    // Leads split by how you actually act on them: LinkedIn postings get
+    // applied to by hand through LinkedIn; everything else is where Hunter
+    // finds a recruiter address, so those get an email.
     nav: [
       { href: "/job-applications", label: "Overview" },
-      { href: "/job-applications/leads", label: "Leads" },
+      { href: "/job-applications/linkedin", label: "LinkedIn Apply" },
+      { href: "/job-applications/outreach", label: "Send Emails (Other)" },
+      { href: "/job-applications/leads", label: "All Leads" },
       { href: "/job-applications/settings", label: "Candidate Signature" },
     ],
   },

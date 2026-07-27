@@ -1,10 +1,11 @@
 import Link from "next/link";
 import { supabaseRead } from "@/lib/supabase";
-import { StatusBadge } from "@/components/StatusBadge";
 import { ScrapeButton } from "@/components/ScrapeButton";
 import { FindEmailsButton } from "@/components/FindEmailsButton";
-import { appStatusMeta } from "@/lib/status";
-import type { Application, ApplicationStats, ScrapeRun } from "@/lib/types";
+import { RecentLeads } from "@/components/RecentLeads";
+import type {
+  Application, ApplicationStats, OutreachQueue, Resume, ScrapeRun, Settings,
+} from "@/lib/types";
 
 export const dynamic = "force-dynamic";
 
@@ -41,6 +42,20 @@ export default async function OverviewPage() {
       sb.from("applications").select("job_id", { count: "exact", head: true })
         .eq("app_status", "remaining").eq("status", "manual_apply").is("recruiter_email", null),
     ]);
+
+  // Everything the lead drawer needs, so a click opens in place.
+  const [{ data: resumeRows }, { data: settingsRows }, { data: queueRows }] = await Promise.all([
+    sb.from("resumes").select("*").order("is_default", { ascending: false }),
+    sb.from("settings").select("default_resume_id").eq("id", "singleton").limit(1),
+    sb.from("outreach_queue").select("*").order("created_at", { ascending: false }),
+  ]);
+  const resumes = (resumeRows as Resume[] | undefined) ?? [];
+  const defaultResumeId =
+    (settingsRows?.[0] as Pick<Settings, "default_resume_id"> | undefined)?.default_resume_id ?? null;
+  const queueByJob: Record<string, OutreachQueue> = {};
+  for (const q of (queueRows as OutreachQueue[] | undefined) ?? []) {
+    if (!queueByJob[q.job_id]) queueByJob[q.job_id] = q;
+  }
 
   const stats = (statsRows?.[0] as ApplicationStats | undefined) ?? null;
   const leads = (recent as Application[] | undefined) ?? [];
@@ -84,7 +99,7 @@ export default async function OverviewPage() {
             hint={
               awaitingEmail > 0
                 ? `${awaitingEmail} lead${awaitingEmail === 1 ? "" : "s"} still need a contact`
-                : "Hunter → Apollo, best-scoring first"
+                : "Hunter lookup, best-scoring first"
             }
           />
           <ScrapeButton />
@@ -125,37 +140,12 @@ export default async function OverviewPage() {
           <h2 className="text-sm font-semibold text-muted">Recent activity</h2>
         </div>
         <div className="card overflow-hidden">
-          {leads.length === 0 ? (
-            <div className="px-5 py-12 text-center text-sm text-faint">
-              No leads yet. Run the agent pipeline to populate.
-            </div>
-          ) : (
-            <ul className="divide-y divide-border-soft">
-              {leads.map((l) => (
-                <li key={l.job_id}>
-                  <Link
-                    href={`/job-applications/leads/${encodeURIComponent(l.job_id)}`}
-                    className="flex items-center gap-4 px-5 py-3.5 transition hover:bg-white/[0.03]"
-                  >
-                    <div className="min-w-0 flex-1">
-                      <div className="truncate text-sm font-medium text-fg">{l.job_title ?? "Untitled role"}</div>
-                      <div className="truncate text-xs text-faint">
-                        {l.company ?? "Unknown"} · {l.source ?? "—"}
-                        {l.matched_track ? ` · ${l.matched_track}` : ""}
-                      </div>
-                    </div>
-                    {l.match_score != null && (
-                      <div className="hidden w-12 text-right text-sm tabular-nums text-muted sm:block">
-                        {l.match_score}
-                      </div>
-                    )}
-                    <StatusBadge status={l.app_status ?? "remaining"} meta={appStatusMeta(l.app_status ?? "remaining")} />
-                    <div className="hidden w-16 text-right text-xs text-faint md:block">{timeAgo(l.updated_at)}</div>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          )}
+          <RecentLeads
+            leads={leads}
+            resumes={resumes}
+            defaultResumeId={defaultResumeId}
+            queueByJob={queueByJob}
+          />
         </div>
       </section>
     </div>

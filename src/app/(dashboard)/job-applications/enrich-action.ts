@@ -8,7 +8,7 @@ const WORKFLOW = "enrich.yml"; // dispatch by filename (stabler than the numeric
 
 /**
  * Fires the GitHub Actions re-enrich workflow: Hunter (searched by company
- * name, so LinkedIn leads resolve) then Apollo, over leads that have no
+ * name, so board-hosted leads resolve) over leads that have no
  * recruiter email yet. Leads that get one are re-addressed and move from
  * manual_apply to dry_run, ready to review + Apply.
  *

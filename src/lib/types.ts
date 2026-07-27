@@ -41,7 +41,7 @@ export interface Application {
   recruiter_email: string | null;
   email_confidence: string | null;
   email_source: string | null;
-  // enrichment (migration 0003) — what Hunter/Apollo resolved, and when we tried
+  // enrichment (migration 0003) — what Hunter resolved, and when we last tried
   recruiter_title: string | null;
   company_domain: string | null;
   enriched_at: string | null;

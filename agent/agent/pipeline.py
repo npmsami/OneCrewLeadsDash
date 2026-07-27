@@ -2,7 +2,7 @@
 
     discover -> filter (vs stored rows) -> store(new)
       -> score -> store -> route by status
-           scored      -> enrich (Hunter/Apollo) -> draft email -> store
+           scored      -> enrich (Hunter) -> draft email -> store
                             email found -> status=dry_run  (draft ready)
                             no email     -> status=manual_apply (draft ready)
            geo_blocked / low_match / score_error -> store(side-exit status)
@@ -105,7 +105,6 @@ def run(cfg: Config | None = None) -> dict[str, int]:
                  hunter_state["remaining"], cfg.hunter_daily_cap, cfg.hunter_monthly_cap)
     else:
         log.info("Hunter disabled (no HUNTER_API_KEY)")
-    log.info("Apollo %s", "enabled" if cfg.apollo_api_key else "disabled (no APOLLO_API_KEY)")
 
     existing = store.get_existing_rows(cfg)
     raw = fetch_all(cfg)

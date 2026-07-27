@@ -44,13 +44,13 @@ def test_readdress_does_not_eat_the_body_on_multiline():
 # ---------------------------------------------------------------------------
 # run() guards
 # ---------------------------------------------------------------------------
-def test_run_noops_without_any_provider_key():
-    out = reenrich.run(_cfg(hunter_api_key="", apollo_api_key=""))
+def test_run_noops_without_a_hunter_key():
+    out = reenrich.run(_cfg(hunter_api_key=""))
     assert out == {"enriched": 0, "skipped": "no_provider"}
 
 
-def test_run_holds_when_daily_cap_spent_and_no_apollo(monkeypatch):
-    cfg = _cfg(hunter_api_key="KEY", apollo_api_key="", hunter_daily_cap=5)
+def test_run_holds_when_allowance_is_spent(monkeypatch):
+    cfg = _cfg(hunter_api_key="KEY", hunter_daily_cap=5)
     monkeypatch.setattr(reenrich.store, "get_settings", lambda c: {})
     monkeypatch.setattr(reenrich.store, "hunter_remaining", lambda c, d, m: 0)   # fully spent
     out = reenrich.run(cfg)
@@ -58,7 +58,7 @@ def test_run_holds_when_daily_cap_spent_and_no_apollo(monkeypatch):
 
 
 def test_run_skips_reposter_rows_without_spending_budget(monkeypatch):
-    cfg = _cfg(hunter_api_key="KEY", apollo_api_key="", hunter_daily_cap=5)
+    cfg = _cfg(hunter_api_key="KEY", hunter_daily_cap=5)
     writes = []
     monkeypatch.setattr(reenrich.store, "get_settings", lambda c: {})
     monkeypatch.setattr(reenrich.store, "hunter_remaining", lambda c, d, m: 5)
@@ -73,7 +73,7 @@ def test_run_skips_reposter_rows_without_spending_budget(monkeypatch):
 
 
 def test_run_promotes_found_lead_to_dry_run(monkeypatch):
-    cfg = _cfg(hunter_api_key="KEY", apollo_api_key="", hunter_daily_cap=5)
+    cfg = _cfg(hunter_api_key="KEY", hunter_daily_cap=5)
     writes = []
     monkeypatch.setattr(reenrich.store, "get_settings", lambda c: {})
     monkeypatch.setattr(reenrich.store, "hunter_remaining", lambda c, d, m: 5)
@@ -97,7 +97,7 @@ def test_run_promotes_found_lead_to_dry_run(monkeypatch):
 
 def test_run_stamps_enriched_at_on_a_miss(monkeypatch):
     """A miss must be recorded so the next run tries different companies."""
-    cfg = _cfg(hunter_api_key="KEY", apollo_api_key="", hunter_daily_cap=5)
+    cfg = _cfg(hunter_api_key="KEY", hunter_daily_cap=5)
     writes = []
     monkeypatch.setattr(reenrich.store, "get_settings", lambda c: {})
     monkeypatch.setattr(reenrich.store, "hunter_remaining", lambda c, d, m: 5)

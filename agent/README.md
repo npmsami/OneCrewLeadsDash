@@ -21,7 +21,6 @@ Implements the full master spec end to end: **discover → dedup → LLM score +
 | Claude API | **OpenAI `gpt-4o-mini`** for all 4 LLM steps (score, resume, cold email, follow-up) | ~cents per run |
 | Carbone.io PDF | Native Google Drive node (text → Google Doc → export PDF) | Free |
 | Hunter.io | Hunter.io free tier (25 domain searches/month) | Free |
-| Apollo.io | Optional — leave `APOLLO_API_KEY` empty to skip (free Apollo API returns **no emails**; see SETUP-GUIDE §1.2) | Paid to be useful |
 | Web-search discovery layer | Not included yet (needs Tavily/Brave key) — see sticky note in the canvas | — |
 
 ## Setup (one time, ~20 minutes)
@@ -63,7 +62,7 @@ Implements the full master spec end to end: **discover → dedup → LLM score +
 | Dedup node | `Hard Filters` (hash + in-batch) → `Read Sheet Log` → `Filter New Jobs` |
 | Claude scoring node | `Build Score Prompt` → `LLM: Score Job` → `Parse Score` (exact spec prompt) |
 | Test with 10 jobs | `MAX_JOBS_PER_RUN=10` in Config |
-| Hunter node + Apollo fallback | `Hunter: Find Email` → `Apollo: Find People` → `Finalize Email` |
+| Hunter node | `Hunter: Find Email` → `Finalize Email` (Apollo removed 2026-07-28: its Search API returns no emails) |
 | Sheets logging | `Log New Jobs`, `Save Score`, `Save Enrichment`, `Save Resume Link`, `Mark *` |
 | Resume + email automation | already wired, gated behind `SEND_EMAILS` |
 

@@ -42,7 +42,7 @@ export function FindEmailsButton({ jobId, label, hint, variant = "primary" }: Pr
       {msg ? (
         <span className={`text-xs ${msg.ok ? "text-ok" : "text-danger"}`}>{msg.text}</span>
       ) : (
-        <span className="text-xs text-faint">{hint ?? "Hunter → Apollo, best-scoring leads first"}</span>
+        <span className="text-xs text-faint">{hint ?? "Hunter lookup, best-scoring leads first"}</span>
       )}
     </div>
   );

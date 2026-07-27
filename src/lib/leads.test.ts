@@ -5,6 +5,7 @@ import {
   leadFiltersToQuery,
   applyLeadFilters,
   LEAD_FILTER_DEFAULTS,
+  applySourceGroup,
   type QueryLike,
 } from "./leads";
 
@@ -87,5 +88,52 @@ describe("applyLeadFilters", () => {
     const q = mockQuery();
     applyLeadFilters(q, { ...LEAD_FILTER_DEFAULTS, score: "" });
     expect(q.calls.find((c) => c[0] === "gte")).toBeUndefined();
+  });
+});
+
+// ---------------------------------------------------------------------------
+// Source groups — the LinkedIn Apply / Send Emails (Other) split
+// ---------------------------------------------------------------------------
+describe("applySourceGroup", () => {
+  function spy() {
+    const calls: string[] = [];
+    const q: QueryLike = {
+      or: (f) => { calls.push(`or:${f}`); return q; },
+      eq: (c, v) => { calls.push(`eq:${c}=${v}`); return q; },
+      gte: (c, v) => { calls.push(`gte:${c}=${v}`); return q; },
+      is: (c, v) => { calls.push(`is:${c}=${v}`); return q; },
+      not: (c, o, v) => { calls.push(`not:${c}.${o}.${v}`); return q; },
+      order: (c, o) => { calls.push(`order:${c}:${o.ascending}`); return q; },
+    };
+    return { q, calls };
+  }
+
+  it("linkedin group matches only linkedin-sourced rows", () => {
+    const { q, calls } = spy();
+    applySourceGroup(q, "linkedin");
+    expect(calls).toEqual(["eq:source=linkedin"]);
+  });
+
+  it("other group excludes linkedin but keeps NULL sources", () => {
+    // not(source,eq,linkedin) alone drops NULLs, since NOT (NULL = x) is NULL.
+    const { q, calls } = spy();
+    applySourceGroup(q, "other");
+    expect(calls).toEqual(["or:source.neq.linkedin,source.is.null"]);
+  });
+
+  it("all group is a no-op", () => {
+    const { q, calls } = spy();
+    applySourceGroup(q, "all");
+    expect(calls).toEqual([]);
+  });
+
+  it("composes with the normal filters without dropping either", () => {
+    const { q, calls } = spy();
+    applyLeadFilters(applySourceGroup(q, "linkedin"), {
+      ...LEAD_FILTER_DEFAULTS, status: "remaining", email: "yes",
+    });
+    expect(calls).toContain("eq:source=linkedin");
+    expect(calls).toContain("eq:app_status=remaining");
+    expect(calls).toContain("not:recruiter_email.is.null");
   });
 });

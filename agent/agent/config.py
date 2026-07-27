@@ -40,9 +40,11 @@ class Config:
     llm_model: str = field(default_factory=lambda: _env("LLM_MODEL", "gpt-4o-mini"))
     llm_api_key: str = field(default_factory=lambda: _env("LLM_API_KEY"))
 
-    # --- Enrichment (Hunter primary, Apollo secondary) ---
+    # --- Enrichment (Hunter — the only provider) ---
     # Hunter finds professional recruiter/company emails. Key is BACKEND-ONLY
     # (GitHub Actions secret + agent .env) and never exposed to the dashboard.
+    # Apollo was removed 2026-07-28: its People Search API returns no email
+    # addresses, so a search-only integration could never yield a recipient.
     hunter_api_key: str = field(default_factory=lambda: _env("HUNTER_API_KEY"))
     # Daily search cap so one run can't drain the allowance; tracked in the
     # Supabase `usage` table (day -> hunter_calls).
@@ -51,7 +53,6 @@ class Config:
     # protects the plan (Free = 50 searches/mo; Starter = 500). Keep it a little
     # under the plan limit so a miscount can't overrun it.
     hunter_monthly_cap: int = field(default_factory=lambda: _env_int("HUNTER_MONTHLY_CAP", 45))
-    apollo_api_key: str = field(default_factory=lambda: _env("APOLLO_API_KEY"))
 
     # --- Discovery: JSearch (RapidAPI) ---
     jsearch_api_key: str = field(default_factory=lambda: _env("JSEARCH_API_KEY"))

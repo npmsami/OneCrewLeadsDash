@@ -25,7 +25,7 @@ print(f"\nextract_domain (free, no API) for {len(jobs)} jobs:")
 for j in jobs:
     print(f"   {enrich.extract_domain(j) or '(none)':45}  <- {j['job_url'][:60]}")
 
-# Full enrich() chain (Apollo if keyed, else pattern/none) on the first job.
+# Full enrich() chain (Hunter, then optional careers@ pattern) on the first job.
 job = dict(jobs[0])
 print(f"\nfull enrich() on: {job['job_title'][:40]} @ {job['company']}")
 result = enrich.enrich(job, cfg)

@@ -6,7 +6,7 @@ Hunter didn't know yet) parks as `manual_apply` with a drafted email but no
 recipient. This worker works down that backlog:
 
     backlog (best match score, never-tried first)
-      -> enrich (Hunter by company name -> Apollo)
+      -> enrich (Hunter, searched by company name)
       -> found: re-address the draft, status manual_apply -> dry_run
       -> miss:  stamp enriched_at so the next run tries a different company
 
@@ -63,15 +63,15 @@ def run(cfg: Config | None = None, limit: int | None = None, job_id: str | None 
     logging.basicConfig(level=logging.INFO, format="%(levelname)s %(message)s")
     now = datetime.now(tz=timezone.utc)
 
-    if not cfg.hunter_api_key and not cfg.apollo_api_key:
-        log.info("no HUNTER_API_KEY or APOLLO_API_KEY -> nothing to do")
+    if not cfg.hunter_api_key:
+        log.info("no HUNTER_API_KEY -> nothing to do")
         return {"enriched": 0, "skipped": "no_provider"}
 
     profile = store.get_settings(cfg)
     today_iso = now.date().isoformat()
     budget = store.hunter_remaining(cfg, today_iso, today_iso[:7])
-    if budget == 0 and not cfg.apollo_api_key:
-        log.info("Hunter allowance spent (daily cap %d, monthly cap %d) and no Apollo -> holding",
+    if budget == 0:
+        log.info("Hunter allowance spent (daily cap %d, monthly cap %d) -> holding",
                  cfg.hunter_daily_cap, cfg.hunter_monthly_cap)
         return {"enriched": 0, "skipped": "daily_cap"}
 
@@ -81,17 +81,16 @@ def run(cfg: Config | None = None, limit: int | None = None, job_id: str | None 
     # otherwise work the backlog best-match-first.
     rows = (store.get_lead_for_enrich(cfg, job_id) if job_id
             else store.get_enrich_backlog(cfg, limit=limit or max(30, budget * _ROWS_PER_SEARCH)))
-    log.info("re-enrich: %d %s, Hunter budget %d (daily %d / monthly %d), Apollo %s",
+    log.info("re-enrich: %d %s, Hunter budget %d (daily %d / monthly %d)",
              len(rows), "targeted lead" if job_id else "backlog rows", budget,
-             cfg.hunter_daily_cap, cfg.hunter_monthly_cap,
-             "on" if cfg.apollo_api_key else "off")
+             cfg.hunter_daily_cap, cfg.hunter_monthly_cap)
 
     outcomes: Counter[str] = Counter()
     for row in rows:
         # Out of budget and this company was never looked up this run -> stop.
         # (A cached company still resolves for free, so those keep flowing.)
         out_of_budget = state["remaining"] <= 0 or state["disabled"]
-        if out_of_budget and not cfg.apollo_api_key and cache_key(row) not in state["cache"]:
+        if out_of_budget and cache_key(row) not in state["cache"]:
             log.info("budget exhausted -> stopping (%d rows left unprocessed)",
                      len(rows) - sum(outcomes.values()))
             break
