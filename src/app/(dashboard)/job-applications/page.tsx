@@ -31,8 +31,10 @@ export default async function OverviewPage() {
   const [{ data: statsRows }, { data: recent }, { data: runRows }, withEmail, needEmail] =
     await Promise.all([
       sb.from("application_stats").select("*").limit(1),
-      // Recent activity: SAME score-based sort as the Leads page default.
-      sb.from("applications").select("*").order("match_score", { ascending: false, nullsFirst: false }).limit(8),
+      // Recent activity means recent: newest-scraped first. A score sort here
+      // showed the same all-time top 8 forever, so a fresh scrape looked like
+      // it had produced nothing.
+      sb.from("applications").select("*").order("created_at", { ascending: false }).limit(10),
       sb.from("scrape_runs").select("*").order("finished_at", { ascending: false }).limit(1),
       // Email coverage: of the leads still awaiting a decision, how many have a
       // recipient to send to vs. how many are still blocked on enrichment.
@@ -130,6 +132,12 @@ export default async function OverviewPage() {
       <section className="mt-10">
         <div className="mb-3 flex items-center justify-between">
           <h2 className="text-sm font-semibold text-muted">Recent activity</h2>
+          <Link
+            href="/job-applications/leads"
+            className="text-xs text-faint transition hover:text-fg"
+          >
+            newest scraped first · see all →
+          </Link>
         </div>
         <div className="card overflow-hidden">
           <RecentLeads

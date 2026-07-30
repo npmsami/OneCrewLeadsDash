@@ -46,7 +46,8 @@ export function LeadsTable({ leads, resumes, defaultResumeId, queueByJob, lane, 
                 <th className="px-3 py-3 text-right font-medium">Score</th>
                 <th className="px-3 py-3 font-medium">Status</th>
                 <th className="px-3 py-3 font-medium">{isLinkedIn ? "Source" : "Contact"}</th>
-                <th className="px-5 py-3 text-right font-medium">Posted</th>
+                <th className="px-3 py-3 text-right font-medium">Posted</th>
+                <th className="px-5 py-3 text-right font-medium">Added</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-border-soft">
@@ -91,12 +92,14 @@ export function LeadsTable({ leads, resumes, defaultResumeId, queueByJob, lane, 
                       </>
                     )}
                   </td>
-                  <td className="px-5 py-3.5 text-right text-xs text-faint">{fmtDate(l.posted_date)}</td>
+                  <td className="px-3 py-3.5 text-right text-xs text-faint">{fmtDate(l.posted_date)}</td>
+                  {/* Scrape date — the default sort key, so it has to be visible. */}
+                  <td className="px-5 py-3.5 text-right text-xs text-faint">{fmtDate(l.created_at)}</td>
                 </tr>
               ))}
               {leads.length === 0 && (
                 <tr>
-                  <td colSpan={6} className="px-5 py-12 text-center text-sm text-faint">
+                  <td colSpan={7} className="px-5 py-12 text-center text-sm text-faint">
                     {emptyMessage ?? "No leads match these filters."}
                   </td>
                 </tr>

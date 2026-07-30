@@ -8,12 +8,27 @@ export interface LeadFilterParams {
   score: string;     // "" | "70" | "80" | "90" (min match_score)
   qualified: string; // all | yes | no
   email: string;     // all | yes | no (recruiter_email present)
-  sort: string;      // score | posted | updated
+  from: string;      // "" | YYYY-MM-DD — earliest date added (created_at)
+  to: string;        // "" | YYYY-MM-DD — latest date added, inclusive
+  sort: string;      // new | score | posted | updated
 }
 
+// Default sort is "new" (most recently scraped first). Anything else buries a
+// fresh scrape among months of older leads with the same score, which reads as
+// "my scrape produced nothing".
+export const DEFAULT_LEAD_SORT = "new";
+
 export const LEAD_FILTER_DEFAULTS: LeadFilterParams = {
-  q: "", status: "all", source: "all", score: "", qualified: "all", email: "all", sort: "score",
+  q: "", status: "all", source: "all", score: "", qualified: "all", email: "all",
+  from: "", to: "", sort: DEFAULT_LEAD_SORT,
 };
+
+/** Accept only YYYY-MM-DD, so a hand-edited URL can't leak into the query. */
+const DATE_RE = /^\d{4}-\d{2}-\d{2}$/;
+function cleanDate(v: string | undefined): string {
+  const s = (v ?? "").trim();
+  return DATE_RE.test(s) ? s : "";
+}
 
 /** Normalize raw searchParams into a fully-defaulted, trimmed filter object. */
 export function parseLeadFilters(sp: Partial<Record<keyof LeadFilterParams, string>>): LeadFilterParams {
@@ -24,7 +39,9 @@ export function parseLeadFilters(sp: Partial<Record<keyof LeadFilterParams, stri
     score: sp.score ?? "",
     qualified: sp.qualified ?? "all",
     email: sp.email ?? "all",
-    sort: sp.sort ?? "score",
+    from: cleanDate(sp.from),
+    to: cleanDate(sp.to),
+    sort: sp.sort ?? DEFAULT_LEAD_SORT,
   };
 }
 
@@ -32,7 +49,8 @@ export function parseLeadFilters(sp: Partial<Record<keyof LeadFilterParams, stri
 export function hasActiveFilters(p: LeadFilterParams): boolean {
   return (
     p.q !== "" || p.status !== "all" || p.source !== "all" ||
-    p.score !== "" || p.qualified !== "all" || p.email !== "all" || p.sort !== "score"
+    p.score !== "" || p.qualified !== "all" || p.email !== "all" ||
+    p.from !== "" || p.to !== "" || p.sort !== DEFAULT_LEAD_SORT
   );
 }
 
@@ -45,7 +63,9 @@ export function leadFiltersToQuery(p: LeadFilterParams): string {
   if (p.score) params.set("score", p.score);
   if (p.qualified !== "all") params.set("qualified", p.qualified);
   if (p.email !== "all") params.set("email", p.email);
-  if (p.sort !== "score") params.set("sort", p.sort);
+  if (p.from) params.set("from", p.from);
+  if (p.to) params.set("to", p.to);
+  if (p.sort !== DEFAULT_LEAD_SORT) params.set("sort", p.sort);
   return params.toString();
 }
 
@@ -55,10 +75,16 @@ export interface QueryLike {
   or(f: string): QueryLike;
   eq(col: string, val: unknown): QueryLike;
   gte(col: string, val: unknown): QueryLike;
+  lte(col: string, val: unknown): QueryLike;
   is(col: string, val: unknown): QueryLike;
   not(col: string, op: string, val: unknown): QueryLike;
   order(col: string, opts: { ascending: boolean; nullsFirst?: boolean }): QueryLike;
 }
+
+// The date filter reads `created_at` — when the lead landed in the hub, i.e.
+// which scrape it came from. `posted_date` is the employer's posting date and
+// is often weeks older, so it answers a different question.
+export const LEAD_DATE_COLUMN = "created_at";
 
 /** Apply the filter params to a Supabase-style query builder and return it. */
 export function applyLeadFilters<T extends QueryLike>(query: T, p: LeadFilterParams): T {
@@ -80,9 +106,24 @@ export function applyLeadFilters<T extends QueryLike>(query: T, p: LeadFilterPar
   if (p.email === "yes") q = q.not("recruiter_email", "is", null);
   else if (p.email === "no") q = q.is("recruiter_email", null);
 
-  if (p.sort === "posted") q = q.order("posted_date", { ascending: false, nullsFirst: false });
-  else if (p.sort === "updated") q = q.order("updated_at", { ascending: false });
-  else q = q.order("match_score", { ascending: false, nullsFirst: false });
+  // Date range on when the lead was added. Both bounds are inclusive whole
+  // days, so from=to=today means "just this day's leads".
+  if (p.from) q = q.gte(LEAD_DATE_COLUMN, `${p.from}T00:00:00.000Z`);
+  if (p.to) q = q.lte(LEAD_DATE_COLUMN, `${p.to}T23:59:59.999Z`);
+
+  if (p.sort === "score") {
+    q = q.order("match_score", { ascending: false, nullsFirst: false });
+    // Tie-break by recency: dozens of leads share a score, and without this the
+    // newest of them sort arbitrarily and can land pages down.
+    q = q.order(LEAD_DATE_COLUMN, { ascending: false });
+  } else if (p.sort === "posted") {
+    q = q.order("posted_date", { ascending: false, nullsFirst: false });
+    q = q.order(LEAD_DATE_COLUMN, { ascending: false });
+  } else if (p.sort === "updated") {
+    q = q.order("updated_at", { ascending: false });
+  } else {
+    q = q.order(LEAD_DATE_COLUMN, { ascending: false });
+  }
 
   return q as T;
 }

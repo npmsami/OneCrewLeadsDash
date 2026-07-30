@@ -59,7 +59,8 @@ export function RecentLeads({ leads, resumes, defaultResumeId, queueByJob }: Pro
                 </div>
               )}
               <StatusBadge status={l.app_status ?? "remaining"} meta={appStatusMeta(l.app_status ?? "remaining")} />
-              <div className="hidden w-16 text-right text-xs text-faint md:block">{timeAgo(l.updated_at)}</div>
+              {/* When it was scraped, not last touched — matches the sort. */}
+              <div className="hidden w-16 text-right text-xs text-faint md:block">{timeAgo(l.created_at)}</div>
             </button>
           </li>
         ))}

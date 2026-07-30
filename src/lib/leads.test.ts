@@ -17,6 +17,7 @@ function mockQuery() {
     or(f: string) { calls.push(["or", f]); return q; },
     eq(c: string, v: unknown) { calls.push(["eq", c, v]); return q; },
     gte(c: string, v: unknown) { calls.push(["gte", c, v]); return q; },
+    lte(c: string, v: unknown) { calls.push(["lte", c, v]); return q; },
     is(c: string, v: unknown) { calls.push(["is", c, v]); return q; },
     not(c: string, o: string, v: unknown) { calls.push(["not", c, o, v]); return q; },
     order(c: string, o: unknown) { calls.push(["order", c, o]); return q; },
@@ -34,6 +35,15 @@ describe("parseLeadFilters", () => {
     expect(p.status).toBe("applied");
     expect(p.qualified).toBe("yes");
   });
+  it("defaults to newest-scraped so a fresh scrape lands on top", () => {
+    expect(parseLeadFilters({}).sort).toBe("new");
+  });
+  it("keeps well-formed dates and drops anything else", () => {
+    expect(parseLeadFilters({ from: "2026-07-29", to: "2026-07-30" }))
+      .toMatchObject({ from: "2026-07-29", to: "2026-07-30" });
+    expect(parseLeadFilters({ from: "yesterday", to: "29/07/2026" }))
+      .toMatchObject({ from: "", to: "" });
+  });
 });
 
 describe("hasActiveFilters / leadFiltersToQuery", () => {
@@ -46,6 +56,13 @@ describe("hasActiveFilters / leadFiltersToQuery", () => {
     expect(qs).toContain("status=applied");
     expect(qs).toContain("email=yes");
     expect(qs).not.toContain("sort=");
+  });
+  it("round-trips a date range and counts it as an active filter", () => {
+    const p = { ...LEAD_FILTER_DEFAULTS, from: "2026-07-29", to: "2026-07-30" };
+    expect(hasActiveFilters(p)).toBe(true);
+    expect(parseLeadFilters(
+      Object.fromEntries(new URLSearchParams(leadFiltersToQuery(p))),
+    )).toEqual(p);
   });
 });
 
@@ -76,12 +93,34 @@ describe("applyLeadFilters", () => {
     expect(none.calls).toContainEqual(["is", "recruiter_email", null]);
   });
 
-  it("applies min score, source, and default sort", () => {
+  it("applies min score, source, and the newest-first default sort", () => {
     const q = mockQuery();
     applyLeadFilters(q, { ...LEAD_FILTER_DEFAULTS, score: "80", source: "glassdoor" });
     expect(q.calls).toContainEqual(["gte", "match_score", 80]);
     expect(q.calls).toContainEqual(["eq", "source", "glassdoor"]);
-    expect(q.calls).toContainEqual(["order", "match_score", { ascending: false, nullsFirst: false }]);
+    expect(q.calls).toContainEqual(["order", "created_at", { ascending: false }]);
+  });
+
+  it("sorts by score with a recency tie-break when asked", () => {
+    const q = mockQuery();
+    applyLeadFilters(q, { ...LEAD_FILTER_DEFAULTS, sort: "score" });
+    const orders = q.calls.filter((c) => c[0] === "order");
+    expect(orders[0]).toEqual(["order", "match_score", { ascending: false, nullsFirst: false }]);
+    expect(orders[1]).toEqual(["order", "created_at", { ascending: false }]);
+  });
+
+  it("bounds the date range to whole inclusive days on created_at", () => {
+    const q = mockQuery();
+    applyLeadFilters(q, { ...LEAD_FILTER_DEFAULTS, from: "2026-07-29", to: "2026-07-29" });
+    expect(q.calls).toContainEqual(["gte", "created_at", "2026-07-29T00:00:00.000Z"]);
+    expect(q.calls).toContainEqual(["lte", "created_at", "2026-07-29T23:59:59.999Z"]);
+  });
+
+  it("applies no date bound when the range is empty", () => {
+    const q = mockQuery();
+    applyLeadFilters(q, LEAD_FILTER_DEFAULTS);
+    expect(q.calls.find((c) => c[0] === "lte")).toBeUndefined();
+    expect(q.calls.find((c) => c[0] === "gte")).toBeUndefined();
   });
 
   it("ignores a zero/empty score", () => {
@@ -101,6 +140,7 @@ describe("applySourceGroup", () => {
       or: (f) => { calls.push(`or:${f}`); return q; },
       eq: (c, v) => { calls.push(`eq:${c}=${v}`); return q; },
       gte: (c, v) => { calls.push(`gte:${c}=${v}`); return q; },
+      lte: (c, v) => { calls.push(`lte:${c}=${v}`); return q; },
       is: (c, v) => { calls.push(`is:${c}=${v}`); return q; },
       not: (c, o, v) => { calls.push(`not:${c}.${o}.${v}`); return q; },
       order: (c, o) => { calls.push(`order:${c}:${o.ascending}`); return q; },
