@@ -4,16 +4,10 @@ import { supabaseRead } from "@/lib/supabase";
 import { StatusBadge } from "@/components/StatusBadge";
 import { LeadReview } from "@/components/LeadReview";
 import { appStatusMeta } from "@/lib/status";
+import { fmtDateTime } from "@/lib/datetime";
 import type { Application, OutreachQueue, Resume, Settings } from "@/lib/types";
 
 export const dynamic = "force-dynamic";
-
-function fmtDateTime(iso: string | null): string {
-  if (!iso) return "—";
-  return new Date(iso).toLocaleString(undefined, {
-    month: "short", day: "numeric", hour: "numeric", minute: "2-digit",
-  });
-}
 
 function Field({ label, value, mono }: { label: string; value: React.ReactNode; mono?: boolean }) {
   return (

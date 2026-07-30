@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import { useState, useTransition } from "react";
 import { StatusBadge } from "./StatusBadge";
 import { queueStatusMeta } from "@/lib/status";
+import { fmtDateTime } from "@/lib/datetime";
 import { APP_STATUSES, type OutreachQueue, type Resume } from "@/lib/types";
 import {
   enqueueOutreachAction,
@@ -23,13 +24,6 @@ interface Props {
   latestQueue: OutreachQueue | null;
   /** The LinkedIn lane renders its own Mark-applied controls, so skip ours. */
   hideStatusControls?: boolean;
-}
-
-function fmtWhen(iso: string | null): string {
-  if (!iso) return "—";
-  return new Date(iso).toLocaleString(undefined, {
-    month: "short", day: "numeric", hour: "numeric", minute: "2-digit",
-  });
 }
 
 const inputClass =
@@ -72,10 +66,10 @@ export function LeadReview(props: Props) {
           <div className="grid grid-cols-2 gap-3 text-sm">
             <div><span className="text-faint">Recipient: </span>{latest.to_email}</div>
             {latest.status === "queued" && (
-              <div><span className="text-faint">Sends after: </span>{fmtWhen(latest.scheduled_at)}</div>
+              <div><span className="text-faint">Sends after: </span>{fmtDateTime(latest.scheduled_at)}</div>
             )}
             {latest.status === "sent" && (
-              <div><span className="text-faint">Sent: </span>{fmtWhen(latest.sent_at)}</div>
+              <div><span className="text-faint">Sent: </span>{fmtDateTime(latest.sent_at)}</div>
             )}
             {latest.last_error && (
               <div className="col-span-2 text-danger"><span className="text-faint">Error: </span>{latest.last_error}</div>

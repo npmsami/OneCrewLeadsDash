@@ -8,6 +8,7 @@ import {
   leadFiltersToQuery,
   SOURCE_OPTIONS,
 } from "@/lib/leads";
+import { appDaysAgo, APP_TIME_ZONE_LABEL } from "@/lib/datetime";
 
 // Filters stay on whatever lane you are viewing (All Leads / LinkedIn Apply /
 // Send Emails), so navigating never yanks you out of your section.
@@ -48,23 +49,15 @@ const SORT_OPTIONS = [
   { value: "updated", label: "Recently updated" },
 ];
 
-// Quick ranges for "what did the last scrape bring in?". The dates are computed
-// in the click handler, never during render — a render-time `new Date()` would
-// disagree between the (UTC) server and the user's local timezone and trip a
-// hydration mismatch.
+// Quick ranges for "what did the last scrape bring in?". The dates are resolved
+// in the click handler, never during render — a render-time date would differ
+// between the (UTC) server and the browser and trip a hydration mismatch.
+// `appDaysAgo` counts Pakistan calendar days, so "Today" means today here.
 const DATE_PRESETS: { label: string; days: number }[] = [
   { label: "Today", days: 0 },
   { label: "7 days", days: 6 },
   { label: "30 days", days: 29 },
 ];
-
-/** Local-calendar YYYY-MM-DD, `days` before today. Matches <input type="date">. */
-function ymdDaysAgo(days: number): string {
-  const d = new Date();
-  d.setDate(d.getDate() - days);
-  const pad = (n: number) => String(n).padStart(2, "0");
-  return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
-}
 
 const selectClass =
   "rounded-lg border border-border bg-panel-2 px-3 py-2 text-sm text-fg outline-none transition focus:border-accent/60 focus:ring-2 focus:ring-accent/25";
@@ -142,13 +135,18 @@ export function LeadsFilters(props: LeadFilterParams) {
 
       {/* Scrape date — its own row so the range reads as one control. */}
       <div className="flex w-full flex-wrap items-center gap-2 border-t border-border-soft pt-3">
-        <span className="text-xs font-medium uppercase tracking-wide text-faint">Scraped</span>
+        <span
+          className="text-xs font-medium uppercase tracking-wide text-faint"
+          title={`Pakistan calendar days (${APP_TIME_ZONE_LABEL})`}
+        >
+          Scraped
+        </span>
 
         {DATE_PRESETS.map((p) => (
           <button
             key={p.label}
             type="button"
-            onClick={() => pushWith({ from: ymdDaysAgo(p.days), to: "" })}
+            onClick={() => pushWith({ from: appDaysAgo(p.days), to: "" })}
             className="rounded-lg border border-border bg-panel-2 px-2.5 py-1.5 text-xs text-muted transition hover:border-accent/50 hover:text-fg"
           >
             {p.label}

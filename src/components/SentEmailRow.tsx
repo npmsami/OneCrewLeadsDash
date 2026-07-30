@@ -3,6 +3,7 @@
 import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { enqueueFollowupAction } from "@/app/(dashboard)/job-applications/actions";
+import { fmtDateTime } from "@/lib/datetime";
 import type { Application, OutreachQueue } from "@/lib/types";
 
 export interface SentEmail {
@@ -13,13 +14,6 @@ export interface SentEmail {
    *  would differ between render and hydration and warp the 24h boundary. */
   canFollowUp: boolean;
   gateMessage: string;
-}
-
-function fmtWhen(iso: string | null): string {
-  if (!iso) return "—";
-  return new Date(iso).toLocaleString(undefined, {
-    month: "short", day: "numeric", hour: "numeric", minute: "2-digit",
-  });
 }
 
 const inputClass =
@@ -82,7 +76,7 @@ export function SentEmailRow({ item }: { item: SentEmail }) {
             <span className="block truncate text-[11px] text-faint">{lead.recruiter_name}</span>
           )}
         </td>
-        <td className="px-3 py-3.5 text-xs text-faint">{fmtWhen(queue.sent_at)}</td>
+        <td className="px-3 py-3.5 text-xs text-faint">{fmtDateTime(queue.sent_at)}</td>
         <td className="px-3 py-3.5"><StateChip item={item} unlocked={canFollowUp} /></td>
         <td className="px-5 py-3.5 text-right">
           <button
@@ -102,7 +96,7 @@ export function SentEmailRow({ item }: { item: SentEmail }) {
             <div className="space-y-3">
               <p className="text-xs text-faint">
                 {lead.followup_body
-                  ? `AI draft written ${fmtWhen(lead.followup_generated_at)} — edit anything before sending.`
+                  ? `AI draft written ${fmtDateTime(lead.followup_generated_at)} — edit anything before sending.`
                   : "No AI draft yet (the follow-up engine writes one on its next run). Write it yourself, or wait."}
               </p>
               <label className="block">

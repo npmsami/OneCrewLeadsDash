@@ -1,16 +1,10 @@
 import { supabaseRead } from "@/lib/supabase";
 import { SentEmailRow, type SentEmail } from "@/components/SentEmailRow";
 import { followupUnlocked } from "@/lib/outreach";
+import { fmtDateTime } from "@/lib/datetime";
 import type { Application, OutreachQueue, SentEmailStats } from "@/lib/types";
 
 export const dynamic = "force-dynamic";
-
-function fmtWhen(iso: string | null): string {
-  if (!iso) return "—";
-  return new Date(iso).toLocaleString(undefined, {
-    month: "short", day: "numeric", hour: "numeric", minute: "2-digit",
-  });
-}
 
 /**
  * Build one display row per INITIAL email, with its follow-up (if any) and the
@@ -97,7 +91,7 @@ export default async function SentEmailsPage() {
         <h1 className="text-2xl font-semibold tracking-tight">Sent Emails</h1>
         <p className="mt-1 text-sm text-muted">
           {items.length} email{items.length === 1 ? "" : "s"} sent
-          {stats?.last_sent_at ? ` · last ${fmtWhen(stats.last_sent_at)}` : ""} · follow-ups unlock
+          {stats?.last_sent_at ? ` · last ${fmtDateTime(stats.last_sent_at)}` : ""} · follow-ups unlock
           24h after sending, and are never sent without you.
         </p>
       </header>

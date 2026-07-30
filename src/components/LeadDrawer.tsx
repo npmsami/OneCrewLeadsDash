@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { StatusBadge } from "./StatusBadge";
 import { LeadReview } from "./LeadReview";
 import { appStatusMeta } from "@/lib/status";
+import { fmtDateTime } from "@/lib/datetime";
 import { setAppStatusAction } from "@/app/(dashboard)/job-applications/actions";
 import { APP_STATUSES, type Application, type OutreachQueue, type Resume } from "@/lib/types";
 
@@ -16,13 +17,6 @@ interface Props {
   /** "linkedin" hides the email composer by default — those are applied by hand. */
   lane: "linkedin" | "outreach";
   onClose: () => void;
-}
-
-function fmtDateTime(iso: string | null): string {
-  if (!iso) return "—";
-  return new Date(iso).toLocaleString(undefined, {
-    month: "short", day: "numeric", hour: "numeric", minute: "2-digit",
-  });
 }
 
 function Field({ label, value }: { label: string; value: React.ReactNode }) {

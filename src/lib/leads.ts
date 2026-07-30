@@ -1,6 +1,8 @@
 // Pure, testable lead-filter logic shared by the Leads page. Kept free of any
 // Supabase import so it can be unit-tested with a mock query builder.
 
+import { dayStartIso, dayEndIso } from "./datetime";
+
 export interface LeadFilterParams {
   q: string;
   status: string;    // all | remaining | queued | applied | done | failed
@@ -114,9 +116,12 @@ export function applyLeadFilters<T extends QueryLike>(query: T, p: LeadFilterPar
   else if (p.email === "no") q = q.is("recruiter_email", null);
 
   // Date range on when the lead was added. Both bounds are inclusive whole
-  // days, so from=to=today means "just this day's leads".
-  if (p.from) q = q.gte(LEAD_DATE_COLUMN, `${p.from}T00:00:00.000Z`);
-  if (p.to) q = q.lte(LEAD_DATE_COLUMN, `${p.to}T23:59:59.999Z`);
+  // days, so from=to=today means "just this day's leads". The days are Pakistan
+  // calendar days, matching what the table displays — with UTC bounds, a lead
+  // scraped at 2 AM PKT on the 29th (9 PM UTC on the 28th) fell outside a
+  // "from the 29th" filter while still showing Jul 29 in its row.
+  if (p.from) q = q.gte(LEAD_DATE_COLUMN, dayStartIso(p.from));
+  if (p.to) q = q.lte(LEAD_DATE_COLUMN, dayEndIso(p.to));
 
   if (p.sort === "score") {
     q = q.order("match_score", { ascending: false, nullsFirst: false });

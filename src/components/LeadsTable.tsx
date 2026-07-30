@@ -4,6 +4,7 @@ import { useState } from "react";
 import { StatusBadge } from "./StatusBadge";
 import { LeadDrawer } from "./LeadDrawer";
 import { appStatusMeta } from "@/lib/status";
+import { fmtDate, fmtTime, APP_TIME_ZONE_LABEL } from "@/lib/datetime";
 import type { Application, OutreachQueue, Resume } from "@/lib/types";
 
 type Lane = "linkedin" | "outreach";
@@ -16,16 +17,6 @@ interface Props {
   queueByJob: Record<string, OutreachQueue>;
   lane: Lane;
   emptyMessage?: string;
-}
-
-function fmtDate(iso: string | null): string {
-  if (!iso) return "—";
-  return new Date(iso).toLocaleDateString(undefined, { month: "short", day: "numeric" });
-}
-
-function fmtTime(iso: string | null): string {
-  if (!iso) return "";
-  return new Date(iso).toLocaleTimeString(undefined, { hour: "numeric", minute: "2-digit" });
 }
 
 /**
@@ -52,7 +43,12 @@ export function LeadsTable({ leads, resumes, defaultResumeId, queueByJob, lane, 
                 <th className="px-3 py-3 font-medium">Status</th>
                 <th className="px-3 py-3 font-medium">{isLinkedIn ? "Source" : "Contact"}</th>
                 <th className="px-3 py-3 text-right font-medium">Posted</th>
-                <th className="px-5 py-3 text-right font-medium">Scraped</th>
+                <th
+                  className="px-5 py-3 text-right font-medium"
+                  title={`Scrape time, shown in Pakistan time (${APP_TIME_ZONE_LABEL})`}
+                >
+                  Scraped
+                </th>
               </tr>
             </thead>
             <tbody className="divide-y divide-border-soft">

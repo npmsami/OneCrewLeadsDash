@@ -109,11 +109,14 @@ describe("applyLeadFilters", () => {
     expect(orders[1]).toEqual(["order", "created_at", { ascending: false }]);
   });
 
-  it("bounds the date range to whole inclusive days on created_at", () => {
+  it("bounds the date range to whole inclusive PAKISTAN days on created_at", () => {
+    // Not UTC days: a lead scraped 2 AM PKT on the 29th is 9 PM UTC on the
+    // 28th, and must still fall inside a "from the 29th" filter to match the
+    // Jul 29 its row displays.
     const q = mockQuery();
     applyLeadFilters(q, { ...LEAD_FILTER_DEFAULTS, from: "2026-07-29", to: "2026-07-29" });
-    expect(q.calls).toContainEqual(["gte", "created_at", "2026-07-29T00:00:00.000Z"]);
-    expect(q.calls).toContainEqual(["lte", "created_at", "2026-07-29T23:59:59.999Z"]);
+    expect(q.calls).toContainEqual(["gte", "created_at", "2026-07-29T00:00:00.000+05:00"]);
+    expect(q.calls).toContainEqual(["lte", "created_at", "2026-07-29T23:59:59.999+05:00"]);
   });
 
   it("applies no date bound when the range is empty", () => {
