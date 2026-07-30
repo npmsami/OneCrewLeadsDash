@@ -140,9 +140,9 @@ export function LeadsFilters(props: LeadFilterParams) {
         </button>
       )}
 
-      {/* Date added — its own row so the range reads as one control. */}
+      {/* Scrape date — its own row so the range reads as one control. */}
       <div className="flex w-full flex-wrap items-center gap-2 border-t border-border-soft pt-3">
-        <span className="text-xs font-medium uppercase tracking-wide text-faint">Date added</span>
+        <span className="text-xs font-medium uppercase tracking-wide text-faint">Scraped</span>
 
         {DATE_PRESETS.map((p) => (
           <button
@@ -157,7 +157,7 @@ export function LeadsFilters(props: LeadFilterParams) {
 
         <input
           type="date"
-          aria-label="Added from"
+          aria-label="Scraped from"
           value={props.from}
           max={props.to || undefined}
           onChange={(e) => pushWith({ from: e.target.value })}
@@ -166,7 +166,7 @@ export function LeadsFilters(props: LeadFilterParams) {
         <span className="text-xs text-faint">to</span>
         <input
           type="date"
-          aria-label="Added until"
+          aria-label="Scraped until"
           value={props.to}
           min={props.from || undefined}
           onChange={(e) => pushWith({ to: e.target.value })}

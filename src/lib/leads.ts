@@ -81,9 +81,16 @@ export interface QueryLike {
   order(col: string, opts: { ascending: boolean; nullsFirst?: boolean }): QueryLike;
 }
 
-// The date filter reads `created_at` — when the lead landed in the hub, i.e.
-// which scrape it came from. `posted_date` is the employer's posting date and
-// is often weeks older, so it answers a different question.
+// The date filter and the newest-first sort read `created_at` — when the lead
+// landed in the hub, i.e. which scrape it came from. `posted_date` is the
+// employer's posting date and is often weeks older, so it answers a different
+// question.
+//
+// The table displays `scraped_at` in its "Scraped" column, but this stays on
+// `created_at` deliberately: a scrape stamps every row in the run with the same
+// scraped_at (to the second), so ordering by it inside a run is arbitrary,
+// whereas created_at staggers by write order. The two always land on the same
+// day — minutes apart — so the date range means the same thing either way.
 export const LEAD_DATE_COLUMN = "created_at";
 
 /** Apply the filter params to a Supabase-style query builder and return it. */

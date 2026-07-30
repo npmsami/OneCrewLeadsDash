@@ -23,6 +23,11 @@ function fmtDate(iso: string | null): string {
   return new Date(iso).toLocaleDateString(undefined, { month: "short", day: "numeric" });
 }
 
+function fmtTime(iso: string | null): string {
+  if (!iso) return "";
+  return new Date(iso).toLocaleTimeString(undefined, { hour: "numeric", minute: "2-digit" });
+}
+
 /**
  * Leads table that opens each lead in a slide-over drawer rather than
  * navigating away — you can work down a list without losing your place or
@@ -47,7 +52,7 @@ export function LeadsTable({ leads, resumes, defaultResumeId, queueByJob, lane, 
                 <th className="px-3 py-3 font-medium">Status</th>
                 <th className="px-3 py-3 font-medium">{isLinkedIn ? "Source" : "Contact"}</th>
                 <th className="px-3 py-3 text-right font-medium">Posted</th>
-                <th className="px-5 py-3 text-right font-medium">Added</th>
+                <th className="px-5 py-3 text-right font-medium">Scraped</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-border-soft">
@@ -93,8 +98,16 @@ export function LeadsTable({ leads, resumes, defaultResumeId, queueByJob, lane, 
                     )}
                   </td>
                   <td className="px-3 py-3.5 text-right text-xs text-faint">{fmtDate(l.posted_date)}</td>
-                  {/* Scrape date — the default sort key, so it has to be visible. */}
-                  <td className="px-5 py-3.5 text-right text-xs text-faint">{fmtDate(l.created_at)}</td>
+                  {/* When the scraper pulled this posting. The time matters more
+                      than the date here: a run lands entirely on one day, so the
+                      clock is what tells two runs apart. Falls back to created_at
+                      for older rows written before scraped_at was stamped. */}
+                  <td className="px-5 py-3.5 text-right text-xs text-faint">
+                    <span className="block">{fmtDate(l.scraped_at ?? l.created_at)}</span>
+                    <span className="block text-[11px] opacity-70">
+                      {fmtTime(l.scraped_at ?? l.created_at)}
+                    </span>
+                  </td>
                 </tr>
               ))}
               {leads.length === 0 && (
